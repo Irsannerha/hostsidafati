@@ -1,0 +1,116 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Taslab;
+
+class TaslabController extends Controller
+{
+    public function index()
+    {
+        $taslab = Taslab::all();
+        return view('admin.taslab.index', compact('taslab'));
+    }
+
+    public function create()
+    {
+        return view('admin.taslab.create');
+    }
+
+    public function store (Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'unit_kerja' => 'required',
+            'pendidikan' => 'required',
+            'tmt' => 'required',
+            'masa_kerja' => 'required',
+            'status_pegawai' => 'required',
+            'jabatan' => 'required',
+            'bagian_tugas' => 'required',
+            'nitk' => 'required',
+            'tgl_lahir' => 'required',
+            'no_hp' => 'required',
+            'umur' => 'required',
+            'email' => 'required',
+        ]);
+        
+        $taslab = new Taslab;
+        $taslab->nama = $request->nama;
+        $taslab->unit_kerja = $request->unit_kerja;
+        $taslab->pendidikan = $request->pendidikan;
+        $taslab->tmt = $request->tmt;
+        $taslab->masa_kerja = $request->masa_kerja;
+        $taslab->status_pegawai = $request->status_pegawai;
+        $taslab->jabatan = $request->jabatan;
+        $taslab->bagian_tugas = $request->bagian_tugas;
+        $taslab->nitk = $request->nitk;
+        $taslab->tgl_lahir = $request->tgl_lahir;
+        $taslab->no_hp = $request->no_hp;
+        $taslab->umur = $request->umur;
+        $taslab->email = $request->email;
+        $taslab->save();
+        // dd($taslab);
+
+        return redirect()->route('superadmin.taslab.index')->with('success_create_data', 'Data berhasil ditambahkan');
+    }
+
+    public function show($id)
+    {
+        $taslab = Taslab::find($id);
+        return view('admin.taslab.show', compact('taslab'));
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $taslab = Taslab::find($id);
+        return view('admin.taslab.edit', compact('taslab'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'unit_kerja' => 'required',
+            'pendidikan' => 'required',
+            'tmt' => 'required',
+            'masa_kerja' => 'required',
+            'status_pegawai' => 'required',
+            'jabatan' => 'required',
+            'bagian_tugas' => 'required',
+            'nitk' => 'required',
+            'tgl_lahir' => 'required',
+            'no_hp' => 'required',
+            'umur' => 'required',
+            'email' => 'required',
+        ]);
+
+        $taslab = Taslab::find($id);
+        $taslab->nama = $request->nama;
+        $taslab->unit_kerja = $request->unit_kerja;
+        $taslab->pendidikan = $request->pendidikan;
+        $taslab->tmt = $request->tmt;
+        $taslab->masa_kerja = $request->masa_kerja;
+        $taslab->status_pegawai = $request->status_pegawai;
+        $taslab->jabatan = $request->jabatan;
+        $taslab->bagian_tugas = $request->bagian_tugas;
+        $taslab->nitk = $request->nitk;
+        $taslab->tgl_lahir = $request->tgl_lahir;
+        $taslab->no_hp = $request->no_hp;
+        $taslab->umur = $request->umur;
+        $taslab->email = $request->email;
+        $taslab->save();
+        // dd($taslab);
+
+        return redirect()->route('superadmin.taslab.index')->with('success_edit_data', 'Data berhasil diubah');
+    }
+
+    public function destroy($id)
+    {
+        $taslab = Taslab::find($id);
+        $taslab->delete();
+        return redirect()->route('superadmin.taslab.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+}
