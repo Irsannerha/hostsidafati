@@ -8,11 +8,11 @@
                             <div class="col-lg-12 col-md-12 text-center">
                                 <div class="title-heading mt-4">
                                     <h1 class="heading mb-1 font-weight-bold text-white">
-                                        Profil Mahasiswa
+                                        Data Insight
                                     </h1>
-                                    <p class="para-desc text-white">
+                                    <!-- <p class="para-desc text-white">
                                         Profil Mahasiswa adalah Data Insight yang berisi data-data mahasiswa yang ada di Program Studi dibawah naungan Fakultas Teknik Teknologi Industri.
-                                    </p>
+                                    </p> -->
                                 </div>
                             </div>
                         </div>
@@ -28,38 +28,88 @@
         <div class="clients p-4 bg-gradient-1" style="top: -135px">
             <div class="row pb-10">
                 <ul>
-                      <div class="card-box min-height-200px pd-10 mb-10">
-                            <div class="d-flex justify-content-between pb-20 text-dark">
-                                <div class="title-heading mt-2">
-                                    <h1 class="heading mb-1 font-weight-bold text-dark purecounter" data-purecounter-end="1243">0</h1>
-                                    <p class="para-desc text-dark">
-                                        Total Mahasiswa
-                                    </p>
-                                </div>
+                    <div class="card-box min-height-200px pd-10 mb-10">
+                        <div class="d-flex justify-content-between pb-20 text-dark">
+                            <div class="title-heading mt-2">
+                                <h1 class="heading mb-1 font-weight-bold text-dark purecounter" data-purecounter-end="1243">0</h1>
+                                <p class="para-desc text-dark">Total Mahasiswa</p>
                             </div>
                         </div>
-                        <div class="card-box min-height-200px pd-10 mb-10">
-                            <div class="d-flex justify-content-between pb-20 text-dark">
-                                <div class="title-heading mt-2">
-                                    <h1 class="heading mb-1 font-weight-bold text-dark purecounter" data-purecounter-end="21">0</h1>
-                                    <p class="para-desc text-dark">
-                                        Program Studi
-                                    </p>
-                                </div>
+                    </div>
+                    <div class="card-box min-height-200px pd-10 mb-10">
+                        <div class="d-flex justify-content-between pb-20 text-dark">
+                            <div class="title-heading mt-2">
+                                <h1 class="heading mb-1 font-weight-bold text-dark purecounter" data-purecounter-end="21">0</h1>
+                                <p class="para-desc text-dark">Program Studi</p>
                             </div>
                         </div>
+                    </div>
                 </ul>
                 <div class="container-fluid">
                     <!-- end row -->
                     <div class="row">
-                        <div class="col-lg-12">
-                            <!-- end col -->
+                        <!-- New chart pie -->
+                        <div class="col-xl-5">
+                            <div class="card-box height-100-px">
+                                <canvas id="myPieChart"></canvas>
+                                <h4 class="h5 mt-20 font-weight-500">Jenis Kelamin</h4>
+                                <ul style="list-style-type: none; padding: 0; margin-top: 10px;">
+                                    <li style="color: #8c1515; font-weight: bold;">
+                                        <span style="display: inline-block; width: 14px; height: 14px; background-color: #8c1515; margin-right: 5px;"></span>
+                                        Laki-laki
+                                    </li>
+                                    <li style="color: #e5ba85; font-weight: bold; margin-top: 5px;">
+                                        <span style="display: inline-block; width: 14px; height: 14px; background-color: #e5ba85; margin-right: 5px;"></span>
+                                        Perempuan
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <!-- New chart bar -->
-                        <div class="col-xl-8 mb-30">
-                            <div class="card-box height-100-p pd-20">
-                                <h2 class="h4 mb-20">Jumlah Mahasiswa Fakultas Teknologi Industri</h2>
-                                <div id="chartbar"></div>
+                        <!-- End New chart pie -->
+                        <!-- New chart status pie -->
+                        <div class="col-xl-5 mb-10">
+                            <div class="card-box height-100-px">
+                                <canvas id="myPieStatus"></canvas>
+                                <h4 class="h5 mt-20 font-weight-500">Status</h4>
+                                <ul style="list-style-type: none; padding: 0; margin-top: 10px;">
+                                    <li style="color: #8c1515; font-weight: bold;">
+                                        <span style="display: inline-block; width: 14px; height: 14px; background-color: #8c1515; margin-right: 5px;"></span>
+                                        Aktif
+                                    </li>
+                                    <li style="color: #e5ba85; font-weight: bold; margin-top: 5px;">
+                                        <span style="display: inline-block; width: 14px; height: 14px; background-color: #e5ba85; margin-right: 5px;"></span>
+                                        Lulus
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End New chart status pie -->
+                         <!-- New chart bar -->
+                        <div class="col-xl-10 mb-20">
+                            <div class="card-box card-bar">
+                                <h2 class="h4 mb-20">Pergerakan Jumlah Mahasiswa Fakultas Teknologi Industri</h2>
+                                <div class="chartCard">
+                                    <div class="chartBoxBar">
+                                        <canvas id="myChartBar"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 mb-20">
+                            <div class="card-box">
+                                <h2 class="h4 mb-20">Pergerakan Jumlah Mahasiswa Prodi Fakultas Teknologi Industri</h2>
+                                <div class="chartCard">
+                                <div class="chartBox">
+                                    <div class="scrollBox">
+                                    <div class="scrollBoxBody">
+                                        <canvas id="chartProdiOne"></canvas>
+                                    </div>
+                                    </div>
+                                    <div class="box">
+                                    <canvas id="chartProdiTwo"></canvas>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                         <!-- End New chart bar -->
@@ -72,8 +122,6 @@
         <!-- end container-fluid -->
     </div>
 </section>
-
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

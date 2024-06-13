@@ -161,6 +161,9 @@ background-size: 200% 200%;
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+
 </head>
 
 <body>
@@ -301,6 +304,11 @@ background-size: 200% 200%;
         <script src="js/tagsinput.js"></script>
         <script src="owlcarousel/owl.carousel.min.js"></script>
         <script src="js/chart.js"></script>
+        <script src="js/new.js"></script>
+        <script src="{{ asset('src/plugins/highcharts-6.0.7/code/highcharts.js') }}"></script>
+		<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+		<script src="{{ asset('src/plugins/highcharts-6.0.7/code/highcharts-more.') }}"></script>
+		<script src="{{ asset('vendors/scripts/highchart-setting.js') }}"></script>
         <script>
         $(document).ready(function(){
             var owl = $('.owl-carousel');

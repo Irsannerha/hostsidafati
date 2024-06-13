@@ -1666,3 +1666,66 @@
   }
 }
 
+.col-xl-10 {
+  margin-bottom: 10px;
+}
+
+.chartCard {
+  width: 100%;
+  padding: 5.7px;
+  border-radius: 20px;
+  border: solid 3px #8c1515;
+  background: rgb(255, 255, 255);
+}
+
+.card-box h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.chartBoxBar {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0.1, 0.1);
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+}
+/* ================ */
+
+.scrollBox {
+  height: 500px;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.scrollBox::-webkit-scrollbar {
+  width: 3.2px;
+}
+
+.scrollBox::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.scrollBox::-webkit-scrollbar-thumb {
+  background: #8c1515;
+  border-radius: 90px;
+}
+
+.scrollBox::-webkit-scrollbar-thumb:hover {
+  background: #e5ba85;
+}
+
+.box {
+  height: 50px;
+}
+.scrollBoxBody {
+  height: 250px;
+  background: rgba(0, 0, 0.1, 0.1);
+  border-radius: 15px;
+}
+
+/* .card-bar  {
+  width: 1500px;
+} */
