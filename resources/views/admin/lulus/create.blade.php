@@ -39,10 +39,21 @@
             <form action="{{ route('superadmin.lulus.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="row">
-              <div class="col-md-3 col-sm-12">
+              <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Tahun</label>
+                    <select name="ts_id" class="form-control" id="ts">
+                      <option value="">Pilih Tahun</option>
+                      @foreach($tahun as $thid)
+                      <option value="{{ $thid->id }}">{{ $thid->ts }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Program Studi</label>
-                    <select name="prodi_id" class="form-control">
+                    <select name="prodi_id" class="form-control" id="prodi">
                       <option value="">Pilih Program Studi</option>
                       @foreach($prodi as $p)
                       <option value="{{ $p->id }}">{{ $p->prodi }}</option>
@@ -50,45 +61,76 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
-                    <label class="font-weight-bold">Tahun </label>
-                    <select name="tahun_id" id="tahun_id" class="form-control" id="ts">
-                      <option value="">Pilih Tahun</option>
-                      @foreach($tahun as $thnid)
-                      <option value="{{ $thnid->id }}" {{ request('tahun_id') == $thnid->id ? 'selected' : '' }}>{{ $thnid->tahun }}</option>
-                      @endforeach
-                    </select>
+                    <label class="font-weight-bold">Januari</label>
+                    <input type="number" name="januari" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Januari" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
-                    <label class="font-weight-bold">September</label>
-                    <input type="number" name="september" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS September" />
+                    <label class="font-weight-bold">Februari</label>
+                    <input type="number" name="februari" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Februari" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
-                  <div class="form-group">
-                    <label class="font-weight-bold">November</label>
-                    <input type="number" name="november" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS November" />
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Maret</label>
                     <input type="number" name="maret" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Maret" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">April</label>
+                    <input type="number" name="april" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS April" />
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Mei</label>
                     <input type="number" name="mei" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Mei" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Juni</label>
+                    <input type="number" name="juni" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Juni" />
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Juli</label>
                     <input type="number" name="juli" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Juli" />
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Agustus</label>
+                    <input type="number" name="agustus" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Agustus" />
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">September</label>
+                    <input type="number" name="september" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS September" />
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Oktober</label>
+                    <input type="number" name="oktober" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Oktober" />
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">November</label>
+                    <input type="number" name="november" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS November" />
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Desember</label>
+                    <input type="number" name="desember" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Lulus TS Desember" />
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -105,28 +147,41 @@
       </div>
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          $("#ts").change(function() {
-            console.log("change")
-            fetchContent()
-          })
-
-          function fetchContent() {
-            let value = $("#ts").val();
-            let csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-            $.ajax({
-              url: "",
-              method: "GET",
-              data: {"tahun_semester_id": parseInt(value), _token: csrfToken},
-              success: function(data) {
-                $("#prodi").empty();
-                $.each(data, function(index, item) {
-                  $("#prodi").append($('<option>', { value: item.id, text: item.prodi  }))
-                }
-              )},
-            })
-          }
+    document.addEventListener("DOMContentLoaded", function() {
+      $("#ts").change(function() {
+        fetchContent();
       });
-</script>
+
+      function fetchContent() {
+        let value = $("#ts").val();
+        let csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+          url: "",
+          method: "GET",
+          data: {
+            "tahun_semester_id": parseInt(value),
+            _token: csrfToken
+          },
+          success: function(data) {
+            $("#prodi").empty();
+            if (data.length < 1) {
+              $("#prodi").append($('<option>', {
+                value: "",
+                text: "Semua prodi sudah terinput"
+              }));
+              swal("Sepertinya, Semua Prodi Sudah Terinput 🤔");
+              return;
+            }
+            $.each(data, function(index, item) {
+              $("#prodi").append($('<option>', {
+                value: item.id,
+                text: item.prodi
+              }));
+            });
+          }
+        });
+      }
+    });
+  </script>
 </x-admin-app>

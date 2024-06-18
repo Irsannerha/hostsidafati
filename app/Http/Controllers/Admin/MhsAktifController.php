@@ -44,8 +44,8 @@ class MhsAktifController extends Controller
         $request->validate([
             'prodi_id' => 'required',
             'ts_id' => 'required',
-            'jumlah_mhs_aktif_ts' => 'required',
-            'jumlah_mhs_aktif_th' => 'required',
+            'jumlah_mhs_aktif_ts' => 'nullable',
+            'jumlah_mhs_aktif_th' => 'nullable',
         ]);
 
         $mhsaktif = new MhsAktif;
@@ -79,8 +79,8 @@ class MhsAktifController extends Controller
         $request->validate([
             'prodi_id' => 'required',
             'ts_id' => 'required',
-            'jumlah_mhs_aktif_ts' => 'required',
-            'jumlah_mhs_aktif_th' => 'required',
+            'jumlah_mhs_aktif_ts' => 'nullable',
+            'jumlah_mhs_aktif_th' => 'nullable',
         ]);
 
         $mhsaktif = MhsAktif::findOrFail($id);

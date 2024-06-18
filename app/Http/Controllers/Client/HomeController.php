@@ -435,8 +435,4 @@ class HomeController extends Controller
         return back()->with('success_create_data', 'Selamat! Data Pengajuan Bukti Penerimaan Berkasmu Berhasil');
     }
 
-    public function mahasiswa()
-    {
-        return view('client.mahasiswa');
-    }
 }

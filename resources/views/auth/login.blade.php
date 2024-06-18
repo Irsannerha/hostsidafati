@@ -88,12 +88,13 @@
                     </div>
                 </div>
                 <div id="copyright" class="col-md-12 justify-content-center" style="text-align: center; color: #fff;">
-                <small class="text-white">© <span id="year"></span> SIDAFATI. All Rights Reserved</small>
+                <small class="text-white">© <span id="year"></span> HARMONY. All Rights Reserved</small>
                     <div class="credits">
-                        Sistem Informasi Satu Data Fakultas Teknologi Industri
+                        Holistic Administration and Resource Management System
                     </div>
-                    <div class="univeristy">
-                        Institut Teknologi Sumatera 
+                    <small class="text-white">Fakultas Teknologi Industri </small>
+                    <div class="faculty">
+                        <span class="text-white font-weight-700">Institut Teknologi Sumatera </span>
                     </div>
                     <script>
                         document.getElementById("year").innerHTML = new Date().getFullYear();

@@ -16,7 +16,7 @@ class UndurDiriSeeder extends Seeder
         $undurdiri = [
             [
                 'prodi_id' => 1,
-                'tahun_id' => 1,
+                'ts_id' => 1,
                 'mhs_undur_diri_genap' => 10,
                 'mhs_undur_diri_ganjil' => 20,
             ],

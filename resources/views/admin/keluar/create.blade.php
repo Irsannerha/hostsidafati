@@ -39,10 +39,21 @@
             <form action="{{ route('superadmin.keluar.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="row">
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Tahun</label>
+                    <select name="ts_id" class="form-control" id="ts">
+                      <option value="">Pilih Tahun</option>
+                      @foreach($tahun as $thid)
+                      <option value="{{ $thid->id }}">{{ $thid->ts }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Program Studi</label>
-                    <select name="prodi_id" class="form-control">
+                    <select name="prodi_id" class="form-control" id="prodi">
                       <option value="">Pilih Program Studi</option>
                       @foreach($prodi as $p)
                       <option value="{{ $p->id }}">{{ $p->prodi }}</option>
@@ -50,24 +61,13 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
-                  <div class="form-group">
-                    <label class="font-weight-bold">Tahun</label>
-                    <select name="tahun_id" class="form-control">
-                      <option value="">Pilih Tahun</option>
-                      @foreach($tahun as $thnid)
-                      <option value="{{ $thnid->id }}">{{ $thnid->tahun }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Mengundurkan Diri Genap</label>
                     <input type="number" name="mhs_keluar_genap" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Dikeluarkan Genap" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Mengundurkan Diri Ganjil</label>
                     <input type="number" name="mhs_keluar_ganjil" class="form-control" placeholder="Masukkan Jumlah Mahasiswa Dikeluarkan Ganjil" />
@@ -86,4 +86,42 @@
         <!-- Checkbox select Datatable End -->
       </div>
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      $("#ts").change(function() {
+        fetchContent();
+      });
+
+      function fetchContent() {
+        let value = $("#ts").val();
+        let csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+          url: "",
+          method: "GET",
+          data: {
+            "tahun_semester_id": parseInt(value),
+            _token: csrfToken
+          },
+          success: function(data) {
+            $("#prodi").empty();
+            if (data.length < 1) {
+              $("#prodi").append($('<option>', {
+                value: "",
+                text: "Semua prodi sudah terinput"
+              }));
+              swal("Sepertinya, Semua Prodi Sudah Terinput 🤔");
+              return;
+            }
+            $.each(data, function(index, item) {
+              $("#prodi").append($('<option>', {
+                value: item.id,
+                text: item.prodi
+              }));
+            });
+          }
+        });
+      }
+    });
+  </script>
 </x-admin-app>

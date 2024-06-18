@@ -71,7 +71,7 @@
                         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                           <div class="modal-content" data-bgcolor="#d0d0d0">
                             <div class="modal-header">
-                              <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-paperclip" aria-hidden="true"></i> Jumlah Mahasiswa Aktif TS {{ $tahun->ts }} + PMB {{ explode('/', $tahun->ts)[1] - 1; }}</h4>
+                              <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-paperclip" aria-hidden="true"></i> Jumlah Mahasiswa Aktif TS {{ $tahun->ts }} + Mahasiswa PMB {{ explode('/', $tahun->ts)[1] - 1; }}</h4>
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -127,8 +127,8 @@
 
                                       <!-- Total keseluruhan -->
                                       <tr>
-                                        <td class="font-weight-bold"><strong>Total Data FTI</strong></td>
                                         <td></td>
+                                        <td class="font-weight-bold"><strong>Total Data FTI</strong></td>
                                         <td><strong class="badge badge-success btn-sm">{{ $total_jumlah_mhs_aktif_ts }}</strong></td>
                                         <td><strong class="badge badge-success btn-sm">{{ $total_jumlah_mhs_aktif_th }}</strong></td>
                                         <td><strong class="badge badge-success btn-sm">{{ $grand_total_mhs_aktif }}</strong></td>
@@ -162,7 +162,7 @@
   <script src="{{ asset('vendors/scripts/datatable-setting.js') }}"></script>
   <style>
     .modal-lg {
-      max-width: 73%;
+      max-width: 90%;
       max-height: 90%;
       margin: 1.95rem auto;
     }

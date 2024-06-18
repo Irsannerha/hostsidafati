@@ -40,7 +40,18 @@
               @csrf
               @method('PUT')
               <div class="row">
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Tahun</label>
+                    <select name="ts_id" class="form-control">
+                      <option value="">Pilih Tahun</option>
+                      @foreach($tahun as $thnid)
+                      <option value="{{ $thnid->id }}" {{ $thnid->id == $undurdiri->ts_id ? 'selected' : '' }}>{{ $thnid->ts }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Program Studi</label>
                     <select name="prodi_id" class="form-control">
@@ -51,24 +62,13 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
-                  <div class="form-group">
-                    <label class="font-weight-bold">Tahun</label>
-                    <select name="tahun_id" class="form-control">
-                      <option value="">Pilih Tahun</option>
-                      @foreach($tahun as $thnid)
-                      <option value="{{ $thnid->id }}" {{ $thnid->id == $undurdiri->tahun_id ? 'selected' : '' }}>{{ $thnid->tahun }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Mengundurkan Diri Genap</label>
                     <input type="number" name="mhs_undur_diri_genap" class="form-control" value="{{ old('mhs_undur_diri_genap', $undurdiri->mhs_undur_diri_genap) }}" placeholder="Masukkan Jumlah Mahasiswa Mahasiswa Mengundurkan Diri Genap" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Mengundurkan Diri Ganjil</label>
                     <input type="number" name="mhs_undur_diri_ganjil" class="form-control" value="{{ old('mhs_undur_diri_ganjil', $undurdiri->mhs_undur_diri_ganjil) }}" placeholder="Masukkan Jumlah Mahasiswa Mahasiswa Mengundurkan Diri Ganjil" />

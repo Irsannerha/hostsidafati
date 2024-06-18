@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIDAFATI | Fakultas Teknologi Industri</title>
+    <title>HARMONY | Fakultas Teknologi Industri</title>
     <link rel="canonical" href="" />
     <link rel="apple-touch-icon" sizes="180x180" href="img/logo-sidafati.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/logo-sidafati.png">
@@ -227,7 +227,7 @@ background-size: 200% 200%;
                         </h2>
                         <div class="row align-items-center mt-1">
                             <span class="col-lg-2 col-xlg-1 ">
-                                <img src="img/sidafati.png" class="logo-satudatafti">
+                                <img src="img/harmonys.png" class="logo-satudatafti">
                             </span>
                             <span class="col">
                                 <p class="m-0">
@@ -259,8 +259,9 @@ background-size: 200% 200%;
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="float-left pull-none">
-                            <p class="text-white-50">
-                                Copyright &copy; <?php echo date("Y"); ?> Sistem Informasi Satu Data<br />
+                            <div class="text-white-50">
+                                Copyright &copy; <?php echo date("Y"); ?> - HARMONY<br />
+                                Holistic Administration and Resource Management System <br />
                                 Fakultas Teknologi Industri<br />
                                 Institut Teknologi Sumatera, Lampung selatan, Indonesia
                             </p>

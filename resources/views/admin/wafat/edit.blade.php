@@ -40,7 +40,18 @@
               @csrf
               @method('PUT')
               <div class="row">
-                <div class="col-md-3 col-sm-12">
+              <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Tahun</label>
+                    <select name="ts_id" class="form-control">
+                      <option value="">Pilih Tahun</option>
+                      @foreach($tahun as $thnid)
+                      <option value="{{ $thnid->id }}" {{ $thnid->id == $wafat->ts_id ? 'selected' : '' }}>{{ $thnid->ts }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Program Studi</label>
                     <select name="prodi_id" class="form-control">
@@ -51,24 +62,13 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
-                  <div class="form-group">
-                    <label class="font-weight-bold">Tahun</label>
-                    <select name="tahun_id" class="form-control">
-                      <option value="">Pilih Tahun</option>
-                      @foreach($tahun as $thnid)
-                      <option value="{{ $thnid->id }}" {{ $thnid->id == $wafat->tahun_id ? 'selected' : '' }}>{{ $thnid->tahun }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Wafat Genap</label>
                     <input type="number" name="mhs_wafat_genap" class="form-control" value="{{ old('mhs_wafat_genap', $wafat->mhs_wafat_genap) }}" placeholder="Masukkan Jumlah Mahasiswa Mahasiswa Wafat Genap" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Wafat Ganjil</label>
                     <input type="number" name="mhs_wafat_ganjil" class="form-control" value="{{ old('mhs_wafat_ganjil', $wafat->mhs_wafat_ganjil) }}" placeholder="Masukkan Jumlah Mahasiswa Mahasiswa Wafat Ganjil" />

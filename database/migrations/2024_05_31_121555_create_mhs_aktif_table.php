@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('prodi_id');
             $table->foreignId('ts_id');
-            $table->integer('jumlah_mhs_aktif_ts');
-            $table->integer('jumlah_mhs_aktif_th');
+            $table->integer('jumlah_mhs_aktif_ts')->nullable();
+            $table->integer('jumlah_mhs_aktif_th')->nullable();
             $table->timestamps();
         });
     }

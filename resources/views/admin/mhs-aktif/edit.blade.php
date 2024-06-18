@@ -40,7 +40,18 @@
               @csrf
               @method('PUT')
               <div class="row">
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Tahun</label>
+                    <select name="ts_id" class="form-control">
+                      <option value="">Pilih Tahun</option>
+                      @foreach($tahun as $thnid)
+                      <option value="{{ $thnid->id }}" {{ $thnid->id == $mhsaktif->ts_id ? 'selected' : '' }}>{{ $thnid->ts }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Program Studi</label>
                     <select name="prodi_id" class="form-control">
@@ -51,24 +62,13 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
-                  <div class="form-group">
-                    <label class="font-weight-bold">Tahun</label>
-                    <select name="tahun_id" class="form-control">
-                      <option value="">Pilih Tahun</option>
-                      @foreach($tahun as $thnid)
-                      <option value="{{ $thnid->id }}" {{ $thnid->id == $mhsaktif->tahun_id ? 'selected' : '' }}>{{ $thnid->tahun }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Aktif TS</label>
                     <input type=number" name="jumlah_mhs_aktif_ts" class="form-control" value="{{ old('jumlah_mhs_aktif_ts', $mhsaktif->jumlah_mhs_aktif_ts) }}" placeholder="Jumlah Mahasiswa Aktif TS" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Aktif Tahun</label>
                     <input type="number" name="jumlah_mhs_aktif_th" class="form-control" value="{{ old('jumlah_mhs_aktif_th', $mhsaktif->jumlah_mhs_aktif_th) }}" placeholder="Jumlah Mahasiswa Aktif Tahun" />

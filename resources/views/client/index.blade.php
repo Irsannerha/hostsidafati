@@ -18,10 +18,10 @@
                                     <div class="col-lg-6 order-last-">
                                         <div class="home-title mo-mb-20 text-white">
                                             <h1 class="mb-4 text-white">
-                                                SELAMAT DATANG DI [SIDAFATI] SISTEM INFORMASI SATU DATA FAKULTAS TEKNOLOGI INDUSTRI!
+                                                SELAMAT DATANG DI [HARMONY] Holistic Administration and Resource Management System!
                                             </h1>
                                             <p class="text-white-50 home-desc">
-                                            <p>Selamat datang di SIDAFATI - Sistem Informasi Satu Data Fakultas Teknologi Industri! Di sini, merupakan aspek semua informasi terkait perkuliahan, penelitian, dan aktivitas akademis lainnya. Sistem kami didesain untuk memudahkan akses dan pengelolaan data agar pengalaman akademis Anda lebih lancar dan efisien.</p>
+                                            <p>Selamat datang di HARMONY - Holistic Administration and Resource Management System! Di sini, merupakan aspek semua informasi terkait perkuliahan, penelitian, dan aktivitas akademis lainnya. Sistem kami didesain untuk memudahkan akses dan pengelolaan data agar pengalaman akademis Anda lebih lancar dan efisien.</p>
                                             <p>Selamat menjelajah!</p>
                                             </p>
                                         </div>
@@ -107,10 +107,10 @@
                                     <div class="col-lg-6 order-last-">
                                         <div class="home-title mo-mb-20 text-white">
                                             <h1 class="mb-4 text-white">
-                                                Apa itu SIDAFATI?
+                                                Apa itu HARMONY?
                                             </h1>
                                             <p class="text-white-50 home-desc">
-                                            <p>SIDAFATI Sistem Informasi Satu Data Fakultas Teknologi Industri adalah sistem yang dirancang untuk mengelola data dan informasi yang berkaitan dengan berbagai aspek operasional dan administratif di dalam Fakultas Teknologi Industri. Sistem ini mencakup pengumpulan, penyimpanan, pemrosesan, dan penyebaran data yang berkaitan dengan mahasiswa, dosen, kurikulum, kegiatan akademik dan non-akademik, serta aspek lain yang terkait dengan manajemen fakultas.
+                                            <p>HARMONY - Holistic Administration and Resource Management System adalah sistem yang dirancang untuk mengelola data dan informasi yang berkaitan dengan berbagai aspek operasional dan administratif di dalam Fakultas Teknologi Industri. Sistem ini mencakup pengumpulan, penyimpanan, pemrosesan, dan penyebaran data yang berkaitan dengan mahasiswa, dosen, kurikulum, kegiatan akademik dan non-akademik, serta aspek lain yang terkait dengan manajemen fakultas.
                                                 Tujuan utama dari sistem ini adalah untuk meningkatkan efisiensi dan efektivitas dalam pengelolaan data, memastikan keakuratan dan ketersediaan informasi yang diperlukan, serta mendukung pengambilan keputusan yang lebih baik di Fakultas Teknologi Industri. Dengan demikian, Fakultas Teknologi Industri dapat lebih mudah mengelola berbagai informasi penting dan memperbaiki proses manajemen secara keseluruhan.</p>
                                             </p>
                                         </div>

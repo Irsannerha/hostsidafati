@@ -39,7 +39,18 @@
             <form action="{{ route('superadmin.mhs-aktif.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="row">
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-4 col-sm-12">
+                  <div class="form-group">
+                    <label class="font-weight-bold">Tahun Semester</label>
+                    <select name="ts_id" class="form-control" id="tahun">
+                      <option value="">Pilih Tahun Semester</option>
+                      @foreach($tahun as $thnid)
+                      <option value="{{ $thnid->id }}">{{ $thnid->ts }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Program Studi</label>
                     <select name="prodi_id" class="form-control" id="prodi">
@@ -50,24 +61,13 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
-                  <div class="form-group">
-                    <label class="font-weight-bold">Tahun Semester</label>
-                    <select name="tahun_id" class="form-control" id="tahun">
-                      <option value="">Pilih Tahun Semester</option>
-                      @foreach($tahun as $thnid)
-                      <option value="{{ $thnid->id }}">{{ $thnid->ts }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Aktif TS <span id="ts_sebelum">(Sebelumnya)</span></label>
                     <input type="number" name="jumlah_mhs_aktif_ts" class="form-control" value="{{ old('jumlah_mhs_aktif_ts') }}" placeholder="Masukkan Jumlah Mahasiswa Aktif TS" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa PMB <span id="thn_pmb"></span></label>
                     <input type="number" name="jumlah_mhs_aktif_th" class="form-control" value="{{ old('jumlah_mhs_aktif_th') }}" placeholder="Masukkan Jumlah Mahasiswa Aktif Tahun" />
@@ -87,42 +87,43 @@
       </div>
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        $("#tahun").change(function() {
-          $("#tahun").attr('ts', $("#tahun option:selected").text())
-            let value = $("#tahun").attr('ts')
-            let csrfToken = $('meta[name="csrf-token"]').attr('content');
-            value = value === "Pilih Tahun Semester" ? "(Sebelumnya)" : value
-            let ts_id = $("#tahun").val()
-            if (value === "(Sebelumnya)") {
-              $("#thn_pmb").text("")
+    document.addEventListener("DOMContentLoaded", function() {
+      $("#tahun").change(function() {
+        $("#tahun").attr('ts', $("#tahun option:selected").text());
+        let value = $("#tahun").attr('ts');
+        let csrfToken = $('meta[name="csrf-token"]').attr('content');
+        value = value === "Pilih Tahun Semester" ? "(Sebelumnya)" : value;
+        let ts_id = $("#tahun").val();
+        
+        if (value === "(Sebelumnya)") {
+          $("#thn_pmb").text("");
+        } else {
+          console.log(value);
+          $.ajax({
+            url: "",  // Update this URL to the appropriate endpoint
+            method: "GET",
+            data: {"tahun_semester_id": parseInt(ts_id), _token: csrfToken},
+            success: function(data) {
+              $("#prodi").empty();
+              if (data.length < 1) {
+                $("#prodi").append($('<option>', { value: "", text: "Semua Prodi Sudah Terinput" }));
+                swal("Sepertinya, Semua Prodi Sudah Terinput 🤔");
+                return;
+              }
+              $.each(data, function(index, item) {
+                $("#prodi").append($('<option>', { value: item.id, text: item.prodi }));
+              });
             }
-            else {
-              console.log(value)
-              $.ajax({
-                url: "",
-                method: "GET",
-                data: {"tahun_semester_id": parseInt(ts_id), _token: csrfToken},
-                success: function(data) {
-                  $("#prodi").empty();
-                  if (data.length < 1) {
-                    $("#prodi").append($('<option>', { value: "", text: "Semua prodi sudah terinput" }))
-                    return
-                  }
-                  $.each(data, function(index, item) {
-                    $("#prodi").append($('<option>', { value: item.id, text: item.prodi  }))
-                  }
-                )},
-              })
-              let tahun = value.split("/")
-              $("#thn_pmb").text(tahun[0])
-              let ts = tahun.map((item, index) => {
-                return parseInt(item) - 1
-              })
-              value = ts.join("/")
-            }
-            $("#ts_sebelum").text(value)
-          })
-      })
-      </script>
+          });
+          let tahun = value.split("/");
+          $("#thn_pmb").text(tahun[0]);
+          let ts = tahun.map((item, index) => {
+            return parseInt(item) - 1;
+          });
+          value = ts.join("/");
+        }
+        $("#ts_sebelum").text(value);
+      });
+    });
+  </script>
 </x-admin-app>

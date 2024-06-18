@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('keluar', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prodi_id');
-            $table->foreignId('tahun_id');
-            $table->integer('mhs_keluar_genap');
-            $table->integer('mhs_keluar_ganjil');
+            $table->foreignId('ts_id');
+            $table->integer('mhs_keluar_genap')->nullable();
+            $table->integer('mhs_keluar_ganjil')->nullable();
             $table->timestamps();
         });
     }

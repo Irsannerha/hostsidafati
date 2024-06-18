@@ -13,12 +13,19 @@ class Lulus extends Model
 
     protected $fillable = [
         'prodi_id',
-        'tahun_id',
-        'september',
-        'november',
+        'ts_id',
+        'januari',
+        'februari',
         'maret',
+        'april',
         'mei',
+        'juni',
         'juli',
+        'agustus',
+        'september',
+        'oktober',
+        'november',
+        'desember',
     ];
 
     public function Prodi()
@@ -28,6 +35,6 @@ class Lulus extends Model
 
     public function Tahun()
     {
-        return $this->belongsTo(Tahun::class, 'tahun_id', 'id');
+        return $this->belongsTo(Tahun::class, 'ts_id', 'id');
     }
 }

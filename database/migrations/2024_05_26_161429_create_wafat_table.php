@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('wafat', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prodi_id');
-            $table->foreignId('tahun_id');
-            $table->integer('mhs_wafat_genap');
-            $table->integer('mhs_wafat_ganjil');
+            $table->foreignId('ts_id');
+            $table->integer('mhs_wafat_genap')->nullable();
+            $table->integer('mhs_wafat_ganjil')->nullable();
             $table->timestamps();
         });
     }

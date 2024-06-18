@@ -13,7 +13,7 @@ class UndurDiri extends Model
 
     protected $fillable = [
         'prodi_id',
-        'tahun_id',
+        'ts_id',
         'mhs_undur_diri_genap',
         'mhs_undur_diri_ganjil',
     ];
@@ -25,7 +25,7 @@ class UndurDiri extends Model
 
     public function Tahun()
     {
-        return $this->belongsTo(Tahun::class, 'tahun_id', 'id');
+        return $this->belongsTo(Tahun::class, 'ts_id', 'id');
     }
 
    

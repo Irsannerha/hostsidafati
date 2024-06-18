@@ -16,7 +16,7 @@ class KeluarSeeder extends Seeder
         $data = [
             [
                 'prodi_id' => 1,
-                'tahun_id' => 1,
+                'ts_id' => 1,
                 'mhs_keluar_genap' => 10,
                 'mhs_keluar_ganjil' => 10,
             ],

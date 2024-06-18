@@ -13,8 +13,7 @@ class Wafat extends Model
 
     protected $fillable = [
         'prodi_id',
-        'tahun_semester_id',
-        'tahun_id',
+        'ts_id',
         'mhs_wafat_genap',
         'mhs_wafat_ganjil',
     ];
@@ -26,7 +25,7 @@ class Wafat extends Model
 
     public function Tahun()
     {
-        return $this->belongsTo(Tahun::class, 'tahun_id', 'id');
+        return $this->belongsTo(Tahun::class, 'ts_id', 'id');
     }
     
 }

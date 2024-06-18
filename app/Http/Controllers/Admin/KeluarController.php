@@ -18,31 +18,50 @@ class KeluarController extends Controller
         $prodi = Prodi::all();
         $tahun = Tahun::all();
 
-        $total = Keluar::select(DB::raw('SUM(mhs_keluar_genap + mhs_keluar_ganjil) as total'))
-            ->groupBy('tahun_id')
+        $totals = Keluar::select(DB::raw('ts_id,
+            SUM(mhs_keluar_genap) as mhs_keluar_genap,
+            SUM(mhs_keluar_ganjil) as mhs_keluar_ganjil'))
+            ->groupBy('ts_id')
             ->get();
-        return view('admin.keluar.index', compact('keluar', 'prodi', 'tahun', 'total'));
+
+        $totals = $totals->map(function ($item) {
+            $item->jumlahTotal = $item->mhs_keluar_genap + $item->mhs_keluar_ganjil;
+            return $item;
+        });
+
+        $groupedKeluar = $keluar->groupBy('ts_id');
+
+        return view('admin.keluar.index', compact('keluar', 'prodi', 'tahun', 'totals', 'groupedKeluar'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $prodi = Prodi::all();
+        if ($request->tahun_semester_id == null) {
+            $prodi = Prodi::all();
+        } else {
+            $tahun_filter = Keluar::select('prodi_id')->where('ts_id', $request->tahun_semester_id)->get();
+            $prodi = Prodi::whereNotIn('id', $tahun_filter)->get();
+        }
         $tahun = Tahun::all();
-        return view('admin.keluar.create', compact('prodi', 'tahun'));
+        if ($request->tahun_semester_id == null) {
+            return view('admin.keluar.create', compact('prodi', 'tahun'));
+        } else {
+            return response()->json($prodi);
+        }
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'prodi_id' => 'required',
-            'tahun_id' => 'required',
-            'mhs_keluar_genap' => 'required',
-            'mhs_keluar_ganjil' => 'required',
+            'ts_id' => 'required',
+            'mhs_keluar_genap' => 'nullable',
+            'mhs_keluar_ganjil' => 'nullable',
         ]);
-    
-        $keluar = new Keluar();
+
+        $keluar = new Keluar;
         $keluar->prodi_id = $request->prodi_id;
-        $keluar->tahun_id = $request->tahun_id;
+        $keluar->ts_id = $request->ts_id;
         $keluar->mhs_keluar_genap = $request->mhs_keluar_genap;
         $keluar->mhs_keluar_ganjil = $request->mhs_keluar_ganjil;
         $keluar->save();
@@ -50,16 +69,9 @@ class KeluarController extends Controller
         return redirect()->route('superadmin.keluar.index')->with('success_create_data', 'Data berhasil ditambahkan');
     }
 
-    public function show($id)
-    {
-        $keluar = Keluar::find($id);
-        $prodi = Prodi::all();
-        return view('admin.keluar.show', compact('keluar', 'prodi'));
-    }
-
     public function edit($id)
     {
-        $keluar = Keluar::findOrFail($id);
+        $keluar = Keluar::find($id);
         $prodi = Prodi::all();
         $tahun = Tahun::all();
         return view('admin.keluar.edit', compact('keluar', 'prodi', 'tahun'));
@@ -69,14 +81,14 @@ class KeluarController extends Controller
     {
         $request->validate([
             'prodi_id' => 'required',
-            'tahun_id' => 'required',
-            'mhs_keluar_genap' => 'required',
-            'mhs_keluar_ganjil' => 'required',
+            'ts_id' => 'required',
+            'mhs_keluar_genap' => 'nullable',
+            'mhs_keluar_ganjil' => 'nullable',
         ]);
 
         $keluar = Keluar::find($id);
         $keluar->prodi_id = $request->prodi_id;
-        $keluar->tahun_id = $request->tahun_id;
+        $keluar->ts_id = $request->ts_id;
         $keluar->mhs_keluar_genap = $request->mhs_keluar_genap;
         $keluar->mhs_keluar_ganjil = $request->mhs_keluar_ganjil;
         $keluar->save();
@@ -88,6 +100,7 @@ class KeluarController extends Controller
     {
         $keluar = Keluar::find($id);
         $keluar->delete();
+
         return redirect()->route('superadmin.keluar.index')->with('success_delete_data', 'Data berhasil dihapus');
     }
 }

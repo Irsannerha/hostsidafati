@@ -16,7 +16,7 @@ class WafatSeeder extends Seeder
         $data = [
             [
                 'prodi_id' => 1,
-                'tahun_id' => 1,
+                'ts_id' => 1,
                 'mhs_wafat_genap' => 1,
                 'mhs_wafat_ganjil' => 2,
             ],

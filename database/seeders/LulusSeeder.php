@@ -16,12 +16,19 @@ class LulusSeeder extends Seeder
         $lulus = [
             [
                 'prodi_id' => 1,
-                'tahun_id' => 1,
-                'september' => '10',
-                'november' => '20',
-                'maret' => '30',
-                'mei' => '40',
-                'juli' => '50',
+                'ts_id' => 1,
+                'januari' => 0,
+                'februari' => 0,
+                'maret' => rand(50, 100),   // Random value for maret
+                'april' => 0,
+                'mei' => rand(50, 100),     // Random value for mei
+                'juni' => 0,
+                'juli' => rand(50, 100),    // Random value for juli
+                'agustus' => 0,
+                'september' => rand(80, 120), // Random value for september
+                'oktober' => 0,
+                'november' => rand(80, 120),  // Random value for november
+                'desember' => 0,
             ],
         ];
 
@@ -30,3 +37,4 @@ class LulusSeeder extends Seeder
         }
     }
 }
+

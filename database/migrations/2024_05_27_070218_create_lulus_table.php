@@ -14,12 +14,19 @@ return new class extends Migration
         Schema::create('lulus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prodi_id');
-            $table->foreignId('tahun_id');
-            $table->string('september')->nullable();
-            $table->string('november')->nullable();
+            $table->foreignId('ts_id');
+            $table->string('januari')->nullable();
+            $table->string('februari')->nullable();
             $table->string('maret')->nullable();
+            $table->string('april')->nullable();
             $table->string('mei')->nullable();
+            $table->string('juni')->nullable();
             $table->string('juli')->nullable();
+            $table->string('agustus')->nullable();
+            $table->string('september')->nullable();
+            $table->string('oktober')->nullable();
+            $table->string('november')->nullable();
+            $table->string('desember')->nullable();
             $table->timestamps();
         });
     }

@@ -17,11 +17,11 @@ class MhsAktifSeeder extends Seeder
         $mhsaktif = [];
 
 // Loop untuk setiap tahun dari 1 hingga 12
-for ($ts_id = 1; $ts_id <= 12; $ts_id++) {
+for ($ts_id = 1; $ts_id <= 1; $ts_id++) {
     // Loop untuk setiap prodi (21 prodi)
-    for ($prodi_id = 1; $prodi_id <= 21; $prodi_id++) {
-        $jumlah_mhs_aktif_ts = rand(50, 200); // Jumlah mahasiswa aktif di TS, bisa disesuaikan
-        $jumlah_mhs_aktif_th = rand(50, 200); // Jumlah mahasiswa aktif di TH, bisa disesuaikan
+    for ($prodi_id = 1; $prodi_id <= 1; $prodi_id++) {
+        $jumlah_mhs_aktif_ts = rand(50, 200); 
+        $jumlah_mhs_aktif_th = rand(50, 200);
         
         $data = [
             'prodi_id' => $prodi_id,

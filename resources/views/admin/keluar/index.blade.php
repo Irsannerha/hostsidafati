@@ -50,14 +50,15 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($keluar->groupBy('tahun_id') as $out => $items)
+                @foreach ($groupedKeluar as $out => $items)
                 @php
                 $tahun = $items->first()->tahun;
+                $totalTs = $totals->firstWhere('ts_id', $out);
                 @endphp
                 <tr>
                   <td class="table-plus">{{ $loop->iteration }}</td>
-                  <td><span class="btn btn-dark btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 14px;">TS {{ $tahun->tahun }}/{{ $tahun->tahun + 1 }}</span></td>
-                  <td><span class="btn btn-success btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 14px;">{{ $total[$out-1]->total }}</span></td>
+                  <td><span class="btn btn-dark btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 14px;">TS {{ $tahun->ts }}</span></td>
+                  <td><span class="btn btn-success btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 14px;">{{ $totalTs ? $totalTs->jumlahTotal : 0 }}</span></td>
                   <td>
                     <div class="dropdown">
                       <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-toggle="modal" data-target="#showModal{{ $out }}"><i class="dw dw-eye"></i> Detail </a>
@@ -66,7 +67,7 @@
                         <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                           <div class="modal-content" data-bgcolor="#d0d0d0">
                             <div class="modal-header">
-                              <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-paperclip" aria-hidden="true"></i> Mahasiswa Dikeluarkan TS {{ $tahun->tahun }}/{{ $tahun->tahun + 1 }}</h4>
+                              <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-paperclip" aria-hidden="true"></i> Mahasiswa Dikeluarkan TS {{ $tahun->ts }}</h4>
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -93,7 +94,7 @@
                                         @endphp
 
                                         @foreach($keluar as $outs)
-                                            @if($outs->tahun_id == $out)
+                                            @if($outs->ts_id == $out)
                                                 @php
                                                     $index++;
                                                     $total_mhs_keluar = $outs->mhs_keluar_genap + $outs->mhs_keluar_ganjil;

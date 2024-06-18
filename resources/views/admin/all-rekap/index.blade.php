@@ -333,7 +333,7 @@
             text-align: center;
         }
         .modal-lg {
-     max-width: 95%;
+        max-width: 95%;
       max-height: 80%;
       margin: 1.95rem auto;
     }

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('undur-diri', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prodi_id');
-            $table->foreignId('tahun_id');
-            $table->integer('mhs_undur_diri_genap');
-            $table->integer('mhs_undur_diri_ganjil');
+            $table->foreignId('ts_id');
+            $table->integer('mhs_undur_diri_genap')->nullable();
+            $table->integer('mhs_undur_diri_ganjil')->nullable();
             $table->timestamps();
         });
     }

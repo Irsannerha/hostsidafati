@@ -40,7 +40,7 @@
               @csrf
               @method('PUT')
               <div class="row">
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Program Studi</label>
                     <select name="prodi_id" class="form-control">
@@ -51,24 +51,24 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-4 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Tahun</label>
-                    <select name="tahun_id" class="form-control">
+                    <select name="ts_id" class="form-control">
                       <option value="">Pilih Tahun</option>
                       @foreach($tahun as $thnid)
-                      <option value="{{ $thnid->id }}" {{ $thnid->id == $keluar->tahun_id ? 'selected' : '' }}>{{ $thnid->tahun }}</option>
+                      <option value="{{ $thnid->id }}" {{ $thnid->id == $keluar->ts_id ? 'selected' : '' }}>{{ $thnid->ts }}</option>
                       @endforeach
                     </select>
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Dikeluarkan Genap</label>
                     <input type="number" name="mhs_keluar_genap" class="form-control" value="{{ old('mhs_keluar_genap', $keluar->mhs_keluar_genap) }}" placeholder="Masukkan Jumlah Mahasiswa Keluar Genap" />
                   </div>
                 </div>
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-5 col-sm-12">
                   <div class="form-group">
                     <label class="font-weight-bold">Jumlah Mahasiswa Dikeluarkan Ganjil</label>
                     <input type="number" name="mhs_keluar_ganjil" class="form-control" value="{{ old('mhs_keluar_ganjil', $keluar->mhs_keluar_ganjil) }}" placeholder="Masukkan Jumlah Mahasiswa Keluar Ganjil" />
