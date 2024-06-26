@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\UndurDiri;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UndurDiriController extends Controller
@@ -65,7 +66,11 @@ class UndurDiriController extends Controller
         $undurdiri->mhs_undur_diri_ganjil = $request->mhs_undur_diri_ganjil;
         $undurdiri->save();
 
-        return redirect()->route('superadmin.undur-diri.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.undur-diri.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'akademik'){
+            return redirect()->route('akademik.undur-diri.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function edit ($id)
@@ -92,7 +97,11 @@ class UndurDiriController extends Controller
         $undurdiri->mhs_undur_diri_ganjil = $request->mhs_undur_diri_ganjil;
         $undurdiri->save();
 
-        return redirect()->route('superadmin.undur-diri.index')->with('success_update_data', 'Data berhasil diubah');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.undur-diri.index')->with('success_update_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'akademik'){
+            return redirect()->route('akademik.undur-diri.index')->with('success_update_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy ($id)
@@ -100,8 +109,33 @@ class UndurDiriController extends Controller
         $undurdiri = UndurDiri::findorFail($id);
         $undurdiri->delete();
 
-        return redirect()->route('superadmin.undur-diri.index')->with('success_delete_data', 'Data berhasil dihapus');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.undur-diri.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'akademik'){
+            return redirect()->route('akademik.undur-diri.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
+    
+    public function getChartDataUndurdiri()
+    {
+        $data = UndurDiri::with('prodi')->get();
 
+        $labels = $data->map(function($item) {
+            return $item->prodi->prodi;
+        });
+
+        $mhs_undur_diri_genap = $data->pluck('mhs_undur_diri_genap');
+        $mhs_undur_diri_ganjil = $data->pluck('mhs_undur_diri_ganjil');
+        $total = $mhs_undur_diri_genap->zip($mhs_undur_diri_ganjil)->map(function($item) {
+            return $item[0] + $item[1];
+        });
+
+        return response()->json([
+            'labels' => $labels,
+            'mhs_undur_diri_genap' => $mhs_undur_diri_genap,
+            'mhs_undur_diri_ganjil' => $mhs_undur_diri_ganjil,
+            'total' => $total,
+        ]);
+    }
 }
 

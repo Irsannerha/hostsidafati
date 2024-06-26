@@ -36,7 +36,11 @@
                         </div>
                         <hr />
                         <br />
+                        @if(Auth::user()->role == 'superadmin')
                         <form action="{{ route('superadmin.tahun.update', $tahun->id) }}" method="POST">
+                        @elseif(Auth::user()->role == 'akademik')
+                        <form action="{{ route('akademik.tahun.update', $tahun->id) }}" method="POST">
+                        @endif
                             @csrf
                             @method('PUT')
                             <div class="row">

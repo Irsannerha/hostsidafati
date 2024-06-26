@@ -49,6 +49,7 @@ class HomeController extends Controller
             'penanggung_jawab' => 'required',
             'nama_pemohon' => 'required',
             'no_hp' => 'required',
+            'surat_izin' => 'required|mimes:pdf|max:2048',
         ]);
 
         $kegiatan = new Kegiatan;
@@ -63,10 +64,17 @@ class HomeController extends Controller
         $kegiatan->penanggung_jawab = $request->penanggung_jawab;
         $kegiatan->nama_pemohon = $request->nama_pemohon;
         $kegiatan->no_hp = $request->no_hp;
-        
+        $kegiatan->surat_izin = $request->surat_izin;
+        if ($request->hasFile('surat_izin')) {
+            $surat_izin = $request->file('surat_izin');
+            $file_name = time() . '_Surat_Izin_' . $kegiatan->nama_kegiatan . '.' . $surat_izin->getClientOriginalExtension();
+            $kegiatan->surat_izin = $file_name;
+            $kegiatan->update();
+            $surat_izin->move('../public/assets/surat_izin/', $file_name);
+        }
 
-        // dd($kegiatan);
         $kegiatan->save();
+        // dd($kegiatan);
 
         return back()->with('success_create_data', 'Selamat! Data Pengajuan Kegiatanmu Berhasil');
     }

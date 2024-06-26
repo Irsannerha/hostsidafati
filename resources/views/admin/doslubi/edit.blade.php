@@ -82,7 +82,7 @@
                                       {{ old('status', $doslubi->status) }}
                                   </option>
                                   <option value="">Pilih Status</option>
-                                  <option value="Purna Tugas atau pensiunan">Purna Tugas atau Pensiunan</option>
+                                  <option value="Purna Tugas atau Pensiunan">Purna Tugas atau Pensiunan</option>
                                   <option value="Dosen Luar Biasa Praktisi">Dosen Luar Biasa Praktisi</option>
                               </select>
                           </div>

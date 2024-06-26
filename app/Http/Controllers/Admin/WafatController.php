@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Wafat;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB; // Import DB facade
 
 class WafatController extends Controller
@@ -65,7 +66,11 @@ class WafatController extends Controller
         $wafat->mhs_wafat_ganjil = $request->mhs_wafat_ganjil;
         $wafat->save();
 
-        return redirect()->route('superadmin.wafat.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.wafat.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.wafat.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function show ($id)
@@ -98,8 +103,12 @@ class WafatController extends Controller
         $wafat->mhs_wafat_genap = $request->mhs_wafat_genap;
         $wafat->mhs_wafat_ganjil = $request->mhs_wafat_ganjil;
         $wafat->save();
-
-        return redirect()->route('superadmin.wafat.index')->with('success_update_data', 'Data berhasil diubah');
+        
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.wafat.index')->with('success_update_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.wafat.index')->with('success_update_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
@@ -107,6 +116,10 @@ class WafatController extends Controller
         $wafat = Wafat::find($id);
         $wafat->delete();
 
-        return redirect()->route('superadmin.wafat.index')->with('success_delete_data', 'Data berhasil dihapus');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.wafat.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.wafat.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

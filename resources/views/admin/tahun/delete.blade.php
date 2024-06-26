@@ -14,11 +14,15 @@
                                     <div class="center">
                                         <h6>Apakah Anda yakin ingin menghapus data ini ?</h6>
                                         <center><h6><span class="font-10 font-weight-bold">&mdash;</span></h6></center>
-                                        <center><span><small><span class="btn btn-outline-primary btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">Tahun {{ $tahun->tahun }}</span></small></span></center>
+                                        <center><span><small><span class="btn btn-outline-primary btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">Tahun {{ $tahun->ts }}</span></small></span></center>
                                     </div>
                                 </div>
                                 <div class="modal-footer text-center justify-content-center">
+                                    @if(Auth::user()->role == 'superadmin')
                                     <form action="{{ route('superadmin.tahun.destroy', $tahun->id) }}" method="POST">
+                                     @elseif(Auth::user()->role == 'akademik')
+                                     <form action="{{ route('akademik.tahun.destroy', $tahun->id) }}" method="POST">
+                                    @endif
                                         @method('DELETE')
                                         @csrf
                                         <input type="submit" class="btn btn-danger light" name="" id="toastBasicTrigger" value="Hapus">

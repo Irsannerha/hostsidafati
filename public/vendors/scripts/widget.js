@@ -1,5 +1,5 @@
 var options = {
-	series: [95],
+	series: [100],
 	grid: {
 		padding: {
 			top: 0,
@@ -16,7 +16,7 @@ var options = {
 	plotOptions: {
 		radialBar: {
 			hollow: {
-				size: '50%',
+				size: '55%',
 			},
 			dataLabels: {
 				name: {
@@ -32,7 +32,7 @@ var options = {
 			}
 		}
 	},
-	colors: ['#ecf0f4'],
+	colors: ['#daa520'],
 	fill: {
 		type: 'gradient',
 		gradient: {

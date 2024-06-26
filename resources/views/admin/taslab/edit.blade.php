@@ -80,12 +80,12 @@
                               <input type="date" name="tmt" class="form-control" value="{{ old('tmt', $taslab->tmt) }}" placeholder="Masukkan Terhitung Mulai Tanggal" />
                           </div>
                       </div>
-                      <div class="col-md-4 col-sm-12">
+                      <!-- <div class="col-md-4 col-sm-12">
                           <div class="form-group">
                               <label class="font-weight-bold">Masa Kerja</label>
                               <input type="text" name="masa_kerja" class="form-control" value="{{ old('masa_kerja', $taslab->masa_kerja) }}" placeholder="Masukkan Masa Kerja" />
                           </div>
-                      </div>
+                      </div> -->
                       <div class="col-md-4 col-sm-12">
                           <div class="form-group">
                               <label class="font-weight-bold">Status Pegawai</label>
@@ -137,12 +137,12 @@
                               <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp', $taslab->no_hp) }}" placeholder="Masukkan Nomor HP" />
                           </div>
                       </div>
-                      <div class="col-md-3 col-sm-12">
+                      <!-- <div class="col-md-3 col-sm-12">
                           <div class="form-group">
                               <label class="font-weight-bold">Umur</label>
                               <input type="text" name="umur" class="form-control" value="{{ old('umur', $taslab->umur) }}" placeholder="Masukkan Umur" />
                           </div>
-                      </div>
+                      </div> -->
                       <div class="col-md-3 col-sm-12">
                           <div class="form-group">
                               <label class="font-weight-bold">Email</label>

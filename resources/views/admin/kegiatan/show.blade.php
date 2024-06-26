@@ -175,6 +175,9 @@
                         echo $hari_indo . ', ' . $tgl_kegiatan->format('d') . ' ' . $bulan_indo . ' ' . $tgl_kegiatan->format('Y') . ' / Pukul : ' . $tgl_kegiatan->format('H:i') . ' WIB';
                         ?>
                     </dd>
+                    <dt>Surat Izin Kegiatan</dt>
+                    <dd class="custom-dd"><a href="{{ asset('assets/surat_izin/' . $atan->surat_izin) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download Surat Izin Kegiatan</a></dd>
+                    </dl>
                     </dl>
                 </div>
             </div>

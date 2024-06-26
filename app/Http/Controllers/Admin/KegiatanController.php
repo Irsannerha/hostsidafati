@@ -50,6 +50,7 @@ class KegiatanController extends Controller
             'no_hp' => 'required',
             'status' => 'required',
             'keterangan' => 'required',
+            'surat_izin' => 'mimes:pdf|max:2048',
         ]);
 
         $kegiatan = Kegiatan::find($id);
@@ -66,6 +67,14 @@ class KegiatanController extends Controller
         $kegiatan->no_hp = $request->no_hp;
         $kegiatan->status = $request->status;
         $kegiatan->keterangan = $request->keterangan;
+        $kegiatan->surat_izin = $request->surat_izin;
+        if ($request->hasFile('surat_izin')) {
+            $surat_izin = $request->file('surat_izin');
+            $file_name = time() . '_Surat_Izin' . $kegiatan->nama_kegiatan . '.' . $surat_izin->getClientOriginalExtension();
+            $kegiatan->surat_izin = $file_name;
+            $kegiatan->update();
+            $surat_izin->move('../public/assets/surat_izin/', $file_name);
+        }
         $kegiatan->save();
         // dd($kegiatan);
 

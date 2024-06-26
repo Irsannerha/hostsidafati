@@ -24,7 +24,7 @@ class ResignSeeder extends Seeder
                 'tmt_masuk' => '2022-04-20',
                 'tmt_keluar' => '2024-04-20',
                 'alasan' => 'Pindah',
-                'surat_keterangan' => 'ada'
+                'surat_keterangan' => 'Ada'
             ],
             [
                 'prodi_id' => 2,
@@ -35,7 +35,7 @@ class ResignSeeder extends Seeder
                 'tmt_masuk' => '2022-04-20',
                 'tmt_keluar' => '2024-04-20',
                 'alasan' => 'Pindah',
-                'surat_keterangan' => 'ada'
+                'surat_keterangan' => 'Ada'
             ],
             [
                 'prodi_id' => 3,
@@ -46,7 +46,7 @@ class ResignSeeder extends Seeder
                 'tmt_masuk' => '2022-04-20',
                 'tmt_keluar' => '2024-04-20',
                 'alasan' => 'Pindah',
-                'surat_keterangan' => 'ada'
+                'surat_keterangan' => 'Ada'
             ],
             [
                 'prodi_id' => 4,
@@ -57,7 +57,7 @@ class ResignSeeder extends Seeder
                 'tmt_masuk' => '2022-04-20',
                 'tmt_keluar' => '2024-04-20',
                 'alasan' => 'Pindah',
-                'surat_keterangan' => 'ada'
+                'surat_keterangan' => 'Ada'
             ],
             [
                 'prodi_id' => 5,
@@ -68,7 +68,7 @@ class ResignSeeder extends Seeder
                 'tmt_masuk' => '2022-04-20',
                 'tmt_keluar' => '2024-04-20',
                 'alasan' => 'Pindah',
-                'surat_keterangan' => 'ada'
+                'surat_keterangan' => 'Ada'
             ],
             [
                 'prodi_id' => 6,
@@ -79,7 +79,7 @@ class ResignSeeder extends Seeder
                 'tmt_masuk' => '2022-04-20',
                 'tmt_keluar' => '2024-04-20',
                 'alasan' => 'Pindah',
-                'surat_keterangan' => 'ada'
+                'surat_keterangan' => 'Ada'
             ],
         ];
 

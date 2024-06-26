@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Keluar;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -66,7 +67,11 @@ class KeluarController extends Controller
         $keluar->mhs_keluar_ganjil = $request->mhs_keluar_ganjil;
         $keluar->save();
 
-        return redirect()->route('superadmin.keluar.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.keluar.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.keluar.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function edit($id)
@@ -93,7 +98,11 @@ class KeluarController extends Controller
         $keluar->mhs_keluar_ganjil = $request->mhs_keluar_ganjil;
         $keluar->save();
 
-        return redirect()->route('superadmin.keluar.index')->with('success_update_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.keluar.index')->with('success_update_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.keluar.index')->with('success_update_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
@@ -101,6 +110,10 @@ class KeluarController extends Controller
         $keluar = Keluar::find($id);
         $keluar->delete();
 
-        return redirect()->route('superadmin.keluar.index')->with('success_delete_data', 'Data berhasil dihapus');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.keluar.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.keluar.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

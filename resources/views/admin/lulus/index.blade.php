@@ -37,7 +37,11 @@
               <button class="btn btn-primary" onclick="exportToExcel()">Excel</button>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ImportModal">Import</button>
             </div>
+            @if(Auth::user()->role == 'superadmin')
             <a href="{{ route('superadmin.lulus.create') }}" class="btn btn-primary font-weight-bold"><i class="fa fa-plus"></i> Tambah Data</a>
+            @elseif (Auth::user()->role == 'akademik')
+            <a href="{{ route('akademik.lulus.create') }}" class="btn btn-primary font-weight-bold"><i class="fa fa-plus"></i> Tambah Data</a>
+            @endif
           </div>
           <div class="pb-20">
             <table class="data-table table stripe hover nowrap">
@@ -153,7 +157,11 @@
                                                     <td>{{ $ls->desember }}</td>
                                                     <td>{{ $total_mhs_lulus }}</td>
                                                     <td>
-                                                  <a href="{{ route('superadmin.lulus.edit', $ls->id ) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                                  @if (Auth::user()->role == 'superadmin')
+                                                    <a href="{{ route('superadmin.lulus.edit', $ls->id ) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                                    @elseif (Auth::user()->role == 'akademik')
+                                                    <a href="{{ route('akademik.lulus.edit', $ls->id ) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                                  @endif
                                                     <i class="icon-copy dw dw-edit2"></i> Edit
                                                   </a>
                                                   <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#deleteModal{{ $ls->id }}">

@@ -68,12 +68,12 @@
                                     <input type="date" name="tgl_lahir" class="form-control" placeholder="Masukkan Tanggal Lahir" />
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
+                            <!-- <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label class="font-weight-bold">Umur</label>
                                     <input type="number" name="umur" class="form-control" placeholder="Masukkan Umur" />
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                         <label class="font-weight-bold">Pendidikan</label>
@@ -86,12 +86,12 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12">
+                            <!-- <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label class="font-weight-bold">Masa Kerja</label>
                                     <input type="text" name="masa_kerja" class="form-control" placeholder="Masukkan Masa Kerja" />
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                         <label class="font-weight-bold">Status NIDN/NIDK/NUP</label>

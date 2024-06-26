@@ -52,7 +52,6 @@ class PrestasiController extends Controller
             'tingkat_kejuaraan' => 'required',
             'judul_karya' => 'required',
             'anggota_karya' => 'required',
-            // 'foto' => 'mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $prestasi = Prestasi::find($id);
@@ -71,14 +70,14 @@ class PrestasiController extends Controller
         $prestasi->tingkat_kejuaraan = $request->tingkat_kejuaraan;
         $prestasi->judul_karya = $request->judul_karya;
         $prestasi->anggota_karya = $request->anggota_karya;
-        $prestasi->foto = $request->foto;
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $file_name = time() . '_Foto_' . $prestasi->nim . '.' . $foto->getClientOriginalExtension();
-            $prestasi->foto = $file_name;
-            $prestasi->update();
-            $foto->move('../public/assets/foto/', $file_name);
-        }
+        // $prestasi->foto = $request->foto;
+        // if ($request->hasFile('foto')) {
+        //     $foto = $request->file('foto');
+        //     $file_name = time() . '_Foto_' . $prestasi->nim . '.' . $foto->getClientOriginalExtension();
+        //     $prestasi->foto = $file_name;
+        //     $prestasi->update();
+        //     $foto->move('../public/assets/foto/', $file_name);
+        // }
         $prestasi->save();
 
         return redirect()->route('superadmin.prestasi.index')->with('success_edit_data', 'Data berhasil diubah');

@@ -84,7 +84,7 @@
             <div class="dropdown">
                 <a class="dropdown-toggle no-arrow" role="button" data-toggle="dropdown">
                     <span class="user-icon">
-                        <img src="/vendors/images/user-profile.png" alt="" />
+                        <img src="{{ url('vendors/images/user-profile.png') }}" alt="" />
                     </span>
                     <span class="user-name">Halo, {{Auth::user()->email}}</span>
                 </a>

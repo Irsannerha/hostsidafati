@@ -30,60 +30,20 @@
                     </div>
                 </div>
                 <!-- Simple Card-Box start -->
-                                            <div class="card-box mb-30">
-                                <div class="pd-20">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons">
-                                                <button class="btn btn-primary font-weight-bold" onclick="exportToPDF()">Cetak</button>
-                                                <button class="btn btn-primary font-weight-bold" onclick="exportToExcel()">Excel</button>
-                                                <button type="button" class="btn btn-primary font-weight-bold" data-toggle="modal" data-target="#ImportModal">Import</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 text-right">
-                                            <div class="dropdown">
-                                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                                    Tambah Rekap Mahasiswa
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="{{ route('superadmin.all-rekap.create') }}">
-                                                        <i class="fa fa-plus"></i> Tambah Data Jumlah Mahasiswa Aktif dan Mahasiswa PMB
-                                                    </a>
-                                                    <a class="dropdown-item" href="{{ route('superadmin.all-rekap.create') }}">
-                                                        <i class="fa fa-plus"></i> Tambah Data Mahasiswa Mengundurkan Diri TS
-                                                    </a>
-                                                    <a class="dropdown-item" href="{{ route('superadmin.all-rekap.create') }}">
-                                                        <i class="fa fa-plus"></i> Tambah Data Mahasiswa Dikeluarkan TS
-                                                    </a>
-                                                    <a class="dropdown-item" href="{{ route('superadmin.all-rekap.create') }}">
-                                                        <i class="fa fa-plus"></i> Tambah Data Mahasiswa Wafat TS
-                                                    </a>
-                                                    <a class="dropdown-item" href="{{ route('superadmin.all-rekap.create') }}">
-                                                        <i class="fa fa-plus"></i> Tambah Data Mahasiswa Lulusan TS
-                                                    </a>
-                                                    <!-- Tambahkan item dropdown lainnya jika diperlukan -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                     <div class="row">
                         @foreach($tahun as $t)
-                        <div class="col-xl-3 mb-30">
+                        <div class="col-xl-4 mb-20">
                             <div class="card-box height-100-p widget-style1">
                                 <a href="#" class="btn-block" data-toggle="modal" data-target="#showModal{{ $t->id }}" type="button">
-                                    <div class="d-flex flex-wrap align-items-center">
-                                            <div class="widget-icon pd-10" style="font-size: 45px;">
-                                                <div class="icon" data-color="#000">
-                                                <i class="icon-copy bi bi-people-fill"></i>
-                                                </div>
-                                            </div>
-                                        <div class="widget-data">
-                                            <div class="h4 mb-0 text-dark">TS - {{ $t->tahun_semester }}</div>
-                                            <div class="weight-600 font-14">{{ $t->tahun }}</div>
-                                        </div>
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <div class="progress-data">
+                                        <div id="chartAllRekap"></div>
                                     </div>
+                                    <div class="widget-data">
+                                        <div class="h4 mb-0 text-dark"></div>
+                                        <div class="weight-600 font-14">TS - {{ $t->ts }}</div>
+                                    </div>
+							    </div>
                                 </a>
                             </div>
                         </div>

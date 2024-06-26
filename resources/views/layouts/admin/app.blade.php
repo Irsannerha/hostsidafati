@@ -27,6 +27,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -92,6 +93,8 @@
     <script src="{{ asset('src/plugins/datatables/js/pdfmake.min.js') }}"></script>
     <script src="{{ asset('src/plugins/datatables/js/vfs_fonts.js') }}"></script>
     <script src="{{ asset('vendors/scripts/widget.js') }}"></script>
+    <script src="{{ asset('vendors/scripts/chartallrekap.js') }}"></script>
+    <script src="{{ asset('js/chartdashboard.js') }}"></script>
     <!-- Datatable Setting js -->
     <script src="{{ asset('vendors/scripts/datatable-setting.js') }}"></script>
 

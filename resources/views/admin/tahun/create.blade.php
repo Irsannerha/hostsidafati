@@ -36,7 +36,11 @@
                         </div>
                         <hr />
                         <br />
+                        @if(Auth::user()->role == 'superadmin')
                         <form action="{{ route('superadmin.tahun.store') }}" method="POST">
+                        @elseif(Auth::user()->role == 'akademik')
+                        <form action="{{ route('akademik.tahun.store') }}" method="POST">
+                        @endif
                             @csrf
                             <div class="row">
                                 <div class="col-md-3 col-sm-12">

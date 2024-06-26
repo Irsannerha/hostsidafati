@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('tmt_masuk');
             $table->string('tmt_keluar');
             $table->text('alasan');
-            $table->string('surat_keterangan');
+            $table->string('surat_keterangan')->default('Ada');
             $table->timestamps();
         });
     }

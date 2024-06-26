@@ -15,14 +15,12 @@ class Taslab extends Model
         'unit_kerja',
         'pendidikan',
         'tmt',
-        'masa_kerja',
         'status_pegawai',
         'jabatan',
         'bagian_tugas',
         'nitk',
         'tgl_lahir',
         'no_hp',
-        'umur',
         'email',
     ];
 }

@@ -36,7 +36,11 @@
             </div>
             <hr />
             <br />
-            <form action="{{ route('superadmin.lulus.store') }}" method="POST" enctype="multipart/form-data">
+            @if(Auth::user()->role == 'superadmin')
+              <form action="{{ route('superadmin.lulus.store') }}" method="POST" enctype="multipart/form-data">
+            @elseif (Auth::user()->role == 'akademik')
+              <form action="{{ route('akademik.lulus.store') }}" method="POST" enctype="multipart/form-data">
+            @endif
               @csrf
               <div class="row">
               <div class="col-md-4 col-sm-12">

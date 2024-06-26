@@ -17,9 +17,7 @@ return new class extends Migration
             $table->string('nip_nrk');
             $table->foreignId('prodi_id');
             $table->date('tgl_lahir');
-            $table->integer('umur');
             $table->string('pendidikan');
-            $table->string('masa_kerja')->nullable();
             $table->string('status_nidn_nidk');
             $table->string('status_pegawai');
             $table->string('jabfung');

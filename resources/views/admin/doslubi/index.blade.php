@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="title font-weight-bold">
-                                <h4>Dosen Luar Biasa</h4>
+                                <h4>Dosen Luar Biasa NIDK</h4>
                             </div>
                             <nav aria-lalubi="breadcrumb" role="navigation">
                                 <ol class="breadcrumb">

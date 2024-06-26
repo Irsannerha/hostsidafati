@@ -1,24 +1,24 @@
 <style>
     .dropdown .submenu {
-    max-height: 450px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #ccc transparent;
-}
+        max-height: 450px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #ccc transparent;
+    }
 
-.dropdown .submenu::-webkit-scrollbar {
-    width: 5px;
-}
+    .dropdown .submenu::-webkit-scrollbar {
+        width: 5px;
+    }
 
-.dropdown .submenu::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 2.5px;
-}
+    .dropdown .submenu::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 2.5px;
+    }
 
-.dropdown .submenu::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-bottom-right-radius: 16px;
-}
+    .dropdown .submenu::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-bottom-right-radius: 16px;
+    }
 </style>
 @if (Auth::user()->role == 'superadmin')
 <div class="left-side-bar">
@@ -45,16 +45,15 @@
                         <span class="mtext">Pegawai</span>
                     </a>
                     <ul class="submenu">
-                    <li class="dropdown">
+                        <li class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle">
-                                <span class="micon fa fa-address-book-o"></span
-                                ><span class="mtext">Cuti Pegawai</span>
+                                <span class="micon fa fa-address-book-o"></span><span class="mtext">Cuti Pegawai</span>
                             </a>
                             <ul class="submenu child">
                                 <li><a href="javascript:;">Cuti Dosen</a></li>
                                 <li><a href="javascript:;">Cuti Tendik</a></li>
                             </ul>
-						</li>
+                        </li>
                         <li><a href="{{ route('superadmin.prodi.index') }}">Program studi</a></li>
                         <li><a href="{{ route('superadmin.pejabat.index') }}">Pejabat</a></li>
                         <li><a href="{{ route('superadmin.jumlah_dosen.index') }}">Jumlah Dosen</a></li>
@@ -73,10 +72,12 @@
                     <ul class="submenu">
                         <li><a href="{{ route('superadmin.tahun.index') }}">Tahun Semester</a></li>
                         <li><a href="{{ route('superadmin.mhs-aktif.index') }}">Mahasiswa Aktif</a></li>
+                        <li><a href="{{ route('superadmin.mhs-ta.index') }}">Mahasiswa Lulus Tugas Akhir</a></li>
                         <li><a href="{{ route('superadmin.undur-diri.index') }}">Mahasiswa Mengundurkan Diri</a></li>
                         <li><a href="{{ route('superadmin.keluar.index') }}">Mahasiswa Dikeluarkan</a></li>
                         <li><a href="{{ route('superadmin.wafat.index') }}">Mahasiswa Wafat</a></li>
                         <li><a href="{{ route('superadmin.lulus.index') }}">Lulus/Wisuda</a></li>
+                        <li><a href="{{ route('superadmin.jumlah.index') }}">Jumlah Gabungan</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -205,8 +206,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.html">
-            <img src="../vendors/images/sidafati-light.png" alt="" class="dark-logo" />
-            <img src="../vendors/images/sidafati-dark.png" alt="" class="light-logo" />
+            <img src="{{ url('vendors/images/sidafati-light.png') }}" alt="" class="dark-logo" />
+            <img src="{{ url('vendors/images/sidafati-dark.png') }}" alt="" class="light-logo" />
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -225,12 +226,14 @@
                         <span class="micon fa fa-institution"></span><span class="mtext"> Akademik </span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('superadmin.tahun.index') }}">Tahun Semester</a></li>
-                        <li><a href="{{ route('superadmin.mhs-aktif.index') }}">Mahasiswa Aktif</a></li>
-                        <li><a href="{{ route('superadmin.undur-diri.index') }}">Mahasiswa Mengundurkan Diri</a></li>
-                        <li><a href="{{ route('superadmin.keluar.index') }}">Mahasiswa Dikeluarkan</a></li>
-                        <li><a href="{{ route('superadmin.wafat.index') }}">Mahasiswa Wafat</a></li>
-                        <li><a href="{{ route('superadmin.lulus.index') }}">Lulus/Wisuda</a></li>
+                        <li><a href="{{ route('akademik.tahun.index') }}">Tahun Semester</a></li>
+                        <li><a href="{{ route('akademik.mhs-aktif.index') }}">Mahasiswa Aktif</a></li>
+                        <li><a href="{{ route('akademik.mhs-ta.index') }}">Mahasiswa Lulus Tugas Akhir</a></li>
+                        <li><a href="{{ route('akademik.undur-diri.index') }}">Mahasiswa Mengundurkan Diri</a></li>
+                        <li><a href="{{ route('akademik.keluar.index') }}">Mahasiswa Dikeluarkan</a></li>
+                        <li><a href="{{ route('akademik.wafat.index') }}">Mahasiswa Wafat</a></li>
+                        <li><a href="{{ route('akademik.lulus.index') }}">Lulus/Wisuda</a></li>
+                        <li><a href="{{ route('akademik.jumlah.index') }}">Jumlah Gabungan</a></li>
                     </ul>
                 </li>
                 <li>
@@ -281,7 +284,6 @@
         </div>
     </div>
 </div>
-
 @elseif (Auth::user()->role == 'keuangan')
 <div class="left-side-bar">
     <div class="brand-logo">

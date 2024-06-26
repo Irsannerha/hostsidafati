@@ -68,12 +68,12 @@
                                         <input type="date" name="tmt" class="form-control" placeholder="Masukkan Terhitung Mulai Tanggal" />
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
+                                <!-- <div class="col-md-4 col-sm-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">Masa Kerja</label>
-                                        <input type="text" name="masa_kerja" class="form-control" placeholder="Masukkan Masa Kerja" />
+                                        <input type="text" name="masa_kerja" id="masa_kerja" class="form-control" placeholder="Masukkan Masa Kerja" />
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-4 col-sm-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">Status Pegawai</label>
@@ -119,12 +119,12 @@
                                         <input type="text" name="no_hp" class="form-control" placeholder="Masukkan No.Hp" />
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
+                                <!-- <div class="col-md-4 col-sm-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">Umur</label>
                                         <input type="text" name="umur" class="form-control" placeholder="Masukkan Umur" />
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-4 col-sm-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">Email</label>
@@ -145,4 +145,29 @@
             </div>
         </div>
     </div>
+    <!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('tmt').addEventListener('change', function() {
+            var tmtDate = new Date(this.value);
+            var currentDate = new Date();
+            
+            var diffYears = currentDate.getFullYear() - tmtDate.getFullYear();
+            var diffMonths = currentDate.getMonth() - tmtDate.getMonth();
+            var diffDays = currentDate.getDate() - tmtDate.getDate();
+
+            if (diffDays < 0) {
+                diffMonths--;
+                diffDays += new Date(tmtDate.getFullYear(), tmtDate.getMonth() + 1, 0).getDate();
+            }
+
+            if (diffMonths < 0) {
+                diffYears--;
+                diffMonths += 12;
+            }
+
+            var masaKerja = diffYears + ' Tahun ' + diffMonths + ' Bulan ' + diffDays + ' Hari';
+            document.getElementById('masa_kerja').value = masaKerja;
+        });
+    });
+</script> -->
 </x-admin-app>

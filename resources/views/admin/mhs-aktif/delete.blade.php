@@ -19,11 +19,15 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer text-center justify-content-center">
+                                @if(Auth::user()->role == 'superadmin')
                                     <form action="{{ route('superadmin.mhs-aktif.destroy', $rekap->id) }}" method="POST">
+                                @elseif(Auth::user()->role == 'akademik')
+                                    <form action="{{ route('akademik.mhs-aktif.destroy', $rekap->id) }}" method="POST">
+                                @endif
                                         @method('DELETE')
                                         @csrf
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
                                         <input type="submit" class="btn btn-danger light" name="" id="toastBasicTrigger" value="Hapus">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
                                     </form>
                                 </div>
                             </div>

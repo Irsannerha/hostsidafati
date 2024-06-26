@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tahun;
+use Illuminate\Support\Facades\Auth;
 
 class TahunController extends Controller
 {
@@ -27,7 +28,11 @@ class TahunController extends Controller
 
         Tahun::create($request->all());
 
-        return redirect()->route('superadmin.tahun.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.tahun.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.tahun.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function edit(Tahun $tahun)
@@ -43,13 +48,21 @@ class TahunController extends Controller
 
         $tahun->update($request->all());
 
-        return redirect()->route('superadmin.tahun.index')->with('success_edit_data', 'Data berhasil diubah');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.tahun.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.tahun.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy(Tahun $tahun)
     {
         $tahun->delete();
 
-        return redirect()->route('superadmin.tahun.index')->with('success_delete_data', 'Data berhasil dihapus');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.tahun.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.tahun.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

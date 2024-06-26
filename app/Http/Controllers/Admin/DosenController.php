@@ -24,22 +24,20 @@ class DosenController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'prodi_id' => 'required',
-            'nama' => 'required',
-            'nip_nrk' => 'required',
-            'tgl_lahir' => 'required',
-            'umur' => 'required',
-            'pendidikan' => 'required',
-            'masa_kerja' => 'required',
-            'status_nidn_nidk' => 'required',
-            'status_pegawai' => 'required',
-            'jabfung' => 'required',
-            'tmt_jabfung_terakhir' => 'required',
-            'target_kenaikan_jabfung' => 'required',
-            'tmt_masuk_itera' => 'required',
-            'pekerti' => 'required',
-            'serdos' => 'required',
-            'status_dosen' => 'required',
+            'prodi_id' => 'nullable',
+            'nama' => 'nullable',
+            'nip_nrk' => 'nullable',
+            'tgl_lahir' => 'nullable',
+            'pendidikan' => 'nullable',
+            'status_nidn_nidk' => 'nullable',
+            'status_pegawai' => 'nullable',
+            'jabfung' => 'nullable',
+            'tmt_jabfung_terakhir' => 'nullable',
+            'target_kenaikan_jabfung' => 'nullable',
+            'tmt_masuk_itera' => 'nullable',
+            'pekerti' => 'nullable',
+            'serdos' => 'nullable',
+            'status_dosen' => 'nullable',
             'sk_pns' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
             'sk_cpns' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
             'sk_tubel' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
@@ -56,9 +54,7 @@ class DosenController extends Controller
         $dosen->nama = $request->nama;
         $dosen->nip_nrk = $request->nip_nrk;
         $dosen->tgl_lahir = $request->tgl_lahir;
-        $dosen->umur = $request->umur;
         $dosen->pendidikan = $request->pendidikan;
-        $dosen->masa_kerja = $request->masa_kerja;
         $dosen->status_nidn_nidk = $request->status_nidn_nidk;
         $dosen->status_pegawai = $request->status_pegawai;
         $dosen->jabfung = $request->jabfung;
@@ -154,22 +150,20 @@ class DosenController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'prodi_id' => 'required',
-            'nama' => 'required',
-            'nip_nrk' => 'required',
-            'tgl_lahir' => 'required',
-            'umur' => 'required',
-            'pendidikan' => 'required',
-            'masa_kerja' => 'required',
-            'status_nidn_nidk' => 'required',
-            'status_pegawai' => 'required',
-            'jabfung' => 'required',
-            'tmt_jabfung_terakhir' => 'required',
-            'target_kenaikan_jabfung' => 'required',
-            'tmt_masuk_itera' => 'required',
-            'pekerti' => 'required',
-            'serdos' => 'required',
-            'status_dosen' => 'required',
+            'prodi_id' => 'nullable',
+            'nama' => 'nullable',
+            'nip_nrk' => 'nullable',
+            'tgl_lahir' => 'nullable',
+            'pendidikan' => 'nullable',
+            'status_nidn_nidk' => 'nullable',
+            'status_pegawai' => 'nullable',
+            'jabfung' => 'nullable',
+            'tmt_jabfung_terakhir' => 'nullable',
+            'target_kenaikan_jabfung' => 'nullable',
+            'tmt_masuk_itera' => 'nullable',
+            'pekerti' => 'nullable',
+            'serdos' => 'nullable',
+            'status_dosen' => 'nullable',
             'sk_pns' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
             'sk_cpns' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
             'sk_tubel' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
@@ -184,9 +178,7 @@ class DosenController extends Controller
         $dosen->nama = $request->nama;
         $dosen->nip_nrk = $request->nip_nrk;
         $dosen->tgl_lahir = $request->tgl_lahir;
-        $dosen->umur = $request->umur;
         $dosen->pendidikan = $request->pendidikan;
-        $dosen->masa_kerja = $request->masa_kerja;
         $dosen->status_nidn_nidk = $request->status_nidn_nidk;
         $dosen->status_pegawai = $request->status_pegawai;
         $dosen->jabfung = $request->jabfung;

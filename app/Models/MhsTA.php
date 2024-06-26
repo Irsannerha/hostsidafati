@@ -13,7 +13,7 @@ class MhsTA extends Model
 
     protected $fillable = [
         'prodi_id',
-        'tahun_id',
+        'ts_id',
         'mhs_ta',
     ];
 
@@ -24,6 +24,6 @@ class MhsTA extends Model
 
     public function Tahun()
     {
-        return $this->belongsTo(Tahun::class, 'tahun_id', 'id');
+        return $this->belongsTo(Tahun::class, 'ts_id', 'id');
     }
 }

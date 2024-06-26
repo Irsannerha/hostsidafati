@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 // Controller
+
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\Admin\KeluarController;
 use App\Http\Controllers\Admin\WafatController;
 use App\Http\Controllers\Admin\LulusController;
 use App\Http\Controllers\Admin\MhsTAController;
+use App\Http\Controllers\Admin\JumlahController;
 use App\Http\Controllers\Admin\FormTAController;
 use App\Http\Controllers\Admin\FormKPController;
 use App\Http\Controllers\Admin\FormKHSController;
@@ -95,6 +97,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('wafat', WafatController::class);
     Route::resource('lulus', LulusController::class);
     Route::resource('mhs-ta', MhsTAController::class);
+    Route::resource('jumlah', JumlahController::class);
     Route::resource('form-ta', FormTAController::class);
     Route::resource('form-kp', FormKPController::class);
     Route::resource('form-khs', FormKHSController::class);
@@ -105,6 +108,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('form-bukrim', FormBukrimController::class);  
   });
 
+  // Chart Data
+  Route::get('/chart-data-Mhs-Aktif', [MhsAktifController::class, 'getchartDataMhsAktif'])->name('chart.data');
+  Route::get('/chart-data-Undur-Diri', [UndurDiriController::class, 'getchartDataUndurDiri'])->name('chart.data');
+
   // CMS PEGAWAI
   Route::middleware([Pegawai::class])->name('pegawai.')->prefix('pegawai')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -113,6 +120,14 @@ Route::middleware(['auth'])->group(function () {
   // CMS AKADEMIK
   Route::middleware([Akademik::class])->name('akademik.')->prefix('akademik')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('tahun', TahunController::class);
+    Route::resource('mhs-aktif', MhsAktifController::class);
+    Route::resource('undur-diri', UndurDiriController::class);
+    Route::resource('keluar', KeluarController::class);
+    Route::resource('wafat', WafatController::class);
+    Route::resource('lulus', LulusController::class);
+    Route::resource('mhs-ta', MhsTAController::class);
+    Route::resource('jumlah', JumlahController::class);
   });
 
   // CMS KEMAHASISWAAN

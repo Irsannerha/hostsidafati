@@ -118,8 +118,19 @@
 
               <dt>Umur</dt>
               <dd class="custom-dd">
-                {{ $dosen->umur }}
+              <span class="badge badge-danger" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12.5px;">
+                  <?php
+                  $start_date = \Carbon\Carbon::parse($dosen->tgl_lahir);
+                  $end_date = \Carbon\Carbon::now();
+                  $diff = $start_date->diff($end_date);
+                  echo $diff->y . ' Tahun ' . $diff->m . ' Bulan ' . $diff->d . ' Hari';
+                  ?></span>
               </dd>
+
+              <!-- <dt>Umur</dt>
+              <dd class="custom-dd">
+                {{ $dosen->umur }}
+              </dd> -->
 
               <dt>Pendidikan</dt>
               <dd class="custom-dd">
@@ -311,11 +322,22 @@
                 echo $hari_indo . ', ' . $tmt_masuk_itera->format('d') . ' ' . $bulan_indo . ' ' . $tmt_masuk_itera->format('Y');
                 ?>
               </dd>
-              
+
               <dt>Masa Kerja</dt>
               <dd class="custom-dd">
-                {{ $dosen->masa_kerja }}
+              <span class="badge badge-danger" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12.5px;">
+                  <?php
+                  $start_date = \Carbon\Carbon::parse($dosen->tmt_masuk_itera);
+                  $end_date = \Carbon\Carbon::now();
+                  $diff = $start_date->diff($end_date);
+                  echo $diff->y . ' Tahun ' . $diff->m . ' Bulan ' . $diff->d . ' Hari';
+                  ?></span>
               </dd>
+              
+              <!-- <dt>Masa Kerja</dt>
+              <dd class="custom-dd">
+                {{ $dosen->masa_kerja }}
+              </dd> -->
 
               <dt>Serdos</dt>
               <dd class="custom-dd">
@@ -336,25 +358,25 @@
               </dd>
 
               <dt>SK PNS</dt>
-              <dd><a href="{{ asset('assets/sk_pns/' . $dosen->sk_pns) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK PNS</a></dd>
+              <dd class="custom-dd"><a href="{{ asset('assets/sk_pns/' . $dosen->sk_pns) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK PNS</a></dd>
 
               <dt>SK CPNS</dt>
-              <dd><a href="{{ asset('assets/sk_cpns/' . $dosen->sk_cpns) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK CPNS</a></dd>
+              <dd class="custom-dd"><a href="{{ asset('assets/sk_cpns/' . $dosen->sk_cpns) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK CPNS</a></dd>
 
               <dt>SK Tugas Belajar</dt>
-              <dd><a href="{{ asset('assets/sk_tubel/' . $dosen->sk_tubel) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Tugas Belajar</a></dd>
+              <dd class="custom-dd"><a href="{{ asset('assets/sk_tubel/' . $dosen->sk_tubel) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Tugas Belajar</a></dd>
 
               <dt>SK perpanjangan Tubel</dt>
-              <dd><a href="{{ asset('assets/sk_perpanjangan_tubel/' . $dosen->sk_perpanjangan_tubel) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK perpanjangan Tubel </a></dd>
+              <dd class="custom-dd"><a href="{{ asset('assets/sk_perpanjangan_tubel/' . $dosen->sk_perpanjangan_tubel) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK perpanjangan Tubel </a></dd>
 
               <dt>SK Jabatan Fungsional</dt>
-              <dd><a href="{{ asset('assets/sk_jabfung/' . $dosen->sk_jabfung) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Jabatan Fungsional</a></dd>
+              <dd class="custom-dd"><a href="{{ asset('assets/sk_jabfung/' . $dosen->sk_jabfung) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Jabatan Fungsional</a></dd>
 
               <dt>SK Pengaktifan</dt>
-              <dd><a href="{{ asset('assets/sk_pengaktifan/' . $dosen->sk_pengaktifan) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Pengaktifan</a></dd>
+              <dd class="custom-dd"><a href="{{ asset('assets/sk_pengaktifan/' . $dosen->sk_pengaktifan) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Pengaktifan</a></dd>
 
               <dt>SK Pengaktifan Kembali dari Tubel</dt>
-              <dd><a href="{{ asset('assets/sk_pengaktifan_kembali/' . $dosen->sk_pengaktifan_kembali) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Pengaktifan Kembali</a></dd>
+              <dd class="custom-dd"><a href="{{ asset('assets/sk_pengaktifan_kembali/' . $dosen->sk_pengaktifan_kembali) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Pengaktifan Kembali</a></dd>
             </dl>
           </div>
         </div>

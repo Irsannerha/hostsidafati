@@ -34,13 +34,13 @@
                     <div class="col-md-12">
                     </div>
                         <h2 class="title">Form Izin Kegiatan HIMA</h2>
-                        <form action="{{ route('kegiatan.store') }}" method="POST">
-                            @csrf
-                            <div class="row">
+                        <form action="{{ route('kegiatan.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="prodi_id">Program Studi</label>
-                                    <select name="prodi_id" class="form-control">
+                                    <select name="prodi_id" class="form-control" id="prodi_id">
                                         <option value="">Pilih Program Studi</option>
                                         @foreach($prodi as $prodi)
                                         <option value="{{ $prodi->id }}">{{ $prodi->prodi }}</option>
@@ -49,99 +49,106 @@
                                 </div>
                                 <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Prodi</small>
                             </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input class="form-control" type="email" placeholder="Email Pemohon Kegiatan" name="email" id="email" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Email Student ITERA</small>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nama_kegiatan">Nama Kegiatan</label>
-                                        <input class="form-control" type="text" placeholder="Nama Kegiatan" name="nama_kegiatan" id="nama_kegiatan" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : Acara Ramah Tamah atau Acara Kegiatan PPLK/Himpunan/UKM</small>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="tgl_kegiatan">Tanggal Kegiatan</label>
-                                        <input class="form-control" type="date" placeholder="Tanggal Kegiatan" name="tgl_kegiatan" id="tgl_kegiatan" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : 09/09/1999 </small>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="mulai_kegiatan">Waktu Mulai Kegiatan</label>
-                                        <input class="form-control" type="time" placeholder="Waktu Mulai Kegiatan" name="mulai_kegiatan" id="mulai_kegiatan" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : 07:30</small>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="akhir_kegiatan">Waktu Akhir Kegiatan</label>
-                                        <input class="form-control" type="time" placeholder="Waktu Akhir Kegiatan" name="akhir_kegiatan" id="akhir_kegiatan" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : 10:45</small>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="tempat_pelaksanaan">Tempat Pelaksanaan</label>
-                                        <input class="form-control" type="text" placeholder="Tempat Pelaksanaan" name="tempat_pelaksanaan" id="tempat_pelaksanaan" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : Kampus/Lapangan/Gedung/Dll</small>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="jumlah_peserta">Jumlah Peserta</label>
-                                        <input class="form-control" type="number" placeholder="Jumlah Peserta" name="jumlah_peserta" id="jumlah_peserta" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : 100 Peserta</small>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="penanggung_jawab">Penanggung Jawab Kegiatan</label>
-                                        <input class="form-control" type="text" placeholder="Penanggung Jawab Kegiatan" name="penanggung_jawab" id="penanggung_jawab" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nama Penanggung Jawab Kegiatan Contoh : Jacklyn</small>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nama_pemohon">Nama Pemohon Kegiatan</label>
-                                        <input class="form-control" type="text" placeholder="Nama Pemohon Kegiatan" name="nama_pemohon" id="nama_pemohon" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nama Pemohon Kegiatan Contoh : Fulan Jacklyn</small>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="no_hp">Kontak/No.Telp/WA</label>
-                                        <input class="form-control" type="text" placeholder="Kontak/No.Telp/WA" name="no_hp" id="no_hp" required>
-                                    </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nomor Hp/Telp/Wa</small>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="col-md-2">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                                    <label for="surat_izin">Upload Surat Izin</label>
+                                    <input class="form-control" type="file" placeholder="Surat Izin" name="surat_izin" id="surat_izin" required>
                                 </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Mohon upload surat dalam format PDF</small>
                             </div>
-                        </form>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input class="form-control" type="email" placeholder="Email Pemohon Kegiatan" name="email" id="email" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Email Student ITERA</small>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nama_kegiatan">Nama Kegiatan</label>
+                                    <input class="form-control" type="text" placeholder="Nama Kegiatan" name="nama_kegiatan" id="nama_kegiatan" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : Acara Ramah Tamah atau Acara Kegiatan PPLK/Himpunan/UKM</small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tgl_kegiatan">Tanggal Kegiatan</label>
+                                    <input class="form-control" type="date" placeholder="Tanggal Kegiatan" name="tgl_kegiatan" id="tgl_kegiatan" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : 09/09/1999 </small>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="mulai_kegiatan">Waktu Mulai Kegiatan</label>
+                                    <input class="form-control" type="time" placeholder="Waktu Mulai Kegiatan" name="mulai_kegiatan" id="mulai_kegiatan" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : 07:30</small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="akhir_kegiatan">Waktu Akhir Kegiatan</label>
+                                    <input class="form-control" type="time" placeholder="Waktu Akhir Kegiatan" name="akhir_kegiatan" id="akhir_kegiatan" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : 10:45</small>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tempat_pelaksanaan">Tempat Pelaksanaan</label>
+                                    <input class="form-control" type="text" placeholder="Tempat Pelaksanaan" name="tempat_pelaksanaan" id="tempat_pelaksanaan" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : Kampus/Lapangan/Gedung/Dll</small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="jumlah_peserta">Jumlah Peserta</label>
+                                    <input class="form-control" type="number" placeholder="Jumlah Peserta" name="jumlah_peserta" id="jumlah_peserta" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Contoh : 100 Peserta</small>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="penanggung_jawab">Penanggung Jawab Kegiatan</label>
+                                    <input class="form-control" type="text" placeholder="Penanggung Jawab Kegiatan" name="penanggung_jawab" id="penanggung_jawab" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nama Penanggung Jawab Kegiatan Contoh : Jacklyn</small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nama_pemohon">Nama Pemohon Kegiatan</label>
+                                    <input class="form-control" type="text" placeholder="Nama Pemohon Kegiatan" name="nama_pemohon" id="nama_pemohon" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nama Pemohon Kegiatan Contoh : Fulan Jacklyn</small>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="no_hp">Kontak/No.Telp/WA</label>
+                                    <input class="form-control" type="text" placeholder="Kontak/No.Telp/WA" name="no_hp" id="no_hp" required>
+                                </div>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nomor Hp/Telp/Wa</small>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>

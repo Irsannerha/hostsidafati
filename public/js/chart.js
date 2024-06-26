@@ -321,7 +321,6 @@
 
 // new Chart(chts, config);
 
-
 document.addEventListener("DOMContentLoaded", function() {
   // const ctx = document.getElementById('myChartBar').getContext('2d');
   
@@ -540,7 +539,5 @@ const configHor = {
 };
 
 new Chart(Hor, configHor);
-
-
 
 });

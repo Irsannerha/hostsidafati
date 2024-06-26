@@ -67,6 +67,26 @@
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
   }
+  .custom-dd {
+      border: 1px solid #999;
+      border-radius: 5px;
+      padding: 4px;
+      font-size: 14px;
+    }
+
+    .custom-dd ol {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .custom-dd li {
+      margin-bottom: 5px;
+    }
+
+    .card {
+      border: 1px solid #999;
+      border-radius: 5px;
+    }
 </style>
 <!-- Large modal Detail -->
 <!-- Modal -->
@@ -87,7 +107,7 @@
             <div class="col-md-8 mb-4">
               <dl class="text-content-box">
                 <dt>Akreditasi</dt>
-                <dd>
+                <dd class="custom-dd">
                   @if($prodi->akreditasi == 'A')
                   <span class="badge badge-success" style="border-radius: 10px; padding: 0.2rem 1.2rem; font-size: 15px;">A</span>
                   @elseif($prodi->akreditasi == 'B')
@@ -98,23 +118,23 @@
                 </dd>
 
                 <dt>Program Studi</dt>
-                <dd>{{ $prodi->prodi }}</dd>
+                <dd class="custom-dd">{{ $prodi->prodi }}</dd>
 
                 <dt>Fakultas</dt>
-                <dd>{{ $prodi->fakultas }}</dd>
+                <dd class="custom-dd">{{ $prodi->fakultas }}</dd>
 
                 <dt>Program Pendidikan</dt>
-                <dd>{{ $prodi->prodik }}</dd>
+                <dd class="custom-dd">{{ $prodi->prodik }}</dd>
 
                 <dt>Jumlah Mahasiswa</dt>
-                <dd>
+                <dd class="custom-dd">
                   <span class="badge badge-pill badge-info" style="padding: 0.3rem 1.1rem; font-size: 14px;">
                     {{ $prodi->jumlah_mahasiswa }}
                   </span>
                 </dd>
 
                 <dt>Tanggal Pendirian</dt>
-                <dd>
+                <dd class="custom-dd">
                   <?php
                   $bulan = ['January' => 'Januari', 'February' => 'Februari', 'March' => 'Maret', 'April' => 'April', 'May' => 'Mei', 'June' => 'Juni', 'July' => 'Juli', 'August' => 'Agustus', 'September' => 'September', 'October' => 'Oktober', 'November' => 'November', 'December' => 'Desember'];
                   $tanggal_pendirian = \Carbon\Carbon::parse($prodi->tgl_pendirian);
@@ -123,10 +143,10 @@
                   ?>
                 </dd>
                 <dt>Deskripsi</dt>
-                <dd class="unspace">{{ $prodi->deskripsi }}</dd>
+                <dd class="unspace custom-dd">{{ $prodi->deskripsi }}</dd>
 
                 <dt>SK Program Studi</dt>
-                <dd><a href="{{ asset('assets/sk_prodi/' . $prodi->sk_prodi) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Program Studi</a></dd>
+                <dd class="custom-dd"><a href="{{ asset('assets/sk_prodi/' . $prodi->sk_prodi) }}" download class="btn btn-outline-primary btn-sm "><i class="fa fa-download"></i> Download SK Program Studi</a></dd>
               </dl>
             </div>
             <!-- Ini Profil -->

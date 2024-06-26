@@ -147,6 +147,7 @@
                                             <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#showModal{{ $rekom->id }}">
                                                 <i class="icon-copy dw dw-eye"></i> Lihat
                                             </a>
+                                            @if
                                             <a href="{{ route('superadmin.form-rekom.edit', $rekom->id) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
                                                 <i class="icon-copy dw dw-edit2"></i> Edit
                                             </a>

@@ -143,40 +143,40 @@
                         <textarea name="anggota_karya" class="form-control" rows="5" placeholder="Masukkan anggota_karya Program Studi">{{ old('anggota_karya', $prestasi->anggota_karya) }}</textarea>
                       </div>
                     </div>
-                    @php
+                    <!-- @php
               $foto = json_decode($prestasi->foto);
               @endphp
                     <!-- Ini foto -->
-                    <div class="col-lg-6 col-md-12 col-sm-12 mb-10">
-                          <div class="card-box mb-10" data-bgcolor="#d0d0d0">
-                              <div class="clearfix pd-10">
-                                  <div class="pull-left">
-                                  <span class="btn btn-outline-primary btn-lg" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.7rem;">{{ $prestasi->nama_mahasiswa }}</span>
-                                  </div>
-                              </div>
-                              <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                                  <div class="carousel-inner">
-                                      <div class="carousel-item active">
-                                          <img class="d-block w-100" src="{{ asset('assets/foto/' . $foto[0]) }}" alt="First slide">
-                                      </div>
-                                      <div class="carousel-item">
-                                          <img class="d-block w-100" src="{{ asset('assets/foto/' . $foto[1]) }}" alt="Second slide">
-                                      </div>
-                                      <div class="carousel-item">
-                                          <img class="d-block w-100" src="{{ asset('assets/foto/' . $foto[2]) }}" alt="Third slide">
-                                      </div>
-                                  </div>
-                                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                      <span class="sr-only">Previous</span>
-                                  </a>
-                                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                      <span class="sr-only">Next</span>
-                                  </a>
-                              </div>
-                          </div>
-                      </div>
+                    <!-- <div class="col-lg-6 col-md-12 col-sm-12 mb-10">
+                        <div class="card-box mb-10" data-bgcolor="#d0d0d0">
+                            <div class="clearfix pd-10">
+                                <div class="pull-left">
+                                    <span class="btn btn-outline-primary btn-lg" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.7rem;">
+                                        {{ $prestasi->nama_mahasiswa }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="carouselExampleControls{{ $prestasi->id }}" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    @foreach ($foto as $index => $item)
+                                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                            <div class="card card-box">
+                                                <img class="card-img" src="{{ asset('assets/foto/' . $item) }}" alt="Card image">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls{{ $prestasi->id }}" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls{{ $prestasi->id }}" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div> -->
                     <!-- Akhir Foto -->
                     <div class="col-md-12">
                       <button type="submit" class="btn btn-primary float-right" id="sa-custom-position">

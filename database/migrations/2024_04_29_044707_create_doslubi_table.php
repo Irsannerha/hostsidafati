@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nup_nidk')->unique();
             $table->string('jurusan');
-            $table->string('status')->default('Purna Tugas atau pensiunan');
+            $table->string('status')->default('Purna Tugas atau Pensiunan');
             $table->date('tgl_lahir');
             $table->string('jabatan_terakhir');
             $table->timestamps();

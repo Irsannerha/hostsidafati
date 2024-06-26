@@ -16,15 +16,13 @@ return new class extends Migration
             $table->string('nama');
             $table->string('unit_kerja');
             $table->string('pendidikan');
-            $table->date('tmt');
-            $table->string('masa_kerja');
+            $table->date('tmt')->nullable();
             $table->string('status_pegawai');
             $table->string('jabatan');
             $table->string('bagian_tugas')->nullable();
             $table->string('nitk');
-            $table->date('tgl_lahir');
+            $table->date('tgl_lahir')->nullable();
             $table->string('no_hp');
-            $table->string('umur')->nullable();
             $table->string('email');
             $table->timestamps();
         });

@@ -14,7 +14,7 @@ class KegiatanSeeder extends Seeder
      */
     public function run(): void
 {
-    for ($i = 1; $i <= 21; $i++) {
+    for ($i = 1; $i <= 1; $i++) {
         // Untuk memastikan bahwa prodi_id hanya dari 1 sampai 50
         $prodi_id = rand(1, 22);
         
@@ -32,6 +32,7 @@ class KegiatanSeeder extends Seeder
             'no_hp' => '08123456789',
             'status' => Arr::random(['Diproses', 'Disetujui', 'Ditolak']),
             'keterangan' => 'Berkas Lengkap, Tidak ada masalah.',
+            'surat_izin' => 'surat_izin_kegiatan' . $i . '.pdf',
         ]);
     }
 }

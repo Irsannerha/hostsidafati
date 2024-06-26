@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('no_hp');
             $table->string('status')->default('Diproses');
             $table->string('keterangan')->nullable();
+            $table->string('surat_izin')->nullable();
             $table->timestamps();
         });
     }

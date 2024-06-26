@@ -147,10 +147,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="foto">Foto Peserta Lomba & Hadiah (Perunggu, Piala, Piagam, Dll)</label>
+                                    <label for="foto">Foto Peserta Lomba</label>
                                     <input class="form-control" type="file" name="foto[]" id="foto" required multiple />
                                 </div>
-                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Berupa Foto Peserta Lomba</small>
+                                <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Berupa Foto Peserta Lomba dalam Bentuk Landscape</small>
                             </div>
                         </div>
                         <br>

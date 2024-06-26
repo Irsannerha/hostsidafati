@@ -13,7 +13,7 @@ class PrestasiSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 1; $i++) {
             // Persiapkan data untuk Prestasi
             $prestasiData = [
                 'prodi_id' => $i,
@@ -32,9 +32,9 @@ class PrestasiSeeder extends Seeder
                 'judul_karya' => 'Judul Karya Ini panjang tak terkira yaa. ' . $i,
                 'anggota_karya' => 'Anggota Karya,  Anggota Karya, Anggota Karya, Anggota Karya,' . $i,
                 'foto' => json_encode([
-                    'foto1.jpg',
-                    'foto2.jpg',
-                    'foto3.jpg',
+                    '["1718969014_Foto_1_1210101.png","1718969014_Foto_2_1210101.png","1718969014_Foto_3_1210101.png"]',
+                    '["1718969014_Foto_1_1210101.png","1718969014_Foto_2_1210101.png","1718969014_Foto_3_1210101.png"]',
+                    '["1718969014_Foto_1_1210101.png","1718969014_Foto_2_1210101.png","1718969014_Foto_3_1210101.png"]',
                 ]),
             ];
 

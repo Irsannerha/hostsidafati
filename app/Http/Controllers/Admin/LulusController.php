@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Lulus;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class LulusController extends Controller
@@ -97,7 +98,11 @@ class LulusController extends Controller
         $lulus->desember = $request->desember;
         $lulus->save();
 
-        return redirect()->route('superadmin.lulus.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if(Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.lulus.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.lulus.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function show($id)
@@ -152,13 +157,22 @@ class LulusController extends Controller
         $lulus->desember = $request->desember;
         $lulus->save();
 
-        return redirect()->route('superadmin.lulus.index')->with('success_update_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.lulus.index')->with('success_update_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.lulus.index')->with('success_update_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
     {
         $lulus = Lulus::findOrFail($id);
         $lulus->delete();
-        return redirect()->route('superadmin.lulus.index')->with('success_delete_data', 'Data berhasil dihapus');
+
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.lulus.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'akademik') {
+            return redirect()->route('akademik.lulus.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

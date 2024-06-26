@@ -22,7 +22,11 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer text-center justify-content-center">
+                                    @if (Auth::user()->role == 'superadmin')
                                     <form action="{{ route('superadmin.lulus.destroy', $ls->id) }}" method="POST">
+                                    @elseif (Auth::user()->role == 'akademik')
+                                    <form action="{{ route('akademik.lulus.destroy', $ls->id) }}" method="POST">
+                                    @endif
                                         @method('DELETE')
                                         @csrf
                                         <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>

@@ -36,7 +36,11 @@
             </div>
             <hr />
             <br />
+            @if(Auth::user()->role == 'superadmin')
             <form action="{{route('superadmin.mhs-aktif.update', $mhsaktif->id )}}" method="POST" enctype="multipart/form-data">
+              @elseif(Auth::user()->role == 'akademik')
+              <form action="{{route('akademik.mhs-aktif.update', $mhsaktif->id )}}" method="POST" enctype="multipart/form-data">
+              @endif
               @csrf
               @method('PUT')
               <div class="row">
