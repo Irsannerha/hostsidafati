@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prestasi;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Prodi;
 
 class PrestasiController extends Controller
@@ -80,12 +81,21 @@ class PrestasiController extends Controller
         // }
         $prestasi->save();
 
-        return redirect()->route('superadmin.prestasi.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.prestasi.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'kemahasiswaan') {
+            return redirect()->route('kemahasiswaan.prestasi.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
 }
     public function destroy($id)
     {
         $prestasi = Prestasi::find($id);
         $prestasi->delete();
-        return redirect()->route('superadmin.prestasi.index')->with('success_delete_data', 'Data berhasil dihapus');
+
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.prestasi.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'kemahasiswaan') {
+            return redirect()->route('kemahasiswaan.prestasi.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

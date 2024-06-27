@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\HttpCache\Store;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\ProdiExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ProdiController extends Controller
 {
@@ -51,15 +55,17 @@ class ProdiController extends Controller
         $prodi->sk_prodi = $request->sk_prodi;
         if ($request->hasFile('sk_prodi')) {
             $sk_prodi = $request->file('sk_prodi');
-            $file_name = time() . '_SK_PRODI' . $prodi->prodi . '.' . $sk_prodi->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_PRODI_' . $prodi->prodi . '.' . $sk_prodi->getClientOriginalExtension();
             $prodi->sk_prodi = $file_name;
             $prodi->update();
             $sk_prodi->move('../public/assets/sk_prodi/', $file_name);
         }
         $prodi->save();
 
-        if (auth()->user()->role == 'superadmin') {
+        if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.prodi.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.prodi.index')->with('success_create_data', 'Data berhasil ditambahkan');
         }
     }
 
@@ -105,15 +111,18 @@ class ProdiController extends Controller
         $prodi->sk_prodi = $request->sk_prodi;
         if ($request->hasFile('sk_prodi')) {
             $sk_prodi = $request->file('sk_prodi');
-            $file_name = time() . '_' . $prodi->prodi . '.' . $sk_prodi->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_PRODI_' . $prodi->prodi . '.' . $sk_prodi->getClientOriginalExtension();
             $prodi->sk_prodi = $file_name;
             $prodi->update();
             $sk_prodi->move('../public/assets/sk_prodi/', $file_name);
         }
         $prodi->save();
 
-        if (auth()->user()->role == 'superadmin') {
+        
+        if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.prodi.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.prodi.index')->with('success_edit_data', 'Data berhasil diubah');
         }
     }
 
@@ -123,8 +132,24 @@ class ProdiController extends Controller
         Storage::delete($prodi->foto);
         $prodi->delete();
 
-        if (auth()->user()->role == 'superadmin') {
+        if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.prodi.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.prodi.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProdiExport, 'prodi.xlsx');
+    }
+
+    public function exportToPDF()
+    {
+        $prodis = Prodi::all();
+
+        $pdf = PDF::loadView('exports.prodi', compact('prodis'));
+
+        return $pdf->download('prodi.pdf');
     }
 }

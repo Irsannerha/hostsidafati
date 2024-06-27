@@ -37,8 +37,11 @@
                             <button class="btn btn-primary font-weight-bold" onclick="exportToExcel()">Excel</button>
                             <button type="button" class="btn btn-primary font-weight-bold" data-toggle="modal" data-target="#ImportModal">Import</button>
                         </div>
+                        @if (Auth::user()->role == 'superadmin')
                         <a href="{{ route('superadmin.pejabat.create') }}" class="btn btn-primary font-weight-bold"><i class="fa fa-plus"></i> Tambah Data</a>
-                        
+                        @elseif (Auth::user()->role == 'pegawai')
+                        <a href="{{ route('pegawai.pejabat.create') }}" class="btn btn-primary font-weight-bold"><i class="fa fa-plus"></i> Tambah Data</a>
+                        @endif
                     </div>
                     <div class="pb-20">
                         <table class="data-table table stripe hover nowrap">
@@ -65,7 +68,11 @@
                                             <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#showModal{{ $pejabat->id }}">
                                                 <i class="icon-copy dw dw-eye"></i> Lihat
                                             </a>
+                                            @if (Auth::user()->role == 'superadmin')
                                             <a href="{{ route('superadmin.pejabat.edit', $pejabat->id) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                            @elseif (Auth::user()->role == 'pegawai')
+                                            <a href="{{ route('pegawai.pejabat.edit', $pejabat->id) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                            @endif
                                                 <i class="icon-copy dw dw-edit2"></i> Edit
                                             </a>
                                             <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#deleteModal{{ $pejabat->id }}">

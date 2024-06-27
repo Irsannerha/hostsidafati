@@ -24,8 +24,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="/dashboard">
-            <img src="/vendors/images/sidafati-light.png" alt="" class="dark-logo" />
-            <img src="/vendors/images/sidafati-dark.png" alt="" class="light-logo" />
+            <img src="/vendors/images/harmony-light.png" alt="" class="dark-logo" />
+            <img src="/vendors/images/harmony-dark.png" alt="" class="light-logo" />
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -171,7 +171,7 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li class="dropdown">
-                    <a href="/" class="dropdown-toggle no-arrow">
+                    <a href="/pegawai" class="dropdown-toggle no-arrow">
                         <span class="micon fa fa-tachometer"></span><span class="mtext">Dashboard</span>
                     </a>
                 </li>
@@ -181,15 +181,24 @@
                         <span class="mtext">Pegawai</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('superadmin.prodi.index') }}">Program studi</a></li>
-                        <li><a href="{{ route('superadmin.pejabat.index') }}">Pejabat</a></li>
-                        <li><a href="{{ route('superadmin.jumlah_dosen.index') }}">Jumlah Dosen</a></li>
-                        <li><a href="{{ route('superadmin.dosbel.index') }}">Dosen Tubel</a></li>
-                        <li><a href="{{ route('superadmin.asmikbel.index') }}">Asmik Tubel</a></li>
-                        <li><a href="{{ route('superadmin.doslubi.index') }}">DLB NIDK</a></li>
-                        <li><a href="{{ route('superadmin.dosen.index') }}">Dosen Aktif & Tetap</a></li>
-                        <li><a href="{{ route('superadmin.taslab.index') }}">Tendik, Asmik, Laboran</a></li>
-                        <li><a href="{{ route('superadmin.resign.index') }}">Dosen Resign</a></li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="micon fa fa-address-book-o"></span><span class="mtext">Cuti Pegawai</span>
+                            </a>
+                            <ul class="submenu child">
+                                <li><a href="javascript:;">Cuti Dosen</a></li>
+                                <li><a href="javascript:;">Cuti Tendik</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('pegawai.prodi.index') }}">Program studi</a></li>
+                        <li><a href="{{ route('pegawai.pejabat.index') }}">Pejabat</a></li>
+                        <li><a href="{{ route('pegawai.jumlah_dosen.index') }}">Jumlah Dosen</a></li>
+                        <li><a href="{{ route('pegawai.dosbel.index') }}">Dosen Tubel</a></li>
+                        <li><a href="{{ route('pegawai.asmikbel.index') }}">Asmik Tubel</a></li>
+                        <li><a href="{{ route('pegawai.doslubi.index') }}">DLB NIDK</a></li>
+                        <li><a href="{{ route('pegawai.dosen.index') }}">Dosen Aktif & Tetap</a></li>
+                        <li><a href="{{ route('pegawai.taslab.index') }}">Tendik, Asmik, Laboran</a></li>
+                        <li><a href="{{ route('pegawai.resign.index') }}">Dosen Resign</a></li>
                     </ul>
                 </li>
                 <li>
@@ -270,8 +279,8 @@
                         <span class="micon fa fa-graduation-cap"></span><span class="mtext">Kemahasiswaan</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('superadmin.prestasi.index') }}">Prestasi Mahasiswa</a></li>
-                        <li><a href="{{ route('superadmin.kegiatan.index') }}">Izin Kegiatan HIMA </a></li>.
+                        <li><a href="{{ route('kemahasiswaan.prestasi.index') }}">Prestasi Mahasiswa</a></li>
+                        <li><a href="{{ route('kemahasiswaan.kegiatan.index') }}">Izin Kegiatan HIMA </a></li>.
                     </ul>
                 </li>
                 <li>

@@ -44,7 +44,11 @@
               </div>
               <hr />
               <br />
+              @if (Auth::user()->role == 'superadmin')
               <form action="{{route('superadmin.resign.store')}}" method="POST">
+              @elseif (Auth::user()->role == 'pegawai')
+              <form action="{{route('pegawai.resign.store')}}" method="POST">
+              @endif
                 @csrf
                 <div class="row">
                   <div class="col-md-4 col-sm-12">

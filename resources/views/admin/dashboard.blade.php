@@ -311,12 +311,12 @@
           <div class="card-box pd-20 height-100-p mb-30">
               <div class="row align-items-center">
                   <div class="col-md-4">
-                      <img src="vendors/images/banner-img.png" alt="" />
+                      <img src="{{ url('vendors/images/banner-img.png') }}" alt="" />
                   </div>
                   <div class="col-md-8">
                       <h4 class="font-20 weight-500 mb-10 text-capitalize">
                           Selamat Datang
-                          <div class="weight-600 font-30 text-blue">{{Auth::user()->name}}</div>
+                          <div class="weight-600 font-30 text-blue">Admin {{Auth::user()->name}}!</div>
                       </h4>
                       <p class="font-18 max-width-600">
                           Anda telah berhasil masuk ke dalam sistem sebagai <span class="font-weight-bold">{{Auth::user()->name}}</span> SIDAFATI. 
@@ -327,22 +327,22 @@
               </div>
           </div>
           <!-- Card Box -->
-          <!-- <div class="row pb-10">
+          <div class="row pb-10">
               <div class="col-md-4 mb-20">
                   <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
                               <i class="fa fa-vcard-o" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Pegawai</div>
-                              <div class="font-24 weight-500">1865</div>
+                              <div class="font-14 font-weight-bold">Program Studi</div>
+                              <div class="font-24 weight-500">21</div>
                           </div>
                           <div class="max-width-150">
                               <div id="appointment-chart"></div>
@@ -354,14 +354,14 @@
                           <div class="icon h1 text-white">
                               <i class="fa fa-institution" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Akademik</div>
+                              <div class="font-14 font-weight-bold">Pejabat</div>
                               <div class="font-24 weight-500">250</div>
                           </div>
                           <div class="max-width-150">
@@ -376,14 +376,14 @@
                           <div class="icon h1 text-white">
                               <i class="fa fa-vcard-o" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Pegawai</div>
+                              <div class="font-14 font-weight-bold">Jumlah Dosen</div>
                               <div class="font-24 weight-500">1865</div>
                           </div>
                           <div class="max-width-150">
@@ -396,14 +396,14 @@
                           <div class="icon h1 text-white">
                               <i class="fa fa-institution" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Akademik</div>
+                              <div class="font-14 font-weight-bold">Dosen Tugas Belajar</div>
                               <div class="font-24 weight-500">250</div>
                           </div>
                           <div class="max-width-150">
@@ -418,14 +418,14 @@
                           <div class="icon h1 text-white">
                               <i class="fa fa-vcard-o" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Pegawai</div>
+                              <div class="font-14 font-weight-bold">Asmik Tugas Belajar</div>
                               <div class="font-24 weight-500">1865</div>
                           </div>
                           <div class="max-width-150">
@@ -438,14 +438,14 @@
                           <div class="icon h1 text-white">
                               <i class="fa fa-institution" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Akademik</div>
+                              <div class="font-14 font-weight-bold">Dosen Luar Biasa NIDK</div>
                               <div class="font-24 weight-500">250</div>
                           </div>
                           <div class="max-width-150">
@@ -454,61 +454,103 @@
                       </div>
                   </div>
               </div>
-          </div> -->
+              <div class="col-md-4 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#28a745">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-vcard-o" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Dosen Aktif & Tetap</div>
+                              <div class="font-24 weight-500">1865</div>
+                          </div>
+                          <div class="max-width-150">
+                              <div id="appointment-chart"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#0b846d">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-institution" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Tendik, Asmik, Laboran</div>
+                              <div class="font-24 weight-500">250</div>
+                          </div>
+                          <div class="max-width-150">
+                              <div id="surgery-chart"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
   </div>
 @elseif(auth()->user()->role == 'akademik')
 <div class="main-container">
-      <div class="xs-pd-20-10 pd-ltr-20">
-          <div class="title pb-20">
-              <h2 class="h3 mb-0">Dashboard Overview</h2>
-          </div>
-          <div class="card-box pd-20 height-100-p mb-30">
-              <div class="row align-items-center">
-                  <div class="col-md-4">
-                      <img src="{{ url('vendors/images/banner-img.png') }}" alt="" />
-                  </div>
-                  <div class="col-md-8">
-                      <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                          Selamat Datang
-                          <div class="weight-600 font-30 text-blue">Admin {{Auth::user()->name}}!</div>
-                      </h4>
-                      <p class="font-18 max-width-600">
-                          Anda telah berhasil masuk ke dalam sistem sebagai <span class="font-weight-bold">{{Auth::user()->name}}</span> HARMONY. 
-                          Mohon gunakan hak akses ini dengan penuh tanggung jawab dan pastikan untuk menjaga kerahasiaan serta integritas data yang disimpan dalam sistem. 
-                          Terima kasih atas kerjasamanya dalam menjaga keamanan informasi.
-                      </p>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 mb-20">
-                <div class="card-box height-100-p pd-20">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
-                        <div class="h5 mb-md-0 text-dark">Grafik Rekap Mahasiswa</div>
-                        <div class="form-group mb-md-0">
-                            <select class="form-control form-control-sm selectpicker">
-                                <option value="">Mahasiswa Aktif + PMB</option>
-                                <option value="">Mahasiswa Mengundurkan Diri</option>
-                                <option value="">Mahasiswa Dikeluarkan</option>
-                                <option value="">Mahasiswa Wafat</option>
-                                <option value="">Mahasiswa Lulus/Wisuda</option>
-                                <option value="">Mahasiswa Lulusan Tugas Akhir</option>
-                            </select>
-                        </div>
+        <div class="xs-pd-20-10 pd-ltr-20">
+            <div class="title pb-20">
+                <h2 class="h3 mb-0">Dashboard Overview</h2>
+            </div>
+            <div class="card-box pd-20 height-100-p mb-30">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <img src="{{ url('vendors/images/banner-img.png') }}" alt="Banner Image" />
                     </div>
-                    <div class="chart">
-                        <div class="row">
-                            <div class="col-md-12 chart">
-                                <canvas id="myChartUndurDiri"></canvas>
-                            </div>
-                        </div>  
+                    <div class="col-md-8">
+                        <h4 class="font-20 weight-500 mb-10 text-capitalize">
+                            Selamat Datang
+                            <span class="weight-600 font-30 text-blue">Admin {{Auth::user()->name}}!</span>
+                        </h4>
+                        <p class="font-18 max-width-600">
+                            Anda telah berhasil masuk ke dalam sistem sebagai <span class="font-weight-bold">{{Auth::user()->name}}</span> HARMONY. 
+                            Mohon gunakan hak akses ini dengan penuh tanggung jawab dan pastikan untuk menjaga kerahasiaan serta integritas data yang disimpan dalam sistem. 
+                            Terima kasih atas kerjasamanya dalam menjaga keamanan informasi.
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-          <!-- Simple Card-Box start -->
-          <div class="row">
+            <div class="row">
+                <div class="col-md-8 mb-20">
+                    <div class="card-box height-100-p pd-20">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
+                            <div class="h5 mb-md-0 text-dark">Grafik Rekap Mahasiswa</div>
+                            <div class="form-group mb-md-0">
+                                <select class="form-control form-control-sm selectpicker">
+                                    <option value="aktif">Mahasiswa Aktif + PMB</option>
+                                    <option value="mengundurkan">Mahasiswa Mengundurkan Diri</option>
+                                    <option value="dikeluarkan">Mahasiswa Dikeluarkan</option>
+                                    <option value="wafat">Mahasiswa Wafat</option>
+                                    <option value="lulus">Mahasiswa Lulus/Wisuda</option>
+                                    <option value="tugasAkhir">Mahasiswa Lulusan Tugas Akhir</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <div class="row">
+                                <div class="col-md-12 chart">
+                                    <canvas id="myChartUndurDiri"></canvas>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Simple Card-Box start -->
+            <div class="row">
                 @foreach($tahun as $t)
                 <div class="col-xl-4 mb-20">
                     <div class="card-box height-100-p widget-style1">
@@ -527,57 +569,98 @@
                 </div>
                 @endforeach
             </div>
-                <!-- <div class="modal fade bs-example-modal-lg" id="modalS" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="myLargeModalLabel">Rekap Mahasiswa</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="pd-20 card-box">
-                                    <h5 class="h4 text-dark mb-20">Default Tab</h5>
-                                    <div class="tab">
-                                        <ul class="nav nav-tabs" role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active text-dark" data-toggle="tab" href="#home" role="tab" aria-selected="true">Home</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark" data-toggle="tab" href="#profile" role="tab" aria-selected="false">Profile</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark" data-toggle="tab" href="#contact" role="tab" aria-selected="false">Contact</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade show active" id="home" role="tabpanel">
-                                                <div class="pd-20">
-                                                    <canvas id="myChartRekap"></canvas>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="profile" role="tabpanel">
-                                                <div class="pd-20">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="contact" role="tabpanel">
-                                                <div class="pd-20">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- Simple Card-Box End -->
-          <!-- Card Box -->
-      </div>
+    </div>
+</div>
+@elseif (auth()->user()->role == 'kemahasiswaan')
+  <div class="main-container">
+      <div class="xs-pd-20-10 pd-ltr-20">
+          <div class="title pb-20">
+              <h2 class="h3 mb-0">Dashboard Overview</h2>
+          </div>
+          <div class="card-box pd-20 height-100-p mb-30">
+              <div class="row align-items-center">
+                  <div class="col-md-4">
+                      <img src="{{ url('vendors/images/banner-img.png') }}" alt="" />
+                  </div>
+                  <div class="col-md-8">
+                      <h4 class="font-20 weight-500 mb-10 text-capitalize">
+                          Selamat Datang
+                          <div class="weight-600 font-30 text-blue">Admin {{Auth::user()->name}}!</div>
+                      </h4>
+                      <p class="font-18 max-width-600">
+                          Anda telah berhasil masuk ke dalam sistem sebagai <span class="font-weight-bold">{{Auth::user()->name}}</span> SIDAFATI. 
+                          Mohon gunakan hak akses ini dengan penuh tanggung jawab dan pastikan untuk menjaga kerahasiaan serta integritas data yang disimpan dalam sistem. 
+                          Terima kasih atas kerjasamanya dalam menjaga keamanan informasi.
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <div class="row pb-10">
+					<div class="col-md-8 mb-20">
+						<div class="card-box height-100-p pd-20">
+							<div
+								class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3"
+							>
+								<div class="h5 mb-md-0 text-dark">Kemahasiswaan</div>
+								<div class="form-group mb-md-0">
+                                <select class="form-control form-control-sm selectpicker">
+                                    <option value="">Prestasi Mahasiswa</option>
+                                    <option value="">Izin Kegiatan HIMA</option>
+                                    
+                                </select>
+								</div>
+							</div>
+							<div id="myChartMhsAktif"></div>
+						</div>
+					</div>
+					<div class="col-md-4 mb-20">
+						<div
+							class="card-box min-height-200px pd-20 mb-20"
+							data-bgcolor="#073042"
+						>
+							<div class="d-flex justify-content-between pb-20 text-white">
+								<div class="icon h1 text-white">
+                                    <i class="icon-copy fa fa-trophy" aria-hidden="true"></i>
+									<!-- <i class="icon-copy fa fa-stethoscope" aria-hidden="true"></i> -->
+								</div>
+								<div class="font-14 text-right">
+									<div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+									<div class="font-12">Since last month</div>
+								</div>
+							</div>
+							<div class="d-flex justify-content-between align-items-end">
+								<div class="text-white">
+									<div class="font-14">Prestasi Mahasiswa</div>
+									<div class="font-24 weight-500">1865</div>
+								</div>
+								<div class="max-width-150">
+									<div id="appointment-chart"></div>
+								</div>
+							</div>
+						</div>
+						<div class="card-box min-height-200px pd-20" data-bgcolor="#0b846d">
+							<div class="d-flex justify-content-between pb-20 text-white">
+								<div class="icon h1 text-white">
+                                    <i class="icon-copy fa fa-users" aria-hidden="true"></i>
+								</div>
+								<div class="font-14 text-right">
+									<div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+									<div class="font-12">Since last month</div>
+								</div>
+							</div>
+							<div class="d-flex justify-content-between align-items-end">
+								<div class="text-white">
+									<div class="font-14">Izin Kegiatan HIMA</div>
+									<div class="font-24 weight-500">250</div>
+								</div>
+								<div class="max-width-150">
+									<div id="surgery-chart"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+        </div>
   </div>
 @endif
 </x-admin-app>

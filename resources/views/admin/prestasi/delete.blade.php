@@ -21,7 +21,11 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer text-center justify-content-center">
+                                @if (Auth::user()->role == 'superadmin')
                                     <form action="{{ route('superadmin.prestasi.destroy', $prestasi->id) }}" method="POST">
+                                @elseif (Auth::user()->role == 'kemahasiswaan')
+                                    <form action="{{ route('kemahasiswaan.prestasi.destroy', $prestasi->id) }}" method="POST">
+                                @endif
                                         @method('DELETE')
                                         @csrf
                                         <input type="submit" class="btn btn-danger light" name="" id="toastBasicTrigger" value="Hapus">

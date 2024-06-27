@@ -50,7 +50,11 @@
               </div>
               <hr />
               <br />
-              <form action="{{route('superadmin.jumlah_dosen.update', $prodi->id)}}" method="POST">
+              @if (Auth::user()->role == 'superadmin')
+                <form action="{{route('superadmin.jumlah_dosen.update', $prodi->id)}}" method="POST">
+              @elseif (Auth::user()->role == 'pegawai')
+                <form action="{{route('pegawai.jumlah_dosen.update', $prodi->id)}}" method="POST">
+              @endif
                 @csrf
                 @method('PUT')
                 <div class="row">

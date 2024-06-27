@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pejabat;
+use Illuminate\Support\Facades\Auth;
 
 
 class PejabatController extends Controller
@@ -36,8 +37,10 @@ class PejabatController extends Controller
         $pejabat->jabatan = $request->jabatan;
         $pejabat->save();
 
-        if(auth()->user()->role == 'superadmin') {
+        if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.pejabat.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.pejabat.index')->with('success_edit_data', 'Data berhasil ditambahkan');
         }
     }
 
@@ -69,7 +72,11 @@ class PejabatController extends Controller
         $pejabat->jabatan = $request->jabatan;
         $pejabat->save();
 
-        return redirect()->route('superadmin.pejabat.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.pejabat.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.pejabat.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
@@ -77,6 +84,10 @@ class PejabatController extends Controller
         $pejabat = Pejabat::find($id);
         $pejabat->delete();
 
-        return redirect()->route('superadmin.pejabat.index')->with('success_delete_data', 'Data berhasil dihapus');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.pejabat.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.pejabat.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

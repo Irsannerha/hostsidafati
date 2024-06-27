@@ -41,7 +41,11 @@
               </div>
               <hr />
               <br />
+              @if (Auth::user()->role == 'superadmin')
               <form action="{{ route('superadmin.doslubi.update', $doslubi->id) }}" method="POST" enctype="multipart/form-data">
+              @elseif (Auth::user()->role == 'pegawai')
+              <form action="{{ route('pegawai.doslubi.update', $doslubi->id) }}" method="POST" enctype="multipart/form-data">
+              @endif
                   @csrf
                   @method('PUT')
                   <div class="row">

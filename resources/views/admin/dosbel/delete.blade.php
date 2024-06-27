@@ -21,7 +21,11 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer text-center justify-content-center">
+                                @if (Auth::user()->role == 'superadmin')
                                     <form action="{{ route('superadmin.dosbel.destroy', $dosbel->id) }}" method="POST">
+                                @elseif (Auth::user()->role == 'pegawai')
+                                    <form action="{{ route('pegawai.dosbel.destroy', $dosbel->id) }}" method="POST">
+                                @endif  
                                         @method('DELETE')
                                         @csrf
                                         <input type="submit" class="btn btn-danger light" name="" id="toastBasicTrigger" value="Hapus">

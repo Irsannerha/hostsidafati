@@ -35,7 +35,11 @@
             </div>
             <hr />
             <br />
-            <form action="{{route('superadmin.prodi.store')}}" method="POST" enctype="multipart/form-data">
+            @if (Auth::user()->role == 'superadmin')
+            <form action="{{ route('superadmin.prodi.store')}}" method="POST" enctype="multipart/form-data">
+            @elseif (Auth::user()->role == 'pegawai')
+            <form action="{{ route('pegawai.prodi.store')}}" method="POST" enctype="multipart/form-data">
+            @endif
               @csrf
               <div class="row">
                 <div class="col-md-3 col-sm-12">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dosen;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\Auth;
 
 class DosenController extends Controller
 {
@@ -131,7 +132,11 @@ class DosenController extends Controller
         // dd($dosen);
         $dosen->save();
 
-        return redirect()->route('superadmin.dosen.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.dosen.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.dosen.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function show($id)
@@ -254,13 +259,22 @@ class DosenController extends Controller
         }
         $dosen->save();
 
-        return redirect()->route('superadmin.dosen.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.dosen.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.dosen.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
     {
         $dosen = Dosen::find($id);
         $dosen->delete();
-        return redirect()->route('superadmin.dosen.index')->with('success_delete_data', 'Data berhasil dihapus');
+
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.dosen.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.dosen.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

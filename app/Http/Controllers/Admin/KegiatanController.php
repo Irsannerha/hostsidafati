@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kegiatan;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\Auth;
 
 class KegiatanController extends Controller
 {
@@ -78,13 +79,22 @@ class KegiatanController extends Controller
         $kegiatan->save();
         // dd($kegiatan);
 
-        return redirect()->route('superadmin.kegiatan.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.kegiatan.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'kemahasiswaan') {
+            return redirect()->route('kemahasiswaan.kegiatan.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
     {
         $kegiatan = Kegiatan::find($id);
         $kegiatan->delete();
-        return redirect()->route('superadmin.kegiatan.index')->with('success_delete_data', 'Data berhasil dihapus');
+
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.kegiatan.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'kemahasiswaan') {
+            return redirect()->route('kemahasiswaan.kegiatan.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

@@ -52,7 +52,7 @@
                             @foreach ($prodis as $prodi)
                             <tr>
                                 <td class="table-plus">{{ $loop->iteration }}</td>
-                                <td>{{ $prodi->prodi }}</td>
+                                <td class="font-weight-bold">{{ $prodi->prodi }}</td>
                                 <td><span class="btn btn-outline-primary btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 14px;">{{ $prodi->jumlah_dosen }}</span></td>
                                 
                                 <td>
@@ -61,7 +61,11 @@
                                 <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#showModal{{ $prodi->id }}">
                                     <i class="icon-copy dw dw-eye"></i> Lihat
                                 </a>
+                                @if (Auth::user()->role == 'superadmin')
                                 <a href="{{ route('superadmin.jumlah_dosen.edit', $prodi->id) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                    @elseif (Auth::user()->role == 'pegawai')
+                                    <a href="{{ route('pegawai.jumlah_dosen.edit', $prodi->id) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                    @endif
                                     <i class="icon-copy dw dw-edit2"></i> Edit
                                 </a>
                             </div>

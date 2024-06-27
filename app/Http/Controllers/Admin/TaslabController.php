@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Taslab;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TaslabController extends Controller
 {
@@ -50,7 +51,11 @@ class TaslabController extends Controller
         $taslab->email = $request->email;
         $taslab->save();
 
-        return redirect()->route('superadmin.taslab.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.taslab.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.taslab.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function show($id)
@@ -95,13 +100,22 @@ class TaslabController extends Controller
         $taslab->email = $request->email;
         $taslab->save();
 
-        return redirect()->route('superadmin.taslab.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.taslab.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.taslab.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
     {
         $taslab = Taslab::find($id);
         $taslab->delete();
-        return redirect()->route('superadmin.taslab.index')->with('success_delete_data', 'Data berhasil dihapus');
+
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.taslab.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.taslab.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 }

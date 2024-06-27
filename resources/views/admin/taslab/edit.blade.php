@@ -44,7 +44,11 @@
               </div>
               <hr />
               <br />
+              @if (Auth::user()->role == 'superadmin')
               <form action="{{ route('superadmin.taslab.update', $taslab->id) }}" method="POST" enctype="multipart/form-data">
+                @elseif (Auth::user()->role == 'pegawai')
+                <form action="{{ route('pegawai.taslab.update', $taslab->id) }}" method="POST" enctype="multipart/form-data">
+                @endif
                   @csrf
                   @method('PUT')
                   <div class="row">

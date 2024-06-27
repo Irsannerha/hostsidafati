@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Resign;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\Auth;
 
 class ResignController extends Controller
 {
@@ -47,7 +48,11 @@ class ResignController extends Controller
         $resign->surat_keterangan = $request->surat_keterangan;
         $resign->save();
 
-        return redirect()->route('superadmin.resign.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.resign.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.resign.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function show($id)
@@ -90,13 +95,22 @@ class ResignController extends Controller
         $resign->save();
         // dd($resign);
 
-        return redirect()->route('superadmin.resign.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.resign.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.resign.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
     {
         $resign = Resign::find($id);
         $resign->delete();
-        return redirect()->route('superadmin.resign.index')->with('success_delete_data', 'Data berhasil dihapus.');
+
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.resign.index')->with('success_delete_data', 'Data berhasil dihapus.');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.resign.index')->with('success_delete_data', 'Data berhasil dihapus.');
+        }
     }
 }

@@ -112,9 +112,24 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/chart-data-Mhs-Aktif', [MhsAktifController::class, 'getchartDataMhsAktif'])->name('chart.data');
   Route::get('/chart-data-Undur-Diri', [UndurDiriController::class, 'getchartDataUndurDiri'])->name('chart.data');
 
+  //  Export Data
+  Route::get('prodi/export', [ProdiController::class, 'export']);
+
+  // PDF
+  Route::get('/export-pdf', [ProdiController::class, 'exportToPDF'])->name('export.pdf');
+
   // CMS PEGAWAI
   Route::middleware([Pegawai::class])->name('pegawai.')->prefix('pegawai')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('prodi', ProdiController::class);
+    Route::resource('pejabat', PejabatController::class);
+    Route::resource('jumlah_dosen', JumlahDosenController::class);
+    Route::resource('dosbel', DosbelController::class);
+    Route::resource('asmikbel', AsmikbelController::class);
+    Route::resource('doslubi', DoslubiController::class);
+    Route::resource('dosen', DosenController::class);
+    Route::resource('taslab', TaslabController::class);
+    Route::resource('resign', ResignController::class);
   });
 
   // CMS AKADEMIK
@@ -133,6 +148,8 @@ Route::middleware(['auth'])->group(function () {
   // CMS KEMAHASISWAAN
   Route::middleware([Kemahasiswaan::class])->name('kemahasiswaan.')->prefix('kemahasiswaan')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('kegiatan', KegiatanController::class);
+    Route::resource('prestasi', PrestasiController::class);
   });
 
   // CMS KEUANGAN

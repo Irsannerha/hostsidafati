@@ -36,7 +36,11 @@
                         </div>
                         <hr />
                         <br />
+                        @if (Auth::user()->role == 'superadmin')
                         <form action="{{ route('superadmin.taslab.store') }}" method="POST" enctype="multipart/form-data">
+                        @elseif (Auth::user()->role == 'pegawai') 
+                        <form action="{{ route('pegawai.taslab.store') }}" method="POST" enctype="multipart/form-data">
+                        @endif
                             @csrf
                             <div class="row">
                                 <div class="col-md-4 col-sm-12">

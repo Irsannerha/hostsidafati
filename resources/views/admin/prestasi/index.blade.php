@@ -35,7 +35,6 @@
                         <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons">
                             <button class="btn btn-primary font-weight-bold" onclick="exportToPDF()">Cetak</button>
                             <button class="btn btn-primary font-weight-bold" onclick="exportToExcel()">Excel</button>
-                            <button type="button" class="btn btn-primary font-weight-bold" data-toggle="modal" data-target="#ImportModal">Import</button>
                         </div>
                     </div>
                     <div class="pb-20">
@@ -62,7 +61,11 @@
                                             <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#showModal{{ $prestasi->id }}">
                                                 <i class="icon-copy dw dw-eye"></i> Lihat
                                             </a>
+                                            @if (Auth::user()->role == 'superadmin')
                                             <a href="{{ route('superadmin.prestasi.edit', $prestasi->id) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                            @elseif (Auth::user()->role == 'kemahasiswaan')
+                                            <a href="{{ route('kemahasiswaan.prestasi.edit', $prestasi->id) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                            @endif
                                                 <i class="icon-copy dw dw-edit2"></i> Edit
                                             </a>
                                             <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#deleteModal{{ $prestasi->id }}">

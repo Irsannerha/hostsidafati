@@ -50,7 +50,11 @@
               </div>
               <hr />
               <br />
+              @if (Auth::user()->role == 'superadmin')
               <form action="{{route('superadmin.resign.update', $resign->id)}}" method="POST">
+              @elseif (Auth::user()->role == 'pegawai')
+              <form action="{{route('pegawai.resign.update', $resign->id)}}" method="POST">
+              @endif
                 @csrf
                 @method('PUT')
                 <div class="row">

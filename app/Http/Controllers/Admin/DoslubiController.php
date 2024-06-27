@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Doslubi;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\Auth;
 
 class DoslubiController extends Controller
 {
@@ -42,8 +43,12 @@ class DoslubiController extends Controller
         $doslubi->tgl_lahir = $request->tgl_lahir;
         $doslubi->jabatan_terakhir = $request->jabatan_terakhir;
         $doslubi->save();
-
-        return redirect()->route('superadmin.doslubi.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.doslubi.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.doslubi.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function show ($id)
@@ -81,7 +86,11 @@ class DoslubiController extends Controller
         $doslubi->jabatan_terakhir = $request->jabatan_terakhir;
         $doslubi->save();
 
-        return redirect()->route('superadmin.doslubi.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.doslubi.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.doslubi.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
@@ -89,7 +98,11 @@ class DoslubiController extends Controller
         $doslubi = Doslubi::find($id);
         $doslubi->delete();
 
-        return redirect()->route('superadmin.doslubi.index')->with('success_delete_data', 'Data berhasil dihapus');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.doslubi.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.doslubi.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
 
 }

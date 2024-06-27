@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Asmikbel;
 use App\Models\Prodi;
-
+use Illuminate\Support\Facades\Auth;
 
 class AsmikbelController extends Controller
 {
@@ -52,7 +52,11 @@ class AsmikbelController extends Controller
         $asmikbel->keterangan = $request->keterangan;
         $asmikbel->save();
 
-        return redirect()->route('superadmin.asmikbel.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.asmikbel.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.asmikbel.index')->with('success_create_data', 'Data berhasil ditambahkan');
+        }
     }
 
     public function show($id)
@@ -98,7 +102,11 @@ class AsmikbelController extends Controller
         $asmikbel->keterangan = $request->keterangan;
         $asmikbel->save();
 
-        return redirect()->route('superadmin.asmikbel.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.asmikbel.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.asmikbel.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
     public function destroy($id)
@@ -106,7 +114,11 @@ class AsmikbelController extends Controller
         $asmikbel = Asmikbel::find($id);
         $asmikbel->delete();
 
-        return redirect()->route('superadmin.asmikbel.index')->with('success_delete_data', 'Data berhasil dihapus');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.asmikbel.index')->with('success_delete_data', 'Data berhasil dihapus');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.asmikbel.index')->with('success_delete_data', 'Data berhasil dihapus');
+        }
     }
     
 }

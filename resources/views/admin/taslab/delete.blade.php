@@ -19,7 +19,11 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer text-center justify-content-center">
+                                @if (Auth::user()->role == 'superadmin')
                                     <form action="{{ route('superadmin.taslab.destroy', $taslab->id) }}" method="POST">
+                                @elseif (Auth::user()->role == 'pegawai')
+                                    <form action="{{ route('pegawai.taslab.destroy', $taslab->id) }}" method="POST">
+                                @endif
                                         @method('DELETE')
                                         @csrf
                                         <input type="submit" class="btn btn-danger light" name="" id="sa-delete-data" value="Hapus">

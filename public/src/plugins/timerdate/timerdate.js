@@ -14,7 +14,7 @@ function updateDateTime() {
     var formattedDate = days[currentDate.getDay()] + ', ' +
                         currentDate.getDate() + ' ' +
                         months[currentDate.getMonth()] + ' ' +
-                        currentDate.getFullYear() + ' | ' +
+                        currentDate.getFullYear() + '  •  ' +
                         'Minggu ke ' + Math.ceil(currentDate.getDate() / 7);
 
     var greeting;
@@ -42,7 +42,7 @@ function updateDateTime() {
         });
     }
 
-    document.getElementById('currentDateTime').textContent = formattedTime + ' | ' + formattedDate + ' | ' + greeting;
+    document.getElementById('currentDateTime').textContent = formattedTime + '  •  ' + formattedDate + '  •  ' + greeting;
 }
 
 // Panggil fungsi updateDateTime() setiap detik

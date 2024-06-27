@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prodi;
+use Illuminate\Support\Facades\Auth;
 
 class JumlahDosenController extends Controller
 {
@@ -40,7 +41,11 @@ class JumlahDosenController extends Controller
 
         // dd($prodi->jumlah_dosen);
 
-        return redirect()->route('superadmin.jumlah_dosen.index')->with('success_edit_data', 'Data berhasil diubah');
+        if (Auth::user()->role == 'superadmin') {
+            return redirect()->route('superadmin.jumlah_dosen.index')->with('success_edit_data', 'Data berhasil diubah');
+        } else if (Auth::user()->role == 'pegawai') {
+            return redirect()->route('pegawai.jumlah_dosen.index')->with('success_edit_data', 'Data berhasil diubah');
+        }
     }
 
 }
