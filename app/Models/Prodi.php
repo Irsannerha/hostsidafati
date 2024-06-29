@@ -21,7 +21,7 @@ class Prodi extends Model
         'akreditasi',
         'prodik',
         'jumlah_mahasiswa',
-        'tanggal_pendirian',
+        'tgl_pendirian',
         'deskripsi',
         'jumlah_dosen',
         'sk_prodi',

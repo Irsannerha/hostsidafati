@@ -7,9 +7,9 @@
     <title>Dashboard | {{ $title ?? config('app.name') }}</title>
 
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/images/sidafati.png') }}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('vendors/images/sidafati.png') }}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('vendors/images/sidafati.png') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/images/harmony.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('vendors/images/harmony.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('vendors/images/harmony.png') }}" />
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -23,11 +23,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -62,16 +64,16 @@
 </head>
 
 <body>
-        @include('layouts.admin.navbar')
-        @include('layouts.admin.rightbar')
-        @include('layouts.admin.leftbar')
-        <div>
+    @include('layouts.admin.navbar')
+    @include('layouts.admin.rightbar')
+    @include('layouts.admin.leftbar')
+    <div>
         {{ $slot }}
-        </div>
-        @include('layouts.admin.footer')
+    </div>
+    @include('layouts.admin.footer')
     <!-- js -->
     <!-- End Card Box -->
-    
+
     <!-- js -->
     <script src="{{ asset('vendors/scripts/core.js') }}"></script>
     <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
@@ -82,8 +84,8 @@
     <script src="{{ asset('src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
-    
-    
+
+
     <!-- buttons for Export datatable -->
     <script src="{{ asset('src/plugins/datatables/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('src/plugins/datatables/js/buttons.bootstrap4.min.js') }}"></script>

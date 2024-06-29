@@ -114,6 +114,13 @@ Route::middleware(['auth'])->group(function () {
 
   //  Export Data
   Route::get('prodi/export', [ProdiController::class, 'export']);
+  Route::get('pejabat/export', [PejabatController::class, 'export']);
+
+  // Import Data 
+  Route::get('/prodi/template', [ProdiController::class, 'downloadTemplate'])->name('prodi.template');
+  Route::post('/prodi/import', [ProdiController::class, 'import'])->name('prodi.import');
+  Route::get('/pejabat/template', [PejabatController::class, 'downloadTemplate'])->name('pejabat.template');
+  Route::post('/pejabat/import', [PejabatController::class, 'import'])->name('pejabat.import');
 
   // PDF
   Route::get('/export-pdf', [ProdiController::class, 'exportToPDF'])->name('export.pdf');

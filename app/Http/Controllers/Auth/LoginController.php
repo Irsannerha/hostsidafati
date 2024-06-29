@@ -4,48 +4,44 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
 {
-
     use AuthenticatesUsers;
 
-    public function redirectTo()
+    protected function authenticated($request, $user)
     {
-        
-        if(auth()->user()->role == 'superadmin'){
-                $redirectTo = '/superadmin/dashboard';
-                return $redirectTo;
-        }
-        elseif(auth()->user()->role == 'pegawai'){
+        if ($user->role == 'superadmin') {
+            $redirectTo = '/superadmin/dashboard';
+        } elseif ($user->role == 'pegawai') {
             $redirectTo = '/pegawai/dashboard';
-            return $redirectTo;
-        }
-        elseif(auth()->user()->role == 'akademik'){
+        } elseif ($user->role == 'akademik') {
             $redirectTo = '/akademik/dashboard';
-            return $redirectTo;
-        }
-        elseif(auth()->user()->role == 'kemahasiswaan'){
+        } elseif ($user->role == 'kemahasiswaan') {
             $redirectTo = '/kemahasiswaan/dashboard';
-            return $redirectTo;
-        }
-        elseif(auth()->user()->role == 'keuangan'){
+        } elseif ($user->role == 'keuangan') {
             $redirectTo = '/keuangan/dashboard';
-            return $redirectTo;
-        }
-        elseif(auth()->user()->role == 'prodi'){
+        } elseif ($user->role == 'prodi') {
             $redirectTo = '/prodi/dashboard';
-            return $redirectTo;
+        } else {
+            $redirectTo = '/login';
         }
-        else {
-                $redirectTo = '/login';
-                return $redirectTo;
-        }
-        
+
+        session()->flash('success', 'Selamat datang, Admin ' . $user->role);
+
+        return redirect()->intended($redirectTo);
+    }
+
+    protected function sendFailedLoginResponse(\Illuminate\Http\Request $request)
+    {
+        session()->flash('error', 'Email atau passwordnya salah nih, coba dicek lagi ya.');
+        return redirect()->back()->withInput($request->only($this->username(), 'remember'));
     }
 
     // public function __construct()
     // {
     //     $middleware('guest')->except('logout');
+
     // }
 }

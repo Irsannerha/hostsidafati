@@ -24,8 +24,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="/dashboard">
-            <img src="/vendors/images/harmony-light.png" alt="" class="dark-logo" />
-            <img src="/vendors/images/harmony-dark.png" alt="" class="light-logo" />
+            <img src="{{ url('vendors/images/harmony-light.png') }}" alt="" class="dark-logo" />
+            <img src="{{ url('vendors/images/harmony-dark.png') }}" alt="" class="light-logo" />
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -159,9 +159,9 @@
 @elseif (Auth::user()->role == 'pegawai')
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
-            <img src="../vendors/images/sidafati-light.png" alt="" class="dark-logo" />
-            <img src="../vendors/images/sidafati-dark.png" alt="" class="light-logo" />
+        <a href="/dashboard">
+            <img src="{{ url('vendors/images/harmony-light.png') }}" alt="" class="dark-logo" />
+            <img src="{{ url('vendors/images/harmony-dark.png') }}" alt="" class="light-logo" />
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -171,7 +171,7 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li class="dropdown">
-                    <a href="/pegawai" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('pegawai.dashboard') }}" class="dropdown-toggle no-arrow">
                         <span class="micon fa fa-tachometer"></span><span class="mtext">Dashboard</span>
                     </a>
                 </li>
@@ -214,9 +214,9 @@
 @elseif (Auth::user()->role == 'akademik')
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
-            <img src="{{ url('vendors/images/sidafati-light.png') }}" alt="" class="dark-logo" />
-            <img src="{{ url('vendors/images/sidafati-dark.png') }}" alt="" class="light-logo" />
+        <a href="/dashboard">
+            <img src="{{ url('vendors/images/harmony-light.png') }}" alt="" class="dark-logo" />
+            <img src="{{ url('vendors/images/harmony-dark.png') }}" alt="" class="light-logo" />
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -226,7 +226,7 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li class="dropdown">
-                    <a href="/" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('akademik.dashboard') }}" class="dropdown-toggle no-arrow">
                         <span class="micon fa fa-tachometer"></span><span class="mtext">Dashboard</span>
                     </a>
                 </li>
@@ -258,9 +258,9 @@
 @elseif (Auth::user()->role == 'kemahasiswaan')
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
-            <img src="../vendors/images/sidafati-light.png" alt="" class="dark-logo" />
-            <img src="../vendors/images/sidafati-dark.png" alt="" class="light-logo" />
+        <a href="/dashboard">
+            <img src="{{ url('vendors/images/harmony-light.png') }}" alt="" class="dark-logo" />
+            <img src="{{ url('vendors/images/harmony-dark.png') }}" alt="" class="light-logo" />
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -270,7 +270,7 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li class="dropdown">
-                    <a href="/" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('kemahasiswaan.dashboard') }}" class="dropdown-toggle no-arrow">
                         <span class="micon fa fa-tachometer"></span><span class="mtext">Dashboard</span>
                     </a>
                 </li>
@@ -297,8 +297,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.html">
-            <img src="../vendors/images/sidafati-light.png" alt="" class="dark-logo" />
-            <img src="../vendors/images/sidafati-dark.png" alt="" class="light-logo" />
+            <img src="{{ url('vendors/images/harmony-light.png') }}" alt="" class="dark-logo" />
+            <img src="{{ url('vendors/images/harmony-dark.png') }}" alt="" class="light-logo" />
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Exports\ProdiExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade as PDF;
+use App\Imports\ProdiImport;
 
 class ProdiController extends Controller
 {
@@ -118,7 +119,7 @@ class ProdiController extends Controller
         }
         $prodi->save();
 
-        
+
         if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.prodi.index')->with('success_edit_data', 'Data berhasil diubah');
         } else if (Auth::user()->role == 'pegawai') {
@@ -144,12 +145,32 @@ class ProdiController extends Controller
         return Excel::download(new ProdiExport, 'prodi.xlsx');
     }
 
-    public function exportToPDF()
+    // public function exportToPDF()
+    // {
+    //     $prodis = Prodi::all();
+
+    //     $pdf = PDF::loadView('exports.prodi', compact('prodis'));
+
+    //     return $pdf->download('prodi.pdf');
+    // }
+
+    public function downloadTemplate()
     {
-        $prodis = Prodi::all();
+        $file = public_path('assets/templateImport/template_prodi.xlsx');
+        return response()->download($file);
+    }
 
-        $pdf = PDF::loadView('exports.prodi', compact('prodis'));
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
 
-        return $pdf->download('prodi.pdf');
+        $file = $request->file('file');
+        // dd($file);
+
+        Excel::import(new ProdiImport, $file);
+
+        return back()->with('success_import_data', 'Data Prodi berhasil diimport.');
     }
 }

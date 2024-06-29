@@ -31,15 +31,17 @@ function updateDateTime() {
     // Cek apakah pengguna sudah login sebelumnya menggunakan local storage
     var loggedInBefore = localStorage.getItem('loggedIn');
     if (!loggedInBefore) {
-        // Jika pengguna belum login sebelumnya, tampilkan pesan swal dan simpan status login
+        // Jika pengguna belum login sebelumnya, simpan status login dan beri waktu jeda sebelum tampilkan pesan swal
         localStorage.setItem('loggedIn', 'true');
-        swal({
-            position: 'center',
-            type: 'success',
-            title: greeting + '! Selamat Datang!',
-            showConfirmButton: false,
-            timer: 3000
-        });
+        setTimeout(function() {
+            swal({
+                position: 'center',
+                type: 'success',
+                title: greeting + '! Selamat datang kembali di HARMONY!',
+                showConfirmButton: false,
+                timer: 4000
+            });
+        }, 3000); // Jeda waktu 3 detik
     }
 
     document.getElementById('currentDateTime').textContent = formattedTime + '  •  ' + formattedDate + '  •  ' + greeting;

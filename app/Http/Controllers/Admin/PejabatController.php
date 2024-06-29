@@ -5,6 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pejabat;
+use App\Exports\PejabatExport;
+use App\Imports\PejabatImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -89,5 +92,30 @@ class PejabatController extends Controller
         } else if (Auth::user()->role == 'pegawai') {
             return redirect()->route('pegawai.pejabat.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new PejabatExport, 'pejabat.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $file = public_path('assets/templateImport/template_pejabat.xlsx');
+        return response()->download($file);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+        // dd($file);
+
+        Excel::import(new PejabatImport, $file);
+
+        return back()->with('success_import_data', 'Data Pejabat berhasil diimport.');
     }
 }

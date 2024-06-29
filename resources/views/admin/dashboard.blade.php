@@ -663,4 +663,16 @@
         </div>
   </div>
 @endif
+
+@if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Berhasil!',
+                text: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+        @endif
 </x-admin-app>

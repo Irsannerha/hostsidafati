@@ -18,6 +18,10 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <!-- SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -37,30 +41,30 @@
                                         <h1 class="h4 text-gray-900 mb-9">Halo!,👋 Selamat Datang Admin</h1>
                                     </div>
                                     <hr>
-                                    @if ($errors->any())
+                                    <!-- @if ($errors->any())
                                     <div class="alert alert-danger">
                                         @foreach ($errors->all() as $error)
                                         <p class="text-center">{{ rtrim($error, '.') }}</p>
                                         @endforeach
                                     </div>
-                                    @endif
+                                    @endif -->
                                     <form class="user" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
                                             <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
-                                            @error('email')
+                                            <!-- @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                                            @enderror
+                                            @enderror -->
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-                                            @error('password')
+                                            <!-- @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                                            @enderror
+                                            @enderror -->
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-6">
@@ -114,7 +118,21 @@
         <!-- Custom scripts for all pages-->
         <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
-</body>
+        <!-- SweetAlert JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+        @if(session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oopss! Login Gagal!',
+                text: "{{ session('error') }}",
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+        @endif
+
+</body>
 
 </html>
