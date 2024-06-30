@@ -33,7 +33,6 @@
         <div class="card-box mb-30">
           <div class="pd-20">
             <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons">
-              <button class="btn btn-primary" onclick="exportToPDF()">Cetak</button>
               <button class="btn btn-primary" onclick="exportToExcel()">Excel</button>
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ImportModal">Import</button>
             </div>
@@ -67,7 +66,7 @@
                       <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-toggle="modal" data-target="#showModal{{ $ta }}"><i class="dw dw-eye"></i> Detail </a>
                       <!-- Ini Modal Jumlah Lulusan Mahasiswa Tugas Akhir-->
                       <div class="modal fade bs-example-modal-lg" id="showModal{{ $ta }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                        <div class="modal-dialog modal-lg modals modal-dialog-scrollable" role="document">
                           <div class="modal-content" data-bgcolor="#d0d0d0">
                             <div class="modal-header">
                               <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-paperclip" aria-hidden="true"></i> Jumlah Lulusan Mahasiswa Tugas Akhir {{ $tahun->ts }}</h4>
@@ -151,9 +150,65 @@
     </div>
   </div>
   <!-- Datatable Setting js -->
+   <!-- Import Modal -->
+<div class="modal fade" id="ImportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" data-bgcolor="#d0d0d0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <i class="fa fa-download" aria-hidden="true"></i> Import Data
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body table-responsive">
+                <div class="pd-20 card-box card-hdr">
+                    <div class="form-group">
+                        <h5 class="modal-title">Panduan Import Data</h5>
+                        <p>Ikuti langkah-langkah berikut untuk mengimport :</p>
+                        <ul>
+                            <li>1. Download template excel yang telah disediakan</li>
+                            <li>2. Masukkan data sesuai template dari excel yang telah tersedia</li>
+                            <li>3. Upload template yang telah diisikan</li>
+                            <li>4. Import data dengan klik "Import"</li>
+                        </ul>
+                        <br>
+                        <div class="form-group">
+                            <!-- Button download -->
+                            <h5 class="modal-title font-weight-bold font-16 text-dark">Template Excel</h5>
+                            <a href="{{ asset('assets/templateImport/template_TugasAkhir.xlsx') }}" class="btn btn-primary" download>
+                                <i class="fa fa-download"></i> Download
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <form action="{{ route('TugasAkhir.import') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <label>Import file disini</label>
+                                <input type="file" name="file" class="form-control-file form-control height-auto" accept=".xlsx, .xls" required>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Import</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Akhir box -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+ <!-- End Import Modal -->
   <script src="{{ asset('vendors/scripts/datatable-setting.js') }}"></script>
+  <script>
+    function exportToExcel() {
+        window.location.href = "{{ url('TugasAkhir/export') }}";
+    }
+</script>
   <style>
-    .modal-lg {
+    .modals {
       max-width: 70%;
       max-height: 90%;
       margin: 1.95rem auto;
@@ -196,6 +251,20 @@
     timer: 2000
   })
 </script>
+@endif
+
+@if(session('success_import_data'))
+    <script>
+         swal(
+                {
+                    position: 'center',
+                    type: 'success',
+                    title: "{{ session('success_import_data') }}",
+                    showConfirmButton: false,
+                    timer: 3000
+                }
+            )
+    </script>
 @endif
 
 <!-- End Sweet Alert -->

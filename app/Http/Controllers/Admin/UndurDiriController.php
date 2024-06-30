@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\UndurDiri;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use App\Exports\UndurDiriExport;
+use App\Imports\UndurDiriImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -136,6 +139,28 @@ class UndurDiriController extends Controller
             'mhs_undur_diri_ganjil' => $mhs_undur_diri_ganjil,
             'total' => $total,
         ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new UndurDiriExport, 'UndurDiri.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $template_path = public_path('assets/template/template_UndurDiri.xlsx');
+        return response()->download($template_path);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        Excel::import(new UndurDiriImport, $request->file('file'));
+
+        return back()->with('success_import_data', 'Data Undur Diri berhasil diimport');
     }
 }
 

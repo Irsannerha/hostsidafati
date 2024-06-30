@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(UserSeeder::class);
-        // $this->call(ProdiSeeder::class);
+        $this->call(ProdiSeeder::class);
         $this->call(ResignSeeder::class);
         $this->call(TaslabSeeder::class);
-        // $this->call(PejabatSeeder::class);
-        $this->call(DosbelSeeder::class);
+        $this->call(PejabatSeeder::class);
+        // $this->call(DosbelSeeder::class);
         $this->call(AsmikbelSeeder::class);
         $this->call(DoslubiSeeder::class);
         $this->call(DosenSeeder::class);
@@ -32,11 +32,11 @@ class DatabaseSeeder extends Seeder
         $this->call(AknaluSeeder::class);
         $this->call(TahunSeeder::class);
         $this->call(AllRekapSeeder::class);
-        $this->call(UndurDiriSeeder::class);
-        $this->call(KeluarSeeder::class);
-        $this->call(WafatSeeder::class);
-        $this->call(LulusSeeder::class);
-        $this->call(MhsAktifSeeder::class);
+        // $this->call(UndurDiriSeeder::class);
+        // $this->call(KeluarSeeder::class);
+        // $this->call(WafatSeeder::class);
+        // $this->call(LulusSeeder::class);
+        // $this->call(MhsAktifSeeder::class);
         $this->call(MhsTASeeder::class);
         $this->call(FormTASeeder::class);
         $this->call(FormKPSeeder::class);

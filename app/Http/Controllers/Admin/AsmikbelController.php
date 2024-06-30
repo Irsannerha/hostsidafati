@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Asmikbel;
 use App\Models\Prodi;
+use App\Exports\AsmikbelExport;
+use App\Imports\AsmikbelImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
 class AsmikbelController extends Controller
@@ -119,6 +122,28 @@ class AsmikbelController extends Controller
         } else if (Auth::user()->role == 'pegawai') {
             return redirect()->route('pegawai.asmikbel.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new AsmikbelExport, 'asmikbel.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $template = public_path('template/template_asmikbel.xlsx');
+        return response()->download($template);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        Excel::import(new AsmikbelImport, $request->file('file'));
+
+        return redirect()->route('superadmin.asmikbel.index')->with('success_import_data', 'Data  Asmikbel berhasil diimport');
     }
     
 }

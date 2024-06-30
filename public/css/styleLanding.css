@@ -1729,3 +1729,25 @@
 /* .card-bar  {
   width: 1500px;
 } */
+
+
+@media (min-width: 576px) {
+  /* Adjust styles for small devices (landscape phones) */
+  .owl-carousel .item {
+    width: 50%; /* Two items per row */
+  }
+}
+
+@media (min-width: 768px) {
+  /* Adjust styles for tablets and larger devices (tablets, laptops, desktops) */
+  .owl-carousel .item {
+    width: 33.33%; /* Three items per row */
+  }
+}
+
+@media (min-width: 992px) {
+  /* Adjust styles for larger screens (desktops) */
+  .owl-carousel .item {
+    width: 20%; /* Five items per row */
+  }
+}

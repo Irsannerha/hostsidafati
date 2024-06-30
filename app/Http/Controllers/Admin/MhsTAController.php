@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\MhsTA;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use App\Exports\MhsTAExport;
+use App\Imports\MhsTAImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -108,4 +111,29 @@ class MhsTAController extends Controller
             return redirect()->route('akademik.mhs-ta.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
     }
+
+    public function export() 
+    {
+        return Excel::download(new MhsTAExport, 'TugasAkhir.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $file = public_path('assets/template/template_TugasAkhir.xlsx');
+        return response()->download($file);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+
+        Excel::import(new MhsTAImport, $file);
+
+        return back()->with('success_import_data', 'Data Mhs Tugas Akhir berhasil diimport');
+    }
+
 }

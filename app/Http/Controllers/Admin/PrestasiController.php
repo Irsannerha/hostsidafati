@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Prestasi;
+use App\Exports\PrestasiExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Prodi;
 
@@ -97,5 +99,10 @@ class PrestasiController extends Controller
         } else if (Auth::user()->role == 'kemahasiswaan') {
             return redirect()->route('kemahasiswaan.prestasi.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new PrestasiExport, 'prestasi.xlsx');
     }
 }

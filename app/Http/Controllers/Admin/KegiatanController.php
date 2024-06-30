@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kegiatan;
 use App\Models\Prodi;
+use App\Exports\KegiatanExport;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KegiatanController extends Controller
 {
@@ -71,7 +73,7 @@ class KegiatanController extends Controller
         $kegiatan->surat_izin = $request->surat_izin;
         if ($request->hasFile('surat_izin')) {
             $surat_izin = $request->file('surat_izin');
-            $file_name = time() . '_Surat_Izin' . $kegiatan->nama_kegiatan . '.' . $surat_izin->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_Surat_Izin' . $kegiatan->nama_kegiatan . '.' . $surat_izin->getClientOriginalExtension();
             $kegiatan->surat_izin = $file_name;
             $kegiatan->update();
             $surat_izin->move('../public/assets/surat_izin/', $file_name);
@@ -96,5 +98,10 @@ class KegiatanController extends Controller
         } else if (Auth::user()->role == 'kemahasiswaan') {
             return redirect()->route('kemahasiswaan.kegiatan.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new KegiatanExport, 'kegiatan.xlsx');
     }
 }

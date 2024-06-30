@@ -67,7 +67,7 @@ class HomeController extends Controller
         $kegiatan->surat_izin = $request->surat_izin;
         if ($request->hasFile('surat_izin')) {
             $surat_izin = $request->file('surat_izin');
-            $file_name = time() . '_Surat_Izin_' . $kegiatan->nama_kegiatan . '.' . $surat_izin->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_Surat_Izin_' . $kegiatan->nama_kegiatan . '.' . $surat_izin->getClientOriginalExtension();
             $kegiatan->surat_izin = $file_name;
             $kegiatan->update();
             $surat_izin->move('../public/assets/surat_izin/', $file_name);
@@ -148,7 +148,7 @@ class HomeController extends Controller
         if ($request->hasFile('foto')) {
             $fotoPaths = [];
             foreach ($request->file('foto') as $key => $foto) {
-                $file_name = time() . '_Foto_' . ($key + 1) . '_' . $prestasi->nim . '.' . $foto->getClientOriginalExtension();
+                $file_name = date('d-m-Y', strtotime('+7 hours')) . '_Foto_' . ($key + 1) . '_' . $prestasi->nim . '.' . $foto->getClientOriginalExtension();
                 $fotoPaths[] = $file_name;
                 $foto->move(public_path('assets/foto/'), $file_name);
             }

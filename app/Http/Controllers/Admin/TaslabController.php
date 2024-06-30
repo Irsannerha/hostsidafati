@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Taslab;
 use Carbon\Carbon;
+use App\Exports\TaslabExport;
+use App\Imports\TaslabImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
 class TaslabController extends Controller
@@ -117,5 +120,29 @@ class TaslabController extends Controller
         } else if (Auth::user()->role == 'pegawai') {
             return redirect()->route('pegawai.taslab.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new TaslabExport, 'taslab.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $file = public_path('assets/template/template_taslab.xlsx');
+        return response()->download($file);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+       $file = $request->file('file');
+
+        Excel::import(new TaslabImport, $file);
+
+        return back()->with('success_import_data', 'Data Taslab berhasil diimport');
     }
 }

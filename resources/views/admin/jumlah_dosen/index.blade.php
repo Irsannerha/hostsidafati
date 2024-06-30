@@ -33,9 +33,7 @@
             <div class="card-box mb-30">
                 <div class="pd-20">
                     <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons">
-                        <button class="btn btn-primary" onclick="exportToPDF()">Cetak</button>
                         <button class="btn btn-primary" onclick="exportToExcel()">Excel</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ImportModal">Import</button>
                     </div>
                 </div>
                 <div class="pb-20">

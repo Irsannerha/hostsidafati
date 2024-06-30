@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Resign;
 use App\Models\Prodi;
+use App\Exports\ResignExport;
+use App\Imports\ResignImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
 class ResignController extends Controller
@@ -112,5 +115,29 @@ class ResignController extends Controller
         } else if (Auth::user()->role == 'pegawai') {
             return redirect()->route('pegawai.resign.index')->with('success_delete_data', 'Data berhasil dihapus.');
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new ResignExport, 'resign.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $file = public_path('assets/template/template_resign.xlsx');
+        return response()->download($file);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+
+        Excel::import(new ResignImport, $file);
+
+        return back()->with('success_import_data', 'Data Resign berhasil diimport');
     }
 }

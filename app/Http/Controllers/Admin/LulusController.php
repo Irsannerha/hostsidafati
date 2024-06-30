@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Lulus;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use App\Exports\LulusExport;
+use App\Imports\LulusImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -174,5 +177,29 @@ class LulusController extends Controller
         } else if (Auth::user()->role == 'akademik') {
             return redirect()->route('akademik.lulus.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new LulusExport, 'Lulus.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $file = public_path('assets/template/template_Lulus.xlsx');
+        return response()->download($file);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+
+        Excel::import(new LulusImport, $file);
+
+        return back()->with('success_import_data', 'Data Mhs Lulus berhasil diimport');
     }
 }

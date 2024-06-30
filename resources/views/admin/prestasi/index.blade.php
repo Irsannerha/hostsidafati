@@ -33,7 +33,6 @@
                 <div class="card-box mb-30">
                     <div class="pd-20">
                         <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons">
-                            <button class="btn btn-primary font-weight-bold" onclick="exportToPDF()">Cetak</button>
                             <button class="btn btn-primary font-weight-bold" onclick="exportToExcel()">Excel</button>
                         </div>
                     </div>
@@ -86,6 +85,11 @@
     </div>
     <!-- Datatable Setting js -->
     <script src="{{ asset('vendors/scripts/datatable-setting.js') }}"></script>
+    <script>
+    function exportToExcel() {
+        window.location.href = "{{ url('prestasi/export') }}";
+    }
+</script>
 
     
     <!-- Sweet Alert -->
@@ -128,6 +132,20 @@
                 timer: 2000
             }
         )
+    </script>
+@endif
+
+@if(session('success_import_data'))
+    <script>
+         swal(
+                {
+                    position: 'center',
+                    type: 'success',
+                    title: "{{ session('success_import_data') }}",
+                    showConfirmButton: false,
+                    timer: 3000
+                }
+            )
     </script>
 @endif
 

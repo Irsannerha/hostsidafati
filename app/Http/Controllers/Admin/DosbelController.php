@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Dosbel;
 use App\Models\Prodi;
+use App\Exports\DosbelExport;
+use App\Imports\DosbelImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -128,6 +131,31 @@ class DosbelController extends Controller
         } else if (Auth::user()->role == 'pegawai') {
             return redirect()->route('pegawai.dosbel.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new DosbelExport, 'dosbel.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $file = public_path('assets/templateImport/template_dosbel.xlsx');
+        return response()->download($file);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+        // dd($file);
+
+        Excel::import(new DosbelImport, $file);
+
+        return back()->with('success_import_data', 'Data Dosbel berhasil diimport.');
     }
 
 }

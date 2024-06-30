@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Keluar;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use App\Exports\KeluarExport;
+use App\Imports\KeluarImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -115,5 +118,23 @@ class KeluarController extends Controller
         } else if (Auth::user()->role == 'akademik') {
             return redirect()->route('akademik.keluar.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new KeluarExport, 'Mahasiswa Keluar.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+
+        Excel::import(new KeluarImport, $file);
+
+        return back()->with('success_import_data', 'Data Mhs Keluar berhasil diimport');
     }
 }

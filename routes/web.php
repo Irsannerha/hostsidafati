@@ -49,6 +49,7 @@ use App\Http\Middleware\Akademik;
 use App\Http\Middleware\Kemahasiswaan;
 use App\Http\Middleware\Keuangan;
 use App\Http\Middleware\Prodi;
+use App\Models\Prestasi;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,12 +116,50 @@ Route::middleware(['auth'])->group(function () {
   //  Export Data
   Route::get('prodi/export', [ProdiController::class, 'export']);
   Route::get('pejabat/export', [PejabatController::class, 'export']);
+  Route::get('dosbel/export', [DosbelController::class, 'export']);
+  Route::get('asmikbel/export', [AsmikbelController::class, 'export']);
+  Route::get('doslubi/export', [DoslubiController::class, 'export']);
+  Route::get('dosen/export', [DosenController::class, 'export']);
+  Route::get('taslab/export', [TaslabController::class, 'export']);
+  Route::get('resign/export', [ResignController::class, 'export']);
+  Route::get('prestasi/export', [PrestasiController::class, 'export']);
+  Route::get('kegiatan/export', [KegiatanController::class, 'export']);
+  Route::get('MhsAktif/export', [MhsAktifController::class, 'export']);
+  Route::get('UndurDiri/export', [UndurDiriController::class, 'export']);
+  Route::get('Keluar/export', [KeluarController::class, 'export']);
+  Route::get('Wafat/export', [WafatController::class, 'export']);
+  Route::get('Lulus/export', [LulusController::class, 'export']);
+  Route::get('TugasAkhir/export', [MhsTAController::class, 'export']);
 
   // Import Data 
   Route::get('/prodi/template', [ProdiController::class, 'downloadTemplate'])->name('prodi.template');
   Route::post('/prodi/import', [ProdiController::class, 'import'])->name('prodi.import');
   Route::get('/pejabat/template', [PejabatController::class, 'downloadTemplate'])->name('pejabat.template');
   Route::post('/pejabat/import', [PejabatController::class, 'import'])->name('pejabat.import');
+  Route::get('/dosbel/template', [DosbelController::class, 'downloadTemplate'])->name('dosbel.template');
+  Route::post('/dosbel/import', [DosbelController::class, 'import'])->name('dosbel.import');
+  Route::get('/asmikbel/template', [AsmikbelController::class, 'downloadTemplate'])->name('asmikbel.template');
+  Route::post('/asmikbel/import', [AsmikbelController::class, 'import'])->name('asmikbel.import');
+  Route::get('/doslubi/template', [DoslubiController::class, 'downloadTemplate'])->name('doslubi.template');
+  Route::post('/doslubi/import', [DoslubiController::class, 'import'])->name('doslubi.import');
+  Route::get('/dosen/template', [DosenController::class, 'downloadTemplate'])->name('dosen.template');
+  Route::post('/dosen/import', [DosenController::class, 'import'])->name('dosen.import');
+  Route::get('/taslab/template', [TaslabController::class, 'downloadTemplate'])->name('taslab.template');
+  Route::post('/taslab/import', [TaslabController::class, 'import'])->name('taslab.import');
+  Route::get('/resign/template', [ResignController::class, 'downloadTemplate'])->name('resign.template');
+  Route::post('/resign/import', [ResignController::class, 'import'])->name('resign.import');
+  Route::get('/MhsAktif/template', [MhsAktifController::class, 'downloadTemplate'])->name('MhsAktif.template');
+  Route::post('/MhsAktif/import', [MhsAktifController::class, 'import'])->name('MhsAktif.import');
+  Route::get('/UndurDiri/template', [UndurDiriController::class, 'downloadTemplate'])->name('UndurDiri.template');
+  Route::post('/UndurDiri/import', [UndurDiriController::class, 'import'])->name('UndurDiri.import');
+  Route::get('/Keluar/template', [KeluarController::class, 'downloadTemplate'])->name('Keluar.template');
+  Route::post('/Keluar/import', [KeluarController::class, 'import'])->name('Keluar.import');
+  Route::get('/Wafat/template', [WafatController::class, 'downloadTemplate'])->name('Wafat.template');
+  Route::post('/Wafat/import', [WafatController::class, 'import'])->name('Wafat.import');
+  Route::get('/Lulus/template', [LulusController::class, 'downloadTemplate'])->name('Lulus.template');
+  Route::post('/Lulus/import', [LulusController::class, 'import'])->name('Lulus.import');
+  Route::get('TugasAkhir/template', [MhsTAController::class, 'downloadTemplate'])->name('TugasAkhir.template');
+  Route::post('TugasAkhir/import', [MhsTAController::class, 'import'])->name('TugasAkhir.import');
 
   // PDF
   Route::get('/export-pdf', [ProdiController::class, 'exportToPDF'])->name('export.pdf');

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Wafat;
 use App\Models\Prodi;
 use App\Models\Tahun;
+use App\Exports\WafatExport;
+use App\Imports\WafatImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB; // Import DB facade
 
@@ -121,5 +124,29 @@ class WafatController extends Controller
         } else if (Auth::user()->role == 'akademik') {
             return redirect()->route('akademik.wafat.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function export()
+    {
+        return Excel::download(new WafatExport, 'wafat.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $file = public_path('assets/template/template_Wafat.xlsx');
+        return response()->download($file);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+
+        Excel::import(new WafatImport, $file);
+
+        return back()->with('success_import_data', 'Data Mhs Wafat berhasil diimport');
     }
 }

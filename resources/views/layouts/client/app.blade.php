@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HARMONY | Fakultas Teknologi Industri</title>
     <link rel="canonical" href="" />
-    <link rel="apple-touch-icon" sizes="180x180" href="img/logo-sidafati.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/logo-sidafati.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/logo-sidafati.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/images/harmony.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('vendors/images/harmony.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('vendors/images/harmony.png') }}">
     <link rel="manifest" href="">
     <link rel="mask-icon" href="https://fti.itera.ac.id/img/favicon/safari-pinned-tab.svg&quot; color=&quot;#5bbad5">
     <!-- <link rel="shortcut icon" href="img/favicon/favicon.ico"> -->
@@ -180,8 +180,8 @@ background-size: 200% 200%;
             <div class="container-fluid">
                 <!-- LOGO -->
                 <a class="logo text-uppercase" href="index.html">
-                    <img src="img/logo-sidafati.png" alt="" class="logo-light" height="50" />
-                    <img src="img/logo-sidafati.png" alt="" class="logo-dark" height="50" />
+                    <img src="img/logo-harmony.png" alt="" class="logo-light" height="50" />
+                    <img src="img/logo-harmony.png" alt="" class="logo-dark" height="50" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="mdi mdi-menu"></i>
@@ -311,18 +311,36 @@ background-size: 200% 200%;
 		<script src="{{ asset('src/plugins/highcharts-6.0.7/code/highcharts-more.') }}"></script>
 		<script src="{{ asset('vendors/scripts/highchart-setting.js') }}"></script>
         <script>
-        $(document).ready(function(){
-            var owl = $('.owl-carousel');
-            owl.owlCarousel({
-                items:6,
-                loop:true,
-                margin:55,
-                autoplay:true,
-                autoplayTimeout:1000,
-                autoplayHoverPause:true
-            });
-        });
-     </script>
+  $(document).ready(function(){
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+      items: 6, 
+      loop: true,
+      margin: 55,
+      autoplay: true,
+      autoplayTimeout: 1000,
+      autoplayHoverPause: true,
+      responsive:{
+        0:{
+          items: 2,
+          margin: 20
+        },
+        576:{
+          items: 3,
+          margin: 20
+        },
+        768:{
+          items: 4,
+          margin: 30
+        },
+        992:{
+          items: 6, 
+          margin: 55
+        }
+      }
+    });
+  });
+</script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     </div>
 

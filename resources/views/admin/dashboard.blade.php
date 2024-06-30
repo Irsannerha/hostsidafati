@@ -542,7 +542,7 @@
                         <div class="chart">
                             <div class="row">
                                 <div class="col-md-12 chart">
-                                    <canvas id="myChartUndurDiri"></canvas>
+                                    <canvas id="myChartMhsAktif"></canvas>
                                 </div>
                             </div>  
                         </div>

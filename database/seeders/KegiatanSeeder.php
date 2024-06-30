@@ -14,7 +14,7 @@ class KegiatanSeeder extends Seeder
      */
     public function run(): void
 {
-    for ($i = 1; $i <= 1; $i++) {
+    for ($i = 1; $i <= 20; $i++) {
         // Untuk memastikan bahwa prodi_id hanya dari 1 sampai 50
         $prodi_id = rand(1, 22);
         

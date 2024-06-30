@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Doslubi;
 use App\Models\Prodi;
+use App\Exports\DoslubiExport;
+use App\Imports\DoslubiImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Auth;
 
 class DoslubiController extends Controller
@@ -105,4 +108,27 @@ class DoslubiController extends Controller
         }
     }
 
+    public function export() 
+    {
+        return Excel::download(new DoslubiExport, 'doslubi.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $file = public_path('assets/template/template_doslubi.xlsx');
+        return response()->download($file);
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        $file = $request->file('file');
+
+        Excel::import(new DoslubiImport, $file);
+
+        return back()->with('success_import_data', 'Data Doslubi berhasil diimport');
+    }
 }
