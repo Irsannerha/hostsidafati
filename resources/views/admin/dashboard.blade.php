@@ -172,45 +172,48 @@
                         </div>
 					</div>
           <!-- Card Box -->
+          <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Pegawai</h2>
+          </div>
           <div class="row pb-10">
               <div class="col-md-4 mb-20">
-                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
-                      <div class="d-flex justify-content-between pb-20 text-white">
-                          <div class="icon h1 text-white">
-                              <i class="fa fa-vcard-o" aria-hidden="true"></i>
-                          </div>
-                          <div class="font-14 text-right">
-                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
-                              <div class="font-12">Since last month</div>
-                          </div>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-end">
-                          <div class="text-white">
-                              <div class="font-14">Pegawai</div>
-                              <div class="font-24 weight-500">1865</div>
-                          </div>
-                          <div class="max-width-150">
-                              <div id="appointment-chart"></div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card-box min-height-200px pd-20" data-bgcolor="#265ed7">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
                               <i class="fa fa-institution" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
-                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Akademik</div>
-                              <div class="font-24 weight-500">250</div>
+                              <div class="font-14 font-weight-bold">Program Studi</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countProdi }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="surgery-chart"></div>
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Pejabat</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countPejabat }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="surgery-chart"></div> -->
                           </div>
                       </div>
                   </div>
@@ -219,82 +222,356 @@
                   <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-vcard-o" aria-hidden="true"></i>
+                              <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Pegawai</div>
-                              <div class="font-24 weight-500">1865</div>
+                              <div class="font-14 font-weight-bold">Jumlah Dosen</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="125">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="appointment-chart"></div>
+                              <!-- <div id="appointment-chart"></div> -->
                           </div>
                       </div>
                   </div>
-                  <div class="card-box min-height-200px pd-20" data-bgcolor="#0a2f35">
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-institution" aria-hidden="true"></i>
+                              <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Akademik</div>
-                              <div class="font-24 weight-500">250</div>
+                              <div class="font-14 font-weight-bold">Dosen Tugas Belajar</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countDosbel }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="surgery-chart"></div>
+                              <!-- <div id="surgery-chart"></div> -->
                           </div>
                       </div>
                   </div>
               </div>
               <div class="col-md-4 mb-20">
-                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#28a745">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-vcard-o" aria-hidden="true"></i>
+                              <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
+                          <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Pegawai</div>
-                              <div class="font-24 weight-500">1865</div>
+                              <div class="font-14 font-weight-bold">Asmik Tugas Belajar</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countAsmikbel }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Dosen Luar Biasa NIDK</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countDoslubi }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="surgery-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#004e64">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Dosen Aktif & Tetap</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countDosen }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                <div class="col-md-4 mb-20">
+                    <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
+                        <div class="d-flex justify-content-between pb-20 text-white">
+                            <div class="icon h1 text-white">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                            </div>
+                            <!-- Uncomment the following block if you need the statistics section
+                            <div class="font-14 text-right">
+                                <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                                <div class="font-12">Since last month</div>
+                            </div>
+                            -->
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="text-white">
+                                <div class="font-14 font-weight-bold">Tendik, Asmik, Laboran</div>
+                                <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countTaslab }}">0</div>
+                            </div>
+                            <div class="max-width-150">
+                                <!-- <div id="surgery-chart"></div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-20">
+                    <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
+                        <div class="d-flex justify-content-between pb-20 text-white">
+                            <div class="icon h1 text-white">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                            </div>
+                            <!-- Uncomment the following block if you need the statistics section
+                            <div class="font-14 text-right">
+                                <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                                <div class="font-12">Since last month</div>
+                            </div>
+                            -->
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="text-white">
+                                <div class="font-14 font-weight-bold">Dosen Resign</div>
+                                <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countResign }}">0</div>
+                            </div>
+                            <div class="max-width-150">
+                                <!-- <div id="surgery-chart"></div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+          <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Akademik</h2>
+          </div>
+          <div class="row pb-10">
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-calendar" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Tahun Semester</div>
+                              @foreach($tahun as $t)
+                                <div class="font-30 weight-500">{{ $t->ts }}</div>
+                            @endforeach
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Aktif + PMB</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsAktif }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="surgery-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Undur Diri</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsUndurDiri }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Dikeluarkan</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsKeluar }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="surgery-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Wafat</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsWafat }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Lulus/Wisuda</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsLulus }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="surgery-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Aktif TS dan (Gabungan TS)</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $hasilGabungan }}">0</div>
                           </div>
                           <div class="max-width-150">
                               <div id="appointment-chart"></div>
                           </div>
                       </div>
                   </div>
-                  <div class="card-box min-height-200px pd-20" data-bgcolor="#0b846d">
+              </div>
+          </div>
+          <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Kemahasiswaan</h2>
+          </div>
+          <div class="row pb-10">
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#0a2f35">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-institution" aria-hidden="true"></i>
+                            <i class="icon-copy fa fa-trophy" aria-hidden="true"></i>
                           </div>
-                          <div class="font-14 text-right">
-                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
                               <div class="font-12">Since last month</div>
-                          </div>
+                          </div> -->
                       </div>
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
-                              <div class="font-14">Akademik</div>
-                              <div class="font-24 weight-500">250</div>
+                              <div class="font-14 font-weight-bold">Mahasiswa Berprestasi</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countPrestasi }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="surgery-chart"></div>
+                              <div id="appointment-chart"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#0a2f35">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Izin Kegiatan HIMA</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countKegiatan }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <div id="appointment-chart"></div>
                           </div>
                       </div>
                   </div>
@@ -326,13 +603,34 @@
                   </div>
               </div>
           </div>
+          <div class="row">
+                <div class="col-md-8 mb-20">
+                    <div class="card-box height-100-p pd-20">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
+                            <div class="h5 mb-md-0 text-dark">Grafik Data Pegawai</div>
+                            <div class="form-group mb-md-0">
+                                <select class="form-control form-control-sm selectpicker">
+                                    <option value="aktif">Jumlah Dosen</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <div class="row">
+                                <div class="col-md-12 chart">
+                                    <canvas id="myChartMhsAktif"></canvas>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
           <!-- Card Box -->
           <div class="row pb-10">
               <div class="col-md-4 mb-20">
-                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-vcard-o" aria-hidden="true"></i>
+                              <i class="fa fa-institution" aria-hidden="true"></i>
                           </div>
                           <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
@@ -342,17 +640,17 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Program Studi</div>
-                              <div class="font-24 weight-500">21</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countProdi }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="appointment-chart"></div>
+                              <!-- <div id="appointment-chart"></div> -->
                           </div>
                       </div>
                   </div>
-                  <div class="card-box min-height-200px pd-20" data-bgcolor="#265ed7">
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-institution" aria-hidden="true"></i>
+                            <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
                           <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
@@ -362,10 +660,10 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Pejabat</div>
-                              <div class="font-24 weight-500">250</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countPejabat }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="surgery-chart"></div>
+                              <!-- <div id="surgery-chart"></div> -->
                           </div>
                       </div>
                   </div>
@@ -374,7 +672,7 @@
                   <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-vcard-o" aria-hidden="true"></i>
+                              <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
                           <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
@@ -384,17 +682,17 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Jumlah Dosen</div>
-                              <div class="font-24 weight-500">1865</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="125">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="appointment-chart"></div>
+                              <!-- <div id="appointment-chart"></div> -->
                           </div>
                       </div>
                   </div>
-                  <div class="card-box min-height-200px pd-20" data-bgcolor="#0a2f35">
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-institution" aria-hidden="true"></i>
+                              <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
                           <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
@@ -404,19 +702,19 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Dosen Tugas Belajar</div>
-                              <div class="font-24 weight-500">250</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countDosbel }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="surgery-chart"></div>
+                              <!-- <div id="surgery-chart"></div> -->
                           </div>
                       </div>
                   </div>
               </div>
               <div class="col-md-4 mb-20">
-                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#28a745">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-vcard-o" aria-hidden="true"></i>
+                              <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
                           <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
@@ -426,17 +724,17 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Asmik Tugas Belajar</div>
-                              <div class="font-24 weight-500">1865</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countAsmikbel }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="appointment-chart"></div>
+                              <!-- <div id="appointment-chart"></div> -->
                           </div>
                       </div>
                   </div>
-                  <div class="card-box min-height-200px pd-20" data-bgcolor="#0b846d">
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-institution" aria-hidden="true"></i>
+                              <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
                           <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
@@ -446,19 +744,19 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Dosen Luar Biasa NIDK</div>
-                              <div class="font-24 weight-500">250</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countDoslubi }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="surgery-chart"></div>
+                              <!-- <div id="surgery-chart"></div> -->
                           </div>
                       </div>
                   </div>
               </div>
               <div class="col-md-4 mb-20">
-                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#28a745">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#004e64">
                       <div class="d-flex justify-content-between pb-20 text-white">
                           <div class="icon h1 text-white">
-                              <i class="fa fa-vcard-o" aria-hidden="true"></i>
+                              <i class="fa fa-users" aria-hidden="true"></i>
                           </div>
                           <!-- <div class="font-14 text-right">
                               <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
@@ -468,34 +766,62 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Dosen Aktif & Tetap</div>
-                              <div class="font-24 weight-500">1865</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countDosen }}">0</div>
                           </div>
                           <div class="max-width-150">
-                              <div id="appointment-chart"></div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card-box min-height-200px pd-20" data-bgcolor="#0b846d">
-                      <div class="d-flex justify-content-between pb-20 text-white">
-                          <div class="icon h1 text-white">
-                              <i class="fa fa-institution" aria-hidden="true"></i>
-                          </div>
-                          <!-- <div class="font-14 text-right">
-                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
-                              <div class="font-12">Since last month</div>
-                          </div> -->
-                      </div>
-                      <div class="d-flex justify-content-between align-items-end">
-                          <div class="text-white">
-                              <div class="font-14 font-weight-bold">Tendik, Asmik, Laboran</div>
-                              <div class="font-24 weight-500">250</div>
-                          </div>
-                          <div class="max-width-150">
-                              <div id="surgery-chart"></div>
+                              <!-- <div id="appointment-chart"></div> -->
                           </div>
                       </div>
                   </div>
               </div>
+                <div class="col-md-4 mb-20">
+                    <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
+                        <div class="d-flex justify-content-between pb-20 text-white">
+                            <div class="icon h1 text-white">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                            </div>
+                            <!-- Uncomment the following block if you need the statistics section
+                            <div class="font-14 text-right">
+                                <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                                <div class="font-12">Since last month</div>
+                            </div>
+                            -->
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="text-white">
+                                <div class="font-14 font-weight-bold">Tendik, Asmik, Laboran</div>
+                                <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countTaslab }}">0</div>
+                            </div>
+                            <div class="max-width-150">
+                                <!-- <div id="surgery-chart"></div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-20">
+                    <div class="card-box min-height-200px pd-20" data-bgcolor="#004e64">
+                        <div class="d-flex justify-content-between pb-20 text-white">
+                            <div class="icon h1 text-white">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                            </div>
+                            <!-- Uncomment the following block if you need the statistics section
+                            <div class="font-14 text-right">
+                                <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                                <div class="font-12">Since last month</div>
+                            </div>
+                            -->
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div class="text-white">
+                                <div class="font-14 font-weight-bold">Dosen Resign</div>
+                                <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countResign }}">0</div>
+                            </div>
+                            <div class="max-width-150">
+                                <!-- <div id="surgery-chart"></div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
           </div>
       </div>
   </div>
@@ -550,6 +876,164 @@
                 </div>
             </div>
             <!-- Simple Card-Box start -->
+            <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Akademik</h2>
+          </div>
+          <div class="row pb-10">
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-calendar" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Tahun Semester</div>
+                              @foreach($tahun as $t)
+                                <div class="font-30 weight-500">{{ $t->ts }}</div>
+                            @endforeach
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Aktif + PMB</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsAktif }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="surgery-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Undur Diri</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsUndurDiri }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Dikeluarkan</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsKeluar }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="surgery-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Wafat</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsWafat }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="appointment-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-box min-height-200px pd-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Lulus/Wisuda</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $mhsLulus }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <!-- <div id="surgery-chart"></div> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3 mb-20">
+                  <div class="card-box min-height-200px pd-20 mb-20" data-bgcolor="#073042">
+                      <div class="d-flex justify-content-between pb-20 text-white">
+                          <div class="icon h1 text-white">
+                              <i class="fa fa-users" aria-hidden="true"></i>
+                          </div>
+                          <!-- <div class="font-14 text-right">
+                              <div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
+                              <div class="font-12">Since last month</div>
+                          </div> -->
+                      </div>
+                      <div class="d-flex justify-content-between align-items-end">
+                          <div class="text-white">
+                              <div class="font-14 font-weight-bold">Mahasiswa Aktif TS dan (Gabungan TS)</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $hasilGabungan }}">0</div>
+                          </div>
+                          <div class="max-width-150">
+                              <div id="appointment-chart"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Masuk</h2>
+          </div>
             <div class="row">
                 @foreach($tahun as $t)
                 <div class="col-xl-4 mb-20">
@@ -560,7 +1044,7 @@
                                     <div id="chartAllRekap"></div>
                                 </div>
                                 <div class="widget-data">
-                                    <div class="h4 mb-0 text-dark">4478 Data</div>
+                                    <div class="h4 mb-0 text-dark purecounter" data-purecounter-end="5688">0</div>
                                     <div class="weight-600 font-14">TS - {{ $t->ts }}</div>
                                 </div>
                             </div>
@@ -610,7 +1094,7 @@
                                 </select>
 								</div>
 							</div>
-							<div id="myChartMhsAktif"></div>
+							<canvas id="myChartBar"></canvas>
 						</div>
 					</div>
 					<div class="col-md-4 mb-20">
@@ -623,35 +1107,35 @@
                                     <i class="icon-copy fa fa-trophy" aria-hidden="true"></i>
 									<!-- <i class="icon-copy fa fa-stethoscope" aria-hidden="true"></i> -->
 								</div>
-								<div class="font-14 text-right">
+								<!-- <div class="font-14 text-right">
 									<div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
 									<div class="font-12">Since last month</div>
-								</div>
+								</div> -->
 							</div>
 							<div class="d-flex justify-content-between align-items-end">
 								<div class="text-white">
-									<div class="font-14">Prestasi Mahasiswa</div>
-									<div class="font-24 weight-500">1865</div>
+									<div class="font-14 font-weight-bold">Mahasiswa Berprestasi</div>
+									<div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countPrestasi }}">0</div>
 								</div>
 								<div class="max-width-150">
 									<div id="appointment-chart"></div>
 								</div>
 							</div>
 						</div>
-						<div class="card-box min-height-200px pd-20" data-bgcolor="#0b846d">
+						<div class="card-box min-height-200px pd-20" data-bgcolor="#073042">
 							<div class="d-flex justify-content-between pb-20 text-white">
 								<div class="icon h1 text-white">
                                     <i class="icon-copy fa fa-users" aria-hidden="true"></i>
 								</div>
-								<div class="font-14 text-right">
+								<!-- <div class="font-14 text-right">
 									<div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
 									<div class="font-12">Since last month</div>
-								</div>
+								</div> -->
 							</div>
 							<div class="d-flex justify-content-between align-items-end">
 								<div class="text-white">
-									<div class="font-14">Izin Kegiatan HIMA</div>
-									<div class="font-24 weight-500">250</div>
+									<div class="font-14 font-weight-bold">Izin Kegiatan HIMA</div>
+									<div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countKegiatan }}">0</div>
 								</div>
 								<div class="max-width-150">
 									<div id="surgery-chart"></div>
@@ -663,7 +1147,30 @@
         </div>
   </div>
 @endif
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const counters = document.querySelectorAll('.purecounter');
+        const speed = 250;
 
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('data-purecounter-end');
+                const data = +counter.innerText;
+
+                const increment = Math.ceil(value / speed);
+
+                if (data < value) {
+                    counter.innerText = data + increment;
+                    setTimeout(animate, 1);
+                } else {
+                    counter.innerText = value;
+                }
+            };
+
+            animate();
+        });
+    });
+</script>
 @if(session('success'))
         <script>
             Swal.fire({
@@ -675,4 +1182,5 @@
             });
         </script>
         @endif
+
 </x-admin-app>
