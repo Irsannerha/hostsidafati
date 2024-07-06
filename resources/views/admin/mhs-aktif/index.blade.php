@@ -74,7 +74,7 @@
                         <div class="modal-dialog modal-lg modals modal-dialog-scrollable" role="document">
                           <div class="modal-content" data-bgcolor="#d0d0d0">
                             <div class="modal-header">
-                              <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-paperclip" aria-hidden="true"></i> Jumlah Mahasiswa Aktif TS {{ $tahun->ts }} + Mahasiswa PMB {{ explode('/', $tahun->ts)[1] - 1; }}</h4>
+                              <h4 class="modal-title" id="myLargeModalLabel"><i class="fa fa-paperclip" aria-hidden="true"></i> Jumlah Mahasiswa Aktif TS {{ $tahun->ts }} + Mahasiswa PMB {{ explode('/', $tahun->ts)[1] - 1 }}</h4>
                               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                             </div>
                             <div class="modal-body">
@@ -86,7 +86,7 @@
                                         <th>#</th>
                                         <th><span class="btn btn-outline-primary btn-lg" style="border-radius: 15px; padding: 0.4rem 0.7rem; font-size: 0.9rem;">Program Studi</th></span>
                                         <th><span class="btn btn-outline-primary btn-lg" style="border-radius: 15px; padding: 0.4rem 0.7rem; font-size: 0.9rem;">{{ substr($tahun->ts, 0, 4) - 1 }}/{{ substr($tahun->ts, -4) - 1 }}</th></span>
-                                        <th><span class="btn btn-outline-primary btn-lg" style="border-radius: 15px; padding: 0.4rem 0.7rem; font-size: 0.9rem;">{{ explode('/', $tahun->ts)[1] - 1; }}</th></span>
+                                        <th><span class="btn btn-outline-primary btn-lg" style="border-radius: 15px; padding: 0.4rem 0.7rem; font-size: 0.9rem;">{{ explode('/', $tahun->ts)[1] - 1 }}</th></span>
                                         <th><span class="btn btn-outline-primary btn-lg" style="border-radius: 15px; padding: 0.4rem 0.7rem; font-size: 0.9rem;">Jumlah Total</th></span>
                                         <th><span class="btn btn-outline-primary btn-lg" style="border-radius: 15px; padding: 0.4rem 0.7rem; font-size: 0.9rem;">Aksi</th></span>
                                         <!-- Tambahkan bagian lain sesuai kebutuhan -->
