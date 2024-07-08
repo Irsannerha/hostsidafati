@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class UndurDiriController extends Controller
 {
-    public function index ()
+    public function index()
     {
         $undurdiri = UndurDiri::all();
         $prodi = Prodi::all();
@@ -37,7 +37,7 @@ class UndurDiriController extends Controller
         return view('admin.undur-diri.index', compact('undurdiri', 'prodi', 'tahun', 'totals', 'groupedUndurDiri'));
     }
 
-    public function create (Request $request)
+    public function create(Request $request)
     {
         if ($request->tahun_semester_id == null) {
             $prodi = Prodi::all();
@@ -53,7 +53,7 @@ class UndurDiriController extends Controller
         }
     }
 
-    public function store (Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'prodi_id' => 'required',
@@ -69,14 +69,14 @@ class UndurDiriController extends Controller
         $undurdiri->mhs_undur_diri_ganjil = $request->mhs_undur_diri_ganjil;
         $undurdiri->save();
 
-        if(Auth::user()->role == 'superadmin') {
+        if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.undur-diri.index')->with('success_create_data', 'Data berhasil ditambahkan');
-        } else if (Auth::user()->role == 'akademik'){
+        } else if (Auth::user()->role == 'akademik') {
             return redirect()->route('akademik.undur-diri.index')->with('success_create_data', 'Data berhasil ditambahkan');
         }
     }
 
-    public function edit ($id)
+    public function edit($id)
     {
         $undurdiri = UndurDiri::findorFail($id);
         $prodi = Prodi::all();
@@ -84,12 +84,12 @@ class UndurDiriController extends Controller
         return view('admin.undur-diri.edit', compact('undurdiri', 'prodi', 'tahun'));
     }
 
-    public function update (Request $request, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'prodi_id' => 'required',
             'ts_id' => 'required',
-            'mhs_undur_diri_genap' => 'nullable', 
+            'mhs_undur_diri_genap' => 'nullable',
             'mhs_undur_diri_ganjil' => 'nullable',
         ]);
 
@@ -100,36 +100,36 @@ class UndurDiriController extends Controller
         $undurdiri->mhs_undur_diri_ganjil = $request->mhs_undur_diri_ganjil;
         $undurdiri->save();
 
-        if(Auth::user()->role == 'superadmin') {
+        if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.undur-diri.index')->with('success_update_data', 'Data berhasil diubah');
-        } else if (Auth::user()->role == 'akademik'){
+        } else if (Auth::user()->role == 'akademik') {
             return redirect()->route('akademik.undur-diri.index')->with('success_update_data', 'Data berhasil diubah');
         }
     }
 
-    public function destroy ($id)
+    public function destroy($id)
     {
         $undurdiri = UndurDiri::findorFail($id);
         $undurdiri->delete();
 
-        if(Auth::user()->role == 'superadmin') {
+        if (Auth::user()->role == 'superadmin') {
             return redirect()->route('superadmin.undur-diri.index')->with('success_delete_data', 'Data berhasil dihapus');
-        } else if (Auth::user()->role == 'akademik'){
+        } else if (Auth::user()->role == 'akademik') {
             return redirect()->route('akademik.undur-diri.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
     }
-    
+
     public function getChartDataUndurdiri()
     {
         $data = UndurDiri::with('prodi')->get();
 
-        $labels = $data->map(function($item) {
+        $labels = $data->map(function ($item) {
             return $item->prodi->prodi;
         });
 
         $mhs_undur_diri_genap = $data->pluck('mhs_undur_diri_genap');
         $mhs_undur_diri_ganjil = $data->pluck('mhs_undur_diri_ganjil');
-        $total = $mhs_undur_diri_genap->zip($mhs_undur_diri_ganjil)->map(function($item) {
+        $total = $mhs_undur_diri_genap->zip($mhs_undur_diri_ganjil)->map(function ($item) {
             return $item[0] + $item[1];
         });
 
