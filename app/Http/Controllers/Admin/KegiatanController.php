@@ -52,7 +52,7 @@ class KegiatanController extends Controller
             'nama_pemohon' => 'required',
             'no_hp' => 'required',
             'status' => 'required',
-            'keterangan' => 'required',
+            'keterangan' => 'nullable',
             'surat_izin' => 'mimes:pdf|max:2048',
         ]);
 
@@ -98,6 +98,28 @@ class KegiatanController extends Controller
         } else if (Auth::user()->role == 'kemahasiswaan') {
             return redirect()->route('kemahasiswaan.kegiatan.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
+    }
+
+    public function getChartData()
+    {
+        $kegiatanData = Kegiatan::with('prodi')->get();
+
+        // Get unique prodi names
+        $labels = $kegiatanData->map(function($item) {
+            return $item->prodi->prodi; 
+        })->unique()->values();
+
+        // Group by prodi and count the number of kegiatan per prodi
+        $kegiatanCountByProdi = $kegiatanData->groupBy('prodi.prodi')->map(function($group) {
+            return $group->count();
+        });
+
+        return response()->json([
+            'labels' => $labels,
+            'kegiatanCount' => $labels->map(function($label) use ($kegiatanCountByProdi) {
+                return $kegiatanCountByProdi->get($label, 0);
+            }),
+        ]);
     }
 
     public function export()

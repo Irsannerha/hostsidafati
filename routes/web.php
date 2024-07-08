@@ -43,7 +43,7 @@ use App\Http\Controllers\Admin\FormBukrimController;
 use App\Http\Controllers\Client\HomeController;
 
 // Middleware
-use App\Http\Middleware\SuperAdmin;
+use App\Http\Middleware\Superadmin;
 use App\Http\Middleware\Pegawai;
 use App\Http\Middleware\Akademik;
 use App\Http\Middleware\Kemahasiswaan;
@@ -112,6 +112,16 @@ Route::middleware(['auth'])->group(function () {
   // Chart Data
   Route::get('/chart-data-Mhs-Aktif', [MhsAktifController::class, 'getchartDataMhsAktif'])->name('chart.data');
   Route::get('/chart-data-Undur-Diri', [UndurDiriController::class, 'getchartDataUndurDiri'])->name('chart.data');
+  Route::get('/chart-data-Keluar', [KeluarController::class, 'getchartDataKeluar'])->name('chart.data');
+  Route::get('/chart-data-Wafat', [WafatController::class, 'getchartDataWafat'])->name('chart.data');
+  Route::get('/chart-data-Lulus', [LulusController::class, 'getchartDataLulus'])->name('chart.data');
+  Route::get('/chartDataMhsTA', [MhsTAController::class, 'getChartDataMhsTA'])->name('chart.data.mhs_ta');
+  Route::get('/chartDataPrestasi', [PrestasiController::class, 'getChartData'])->name('chart.data');
+  Route::get('/chartDataKegiatan', [KegiatanController::class, 'getChartData'])->name('chart.data');
+  Route::get('admin/jumlah_dosen', [JumlahDosenController::class, 'index'])->name('jumlah_dosen.index');
+  Route::get('/chartDataJumlahDosen', [JumlahDosenController::class, 'getChartData'])->name('chart.data');
+
+  // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
   //  Export Data
   Route::get('prodi/export', [ProdiController::class, 'export']);
@@ -234,5 +244,4 @@ Route::get('/form-rekom', [HomeController::class, 'formrekom'])->name('formrekom
 Route::post('/form-rekom', [HomeController::class, 'UploadFormRekom'])->name('formrekom.store');
 Route::get('/form-bukrim', [HomeController::class, 'formbukrim'])->name('formbukrim');
 Route::post('/form-bukrim', [HomeController::class, 'UploadFormBukrim'])->name('formbukrim.store');
-
 Route::get('/mahasiswa', [HomeController::class, 'mahasiswa'])->name('mahasiswa');

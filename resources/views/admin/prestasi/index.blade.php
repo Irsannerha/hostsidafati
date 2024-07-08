@@ -51,7 +51,7 @@
                                 @foreach ($prestasi as $prestasi)
                                 <tr>
                                     <td class="table-plus">{{ $loop->iteration }}</td>
-                                    <td>{{ $prestasi->prodi->prodi }}</td>
+                                    <td>{{ $prestasi->Prodi ? $prestasi->Prodi->prodi : 'N/A' }}</td>
                                     <td><span class="btn btn-outline-primary btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">{{ $prestasi->nama_mahasiswa }}</span></td>
                                     <td><span class="btn btn-outline-primary btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">{{ $prestasi->nim }}</span></td>
                                   @include('admin.prestasi.show')

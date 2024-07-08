@@ -44,7 +44,10 @@ function updateDateTime() {
         }, 3000); // Jeda waktu 3 detik
     }
 
-    document.getElementById('currentDateTime').textContent = formattedTime + '  •  ' + formattedDate + '  •  ' + greeting;
+    const dateElement = document.getElementById('currentDateTime')
+    if (dateElement) {
+        dateElement.textContent = formattedTime + '  •  ' + formattedDate + '  •  ' + greeting;
+    }
 }
 
 // Panggil fungsi updateDateTime() setiap detik

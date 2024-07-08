@@ -139,8 +139,8 @@ background-size: 200% 200%;
 }
 
     </style>
-    <meta name="keywords" content="Sidafati fti itera, sistem informasi tata kelola data fti iterai, fakultas teknologi industri iterai, iterai, fti, sidafati, sistem informasi tata kelola data, fakultas teknologi industri, institut teknologi sumatera, lampung selatan, indonesia" />
-    <meta name="description" content="Sistem Informasi Tata Kelola Data Fakultas Teknologi Industri Institut Teknologi Sumatera Lampung Selatan Indonesia" />
+    <meta name="keywords" content="Harmony fti itera, Holistic Administration and Resource Management System fti itera, fakultas teknologi industri itera, itera, fti, sidafati, Holistic Administration and Resource Management System, fakultas teknologi industri, institut teknologi sumatera, lampung selatan, indonesia" />
+    <meta name="description" content="Sistem Informasi Holistic Administration and Resource Management System Institut Teknologi Sumatera Lampung Selatan Indonesia" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Icons font CSS-->
     <link href="{{ asset('css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
@@ -179,7 +179,7 @@ background-size: 200% 200%;
         <nav class="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
             <div class="container-fluid">
                 <!-- LOGO -->
-                <a class="logo text-uppercase" href="index.html">
+                <a class="logo text-uppercase" href="{{ route('home')}}">
                     <img src="img/logo-harmony.png" alt="" class="logo-light" height="50" />
                     <img src="img/logo-harmony.png" alt="" class="logo-dark" height="50" />
                 </a>

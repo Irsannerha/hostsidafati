@@ -179,6 +179,57 @@ class LulusController extends Controller
         }
     }
 
+    public function getChartDataLulus()
+{
+    $data = Lulus::with('prodi')->get();
+
+    $labels = $data->map(function($item) {
+        return $item->prodi->prodi;
+    });
+
+    $datasets = [];
+    $months = ['januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'oktober', 'november', 'desember'];
+
+    foreach ($months as $month) {
+        $datasets[] = [
+            'label' => ucfirst($month),
+            'data' => $data->pluck($month)->map(function($value) {
+                return (int)$value; 
+            }),
+            'backgroundColor' => '#' . substr(md5(rand()), 0, 6), 
+            'borderColor' => '#' . substr(md5(rand()), 0, 6),
+            'order' => 1,
+        ];
+    }
+
+    // Calculate total per program studi
+    $totals = [];
+    foreach ($data as $item) {
+        $total = 0;
+        foreach ($months as $month) {
+            $total += (int)$item->{$month};
+        }
+        $totals[] = $total;
+    }
+
+    $datasets[] = [
+        'label' => 'Total',
+        'data' => $totals,
+        'backgroundColor' => 'rgba(255, 99, 132, 0.1)', 
+        'borderColor' => 'red', 
+        'borderWidth' => 2, 
+        'fill' => true, 
+        'type' => 'line', 
+        'order' => 0,
+    ];
+
+    return response()->json([
+        'labels' => $labels,
+        'datasets' => $datasets,
+    ]);
+}
+
+
     public function export()
     {
         return Excel::download(new LulusExport, 'Lulus.xlsx');

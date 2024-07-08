@@ -19,45 +19,45 @@ class UserSeeder extends Seeder
         $usersTemplate = [
             [
                 'name' => 'Super Admin',
-                'email' => 'super@fti.com',
+                'email' => 'superadmin@harmonyfti',
                 'role' => 'superadmin',
                 'status' => 'aktif',
-                'password' => Hash::make('password')
+                'password' => Hash::make('superadmin@harmonyfti')
             ],
             [
                 'name' => 'Pegawai',
-                'email' => 'pegawai@fti.com',
+                'email' => 'adminpegawai@harmonyfti',
                 'role' => 'pegawai',
                 'status' => 'aktif',
-                'password' => Hash::make('password')
+                'password' => Hash::make('admin@harmonyfti')
             ],
             [
                 'name' => 'Akademik',
-                'email' => 'akademik@fti.com',
+                'email' => 'adminakademik@harmonyfti',
                 'role' => 'akademik',
                 'status' => 'aktif',
-                'password' => Hash::make('password')
+                'password' => Hash::make('admin@harmonyfti')
             ],
             [
                 'name' => 'Kemahasiswaan',
-                'email' => 'kemahasiswaan@fti.com',
+                'email' => 'adminkemahasiswaan@harmonyfti',
                 'role' => 'kemahasiswaan',
                 'status' => 'aktif',
-                'password' => Hash::make('password')
+                'password' => Hash::make('admin@harmonyfti')
             ],
             [
                 'name' => 'Keuangan',
-                'email' => 'keuangan@fti.com',
+                'email' => 'adminkeuangan@harmonyfti',
                 'role' => 'keuangan',
                 'status' => 'aktif',
-                'password' => Hash::make('password')
+                'password' => Hash::make('admin@harmonyfti')
             ],
             [
                 'name' => 'Prodi',
-                'email' => 'prodi@fti.com',
+                'email' => 'adminprodi@harmonyfti',
                 'role' => 'prodi',
                 'status' => 'aktif',
-                'password' => Hash::make('password')
+                'password' => Hash::make('admin@harmonyfti')
             ],
         ];
     

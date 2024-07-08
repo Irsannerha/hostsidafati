@@ -68,5 +68,8 @@ var AllRekapChart = {
 	}
 };
 
-var chartAllRekap = new ApexCharts(document.querySelector("#chartAllRekap"), AllRekapChart);
-chartAllRekap.render();
+var elementChartAllRekap = document.querySelector("#chartAllRekap")
+if (elementChartAllRekap) {
+    var chartAllRekap = new ApexCharts(elementChartAllRekap, AllRekapChart);
+    chartAllRekap.render();
+}

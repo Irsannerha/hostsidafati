@@ -87,7 +87,7 @@
                 <div class="pd-20 card-box card-hdr" style="background-color: #fff;">
                     <dl class="text-content-box">
                         <dt>Program Studi</dt>
-                        <dd class="custom-dd">{{ $prestasi->Prodi->prodi }}</dd>
+                        <dd class="custom-dd">{{ $prestasi->Prodi ? $prestasi->Prodi->prodi : 'N/A' }}</dd>
 
                         <dt>Nama Mahasiswa/Peserta/Ketua</dt>
                         <dd class="custom-dd">{{ $prestasi->nama_mahasiswa }}</dd>

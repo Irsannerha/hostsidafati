@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Prodi;
 use App\Models\Prestasi;
@@ -35,49 +36,51 @@ class HomeController extends Controller
     return view('client.kegiatan', compact('prodi', 'kegiatan'));
     }
 
-    public function UploadKegiatan (Request $request)
-    {
-        $request->validate([
-            'prodi_id' => 'required',
-            'email' => 'required',
-            'nama_kegiatan' => 'required',
-            'tgl_kegiatan' => 'required',
-            'mulai_kegiatan' => 'required',
-            'akhir_kegiatan' => 'required',
-            'tempat_pelaksanaan' => 'required',
-            'jumlah_peserta' => 'required',
-            'penanggung_jawab' => 'required',
-            'nama_pemohon' => 'required',
-            'no_hp' => 'required',
-            'surat_izin' => 'required|mimes:pdf|max:2048',
-        ]);
+    public function UploadKegiatan(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'prodi_id' => 'required',
+        'email' => 'required|email',
+        'nama_kegiatan' => 'required',
+        'tgl_kegiatan' => 'required|date',
+        'mulai_kegiatan' => 'required',
+        'akhir_kegiatan' => 'required',
+        'tempat_pelaksanaan' => 'required',
+        'jumlah_peserta' => 'required|integer',
+        'penanggung_jawab' => 'required',
+        'nama_pemohon' => 'required',
+        'no_hp' => 'required|regex:/^[0-9]{10,15}$/',
+        'surat_izin' => 'required|mimes:pdf|max:2048',
+    ]);
 
-        $kegiatan = new Kegiatan;
-        $kegiatan->prodi_id = $request->prodi_id;
-        $kegiatan->email = $request->email;
-        $kegiatan->nama_kegiatan = $request->nama_kegiatan;
-        $kegiatan->tgl_kegiatan = $request->tgl_kegiatan;
-        $kegiatan->mulai_kegiatan = $request->mulai_kegiatan;
-        $kegiatan->akhir_kegiatan = $request->akhir_kegiatan;
-        $kegiatan->tempat_pelaksanaan = $request->tempat_pelaksanaan;
-        $kegiatan->jumlah_peserta = $request->jumlah_peserta;
-        $kegiatan->penanggung_jawab = $request->penanggung_jawab;
-        $kegiatan->nama_pemohon = $request->nama_pemohon;
-        $kegiatan->no_hp = $request->no_hp;
-        $kegiatan->surat_izin = $request->surat_izin;
-        if ($request->hasFile('surat_izin')) {
-            $surat_izin = $request->file('surat_izin');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_Surat_Izin_' . $kegiatan->nama_kegiatan . '.' . $surat_izin->getClientOriginalExtension();
-            $kegiatan->surat_izin = $file_name;
-            $kegiatan->update();
-            $surat_izin->move('../public/assets/surat_izin/', $file_name);
-        }
-
-        $kegiatan->save();
-        // dd($kegiatan);
-
-        return back()->with('success_create_data', 'Selamat! Data Pengajuan Kegiatanmu Berhasil');
+    if ($validator->fails()) {
+        $errors = $validator->errors();
+        return back()->withErrors($errors)->withInput();
     }
+
+    $kegiatan = new Kegiatan;
+    $kegiatan->prodi_id = $request->prodi_id;
+    $kegiatan->email = $request->email;
+    $kegiatan->nama_kegiatan = $request->nama_kegiatan;
+    $kegiatan->tgl_kegiatan = $request->tgl_kegiatan;
+    $kegiatan->mulai_kegiatan = $request->mulai_kegiatan;
+    $kegiatan->akhir_kegiatan = $request->akhir_kegiatan;
+    $kegiatan->tempat_pelaksanaan = $request->tempat_pelaksanaan;
+    $kegiatan->jumlah_peserta = $request->jumlah_peserta;
+    $kegiatan->penanggung_jawab = $request->penanggung_jawab;
+    $kegiatan->nama_pemohon = $request->nama_pemohon;
+    $kegiatan->no_hp = $request->no_hp;
+
+    if ($request->hasFile('surat_izin')) {
+        $surat_izin = $request->file('surat_izin');
+        $file_name = date('d-m-Y', strtotime('+7 hours')) . '_Surat_Izin_' . $kegiatan->nama_kegiatan . '.' . $surat_izin->getClientOriginalExtension();
+        $kegiatan->surat_izin = $file_name;
+        $surat_izin->move(public_path('assets/surat_izin/'), $file_name);
+    }
+
+    $kegiatan->save();
+    return back()->with('success_create_data', 'Selamat! Data Pengajuan Kegiatanmu Berhasil');
+}
     
     public function kontak()
 
@@ -106,59 +109,63 @@ class HomeController extends Controller
     }
 
     public function UploadPrestasi(Request $request)
-    {
-        $request->validate([
-            'prodi_id' => 'required',
-            'nama_tim' => 'required',
-            'nama_mahasiswa' => 'required',
-            'nim' => 'required',
-            'kontak' => 'required',
-            'jenis_prestasi' => 'required',
-            'jumlah_peserta' => 'required',
-            'kategori_olahraga' => 'required',
-            'tahun_kegiatan' => 'required',
-            'url_penyelenggara' => 'required',
-            'nama_penyelenggara' => 'required',
-            'tgl_kegiatan' => 'required',
-            'tingkat_kejuaraan' => 'required',
-            'judul_karya' => 'required',
-            'anggota_karya' => 'required',
-            'foto.*' => 'required|mimes:jpg,jpeg,png|max:2048',
-            // Perhatikan bahwa Anda memerlukan setidaknya 3 foto
-            'foto' => 'required|array|min:3',
-        ]);
-    
-        $prestasi = new Prestasi;
-        $prestasi->prodi_id = $request->prodi_id;
-        $prestasi->nama_tim = $request->nama_tim;
-        $prestasi->nama_mahasiswa = $request->nama_mahasiswa;
-        $prestasi->nim = $request->nim;
-        $prestasi->kontak = $request->kontak;
-        $prestasi->jenis_prestasi = $request->jenis_prestasi;
-        $prestasi->jumlah_peserta = $request->jumlah_peserta;
-        $prestasi->kategori_olahraga = $request->kategori_olahraga;
-        $prestasi->tahun_kegiatan = $request->tahun_kegiatan;
-        $prestasi->url_penyelenggara = $request->url_penyelenggara;
-        $prestasi->nama_penyelenggara = $request->nama_penyelenggara;
-        $prestasi->tgl_kegiatan = $request->tgl_kegiatan;
-        $prestasi->tingkat_kejuaraan = $request->tingkat_kejuaraan;
-        $prestasi->judul_karya = $request->judul_karya;
-        $prestasi->anggota_karya = $request->anggota_karya;
-    
-        if ($request->hasFile('foto')) {
-            $fotoPaths = [];
-            foreach ($request->file('foto') as $key => $foto) {
-                $file_name = date('d-m-Y', strtotime('+7 hours')) . '_Foto_' . ($key + 1) . '_' . $prestasi->nim . '.' . $foto->getClientOriginalExtension();
-                $fotoPaths[] = $file_name;
-                $foto->move(public_path('assets/foto/'), $file_name);
-            }
-            $prestasi->foto = json_encode($fotoPaths); // menyimpan nama file sebagai string JSON
-        }
-    
-        $prestasi->save();
-    
-        return back()->with('success_create_data', 'Selamat! Data Prestasimu Berhasil Ditambah');
+{
+    $validator = Validator::make($request->all(), [
+        'prodi_id' => 'required',
+        'nama_tim' => 'required',
+        'nama_mahasiswa' => 'required',
+        'nim' => 'required',
+        'kontak' => 'required',
+        'jenis_prestasi' => 'required',
+        'jumlah_peserta' => 'required',
+        'kategori_olahraga' => 'required',
+        'tahun_kegiatan' => 'required',
+        'url_penyelenggara' => 'required',
+        'nama_penyelenggara' => 'required',
+        'tgl_kegiatan' => 'required',
+        'tingkat_kejuaraan' => 'required',
+        'judul_karya' => 'required',
+        'anggota_karya' => 'required',
+        'foto.*' => 'required|mimes:jpg,jpeg,png|max:2048',
+        'foto' => 'required|array|min:3',
+    ]);
+
+    if ($validator->fails()) {
+        $errors = $validator->errors();
+        return back()->withErrors($errors)->withInput();
     }
+
+    $prestasi = new Prestasi;
+    $prestasi->prodi_id = $request->prodi_id;
+    $prestasi->nama_tim = $request->nama_tim;
+    $prestasi->nama_mahasiswa = $request->nama_mahasiswa;
+    $prestasi->nim = $request->nim;
+    $prestasi->kontak = $request->kontak;
+    $prestasi->jenis_prestasi = $request->jenis_prestasi;
+    $prestasi->jumlah_peserta = $request->jumlah_peserta;
+    $prestasi->kategori_olahraga = $request->kategori_olahraga;
+    $prestasi->tahun_kegiatan = $request->tahun_kegiatan;
+    $prestasi->url_penyelenggara = $request->url_penyelenggara;
+    $prestasi->nama_penyelenggara = $request->nama_penyelenggara;
+    $prestasi->tgl_kegiatan = $request->tgl_kegiatan;
+    $prestasi->tingkat_kejuaraan = $request->tingkat_kejuaraan;
+    $prestasi->judul_karya = $request->judul_karya;
+    $prestasi->anggota_karya = $request->anggota_karya;
+
+    if ($request->hasFile('foto')) {
+        $fotoPaths = [];
+        foreach ($request->file('foto') as $key => $foto) {
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_Foto_' . ($key + 1) . '_' . $prestasi->nim . '.' . $foto->getClientOriginalExtension();
+            $fotoPaths[] = $file_name;
+            $foto->move(public_path('assets/foto/'), $file_name);
+        }
+        $prestasi->foto = json_encode($fotoPaths); // menyimpan nama file sebagai string JSON
+    }
+
+    $prestasi->save();
+
+    return back()->with('success_create_data', 'Selamat! Data Prestasimu Berhasil Ditambah');
+}
     
 
     public function tentang()

@@ -48,4 +48,10 @@ class JumlahDosenController extends Controller
         }
     }
 
+    public function getChartData()
+    {
+        $data = Prodi::select('prodi', 'jumlah_dosen')->get();
+        return response()->json($data);
+    }
+
 }

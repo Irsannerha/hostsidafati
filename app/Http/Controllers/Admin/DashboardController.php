@@ -33,6 +33,7 @@ class DashboardController extends Controller
         if ($latestTahun !== null) {
             $tahun->push($latestTahun);
         }
+        $countAllDosen = Prodi::sum('jumlah_dosen');
         $countProdi = Prodi::count();
         $countPejabat = Pejabat::count();
         $countDosen = Dosen::count();
@@ -79,6 +80,7 @@ class DashboardController extends Controller
         'mhsWafat',
         'mhsLulus',
         'hasilGabungan',
+        'countAllDosen'
     ));
     }
 }
