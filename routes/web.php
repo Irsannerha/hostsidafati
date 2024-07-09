@@ -67,7 +67,7 @@ use App\Models\Prestasi;
 */
 
 Route::get('/', function () {
-  return view('welcome');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -217,6 +217,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardMahasiswaController::class, 'index'])->name('dashboard');
   });
 });
+
+Route::get('/dashboard', function () {
+    return view('mahasiswa.dashboard');
+})->name('mahasiswa.dashboard');
+Route::get('/dashboard/form-ta', function () {
+    return view('mahasiswa.form-ta.create');
+})->name('mahasiswa.form-ta.create');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/data', [HomeController::class, 'data'])->name('data');
