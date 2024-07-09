@@ -38,6 +38,9 @@ use App\Http\Controllers\Admin\FormWcrController;
 use App\Http\Controllers\Admin\FormRekomController;
 use App\Http\Controllers\Admin\FormBukrimController;
 
+// Mahasiswa
+use App\Http\Controllers\Mahasiswa\DashboardMahasiswaController;
+
 
 // Client
 use App\Http\Controllers\Client\HomeController;
@@ -49,6 +52,7 @@ use App\Http\Middleware\Akademik;
 use App\Http\Middleware\Kemahasiswaan;
 use App\Http\Middleware\Keuangan;
 use App\Http\Middleware\Prodi;
+use App\Http\Middleware\Mahasiswa;
 use App\Models\Prestasi;
 
 /*
@@ -70,143 +74,148 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 
+  Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+  Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+  Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+  // CMS SUPER ADMIN
+  Route::middleware([Superadmin::class])->name('superadmin.')->prefix('superadmin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::resource('user', UserController::class);
+    Route::resource('prodi', ProdiController::class);
+    Route::resource('jumlah_dosen', JumlahDosenController::class);
+    Route::resource('resign', ResignController::class);
+    Route::resource('taslab', TaslabController::class);
+    Route::resource('pejabat', PejabatController::class);
+    Route::resource('dosbel', DosbelController::class);
+    Route::resource('asmikbel', AsmikbelController::class);
+    Route::resource('doslubi', DoslubiController::class);
+    Route::resource('dosen', DosenController::class);
+    Route::resource('kegiatan', KegiatanController::class);
+    Route::resource('prestasi', PrestasiController::class);
+    Route::resource('aknalu', AknaluController::class);
+    Route::resource('tahun', TahunController::class);
+    Route::resource('all-rekap', AllRekapController::class);
+    Route::resource('mhs-aktif', MhsAktifController::class);
+    Route::resource('undur-diri', UndurDiriController::class);
+    Route::resource('keluar', KeluarController::class);
+    Route::resource('wafat', WafatController::class);
+    Route::resource('lulus', LulusController::class);
+    Route::resource('mhs-ta', MhsTAController::class);
+    Route::resource('jumlah', JumlahController::class);
+    Route::resource('form-ta', FormTAController::class);
+    Route::resource('form-kp', FormKPController::class);
+    Route::resource('form-khs', FormKHSController::class);
+    Route::resource('form-wcr', FormWcrController::class);
+    Route::resource('form-rekom', FormRekomController::class);
+    Route::resource('form-stm', FormSTMController::class);
+    Route::resource('form-legal', FormLegalController::class);
+    Route::resource('form-bukrim', FormBukrimController::class);
+  });
 
-    // CMS SUPER ADMIN
-    Route::middleware([Superadmin::class])->name('superadmin.')->prefix('superadmin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('user', UserController::class);
-        Route::resource('prodi', ProdiController::class);
-        Route::resource('jumlah_dosen', JumlahDosenController::class);
-        Route::resource('resign', ResignController::class);
-        Route::resource('taslab', TaslabController::class);
-        Route::resource('pejabat', PejabatController::class);
-        Route::resource('dosbel', DosbelController::class);
-        Route::resource('asmikbel', AsmikbelController::class);
-        Route::resource('doslubi', DoslubiController::class);
-        Route::resource('dosen', DosenController::class);
-        Route::resource('kegiatan', KegiatanController::class);
-        Route::resource('prestasi', PrestasiController::class);
-        Route::resource('aknalu', AknaluController::class);
-        Route::resource('tahun', TahunController::class);
-        Route::resource('all-rekap', AllRekapController::class);
-        Route::resource('mhs-aktif', MhsAktifController::class);
-        Route::resource('undur-diri', UndurDiriController::class);
-        Route::resource('keluar', KeluarController::class);
-        Route::resource('wafat', WafatController::class);
-        Route::resource('lulus', LulusController::class);
-        Route::resource('mhs-ta', MhsTAController::class);
-        Route::resource('jumlah', JumlahController::class);
-        Route::resource('form-ta', FormTAController::class);
-        Route::resource('form-kp', FormKPController::class);
-        Route::resource('form-khs', FormKHSController::class);
-        Route::resource('form-wcr', FormWcrController::class);
-        Route::resource('form-rekom', FormRekomController::class);
-        Route::resource('form-stm', FormSTMController::class);
-        Route::resource('form-legal', FormLegalController::class);
-        Route::resource('form-bukrim', FormBukrimController::class);
-    });
+  // Chart Data
+  Route::get('/chart-data-Mhs-Aktif', [MhsAktifController::class, 'getchartDataMhsAktif'])->name('chart.data');
+  Route::get('/chart-data-Undur-Diri', [UndurDiriController::class, 'getchartDataUndurDiri'])->name('chart.data');
 
-    // Chart Data
-    Route::get('/chart-data-Mhs-Aktif', [MhsAktifController::class, 'getchartDataMhsAktif'])->name('chart.data');
-    Route::get('/chart-data-Undur-Diri', [UndurDiriController::class, 'getchartDataUndurDiri'])->name('chart.data');
+  //  Export Data
+  Route::get('prodi/export', [ProdiController::class, 'export']);
+  Route::get('pejabat/export', [PejabatController::class, 'export']);
+  Route::get('dosbel/export', [DosbelController::class, 'export']);
+  Route::get('asmikbel/export', [AsmikbelController::class, 'export']);
+  Route::get('doslubi/export', [DoslubiController::class, 'export']);
+  Route::get('dosen/export', [DosenController::class, 'export']);
+  Route::get('taslab/export', [TaslabController::class, 'export']);
+  Route::get('resign/export', [ResignController::class, 'export']);
+  Route::get('prestasi/export', [PrestasiController::class, 'export']);
+  Route::get('kegiatan/export', [KegiatanController::class, 'export']);
+  Route::get('MhsAktif/export', [MhsAktifController::class, 'export']);
+  Route::get('UndurDiri/export', [UndurDiriController::class, 'export']);
+  Route::get('Keluar/export', [KeluarController::class, 'export']);
+  Route::get('Wafat/export', [WafatController::class, 'export']);
+  Route::get('Lulus/export', [LulusController::class, 'export']);
+  Route::get('TugasAkhir/export', [MhsTAController::class, 'export']);
 
-    //  Export Data
-    Route::get('prodi/export', [ProdiController::class, 'export']);
-    Route::get('pejabat/export', [PejabatController::class, 'export']);
-    Route::get('dosbel/export', [DosbelController::class, 'export']);
-    Route::get('asmikbel/export', [AsmikbelController::class, 'export']);
-    Route::get('doslubi/export', [DoslubiController::class, 'export']);
-    Route::get('dosen/export', [DosenController::class, 'export']);
-    Route::get('taslab/export', [TaslabController::class, 'export']);
-    Route::get('resign/export', [ResignController::class, 'export']);
-    Route::get('prestasi/export', [PrestasiController::class, 'export']);
-    Route::get('kegiatan/export', [KegiatanController::class, 'export']);
-    Route::get('MhsAktif/export', [MhsAktifController::class, 'export']);
-    Route::get('UndurDiri/export', [UndurDiriController::class, 'export']);
-    Route::get('Keluar/export', [KeluarController::class, 'export']);
-    Route::get('Wafat/export', [WafatController::class, 'export']);
-    Route::get('Lulus/export', [LulusController::class, 'export']);
-    Route::get('TugasAkhir/export', [MhsTAController::class, 'export']);
+  // Import Data
+  Route::get('/prodi/template', [ProdiController::class, 'downloadTemplate'])->name('prodi.template');
+  Route::post('/prodi/import', [ProdiController::class, 'import'])->name('prodi.import');
+  Route::get('/pejabat/template', [PejabatController::class, 'downloadTemplate'])->name('pejabat.template');
+  Route::post('/pejabat/import', [PejabatController::class, 'import'])->name('pejabat.import');
+  Route::get('/dosbel/template', [DosbelController::class, 'downloadTemplate'])->name('dosbel.template');
+  Route::post('/dosbel/import', [DosbelController::class, 'import'])->name('dosbel.import');
+  Route::get('/asmikbel/template', [AsmikbelController::class, 'downloadTemplate'])->name('asmikbel.template');
+  Route::post('/asmikbel/import', [AsmikbelController::class, 'import'])->name('asmikbel.import');
+  Route::get('/doslubi/template', [DoslubiController::class, 'downloadTemplate'])->name('doslubi.template');
+  Route::post('/doslubi/import', [DoslubiController::class, 'import'])->name('doslubi.import');
+  Route::get('/dosen/template', [DosenController::class, 'downloadTemplate'])->name('dosen.template');
+  Route::post('/dosen/import', [DosenController::class, 'import'])->name('dosen.import');
+  Route::get('/taslab/template', [TaslabController::class, 'downloadTemplate'])->name('taslab.template');
+  Route::post('/taslab/import', [TaslabController::class, 'import'])->name('taslab.import');
+  Route::get('/resign/template', [ResignController::class, 'downloadTemplate'])->name('resign.template');
+  Route::post('/resign/import', [ResignController::class, 'import'])->name('resign.import');
+  Route::get('/MhsAktif/template', [MhsAktifController::class, 'downloadTemplate'])->name('MhsAktif.template');
+  Route::post('/MhsAktif/import', [MhsAktifController::class, 'import'])->name('MhsAktif.import');
+  Route::get('/UndurDiri/template', [UndurDiriController::class, 'downloadTemplate'])->name('UndurDiri.template');
+  Route::post('/UndurDiri/import', [UndurDiriController::class, 'import'])->name('UndurDiri.import');
+  Route::get('/Keluar/template', [KeluarController::class, 'downloadTemplate'])->name('Keluar.template');
+  Route::post('/Keluar/import', [KeluarController::class, 'import'])->name('Keluar.import');
+  Route::get('/Wafat/template', [WafatController::class, 'downloadTemplate'])->name('Wafat.template');
+  Route::post('/Wafat/import', [WafatController::class, 'import'])->name('Wafat.import');
+  Route::get('/Lulus/template', [LulusController::class, 'downloadTemplate'])->name('Lulus.template');
+  Route::post('/Lulus/import', [LulusController::class, 'import'])->name('Lulus.import');
+  Route::get('TugasAkhir/template', [MhsTAController::class, 'downloadTemplate'])->name('TugasAkhir.template');
+  Route::post('TugasAkhir/import', [MhsTAController::class, 'import'])->name('TugasAkhir.import');
 
-    // Import Data
-    Route::get('/prodi/template', [ProdiController::class, 'downloadTemplate'])->name('prodi.template');
-    Route::post('/prodi/import', [ProdiController::class, 'import'])->name('prodi.import');
-    Route::get('/pejabat/template', [PejabatController::class, 'downloadTemplate'])->name('pejabat.template');
-    Route::post('/pejabat/import', [PejabatController::class, 'import'])->name('pejabat.import');
-    Route::get('/dosbel/template', [DosbelController::class, 'downloadTemplate'])->name('dosbel.template');
-    Route::post('/dosbel/import', [DosbelController::class, 'import'])->name('dosbel.import');
-    Route::get('/asmikbel/template', [AsmikbelController::class, 'downloadTemplate'])->name('asmikbel.template');
-    Route::post('/asmikbel/import', [AsmikbelController::class, 'import'])->name('asmikbel.import');
-    Route::get('/doslubi/template', [DoslubiController::class, 'downloadTemplate'])->name('doslubi.template');
-    Route::post('/doslubi/import', [DoslubiController::class, 'import'])->name('doslubi.import');
-    Route::get('/dosen/template', [DosenController::class, 'downloadTemplate'])->name('dosen.template');
-    Route::post('/dosen/import', [DosenController::class, 'import'])->name('dosen.import');
-    Route::get('/taslab/template', [TaslabController::class, 'downloadTemplate'])->name('taslab.template');
-    Route::post('/taslab/import', [TaslabController::class, 'import'])->name('taslab.import');
-    Route::get('/resign/template', [ResignController::class, 'downloadTemplate'])->name('resign.template');
-    Route::post('/resign/import', [ResignController::class, 'import'])->name('resign.import');
-    Route::get('/MhsAktif/template', [MhsAktifController::class, 'downloadTemplate'])->name('MhsAktif.template');
-    Route::post('/MhsAktif/import', [MhsAktifController::class, 'import'])->name('MhsAktif.import');
-    Route::get('/UndurDiri/template', [UndurDiriController::class, 'downloadTemplate'])->name('UndurDiri.template');
-    Route::post('/UndurDiri/import', [UndurDiriController::class, 'import'])->name('UndurDiri.import');
-    Route::get('/Keluar/template', [KeluarController::class, 'downloadTemplate'])->name('Keluar.template');
-    Route::post('/Keluar/import', [KeluarController::class, 'import'])->name('Keluar.import');
-    Route::get('/Wafat/template', [WafatController::class, 'downloadTemplate'])->name('Wafat.template');
-    Route::post('/Wafat/import', [WafatController::class, 'import'])->name('Wafat.import');
-    Route::get('/Lulus/template', [LulusController::class, 'downloadTemplate'])->name('Lulus.template');
-    Route::post('/Lulus/import', [LulusController::class, 'import'])->name('Lulus.import');
-    Route::get('TugasAkhir/template', [MhsTAController::class, 'downloadTemplate'])->name('TugasAkhir.template');
-    Route::post('TugasAkhir/import', [MhsTAController::class, 'import'])->name('TugasAkhir.import');
+  // PDF
+  Route::get('/export-pdf', [ProdiController::class, 'exportToPDF'])->name('export.pdf');
 
-    // PDF
-    Route::get('/export-pdf', [ProdiController::class, 'exportToPDF'])->name('export.pdf');
+  // CMS PEGAWAI
+  Route::middleware([Pegawai::class])->name('pegawai.')->prefix('pegawai')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('prodi', ProdiController::class);
+    Route::resource('pejabat', PejabatController::class);
+    Route::resource('jumlah_dosen', JumlahDosenController::class);
+    Route::resource('dosbel', DosbelController::class);
+    Route::resource('asmikbel', AsmikbelController::class);
+    Route::resource('doslubi', DoslubiController::class);
+    Route::resource('dosen', DosenController::class);
+    Route::resource('taslab', TaslabController::class);
+    Route::resource('resign', ResignController::class);
+  });
 
-    // CMS PEGAWAI
-    Route::middleware([Pegawai::class])->name('pegawai.')->prefix('pegawai')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('prodi', ProdiController::class);
-        Route::resource('pejabat', PejabatController::class);
-        Route::resource('jumlah_dosen', JumlahDosenController::class);
-        Route::resource('dosbel', DosbelController::class);
-        Route::resource('asmikbel', AsmikbelController::class);
-        Route::resource('doslubi', DoslubiController::class);
-        Route::resource('dosen', DosenController::class);
-        Route::resource('taslab', TaslabController::class);
-        Route::resource('resign', ResignController::class);
-    });
+  // CMS AKADEMIK
+  Route::middleware([Akademik::class])->name('akademik.')->prefix('akademik')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('tahun', TahunController::class);
+    Route::resource('mhs-aktif', MhsAktifController::class);
+    Route::resource('undur-diri', UndurDiriController::class);
+    Route::resource('keluar', KeluarController::class);
+    Route::resource('wafat', WafatController::class);
+    Route::resource('lulus', LulusController::class);
+    Route::resource('mhs-ta', MhsTAController::class);
+    Route::resource('jumlah', JumlahController::class);
+  });
 
-    // CMS AKADEMIK
-    Route::middleware([Akademik::class])->name('akademik.')->prefix('akademik')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('tahun', TahunController::class);
-        Route::resource('mhs-aktif', MhsAktifController::class);
-        Route::resource('undur-diri', UndurDiriController::class);
-        Route::resource('keluar', KeluarController::class);
-        Route::resource('wafat', WafatController::class);
-        Route::resource('lulus', LulusController::class);
-        Route::resource('mhs-ta', MhsTAController::class);
-        Route::resource('jumlah', JumlahController::class);
-    });
+  // CMS KEMAHASISWAAN
+  Route::middleware([Kemahasiswaan::class])->name('kemahasiswaan.')->prefix('kemahasiswaan')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('kegiatan', KegiatanController::class);
+    Route::resource('prestasi', PrestasiController::class);
+  });
 
-    // CMS KEMAHASISWAAN
-    Route::middleware([Kemahasiswaan::class])->name('kemahasiswaan.')->prefix('kemahasiswaan')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('kegiatan', KegiatanController::class);
-        Route::resource('prestasi', PrestasiController::class);
-    });
+  // CMS KEUANGAN
+  Route::middleware([Keuangan::class])->name('keuangan.')->prefix('keuangan')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+  });
 
-    // CMS KEUANGAN
-    Route::middleware([Keuangan::class])->name('keuangan.')->prefix('keuangan')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    });
+  // CMS PRODI
+  Route::middleware([Prodi::class])->name('prodi.')->prefix('prodi')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+  });
 
-    // CMS PRODI
-    Route::middleware([Prodi::class])->name('prodi.')->prefix('prodi')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    });
+  // Mahasiswa
+  Route::middleware([Mahasiswa::class])->name('mahasiswa.')->prefix('mahasiswa')->group(function () {
+    Route::get('/dashboard', [DashboardMahasiswaController::class, 'index'])->name('dashboard');
+  });
 });
 
 Route::get('/dashboard', function () {

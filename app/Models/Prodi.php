@@ -26,4 +26,8 @@ class Prodi extends Model
         'jumlah_dosen',
         'sk_prodi',
     ];
+
+    public function mahasiswa(){
+        return $this->hasMany(Mahasiswa::class);
+    }
 }

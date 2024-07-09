@@ -12,6 +12,14 @@ class LoginController extends Controller
 
     protected function authenticated($request, $user)
     {
+        if ($user->role == 'mahasiswa' || $user->role == 'dosen') {
+            if ($user->role == 'mahasiswa') {
+                $redirectTo = '/mahasiswa/dashboard';
+            } elseif ($user->role == 'dosen') {
+                $redirectTo = '/dosen/dashboard';
+            }
+            session()->flash('success', 'Selamat datang' . $user->name);
+        }else{
         if ($user->role == 'superadmin') {
             $redirectTo = '/superadmin/dashboard';
         } elseif ($user->role == 'pegawai') {
@@ -27,8 +35,8 @@ class LoginController extends Controller
         } else {
             $redirectTo = '/login';
         }
-
         session()->flash('success', 'Selamat datang, Admin ' . $user->role);
+    }
 
         return redirect()->intended($redirectTo);
     }

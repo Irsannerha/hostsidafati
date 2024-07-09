@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('dosen', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('nip_nrk');
+            $table->string('nip_nrk')->unique(); // Menambahkan unique constraint
             $table->foreignId('prodi_id');
             $table->date('tgl_lahir');
             $table->string('pendidikan');

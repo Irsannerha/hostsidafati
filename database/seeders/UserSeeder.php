@@ -59,25 +59,39 @@ class UserSeeder extends Seeder
                 'status' => 'aktif',
                 'password' => Hash::make('password')
             ],
+            [
+                'name' => 'Mahasiswa',
+                'email' => 'mahasiswa@test.com',
+                'role' => 'mahasiswa',
+                'status' => 'aktif',
+                'password' => Hash::make('password')
+            ],
+            [
+                'name' => 'Dosen',
+                'email' => 'dosen@test.com',
+                'role' => 'dosen',
+                'status' => 'aktif',
+                'password' => Hash::make('password')
+            ],
         ];
-    
+
         // // Variabel untuk menyimpan data pengguna
         // $allUsers = [];
-    
+
         // // Perulangan sebanyak 15 kali
         // for ($i = 0; $i < 15; $i++) {
         //     // Ambil data dari array contoh berdasarkan indeks perulangan
         //     $user = $usersTemplate[$i % count($usersTemplate)];
-            
+
         //     // Tambahkan email yang unik untuk setiap data
         //     $user['email'] = str_replace('@fti.itera.ac.id', sprintf('%d@fti.itera.ac.id', $i), $user['email']);
-            
+
         //     // Tambahkan data pengguna ke dalam array
         //     $allUsers[] = $user;
         // }
-    
+
         // Masukkan data pengguna ke dalam database
         User::query()->insert($usersTemplate);
     }
-   
+
 }
