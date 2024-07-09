@@ -41,86 +41,49 @@
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon fa fa-graduation-cap"></span><span class="mtext">Kemahasiswaan</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="{{ route('mahasiswa.form-ta.create') }}">Form Pengajuan Tugas Akhir</a></li>
-                        <li><a href="{{ route('superadmin.form-kp.index') }}">Form Pengajuan Kerja Praktik</a></li>
-                        <li><a href="{{ route('superadmin.form-khs.index') }}">Form Pengajuan Pengajuan
-                                KHS/Transkrip/Dokumen</a></li>
-                        <li><a href="{{ route('superadmin.form-wcr.index') }}">Form Pengajuan Pengantar Wawancara
-                                Mahasiswa</a></li>
-                        <li><a href="{{ route('superadmin.form-rekom.index') }}">Form Pengajuan Surat Rekomendasi</a>
-                        </li>
-                        <li><a href="{{ route('superadmin.form-stm.index') }}">Form Pengajuan Surat Tugas Mahasiswa</a>
-                        </li>
-                        <li><a href="{{ route('superadmin.form-bukrim.index') }}">Form Form Tanda Bukti Penerimaan
-                                Berkas</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon fa fa-institution"></span><span class="mtext">Akademik</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('superadmin.tahun.index') }}">Tahun Semester</a></li>
-                        <li><a href="{{ route('superadmin.mhs-aktif.index') }}">Mahasiswa Aktif</a></li>
-                        <li><a href="{{ route('superadmin.mhs-ta.index') }}">Mahasiswa Lulus Tugas Akhir</a></li>
-                        <li><a href="{{ route('superadmin.undur-diri.index') }}">Mahasiswa Mengundurkan Diri</a></li>
-                        <li><a href="{{ route('superadmin.keluar.index') }}">Mahasiswa Dikeluarkan</a></li>
-                        <li><a href="{{ route('superadmin.wafat.index') }}">Mahasiswa Wafat</a></li>
-                        <li><a href="{{ route('superadmin.lulus.index') }}">Lulus/Wisuda</a></li>
-                        <li><a href="{{ route('superadmin.jumlah.index') }}">Jumlah Gabungan</a></li>
+                        <li><a href="{{ route('mahasiswa.form-ta.create') }}">Pengajuan Tugas Akhir</a></li>
+                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pengajuan Kerja Praktik</a></li>
+                        <li><a href="{{ route('superadmin.form-khs.index') }}">Pengajuan
+                                KHS/Transkrip/Dokumen</a></li>
+                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pendaftaran Yudisium</a></li>
+                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pengajuan Dispendansasi Kuliah</a>
+                        </li>
+                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pengajuan Pengantar Kerja</a>
+                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pengajuan Pengantar Kuliah
+                                Lapangan</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon fa fa-paper-plane"></span><span class="mtext">Pengajuan Mahasiswa</span>
+                        <span class="micon fa fa-graduation-cap"></span><span class="mtext">Kemahasiswaan</span>
                     </a>
+                    <ul class="submenu">
+                        <li><a href="#">Pengajuan Pemotongan UKT</a></li>
+                        <li><a href="#">Pengajuan Pengajuan Cuti</a></li>
+                        <li><a href="#">Pengajuan Permohonanan Pengantar Studio</a></li>
+                        <li><a href="#">Pengajuan Pengunduran Diri Mahasiswa</a></li>
+                        <li><a href="#">Pengajuan Rekomendasi Mahasiswa</a></li>
+                        <li><a href="#">Peminjaman Alat Laboratorium</a></li>
+                        <li><a href="#">Permohonanan Izin Penelitian</a></li>
+
+                    </ul>
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon ti-headphone-alt"></span><span class="mtext">Admin</span>
+                        <span class="micon fa fa-gears"></span><span class="mtext">Sarana dan Prasarana</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('superadmin.user.index') }}">User Admin</a></li>
+                        <li><a href="#">Pengajuan Izin Kegiatan Senin-Jumat HIMA</a></li>
+                        <li><a href="#">Pengajuan Izin Kegiatan Sabtu-Minggu HIMA</a></li>
+                        <li><a href="#">Pengajuan Izin Kegiatan Senin-Jumat UKM</a></li>
+                        <li><a href="#">Pengajuan Izin Kegiatan Sabtu-Minggu UKM</a></li>
+                        <li><a href="#">Pengajuan Izin Peminjaman Ruang Kelas</a></li>
                     </ul>
                 </li>
-                <!-- <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon fa fa-money"></span><span class="mtext">Keuangan</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="bootstrap-icon.html">Bootstrap Icons</a></li>
-                        <li><a href="font-awesome.html">FontAwesome Icons</a></li>
-                        <li><a href="foundation.html">Foundation Icons</a></li>
-                        <li><a href="ionicons.html">Ionicons Icons</a></li>
-                        <li><a href="themify.html">Themify Icons</a></li>
-                        <li><a href="custom-icon.html">Custom Icons</a></li>
-                    </ul>
-                </li> -->
-                <!-- <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon fa fa-envelope"></span><span class="mtext">Surat Masuk & Keluar</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="highchart.html">Highchart</a></li>
-                        <li><a href="knob-chart.html">jQuery Knob</a></li>
-                        <li><a href="jvectormap.html">jvectormap</a></li>
-                        <li><a href="apexcharts.html">Apexcharts</a></li>
-                    </ul>
-                </li> -->
-                <!-- <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon fa fa-gears"></span><span class="mtext">Sarpras</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="video-player.html">Video Player</a></li>
-                        <li><a href="login.html">Login</a></li>
-                        <li><a href="forgot-password.html">Forgot Password</a></li>
-                        <li><a href="reset-password.html">Reset Password</a></li>
-                    </ul>
-                </li> -->
                 <li>
                     <div class="dropdown-divider"></div>
                     <a href="/logout" class="dropdown-toggle no-arrow">

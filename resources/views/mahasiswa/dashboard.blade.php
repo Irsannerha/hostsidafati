@@ -19,7 +19,8 @@
                         </div>
                         <div class="col-md-6 col-sm-12 text-right">
                             <div class="time">
-                                <button id="dateTime" class="btn btn-primary font-weight-bold" type="button" data-toggle="dropdown">
+                                <button id="dateTime" class="btn btn-primary font-weight-bold" type="button"
+                                    data-toggle="dropdown">
                                     <span id="currentDateTime"></span>
                                 </button>
                             </div>
@@ -105,11 +106,65 @@
                             <button class="btn btn-primary font-weight-bold" onclick="exportToExcel()">Excel</button>
                             <!-- <button type="button" class="btn btn-primary font-weight-bold" data-toggle="modal" data-target="#ImportModal">Import</button> -->
                         </div>
-                        <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons" style="float: right;">
-                            <button class="btn btn-dark btn-sm font-weight-bold" type="button" onclick="filterByStatus('Semua')">Semua</button>
-                            <button class="btn btn-success btn-sm font-weight-bold" type="button" onclick="filterByStatus('Selesai')">Selesai</button>
-                            <button class="btn btn-warning btn-sm font-weight-bold" type="button" onclick="filterByStatus('Diproses')">Diproses</button>
-                            <button class="btn btn-danger btn-sm font-weight-bold" type="button" onclick="filterByStatus('Ditolak')">Ditolak</button>
+                        <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons"
+                            style="float: right;">
+                            <button class="btn btn-dark btn-sm font-weight-bold" type="button"
+                                onclick="filterByStatus('Semua')">Semua</button>
+                            <button class="btn btn-success btn-sm font-weight-bold" type="button"
+                                onclick="filterByStatus('Selesai')">Selesai</button>
+                            <button class="btn btn-warning btn-sm font-weight-bold" type="button"
+                                onclick="filterByStatus('Diproses')">Diproses</button>
+                            <button class="btn btn-danger btn-sm font-weight-bold" type="button"
+                                onclick="filterByStatus('Ditolak')">Ditolak</button>
+                        </div>
+                        <div class="pb-20">
+                            <table id="dataTable" class="data-table table stripe hover nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="table-plus datatable-nosort">#</th>
+                                        <th>Program Studi</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
+                                        <th class="datatable-nosort">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr data-status="">
+                                        <td class="table-plus">1</td>
+                                        <td>Informatika</td>
+                                        <td><span class="btn btn-outline-primary btn-lg"
+                                                style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">bendry@test</span>
+                                        </td>
+                                        <td>
+                                            Selesai
+                                        </td>
+
+                                        <td>
+                                            <div class="table-actions">
+                                                <a class="btn btn-xxs btn-primary mr-1"
+                                                    style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
+                                                    data-color="#fff" data-toggle="modal">
+                                                    <i class="icon-copy dw dw-eye"></i> Lihat
+                                                </a>
+                                                <a href="{{ route('superadmin.form-ta.edit', 1) }}"
+                                                    class="btn btn-xxs btn-primary mr-1"
+                                                    style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
+                                                    data-color="#fff">
+                                                    <i class="icon-copy dw dw-edit2"></i> Edit
+                                                </a>
+                                                <a class="btn btn-xxs btn-primary mr-1"
+                                                    style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
+                                                    data-color="#fff" data-toggle="modal"
+                                                    data-target="#deleteModal{{ 1 }}">
+                                                    <i class="icon-copy dw dw-delete-3"></i> Hapus
+                                                </a>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
@@ -125,7 +180,7 @@
 </x-mahasiswa-app>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const countStatuses = () => {
             const rows = document.querySelectorAll('#dataTable tbody tr');
             let countSelesai = 0;
@@ -170,28 +225,28 @@
 @if(session('success_create_data'))
     <script>
         swal(
-                {
-                    position: 'center',
-                    type: 'success',
-                    title: "{{ session('success_create_data') }}",
-                    showConfirmButton: false,
-                    timer: 3000
-                }
-            )
+            {
+                position: 'center',
+                type: 'success',
+                title: "{{ session('success_create_data') }}",
+                showConfirmButton: false,
+                timer: 3000
+            }
+        )
     </script>
 @endif
 
 @if(session('success_delete_data'))
     <script>
-         swal(
-                {
-                    position: 'center',
-                    type: 'success',
-                    title: "{{ session('success_delete_data') }}",
-                    showConfirmButton: false,
-                    timer: 3000
-                }
-            )
+        swal(
+            {
+                position: 'center',
+                type: 'success',
+                title: "{{ session('success_delete_data') }}",
+                showConfirmButton: false,
+                timer: 3000
+            }
+        )
     </script>
 @endif
 
