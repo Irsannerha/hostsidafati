@@ -9,6 +9,7 @@ use App\Models\Aknalu;
 use App\Models\Keluar;
 use App\Models\RekapMhs;
 use App\Models\UndurDiri;
+use App\Models\Mahasiswa;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -46,5 +47,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FormWcrSeeder::class);
         $this->call(FormRekomSeeder::class);
         $this->call(FormBukrimSeeder::class);
+        $this->call(MahasiswaSeeder::class);
 }
 }

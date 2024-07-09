@@ -38,6 +38,9 @@ use App\Http\Controllers\Admin\FormWcrController;
 use App\Http\Controllers\Admin\FormRekomController;
 use App\Http\Controllers\Admin\FormBukrimController;
 
+// Mahasiswa
+use App\Http\Controllers\Mahasiswa\DashboardMahasiswaController;
+
 
 // Client
 use App\Http\Controllers\Client\HomeController;
@@ -49,6 +52,7 @@ use App\Http\Middleware\Akademik;
 use App\Http\Middleware\Kemahasiswaan;
 use App\Http\Middleware\Keuangan;
 use App\Http\Middleware\Prodi;
+use App\Http\Middleware\Mahasiswa;
 use App\Models\Prestasi;
 
 /*
@@ -106,7 +110,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('form-rekom', FormRekomController::class);
     Route::resource('form-stm', FormSTMController::class);
     Route::resource('form-legal', FormLegalController::class);
-    Route::resource('form-bukrim', FormBukrimController::class);  
+    Route::resource('form-bukrim', FormBukrimController::class);
   });
 
   // Chart Data
@@ -131,7 +135,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('Lulus/export', [LulusController::class, 'export']);
   Route::get('TugasAkhir/export', [MhsTAController::class, 'export']);
 
-  // Import Data 
+  // Import Data
   Route::get('/prodi/template', [ProdiController::class, 'downloadTemplate'])->name('prodi.template');
   Route::post('/prodi/import', [ProdiController::class, 'import'])->name('prodi.import');
   Route::get('/pejabat/template', [PejabatController::class, 'downloadTemplate'])->name('pejabat.template');
@@ -206,6 +210,11 @@ Route::middleware(['auth'])->group(function () {
   // CMS PRODI
   Route::middleware([Prodi::class])->name('prodi.')->prefix('prodi')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+  });
+
+  // Mahasiswa
+  Route::middleware([Mahasiswa::class])->name('mahasiswa.')->prefix('mahasiswa')->group(function () {
+    Route::get('/dashboard', [DashboardMahasiswaController::class, 'index'])->name('dashboard');
   });
 });
 
