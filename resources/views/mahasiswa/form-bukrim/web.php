@@ -29,18 +29,18 @@ use App\Http\Controllers\Admin\WafatController;
 use App\Http\Controllers\Admin\LulusController;
 use App\Http\Controllers\Admin\MhsTAController;
 use App\Http\Controllers\Admin\JumlahController;
+use App\Http\Controllers\Mahasiswa\FormTAController;
+use App\Http\Controllers\Admin\FormKPController;
+use App\Http\Controllers\Admin\FormKHSController;
 use App\Http\Controllers\Admin\FormLegalController;
 use App\Http\Controllers\Admin\FormSTMController;
 use App\Http\Controllers\Admin\FormWcrController;
 use App\Http\Controllers\Admin\FormRekomController;
-
+use App\Http\Controllers\Admin\FormBukrimController;
 
 // Mahasiswa
 use App\Http\Controllers\Mahasiswa\DashboardMahasiswaController;
-use App\Http\Controllers\Mahasiswa\FormBukrimController;
-use App\Http\Controllers\Mahasiswa\FormTAController;
-use App\Http\Controllers\Mahasiswa\FormKPController;
-use App\Http\Controllers\Mahasiswa\FormKHSController;
+
 
 // Client
 use App\Http\Controllers\Client\HomeController;
@@ -103,12 +103,13 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('lulus', LulusController::class);
         Route::resource('mhs-ta', MhsTAController::class);
         Route::resource('jumlah', JumlahController::class);
+        Route::resource('form-kp', FormKPController::class);
         Route::resource('form-khs', FormKHSController::class);
         Route::resource('form-wcr', FormWcrController::class);
         Route::resource('form-rekom', FormRekomController::class);
         Route::resource('form-stm', FormSTMController::class);
         Route::resource('form-legal', FormLegalController::class);
-        // Route::resource('form-bukrim', FormBukrimController::class);
+        Route::resource('form-bukrim', FormBukrimController::class);
     });
 
     // Chart Data
@@ -214,9 +215,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware([Mahasiswa::class])->name('mahasiswa.')->prefix('mahasiswa')->group(function () {
         Route::get('/dashboard', [DashboardMahasiswaController::class, 'index'])->name('dashboard');
         Route::resource('form-ta', FormTAController::class);
-        Route::resource('form-bukrim', FormBukrimController::class);
-        Route::resource('form-kp', FormKPController::class);
-        Route::resource('form-khs', FormKHSController::class);
+        // Route::post('/form-bukrim', [HomeController::class, 'UploadFormBukrim'])->name('formbukrim.create');
     });
 });
 
@@ -229,12 +228,12 @@ Route::get('/prestasi', [HomeController::class, 'prestasi'])->name('prestasi');
 Route::post('/prestasi', [HomeController::class, 'UploadPrestasi'])->name('prestasi.store');
 Route::post('/kegiatan', [HomeController::class, 'UploadKegiatan'])->name('kegiatan.store');
 Route::get('/tentang', [HomeController::class, 'tentang'])->name('tentang');
-// Route::get('/form-ta', [HomeController::class, 'formta'])->name('formta');
-// Route::post('/form-ta', [HomeController::class, 'UploadFormTA'])->name('formta.store');
-// Route::get('/form-kp', [HomeController::class, 'formkp'])->name('formkp');
-// Route::post('/form-kp', [HomeController::class, 'UploadFormKP'])->name('formkp.store');
-// Route::get('/form-khs', [HomeController::class, 'formkhs'])->name('formkhs');
-// Route::post('/form-khs', [HomeController::class, 'UploadFormKHS'])->name('formkhs.store');
+Route::get('/form-ta', [HomeController::class, 'formta'])->name('formta');
+Route::post('/form-ta', [HomeController::class, 'UploadFormTA'])->name('formta.store');
+Route::get('/form-kp', [HomeController::class, 'formkp'])->name('formkp');
+Route::post('/form-kp', [HomeController::class, 'UploadFormKP'])->name('formkp.store');
+Route::get('/form-khs', [HomeController::class, 'formkhs'])->name('formkhs');
+Route::post('/form-khs', [HomeController::class, 'UploadFormKHS'])->name('formkhs.store');
 Route::get('/form-legal', [HomeController::class, 'formlegal'])->name('formlegal');
 Route::post('/form-legal', [HomeController::class, 'UploadFormLegal'])->name('formlegal.store');
 Route::get('/form-stm', [HomeController::class, 'formstm'])->name('formstm');
@@ -243,7 +242,7 @@ Route::get('/form-wcr', [HomeController::class, 'formwcr'])->name('formwcr');
 Route::post('/form-wcr', [HomeController::class, 'UploadFormWcr'])->name('formwcr.store');
 Route::get('/form-rekom', [HomeController::class, 'formrekom'])->name('formrekom');
 Route::post('/form-rekom', [HomeController::class, 'UploadFormRekom'])->name('formrekom.store');
-// Route::get('/form-bukrim', [HomeController::class, 'formbukrim'])->name('formbukrim');
-
+Route::get('/form-bukrim', [HomeController::class, 'formbukrim'])->name('formbukrim');
+Route::post('/form-bukrim', [HomeController::class, 'UploadFormBukrim'])->name('formbukrim.store');
 
 Route::get('/mahasiswa', [HomeController::class, 'mahasiswa'])->name('mahasiswa');

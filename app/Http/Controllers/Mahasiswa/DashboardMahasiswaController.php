@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Mahasiswa;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\FormTA;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class DashboardMahasiswaController extends Controller
@@ -13,7 +15,9 @@ class DashboardMahasiswaController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.dashboard');
+        $formta = FormTA::all();
+        $prodi = Prodi::all();
+        return view('mahasiswa.dashboard', compact('formta', 'prodi'));
     }
 
     /**

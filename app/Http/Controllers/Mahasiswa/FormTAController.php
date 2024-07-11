@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,26 +13,67 @@ class FormTAController extends Controller
     {
         $formta = FormTA::all();
         $prodi = Prodi::all();
-        return view('admin.form-ta.index', compact('formta', 'prodi'));
+        return view('mahasiswa.form-ta.create', compact('prodi'));
     }
 
     public function create()
     {
         $prodi = Prodi::all();
-        return view('admin.form-ta.create', compact('prodi'));
+        return view('mahasiswa.form-ta.create', compact('prodi'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'prodi_id' => 'required',
+            'nama' => 'required',
+            'nim' => 'required',
+            'keperluan' => 'required',
+            'instansi' => 'required',
+            'alamat_instansi' => 'required',
+            'tjp' => 'nullable',
+            'pelaksanaan' => 'required',
+            'waktu_mulai_pelaksanaan' => 'required',
+            'waktu_akhir_pelaksanaan' => 'required',
+            'no_hp' => 'required',
+            'email' => 'required',
+            'nama_pembimbing_satu' => 'required',
+            'nama_pembimbing_dua' => 'required',
+            'judul' => 'required',
+        ]);
+
+        $formta = new FormTA;
+        $formta->prodi_id = $request->prodi_id;
+        $formta->nama = $request->nama;
+        $formta->nim = $request->nim;
+        $formta->keperluan = $request->keperluan;
+        $formta->instansi = $request->instansi;
+        $formta->alamat_instansi = $request->alamat_instansi;
+        $formta->tjp = $request->tjp;
+        $formta->pelaksanaan = $request->pelaksanaan;
+        $formta->waktu_mulai_pelaksanaan = $request->waktu_mulai_pelaksanaan;
+        $formta->waktu_akhir_pelaksanaan = $request->waktu_akhir_pelaksanaan;
+        $formta->no_hp = $request->no_hp;
+        $formta->email = $request->email;
+        $formta->nama_pembimbing_satu = $request->nama_pembimbing_satu;
+        $formta->nama_pembimbing_dua = $request->nama_pembimbing_dua;
+        $formta->judul = $request->judul;
+        $formta->save();
+
+        return back()->with('success_create_data', 'Selamat! Data Pengajuan Tugas Akhirmu Berhasil');
     }
 
     public function show($id)
     {
         $formta = FormTA::find($id);
-        return view('admin.form-ta.show', compact('formta'));
+        return view('mahasiswa.form-ta.show', compact('formta'));
     }
 
     public function edit($id)
     {
         $formta = FormTA::find($id);
         $prodi = Prodi::all();
-        return view('admin.form-ta.edit', compact('formta', 'prodi'));
+        return view('mahasiswa.form-ta.edit', compact('formta', 'prodi'));
     }
 
     public function update(Request $request, $id)
@@ -77,13 +118,13 @@ class FormTAController extends Controller
         $formta->keterangan = $request->keterangan;
 
         $formta->save();
-        return redirect()->route('superadmin.form-ta.index')->with('success_update_data', 'Data berhasil diubah');
+        return redirect()->route('mahasiswa.form-ta.index')->with('success_update_data', 'Data berhasil diubah');
     }
 
     public function destroy($id)
     {
         $formta = FormTA::find($id);
         $formta->delete();
-        return redirect()->route('superadmin.form-ta.index')->with('success_delete_data', 'Data berhasil dihapus');
+        return redirect()->route('mahasiswa.form-ta.index')->with('success_delete_data', 'Data berhasil dihapus');
     }
 }

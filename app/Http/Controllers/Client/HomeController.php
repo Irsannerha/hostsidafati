@@ -30,12 +30,12 @@ class HomeController extends Controller
 
     public function kegiatan()
     {
-    $kegiatan = Kegiatan::all();
-    $prodi = Prodi::all();
-    return view('client.kegiatan', compact('prodi', 'kegiatan'));
+        $kegiatan = Kegiatan::all();
+        $prodi = Prodi::all();
+        return view('client.kegiatan', compact('prodi', 'kegiatan'));
     }
 
-    public function UploadKegiatan (Request $request)
+    public function UploadKegiatan(Request $request)
     {
         $request->validate([
             'prodi_id' => 'required',
@@ -78,15 +78,14 @@ class HomeController extends Controller
 
         return back()->with('success_create_data', 'Selamat! Data Pengajuan Kegiatanmu Berhasil');
     }
-    
-    public function kontak()
 
+    public function kontak()
     {
         return view('client.kontak');
     }
 
     public function pengajuan()
-    {   
+    {
         $formta = FormTA::all();
         $formkp = FormKP::all();
         $formkhs = FormKHS::all();
@@ -127,7 +126,7 @@ class HomeController extends Controller
             // Perhatikan bahwa Anda memerlukan setidaknya 3 foto
             'foto' => 'required|array|min:3',
         ]);
-    
+
         $prestasi = new Prestasi;
         $prestasi->prodi_id = $request->prodi_id;
         $prestasi->nama_tim = $request->nama_tim;
@@ -144,7 +143,7 @@ class HomeController extends Controller
         $prestasi->tingkat_kejuaraan = $request->tingkat_kejuaraan;
         $prestasi->judul_karya = $request->judul_karya;
         $prestasi->anggota_karya = $request->anggota_karya;
-    
+
         if ($request->hasFile('foto')) {
             $fotoPaths = [];
             foreach ($request->file('foto') as $key => $foto) {
@@ -154,137 +153,137 @@ class HomeController extends Controller
             }
             $prestasi->foto = json_encode($fotoPaths); // menyimpan nama file sebagai string JSON
         }
-    
+
         $prestasi->save();
-    
+
         return back()->with('success_create_data', 'Selamat! Data Prestasimu Berhasil Ditambah');
     }
-    
+
 
     public function tentang()
     {
         return view('client.tentang');
     }
 
-    public function formta()
-    {
-        $formta = FormTA::all();
-        $prodi = Prodi::all();
-        return view('client.form-ta', compact('formta', 'prodi'));
-    }
-    
-    public function UploadFormTA (Request $request)
-    {
-        $request->validate([
-            'prodi_id' => 'required',
-            'nama' => 'required',
-            'nim' => 'required',
-            'keperluan' => 'required',
-            'instansi' => 'required',
-            'alamat_instansi' => 'required',
-            'tjp' => 'nullable',
-            'pelaksanaan' => 'required',
-            'waktu_mulai_pelaksanaan' => 'required',
-            'waktu_akhir_pelaksanaan' => 'required',
-            'no_hp' => 'required',
-            'email' => 'required',
-            'nama_pembimbing_satu' => 'required',
-            'nama_pembimbing_dua' => 'required',
-            'judul' => 'required',
-        ]);
+    // public function formta()
+    // {
+    //     $formta = FormTA::all();
+    //     $prodi = Prodi::all();
+    //     return view('client.form-ta', compact('formta', 'prodi'));
+    // }
 
-        $formta = new FormTA;
-        $formta->prodi_id = $request->prodi_id;
-        $formta->nama = $request->nama;
-        $formta->nim = $request->nim;
-        $formta->keperluan = $request->keperluan;
-        $formta->instansi = $request->instansi;
-        $formta->alamat_instansi = $request->alamat_instansi;
-        $formta->tjp = $request->tjp;
-        $formta->pelaksanaan = $request->pelaksanaan;
-        $formta->waktu_mulai_pelaksanaan = $request->waktu_mulai_pelaksanaan;
-        $formta->waktu_akhir_pelaksanaan = $request->waktu_akhir_pelaksanaan;
-        $formta->no_hp = $request->no_hp;
-        $formta->email = $request->email;
-        $formta->nama_pembimbing_satu = $request->nama_pembimbing_satu;
-        $formta->nama_pembimbing_dua = $request->nama_pembimbing_dua;
-        $formta->judul = $request->judul;
-        $formta->save();
+    // public function UploadFormTA (Request $request)
+    // {
+    //     $request->validate([
+    //         'prodi_id' => 'required',
+    //         'nama' => 'required',
+    //         'nim' => 'required',
+    //         'keperluan' => 'required',
+    //         'instansi' => 'required',
+    //         'alamat_instansi' => 'required',
+    //         'tjp' => 'nullable',
+    //         'pelaksanaan' => 'required',
+    //         'waktu_mulai_pelaksanaan' => 'required',
+    //         'waktu_akhir_pelaksanaan' => 'required',
+    //         'no_hp' => 'required',
+    //         'email' => 'required',
+    //         'nama_pembimbing_satu' => 'required',
+    //         'nama_pembimbing_dua' => 'required',
+    //         'judul' => 'required',
+    //     ]);
 
-        return back()->with('success_create_data', 'Selamat! Data Pengajuan Tugas Akhirmu Berhasil');
-    }
+    //     $formta = new FormTA;
+    //     $formta->prodi_id = $request->prodi_id;
+    //     $formta->nama = $request->nama;
+    //     $formta->nim = $request->nim;
+    //     $formta->keperluan = $request->keperluan;
+    //     $formta->instansi = $request->instansi;
+    //     $formta->alamat_instansi = $request->alamat_instansi;
+    //     $formta->tjp = $request->tjp;
+    //     $formta->pelaksanaan = $request->pelaksanaan;
+    //     $formta->waktu_mulai_pelaksanaan = $request->waktu_mulai_pelaksanaan;
+    //     $formta->waktu_akhir_pelaksanaan = $request->waktu_akhir_pelaksanaan;
+    //     $formta->no_hp = $request->no_hp;
+    //     $formta->email = $request->email;
+    //     $formta->nama_pembimbing_satu = $request->nama_pembimbing_satu;
+    //     $formta->nama_pembimbing_dua = $request->nama_pembimbing_dua;
+    //     $formta->judul = $request->judul;
+    //     $formta->save();
 
-    public function formkp()
-    {
-        $formkp = FormKP::all();
-        $prodi = Prodi::all();
-        return view('client.form-kp', compact('formkp', 'prodi'));
-    }
+    //     return back()->with('success_create_data', 'Selamat! Data Pengajuan Tugas Akhirmu Berhasil');
+    // }
 
-    public function UploadFormKP (Request $request)
-    {
-        $request -> validate([
-            'prodi_id' => 'required',
-            'nama' => 'required',
-            'nim' => 'required',
-            'instansi' => 'required',
-            'alamat_instansi' => 'required',
-            'tjp' => 'nullable',
-            'waktu_mulai_pelaksanaan' => 'required',
-            'waktu_akhir_pelaksanaan' => 'required',
-            'no_hp_mhs' => 'required',
-            'email' => 'required',
-        ]);
+    // public function formkp()
+    // {
+    //     $formkp = FormKP::all();
+    //     $prodi = Prodi::all();
+    //     return view('client.form-kp', compact('formkp', 'prodi'));
+    // }
 
-        $formkp = new FormKP;
-        $formkp->prodi_id = $request->prodi_id;
-        $formkp->nama = $request->nama;
-        $formkp->nim = $request->nim;
-        $formkp->instansi = $request->instansi;
-        $formkp->alamat_instansi = $request->alamat_instansi;
-        $formkp->tjp = $request->tjp;
-        $formkp->waktu_mulai_pelaksanaan = $request->waktu_mulai_pelaksanaan;
-        $formkp->waktu_akhir_pelaksanaan = $request->waktu_akhir_pelaksanaan;
-        $formkp->no_hp_mhs = $request->no_hp_mhs;
-        $formkp->email = $request->email;
-        $formkp->save();
+    // public function UploadFormKP (Request $request)
+    // {
+    //     $request -> validate([
+    //         'prodi_id' => 'required',
+    //         'nama' => 'required',
+    //         'nim' => 'required',
+    //         'instansi' => 'required',
+    //         'alamat_instansi' => 'required',
+    //         'tjp' => 'nullable',
+    //         'waktu_mulai_pelaksanaan' => 'required',
+    //         'waktu_akhir_pelaksanaan' => 'required',
+    //         'no_hp_mhs' => 'required',
+    //         'email' => 'required',
+    //     ]);
 
-        return back()->with('success_create_data', 'Selamat! Data Pengajuan Kerja Praktekmu Berhasil');
-    }
+    //     $formkp = new FormKP;
+    //     $formkp->prodi_id = $request->prodi_id;
+    //     $formkp->nama = $request->nama;
+    //     $formkp->nim = $request->nim;
+    //     $formkp->instansi = $request->instansi;
+    //     $formkp->alamat_instansi = $request->alamat_instansi;
+    //     $formkp->tjp = $request->tjp;
+    //     $formkp->waktu_mulai_pelaksanaan = $request->waktu_mulai_pelaksanaan;
+    //     $formkp->waktu_akhir_pelaksanaan = $request->waktu_akhir_pelaksanaan;
+    //     $formkp->no_hp_mhs = $request->no_hp_mhs;
+    //     $formkp->email = $request->email;
+    //     $formkp->save();
+
+    //     return back()->with('success_create_data', 'Selamat! Data Pengajuan Kerja Praktekmu Berhasil');
+    // }
 
 
-    public function formkhs()
-    {
-        $formkhs = FormKHS::all();
-        $prodi = Prodi::all();
-        return view('client.form-khs', compact('formkhs', 'prodi'));
-    }
+    // public function formkhs()
+    // {
+    //     $formkhs = FormKHS::all();
+    //     $prodi = Prodi::all();
+    //     return view('client.form-khs', compact('formkhs', 'prodi'));
+    // }
 
-    public function UploadFormKHS (Request $request)
-    {
-        $request->validate([
-            'prodi_id' => 'required',
-            'nama' => 'required',
-            'nim' => 'required',
-            'no_hp_mhs' => 'required',
-            'email' => 'required',
-            'keperluan' => 'required',
-            'jumlah' => 'required',
-        ]);
+    // public function UploadFormKHS (Request $request)
+    // {
+    //     $request->validate([
+    //         'prodi_id' => 'required',
+    //         'nama' => 'required',
+    //         'nim' => 'required',
+    //         'no_hp_mhs' => 'required',
+    //         'email' => 'required',
+    //         'keperluan' => 'required',
+    //         'jumlah' => 'required',
+    //     ]);
 
-        $formkhs = new FormKHS;
-        $formkhs->prodi_id = $request->prodi_id;
-        $formkhs->nama = $request->nama;
-        $formkhs->nim = $request->nim;
-        $formkhs->no_hp_mhs = $request->no_hp_mhs;
-        $formkhs->email = $request->email;
-        $formkhs->keperluan = $request->keperluan;
-        $formkhs->jumlah = $request->jumlah;
-        $formkhs->save();
+    //     $formkhs = new FormKHS;
+    //     $formkhs->prodi_id = $request->prodi_id;
+    //     $formkhs->nama = $request->nama;
+    //     $formkhs->nim = $request->nim;
+    //     $formkhs->no_hp_mhs = $request->no_hp_mhs;
+    //     $formkhs->email = $request->email;
+    //     $formkhs->keperluan = $request->keperluan;
+    //     $formkhs->jumlah = $request->jumlah;
+    //     $formkhs->save();
 
-        return back()->with('success_create_data', 'Selamat! Data Pengajuan KHS/Transkrip/Dokumenmu Berhasil');
-    }
-   
+    //     return back()->with('success_create_data', 'Selamat! Data Pengajuan KHS/Transkrip/Dokumenmu Berhasil');
+    // }
+
     public function formlegal()
     {
         $formlegal = FormLegal::all();
@@ -292,7 +291,7 @@ class HomeController extends Controller
         return view('client.form-legal', compact('formlegal', 'prodi'));
     }
 
-    public function UploadFormLegal (Request $request)
+    public function UploadFormLegal(Request $request)
     {
         $request->validate([
             'prodi_id' => 'required',
@@ -324,7 +323,7 @@ class HomeController extends Controller
         return view('client.form-stm', compact('formstm', 'prodi'));
     }
 
-    public function UploadFormSTM (Request $request)
+    public function UploadFormSTM(Request $request)
     {
         $request->validate([
             'prodi_id' => 'required',
@@ -358,11 +357,11 @@ class HomeController extends Controller
         return view('client.form-wcr', compact('formwcr', 'prodi'));
     }
 
-    public function UploadFormWcr (Request $request)
+    public function UploadFormWcr(Request $request)
     {
         $request->validate([
             'prodi_id' => 'required',
-            'nama' => 'required', 
+            'nama' => 'required',
             'nim' => 'required',
             'instansi' => 'required',
             'alamat_instansi' => 'required',
@@ -386,7 +385,7 @@ class HomeController extends Controller
         return view('client.form-rekom', compact('formrekom', 'prodi'));
     }
 
-    public function UploadFormRekom (Request $request)
+    public function UploadFormRekom(Request $request)
     {
         $request->validate([
             'prodi_id' => 'required',
@@ -420,7 +419,7 @@ class HomeController extends Controller
         return view('client.form-bukrim', compact('formbukrim', 'prodi'));
     }
 
-    public function UploadFormBukrim (Request $request)
+    public function UploadFormBukrim(Request $request)
     {
         $request->validate([
             'prodi_id' => 'required',
