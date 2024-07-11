@@ -1,4 +1,4 @@
-<x-mahasiswa-app>
+<x-admin-app>
     <div class="mobile-menu-overlay"></div>
     <div class="main-container">
         <div class="pd-ltr-20 xs-pd-20-10">
@@ -7,20 +7,22 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="title font-weight-bold">
-                                <h4>Dashboard</h4>
+                                <h4>Pengajuan KHS/Transkrip/Dokumen Lainnya</h4>
                             </div>
-                            <!-- <nav aria-lalubi="breadcrumb" role="navigation">
+                            <nav aria-lalubi="breadcrumb" role="navigation">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item font-weight-bold h5">
                                         <a href="/">Dashboard</a>
                                     </li>
+                                    <li class="breadcrumb-item active font-weight-bold h5" aria-current="page">
+                                    Pengajuan KHS/Transkrip/Dokumen Lainnya
+                                    </li>
                                 </ol>
-                            </nav> -->
+                            </nav>
                         </div>
                         <div class="col-md-6 col-sm-12 text-right">
                             <div class="time">
-                                <button id="dateTime" class="btn btn-primary font-weight-bold" type="button"
-                                    data-toggle="dropdown">
+                                <button id="dateTime" class="btn btn-primary font-weight-bold" type="button" data-toggle="dropdown">
                                     <span id="currentDateTime"></span>
                                 </button>
                             </div>
@@ -104,81 +106,61 @@
                         <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons">
                             <button class="btn btn-primary font-weight-bold" onclick="exportToPDF()">Cetak</button>
                             <button class="btn btn-primary font-weight-bold" onclick="exportToExcel()">Excel</button>
-                            <!-- <button type="button" class="btn btn-primary font-weight-bold" data-toggle="modal" data-target="#ImportModal">Import</button> -->
+                            <button type="button" class="btn btn-primary font-weight-bold" data-toggle="modal" data-target="#ImportModal">Import</button>
                         </div>
-                        <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons"
-                            style="float: right;">
-                            <button class="btn btn-dark btn-sm font-weight-bold" type="button"
-                                onclick="filterByStatus('Semua')">Semua</button>
-                            <button class="btn btn-success btn-sm font-weight-bold" type="button"
-                                onclick="filterByStatus('Selesai')">Selesai</button>
-                            <button class="btn btn-warning btn-sm font-weight-bold" type="button"
-                                onclick="filterByStatus('Diproses')">Diproses</button>
-                            <button class="btn btn-danger btn-sm font-weight-bold" type="button"
-                                onclick="filterByStatus('Ditolak')">Ditolak</button>
-                        </div>
-                        <div class="pb-20">
-                            <table id="dataTable" class="data-table table stripe hover nowrap">
-                                <thead>
-                                    <tr>
-                                        <th class="table-plus datatable-nosort">#</th>
-                                        <th>Program Studi</th>
-                                        <th>Email</th>
-                                        <th>Status</th>
-                                        <th class="datatable-nosort">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($formta as $ta)
-                                        <tr data-status="{{ $ta->status }}">
-                                            <td class="table-plus">{{ $loop->iteration }}</td>
-                                            <td>{{ $ta->prodi ? $ta->prodi->prodi : '' }}</td>
-                                            <td><span class="btn btn-outline-primary btn-lg"
-                                                    style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">{{ $ta->email }}</span>
-                                            </td>
-                                            <td>
-                                                @if($ta->status == 'Selesai')
-                                                    <span class="badge badge-success"
-                                                        style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 13px;">Selesai</span>
-                                                @elseif($ta->status == 'Diproses')
-                                                    <span class="badge badge-warning"
-                                                        style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 13px;">Diproses</span>
-                                                @else
-                                                    <span class="badge badge-danger"
-                                                        style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 13px;">Ditolak</span>
-                                                @endif
-                                            </td>
-                                            @include('admin.form-ta.show')
-                                            <td>
-                                                <div class="table-actions">
-                                                    <a class="btn btn-xxs btn-primary mr-1"
-                                                        style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
-                                                        data-color="#fff" data-toggle="modal"
-                                                        data-target="#showModal{{ $ta->id }}">
-                                                        <i class="icon-copy dw dw-eye"></i> Lihat
-                                                    </a>
-                                                    <a href="{{ route('mahasiswa.form-ta.edit', $ta->id) }}"
-                                                        class="btn btn-xxs btn-primary mr-1"
-                                                        style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
-                                                        data-color="#fff">
-                                                        <i class="icon-copy dw dw-edit2"></i> Edit
-                                                    </a>
-                                                    <a class="btn btn-xxs btn-primary mr-1"
-                                                        style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
-                                                        data-color="#fff" data-toggle="modal"
-                                                        data-target="#deleteModal{{ $ta->id }}">
-                                                        <i class="icon-copy dw dw-delete-3"></i> Hapus
-                                                    </a>
-                                                    @include('admin.form-ta.delete')
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons" style="float: right;">
+                            <button class="btn btn-dark btn-sm font-weight-bold" type="button" onclick="filterByStatus('Semua')">Semua</button>
+                            <button class="btn btn-success btn-sm font-weight-bold" type="button" onclick="filterByStatus('Selesai')">Selesai</button>
+                            <button class="btn btn-warning btn-sm font-weight-bold" type="button" onclick="filterByStatus('Diproses')">Diproses</button>
+                            <button class="btn btn-danger btn-sm font-weight-bold" type="button" onclick="filterByStatus('Ditolak')">Ditolak</button>
                         </div>
                     </div>
-
+                    <div class="pb-20">
+                        <table id="dataTable" class="data-table table stripe hover nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="table-plus datatable-nosort">#</th>
+                                    <th>Program Studi</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th class="datatable-nosort">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($formkhs as $khs)
+                                <tr data-status="{{ $khs->status }}">
+                                    <td class="table-plus">{{ $loop->iteration }}</td>
+                                    <td>{{ $khs->prodi ? $khs->prodi->prodi : '' }}</td>
+                                    <td><span class="btn btn-outline-primary btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">{{ $khs->email }}</span></td>
+                                    <td>
+                                        @if($khs->status == 'Selesai')
+                                            <span class="badge badge-success" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 13px;">Selesai</span>
+                                        @elseif($khs->status == 'Diproses')
+                                            <span class="badge badge-warning" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 13px;">Diproses</span>
+                                        @else
+                                            <span class="badge badge-danger" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 13px;">Ditolak</span>
+                                        @endif
+                                    </td>
+                                    @include('admin.form-khs.show')
+                                    <td>
+                                        <div class="table-actions">
+                                            <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#showModal{{ $khs->id }}">
+                                                <i class="icon-copy dw dw-eye"></i> Lihat
+                                            </a>
+                                            <a href="{{ route('superadmin.form-khs.edit', $khs->id) }}" class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff">
+                                                <i class="icon-copy dw dw-edit2"></i> Edit
+                                            </a>
+                                            <a class="btn btn-xxs btn-primary mr-1" style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;" data-color="#fff" data-toggle="modal" data-target="#deleteModal{{ $khs->id }}">
+                                                <i class="icon-copy dw dw-delete-3"></i> Hapus
+                                            </a>
+                                    @include('admin.form-khs.delete')
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <!-- Simple Datatable End -->
             </div>
@@ -186,22 +168,16 @@
     </div>
     <!-- Datatable Setting js -->
     <script src="{{ asset('vendors/scripts/datatable-setting.js') }}"></script>
-    <script>
-        function exportToExcel() {
-            window.location.href = "{{ url('prodi/export') }}";
-        }
-    </script>
-
-</x-mahasiswa-app>
+</x-admin-app>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const countStatuses = () => {
             const rows = document.querySelectorAll('#dataTable tbody tr');
             let countSelesai = 0;
             let countDiproses = 0;
             let countDitolak = 0;
-
+            
             rows.forEach(row => {
                 const status = row.getAttribute('data-status');
                 if (status === 'Selesai') {
@@ -240,28 +216,28 @@
 @if(session('success_create_data'))
     <script>
         swal(
-            {
-                position: 'center',
-                type: 'success',
-                title: "{{ session('success_create_data') }}",
-                showConfirmButton: false,
-                timer: 3000
-            }
-        )
+                {
+                    position: 'center',
+                    type: 'success',
+                    title: "{{ session('success_create_data') }}",
+                    showConfirmButton: false,
+                    timer: 3000
+                }
+            )
     </script>
 @endif
 
 @if(session('success_delete_data'))
     <script>
-        swal(
-            {
-                position: 'center',
-                type: 'success',
-                title: "{{ session('success_delete_data') }}",
-                showConfirmButton: false,
-                timer: 3000
-            }
-        )
+         swal(
+                {
+                    position: 'center',
+                    type: 'success',
+                    title: "{{ session('success_delete_data') }}",
+                    showConfirmButton: false,
+                    timer: 3000
+                }
+            )
     </script>
 @endif
 

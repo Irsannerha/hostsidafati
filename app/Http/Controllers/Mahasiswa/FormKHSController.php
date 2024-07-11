@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,13 +13,38 @@ class FormKHSController extends Controller
     {
         $formkhs = FormKHS::all();
         $prodi = Prodi::all();
-        return view('admin.form-khs.index', compact('formkhs', 'prodi'));
+        return view('mahasiswa.form-khs.index', compact('formkhs', 'prodi'));
     }
 
     public function create()
     {
         $prodi = Prodi::all();
-        return view('admin.form-khs.create', compact('prodi'));
+        return view('mahasiswa.form-khs.create', compact('prodi'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'prodi_id' => 'required',
+            'nama' => 'required',
+            'nim' => 'required',
+            'no_hp_mhs' => 'required',
+            'email' => 'required',
+            'keperluan' => 'required',
+            'jumlah' => 'required',
+        ]);
+
+        $formkhs = new FormKHS;
+        $formkhs->prodi_id = $request->prodi_id;
+        $formkhs->nama = $request->nama;
+        $formkhs->nim = $request->nim;
+        $formkhs->no_hp_mhs = $request->no_hp_mhs;
+        $formkhs->email = $request->email;
+        $formkhs->keperluan = $request->keperluan;
+        $formkhs->jumlah = $request->jumlah;
+        $formkhs->save();
+
+        return back()->with('success_create_data', 'Selamat! Data Pengajuan KHS/Transkrip/Dokumenmu Berhasil');
     }
 
     public function show($id)

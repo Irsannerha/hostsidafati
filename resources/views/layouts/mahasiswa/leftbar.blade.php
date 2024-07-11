@@ -45,14 +45,14 @@
                     </a>
                     <ul class="submenu">
                         <li><a href="{{ route('mahasiswa.form-ta.create') }}">Pengajuan Tugas Akhir</a></li>
-                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pengajuan Kerja Praktik</a></li>
-                        <li><a href="{{ route('superadmin.form-khs.index') }}">Pengajuan
+                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Kerja Praktik</a></li>
+                        <li><a href="{{ route('mahasiswa.form-khs.create') }}">Pengajuan
                                 KHS/Transkrip/Dokumen</a></li>
-                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pendaftaran Yudisium</a></li>
-                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pengajuan Dispendansasi Kuliah</a>
+                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pendaftaran Yudisium</a></li>
+                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Dispendansasi Kuliah</a>
                         </li>
-                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pengajuan Pengantar Kerja</a>
-                        <li><a href="{{ route('superadmin.form-kp.index') }}">Pengajuan Pengantar Kuliah
+                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Pengantar Kerja</a>
+                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Pengantar Kuliah
                                 Lapangan</a>
                         </li>
                     </ul>

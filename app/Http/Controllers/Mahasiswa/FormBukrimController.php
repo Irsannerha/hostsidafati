@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -18,8 +18,32 @@ class FormBukrimController extends Controller
 
     public function create()
     {
+        $formbukrim = FormBukrim::all();
         $prodi = Prodi::all();
-        return view('admin.form-bukrim.create', compact('prodi'));
+        return view('mahasiswa.form-bukrim.create', compact('prodi'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'prodi_id' => 'required',
+            'nama_dok' => 'required',
+            'nama' => 'required',
+            'nim' => 'required',
+            'jenis_berkas' => 'required',
+            'jumlah_dok' => 'required',
+        ]);
+
+        $formbukrim = new FormBukrim;
+        $formbukrim->prodi_id = $request->prodi_id;
+        $formbukrim->nama_dok = $request->nama_dok;
+        $formbukrim->nama = $request->nama;
+        $formbukrim->nim = $request->nim;
+        $formbukrim->jenis_berkas = $request->jenis_berkas;
+        $formbukrim->jumlah_dok = $request->jumlah_dok;
+        $formbukrim->save();
+
+        return back()->with('success_create_data', 'Selamat! Data Pengajuan Bukti Penerimaan Berkasmu Berhasil');
     }
 
     public function show($id)
@@ -35,7 +59,7 @@ class FormBukrimController extends Controller
         return view('admin.form-bukrim.edit', compact('formbukrim', 'prodi'));
     }
 
-    public function update (Request $request, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'prodi_id' => 'required',

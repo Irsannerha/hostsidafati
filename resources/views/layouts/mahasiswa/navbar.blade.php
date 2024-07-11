@@ -86,7 +86,7 @@
                     <span class="user-icon">
                         <img src="{{ url('vendors/images/user-profile.png') }}" alt="" />
                     </span>
-                    <span class="user-name">Halo, Bendry</span>
+                    <span class="user-name">Halo,{{Auth::user()->name}}!</span>
                 </a>
                 <!-- <div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"

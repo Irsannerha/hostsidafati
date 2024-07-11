@@ -145,14 +145,14 @@ class ProdiController extends Controller
         return Excel::download(new ProdiExport, 'prodi.xlsx');
     }
 
-    // public function exportToPDF()
-    // {
-    //     $prodis = Prodi::all();
+    public function exportToPDF()
+    {
+        $prodis = Prodi::all();
 
-    //     $pdf = PDF::loadView('exports.prodi', compact('prodis'));
+        $pdf = PDF::loadView('exports.prodi', compact('prodis'));
 
-    //     return $pdf->download('prodi.pdf');
-    // }
+        return $pdf->download('prodi.pdf');
+    }
 
     public function downloadTemplate()
     {

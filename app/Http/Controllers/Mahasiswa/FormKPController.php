@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,13 +13,44 @@ class FormKPController extends Controller
     {
         $formkp = FormKP::all();
         $prodi = Prodi::all();
-        return view('admin.form-kp.index', compact('formkp', 'prodi'));
+        return view('mahasiswa.form-kp.index', compact('formkp', 'prodi'));
     }
 
     public function create()
     {
         $prodi = Prodi::all();
-        return view('admin.form-kp.create', compact('prodi'));
+        return view('mahasiswa.form-kp.create', compact('prodi'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'prodi_id' => 'required',
+            'nama' => 'required',
+            'nim' => 'required',
+            'instansi' => 'required',
+            'alamat_instansi' => 'required',
+            'tjp' => 'nullable',
+            'waktu_mulai_pelaksanaan' => 'required',
+            'waktu_akhir_pelaksanaan' => 'required',
+            'no_hp_mhs' => 'required',
+            'email' => 'required',
+        ]);
+
+        $formkp = new FormKP;
+        $formkp->prodi_id = $request->prodi_id;
+        $formkp->nama = $request->nama;
+        $formkp->nim = $request->nim;
+        $formkp->instansi = $request->instansi;
+        $formkp->alamat_instansi = $request->alamat_instansi;
+        $formkp->tjp = $request->tjp;
+        $formkp->waktu_mulai_pelaksanaan = $request->waktu_mulai_pelaksanaan;
+        $formkp->waktu_akhir_pelaksanaan = $request->waktu_akhir_pelaksanaan;
+        $formkp->no_hp_mhs = $request->no_hp_mhs;
+        $formkp->email = $request->email;
+        $formkp->save();
+
+        return back()->with('success_create_data', 'Selamat! Data Pengajuan Kerja Praktekmu Berhasil');
     }
 
     public function show($id)
