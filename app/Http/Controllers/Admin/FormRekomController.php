@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormRekom;
 use App\Models\Prodi;
+use App\Exports\FormrekomExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormRekomController extends Controller
 {
@@ -71,5 +73,10 @@ class FormRekomController extends Controller
         $formrekom = FormRekom::find($id);
         $formrekom->delete();
         return redirect()->route('superadmin.form-rekom.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FormRekomExport, 'formrekom.xlsx');
     }
 }

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Prestasi;
+use Carbon\Carbon;
 
 class PrestasiSeeder extends Seeder
 {
@@ -36,7 +37,7 @@ class PrestasiSeeder extends Seeder
                 'tahun_kegiatan' => $randomDate,
                 'url_penyelenggara' => 'https://www.itera.ac.id',
                 'nama_penyelenggara' => 'ITERA',
-                'tgl_kegiatan' => $randomDate,
+                'tgl_kegiatan' => Carbon::createFromFormat('Y-m-d', '2024-01-01')->addDays(rand(0, 364)),
                 'tingkat_kejuaraan' => 'Nasional',
                 'judul_karya' => 'Judul Karya Ini panjang tak terkira yaa. ' . $i,
                 'anggota_karya' => 'Anggota Karya, Anggota Karya, Anggota Karya, Anggota Karya,' . $i,

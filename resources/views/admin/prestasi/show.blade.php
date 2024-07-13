@@ -44,13 +44,9 @@
 
     .custom-dd {
       border: 1px solid #999;
-      /* Border dengan ketebalan 1px dan warna abu-abu */
       border-radius: 5px;
-      /* Radius border 5px */
       padding: 4px;
-      /* Padding untuk jarak antara konten dan border */
       font-size: 14px;
-      /* Ukuran font */
     }
 
     .custom-dd ol {

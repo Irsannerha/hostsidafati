@@ -15,7 +15,15 @@ class KegiatanController extends Controller
     public function index()
     {
         $kegiatan = Kegiatan::all();
-        return view('admin.kegiatan.index', compact('kegiatan'));
+        $prodi = Prodi::all();
+        $jumlahPerTahunPerProdi = Kegiatan::where('nama_kegiatan', 'like', '%HIMA%')
+        ->join('prodi', 'kegiatan.prodi_id', '=', 'prodi.id')
+        ->selectRaw('YEAR(tgl_kegiatan) as tahun, prodi.prodi as prodi, COUNT(*) as jumlah')
+        ->groupBy('tahun', 'prodi')
+        ->orderBy('tahun', 'desc')
+        ->get();
+
+    return view('admin.kegiatan.index', compact('kegiatan', 'prodi','jumlahPerTahunPerProdi'));
     }
 
     public function create()
@@ -126,4 +134,6 @@ class KegiatanController extends Controller
     {
         return Excel::download(new KegiatanExport, 'kegiatan.xlsx');
     }
+
+   
 }

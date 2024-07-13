@@ -157,7 +157,7 @@
                     @if($prodi->foto && file_exists(public_path('storage/'.$prodi->foto)))
                     <img src="{{ url(asset('storage/'.$prodi->foto)) }}" alt="foto" class="img-thumbnail">
                     @else
-                    <img src="{{ asset('vendors/images/foto683x1024.png') }}" alt="Default Foto" class="img-thumbnail">
+                    <img src="{{ asset('vendors/images/foto222x304.png') }}" alt="Default Foto" class="img-thumbnail">
                     @endif
                   </div>
                   <div class="font-14 text-right">

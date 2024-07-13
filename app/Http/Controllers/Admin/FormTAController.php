@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormTA;
 use App\Models\Prodi;
+use App\Exports\FormtaExport;   
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormTAController extends Controller
 {
@@ -85,5 +87,10 @@ class FormTAController extends Controller
         $formta = FormTA::find($id);
         $formta->delete();
         return redirect()->route('superadmin.form-ta.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FormtaExport, 'formta.xlsx');
     }
 }

@@ -38,7 +38,6 @@ use App\Http\Controllers\Admin\FormWcrController;
 use App\Http\Controllers\Admin\FormRekomController;
 use App\Http\Controllers\Admin\FormBukrimController;
 
-
 // Client
 use App\Http\Controllers\Client\HomeController;
 
@@ -122,6 +121,10 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/chartDataJumlahDosen', [JumlahDosenController::class, 'getChartData'])->name('chart.data');
 
   // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+  Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
+  Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+
 
   //  Export Data
   Route::get('prodi/export', [ProdiController::class, 'export']);
@@ -140,6 +143,15 @@ Route::middleware(['auth'])->group(function () {
   Route::get('Wafat/export', [WafatController::class, 'export']);
   Route::get('Lulus/export', [LulusController::class, 'export']);
   Route::get('TugasAkhir/export', [MhsTAController::class, 'export']);
+  Route::get('users/export', [UserController::class, 'export']);
+  Route::get('formbukrim/export', [FormBukrimController::class, 'export']);
+  Route::get('formstm/export', [FormSTMController::class, 'export']);
+  Route::get('formrekom/export', [FormRekomController::class, 'export']);
+  Route::get('formwcr/export', [FormWcrController::class, 'export']);
+  Route::get('formkhs/export', [FormKHSController::class, 'export']);
+  Route::get('formkp/export', [FormKPController::class, 'export']);
+  Route::get('formta/export', [FormTAController::class, 'export']);
+  Route::get('formlegal/export', [FormLegalController::class, 'export']); 
 
   // Import Data 
   Route::get('/prodi/template', [ProdiController::class, 'downloadTemplate'])->name('prodi.template');

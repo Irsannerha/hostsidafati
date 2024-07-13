@@ -117,7 +117,7 @@ class ProdiExport implements FromCollection, WithHeadings, WithMapping, WithStyl
                     if ($prodi->foto) {
                         // Set foto as hyperlink to open in new tab
                         $event->sheet->setCellValue('C' . ($index + $this->rowIndex), 'Foto');
-                        $event->sheet->getCell('C' . ($index + $this->rowIndex))->getHyperlink()->setUrl(asset('storage/' . $prodi->foto));
+                        $event->sheet->getCell('C' . ($index + $this->rowIndex))->getHyperlink()->setUrl(asset('assets/foto/' . $prodi->foto));
                     }
 
                     if ($prodi->sk_prodi) {

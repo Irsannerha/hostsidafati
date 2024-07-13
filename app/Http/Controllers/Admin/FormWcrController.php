@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormWcr;
 use App\Models\Prodi;
+use App\Exports\FormwcrExport;  
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormWcrController extends Controller
 {
@@ -65,5 +67,10 @@ class FormWcrController extends Controller
         $formwcr = FormWcr::find($id);
         $formwcr->delete();
         return redirect()->route('superadmin.form-wcr.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FormwcrExport, 'formwcr.xlsx');
     }
 }

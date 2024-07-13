@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormKHS;
 use App\Models\Prodi;
+use App\Exports\FormkhsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormKHSController extends Controller
 {
@@ -70,5 +72,10 @@ class FormKHSController extends Controller
         $formkhs->delete();
 
         return redirect()->route('superadmin.form-khs.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FormkhsExport, 'formkhs.xlsx');
     }
 }

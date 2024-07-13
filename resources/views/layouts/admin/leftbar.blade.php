@@ -100,6 +100,7 @@
                         <li><a href="{{ route('superadmin.form-wcr.index') }}">Form Pengajuan Pengantar Wawancara Mahasiswa</a></li>
                         <li><a href="{{ route('superadmin.form-rekom.index') }}">Form Pengajuan Surat Rekomendasi</a></li>
                         <li><a href="{{ route('superadmin.form-stm.index') }}">Form Pengajuan Surat Tugas Mahasiswa</a></li>
+                        <li><a href="{{ route('superadmin.form-legal.index') }}">Form Pengajuan Legalisir</a></li>
                         <li><a href="{{ route('superadmin.form-bukrim.index') }}">Form Form Tanda Bukti Penerimaan Berkas</a></li>
                     </ul>
                 </li>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormKP;
 use App\Models\Prodi;
+use App\Exports\FormkpExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormKPController extends Controller
 {
@@ -75,5 +77,10 @@ class FormKPController extends Controller
         $formkp = FormKP::find($id);
         $formkp->delete();
         return redirect()->route('superadmin.form-kp.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FormkpExport, 'formkp.xlsx');
     }
 }

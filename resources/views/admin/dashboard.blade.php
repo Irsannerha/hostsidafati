@@ -1142,6 +1142,84 @@
                   </div>
               </div>
           </div>
+          <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Riwayat Perizinan</h2>
+          </div>
+            <div class="row pb-10">
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-20">
+                    <div class="card-box mb-10">
+                        <div id="carouselPerizinan" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                @for ($i = 1; $i <= 12; $i++)
+                                    <li data-target="#carouselPerizinan" data-slide-to="{{ $i-1 }}" class="{{ $i == 1 ? 'active' : '' }}"></li>
+                                @endfor
+                            </ol>
+                            <div class="carousel-inner">
+                                @for ($i = 1; $i <= 12; $i++)
+                                    @php
+                                        $monthName = \Carbon\Carbon::create()->month($i)->translatedFormat('F');
+                                        $kegiatanCount = $kegiatanPerBulan[$i];
+                                    @endphp
+                                    <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
+                                        <img class="d-block w-100" src="{{ url('vendors/images/img1.png') }}" alt="Slide {{ $i }}" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5 class="color-dark">Tahun {{ $currentYear }} &mdash; {{ $monthName }}</h5>
+                                            <p class="text-dark weight-600 font-30">Terdapat {{ $kegiatanCount }} Perizinan Kegiatan Mahasiswa</p>
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselPerizinan" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselPerizinan" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Riwayat Prestasi</h2>
+          </div>
+            <div class="row pb-10">
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-20">
+                    <div class="card-box mb-10">
+                        <div id="carouselPrestasi" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                @for ($i = 1; $i <= 12; $i++)
+                                    <li data-target="#carouselPrestasi" data-slide-to="{{ $i-1 }}" class="{{ $i == 1 ? 'active' : '' }}"></li>
+                                @endfor
+                            </ol>
+                            <div class="carousel-inner">
+                                @for ($i = 1; $i <= 12; $i++)
+                                    @php
+                                        $monthName = \Carbon\Carbon::create()->month($i)->translatedFormat('F');
+                                        $prestasiCount = $prestasiPerBulan[$i];
+                                    @endphp
+                                    <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
+                                        <img class="d-block w-100" src="{{ url('vendors/images/img1.png') }}" alt="Slide {{ $i }}" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5 class="color-dark">Tahun {{ $currentYear }} &mdash; {{ $monthName }}</h5>
+                                            <p class="text-dark weight-600 font-30">Terdapat {{ $prestasiCount }} Prestasi Mahasiswa</p>
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselPrestasi" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselPrestasi" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
           <div class="row pb-10">
                     <div class="col-md-8 mb-20">
                         <div class="card-box height-100-p pd-20">

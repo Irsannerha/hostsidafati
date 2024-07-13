@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use App\Models\Kegiatan;
+use Carbon\Carbon;
 
 class KegiatanSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class KegiatanSeeder extends Seeder
             'prodi_id' => $prodi_id,
             'email' => 'mahasiswa' . $i . '@student.itera.ac.id',
             'nama_kegiatan' => 'TTC (Telkomsel Telecommunication Center Lampung) ' . $i,
-            'tgl_kegiatan' => now()->subYears(rand(1, 10))->subMonths(rand(0, 11))->subDays(rand(0, 30)),
+            'tgl_kegiatan' => Carbon::createFromFormat('Y-m-d', '2024-01-01')->addDays(rand(0, 364)),
             'mulai_kegiatan' => now()->subYears(rand(1, 10))->subMonths(rand(0, 11))->subDays(rand(0, 30)),
             'akhir_kegiatan' => now()->subYears(rand(1, 10))->subMonths(rand(0, 11))->subDays(rand(0, 30)),
             'tempat_pelaksanaan' => 'TTC (Telkomsel Telecommunication Center Lampung) ' . $i,
