@@ -1,0 +1,86 @@
+@page {
+    /* create space for header */
+
+    margin: 172px 80px 80px 80px;
+
+    /* create space for footer */
+}
+
+.header-container {
+    position: fixed;
+    top: -105;
+    border-bottom: 4px solid black;
+    padding-bottom: 2px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.flex-container {
+    align-items: center;
+}
+
+.logo {
+    width: 7rem;
+    height: 7rem;
+    position: absolute;
+    top: 8;
+}
+
+.text-container {
+    margin: 0px 0px 0px 70px;
+    text-align: center;
+    line-height: 1.25;
+}
+
+.kementerian {
+    font-size: 18px;
+    width: 70%;
+    margin: 0px auto;
+    /* 18px */
+}
+
+.itera {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.alamat,
+.telepon,
+.email {
+    font-size: 14px;
+}
+
+.situs {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.footer-container {
+    position: fixed;
+    bottom: -40;
+    left: -80;
+    width: 66.67%;
+    text-align: justify;
+    font-size: 0; /* Remove space between inline-block elements */
+}
+
+.bar {
+    height: 0.5rem;
+    width: 32.33%; /* Adjust width to account for spacing */
+    display: inline-block;
+}
+
+.bar-black {
+    background-color: black;
+}
+
+.bar-red {
+    background-color: #dc2626; /* Tailwind's red-600 */
+}
+
+.bar-yellow {
+    background-color: #ca8a04; /* Tailwind's yellow-600 */
+}

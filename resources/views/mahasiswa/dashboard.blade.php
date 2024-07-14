@@ -117,13 +117,12 @@
                             <button class="btn btn-danger btn-sm font-weight-bold" type="button"
                                 onclick="filterByStatus('Ditolak')">Ditolak</button>
                         </div>
-                        <div class="pb-20">
+                        <div class="pb-20 pt-20">
                             <table id="dataTable" class="data-table table stripe hover nowrap">
                                 <thead>
                                     <tr>
-                                        <th class="table-plus datatable-nosort">#</th>
-                                        <th>Program Studi</th>
-                                        <th>Email</th>
+                                        <th class="table-plus datatable-nosort">No</th>
+                                        <th>Jenis Pengajuan</th>
                                         <th>Status</th>
                                         <th class="datatable-nosort">Aksi</th>
                                     </tr>
@@ -133,9 +132,6 @@
                                         <tr data-status="{{ $ta->status }}">
                                             <td class="table-plus">{{ $loop->iteration }}</td>
                                             <td>{{ $ta->prodi ? $ta->prodi->prodi : '' }}</td>
-                                            <td><span class="btn btn-outline-primary btn-lg"
-                                                    style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">{{ $ta->email }}</span>
-                                            </td>
                                             <td>
                                                 @if($ta->status == 'Selesai')
                                                     <span class="badge badge-success"
@@ -148,28 +144,15 @@
                                                         style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 13px;">Ditolak</span>
                                                 @endif
                                             </td>
-                                            @include('admin.form-ta.show')
+                                            @include('mahasiswa.form-ta.show')
                                             <td>
-                                                <div class="table-actions">
+                                                <div class="table-action">
                                                     <a class="btn btn-xxs btn-primary mr-1"
                                                         style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
                                                         data-color="#fff" data-toggle="modal"
                                                         data-target="#showModal{{ $ta->id }}">
                                                         <i class="icon-copy dw dw-eye"></i> Lihat
                                                     </a>
-                                                    <a href="{{ route('mahasiswa.form-ta.edit', $ta->id) }}"
-                                                        class="btn btn-xxs btn-primary mr-1"
-                                                        style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
-                                                        data-color="#fff">
-                                                        <i class="icon-copy dw dw-edit2"></i> Edit
-                                                    </a>
-                                                    <a class="btn btn-xxs btn-primary mr-1"
-                                                        style="border-radius: 15px; padding: 0.2rem 0.5rem; font-size: 0.9rem;"
-                                                        data-color="#fff" data-toggle="modal"
-                                                        data-target="#deleteModal{{ $ta->id }}">
-                                                        <i class="icon-copy dw dw-delete-3"></i> Hapus
-                                                    </a>
-                                                    @include('admin.form-ta.delete')
                                                 </div>
                                             </td>
                                         </tr>

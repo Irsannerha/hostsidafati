@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\QrCodeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,6 +67,9 @@ use App\Models\Prestasi;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('qr', [QrCodeController::class, 'show']);
+Route::get('/pengajuanTA', [PDFController::class, 'generatePDF']);
 
 Route::get('/', function () {
     return view('welcome');
