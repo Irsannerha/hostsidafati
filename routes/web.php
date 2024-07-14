@@ -44,6 +44,10 @@ use App\Http\Controllers\Mahasiswa\FormTAController;
 use App\Http\Controllers\Mahasiswa\FormKPController;
 use App\Http\Controllers\Mahasiswa\FormKHSController;
 
+//Dosen
+use App\Http\Controllers\Dosen\DashboardDosenController;
+use App\Http\Controllers\Dosen\FormTADosenController;
+
 // Client
 use App\Http\Controllers\Client\HomeController;
 
@@ -55,6 +59,7 @@ use App\Http\Middleware\Kemahasiswaan;
 use App\Http\Middleware\Keuangan;
 use App\Http\Middleware\Prodi;
 use App\Http\Middleware\Mahasiswa;
+use App\Http\Middleware\Dosen;
 use App\Models\Prestasi;
 
 /*
@@ -222,6 +227,11 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('form-bukrim', FormBukrimController::class);
         Route::resource('form-kp', FormKPController::class);
         Route::resource('form-khs', FormKHSController::class);
+    });
+
+    Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
+        Route::get('/dashboard', [DashboardDosenController::class, 'index'])->name('dashboard');
+        Route::resource('form-ta', FormTADosenController::class);
     });
 });
 
