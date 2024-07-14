@@ -44,30 +44,6 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="font-weight-bold">Status</label>
-                                        <select name="status" class="form-control">
-                                            <option value="Selesai" {{ $formta->status == 'Selesai' ? 'selected' : '' }}>
-                                                Selesai</option>
-                                            <option value="Diproses" {{ $formta->status == 'Diproses' ? 'selected' : '' }}>Diproses</option>
-                                            <option value="Ditolak" {{ $formta->status == 'Ditolak' ? 'selected' : '' }}>
-                                                Ditolak</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="font-weight-bold">Keterangan (Catatan)</label>
-                                        <input type="text" name="keterangan" class="form-control"
-                                            value="{{ old('keterangan', $formta->keterangan) }}"
-                                            placeholder="Masukkan Keterangan" />
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
-                            <br />
-                            <div class="row">
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="form-group">
                                         <label class="font-weight-bold">Program Studi</label>
                                         <select name="prodi_id" class="form-control">
                                             <option value="">Pilih Program Studi</option>
@@ -76,6 +52,9 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    @error('prodi_id')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -83,13 +62,19 @@
                                         <input type="text" name="nama" class="form-control"
                                             value="{{ old('nama', $formta->nama) }}" placeholder="Masukkan Nama" />
                                     </div>
+                                    @error('nama')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">NIM</label>
-                                        <input type="text" name="nim" class="form-control"
+                                        <input type="number" name="nim" class="form-control"
                                             value="{{ old('nim', $formta->nim) }}" placeholder="Masukkan NIM" />
                                     </div>
+                                    @error('nim')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -100,6 +85,9 @@
                                                 Permohonan Data Tugas Akhir</option>
                                         </select>
                                     </div>
+                                    @error('keperluan')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -108,6 +96,9 @@
                                             value="{{ old('instansi', $formta->instansi) }}"
                                             placeholder="Masukkan Nama Instansi" />
                                     </div>
+                                    @error('instansi')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -116,6 +107,9 @@
                                             value="{{ old('alamat_instansi', $formta->alamat_instansi) }}"
                                             placeholder="Masukkan Alamat Instansi" />
                                     </div>
+                                    @error('alamat_instansi')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -133,6 +127,9 @@
                                             <option value="Online" {{ $formta->pelaksanaan == 'Online' ? 'selected' : '' }}>Online</option>
                                         </select>
                                     </div>
+                                    @error('pelaksanaan')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -140,6 +137,9 @@
                                         <input type="date" name="waktu_mulai_pelaksanaan" class="form-control"
                                             value="{{ old('waktu_mulai_pelaksanaan', $formta->waktu_mulai_pelaksanaan) }}" />
                                     </div>
+                                    @error('waktu_mulai_pelaksanaan')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -147,13 +147,19 @@
                                         <input type="date" name="waktu_akhir_pelaksanaan" class="form-control"
                                             value="{{ old('waktu_akhir_pelaksanaan', $formta->waktu_akhir_pelaksanaan) }}" />
                                     </div>
+                                    @error('waktu_akhir_pelaksanaan')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">No. HP</label>
-                                        <input type="text" name="no_hp" class="form-control"
+                                        <input type="number" name="no_hp" class="form-control"
                                             value="{{ old('no_hp', $formta->no_hp) }}" placeholder="Masukkan No. HP" />
                                     </div>
+                                    @error('no_hp')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -161,6 +167,9 @@
                                         <input type="email" name="email" class="form-control"
                                             value="{{ old('email', $formta->email) }}" placeholder="Masukkan Email" />
                                     </div>
+                                    @error('email')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -169,6 +178,9 @@
                                             value="{{ old('nama_pembimbing_satu', $formta->nama_pembimbing_satu) }}"
                                             placeholder="Masukkan Nama Pembimbing Satu" />
                                     </div>
+                                    @error('nama_pembimbing_satu')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -177,6 +189,9 @@
                                             value="{{ old('nama_pembimbing_dua', $formta->nama_pembimbing_dua) }}"
                                             placeholder="Masukkan Nama Pembimbing Dua" />
                                     </div>
+                                    @error('nama_pembimbing_dua')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -184,6 +199,9 @@
                                         <textarea name="judul" class="form-control"
                                             placeholder="Masukkan Judul">{{ old('judul', $formta->judul) }}</textarea>
                                     </div>
+                                    @error('judul')
+                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary float-right" id="sa-custom-position">
@@ -197,4 +215,35 @@
                 </div>
             </div>
         </div>
-        </x-admin-app>
+</x-admin-app>
+@if(session('success_update_data'))
+    <script>
+        swal({
+            position: 'center',
+            type: 'success',
+            title: "{{ session('success_update_data') }}",
+            showConfirmButton: false,
+            timer: 3000
+        })
+    </script>
+@elseif(session('error_create_data'))
+    <script>
+        swal({
+            position: 'center',
+            type: 'error',
+            title: "{{ session('error_create_data') }}",
+            showConfirmButton: false,
+            timer: 3000
+        })
+    </script>
+@elseif(session('no_changes'))
+    <script>
+        swal({
+            position: 'center',
+            type: 'info',
+            title: "{{ session('no_changes') }}",
+            showConfirmButton: false,
+            timer: 3000
+        })
+    </script>
+@endif
