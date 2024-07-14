@@ -90,7 +90,8 @@ class FormTAController extends Controller
                 $formta->email != $request->email ||
                 $formta->nama_pembimbing_satu != $request->nama_pembimbing_satu ||
                 $formta->nama_pembimbing_dua != $request->nama_pembimbing_dua ||
-                $formta->judul != $request->judul) {
+                $formta->judul != $request->judul
+            ) {
 
 
                 $formta->prodi_id = $validatedData['prodi_id'];
@@ -111,9 +112,9 @@ class FormTAController extends Controller
 
                 $formta->save();
 
-                return redirect('mahasiswa.dashboard')->with('success_update_data', 'Data berhasil diubah');
-            }else{
-                return redirect('mahasiswa.dashboard')->with('no_changes', 'Tidak ada perubahan yang dilakukan.');
+                return redirect()->route('mahasiswa.dashboard')->with('success_update_data', 'Data berhasil diubah');
+            } else {
+                return redirect()->route('mahasiswa.dashboard')->with('no_changes', 'Tidak ada perubahan yang dilakukan.');
             }
         } catch (\Exception $e) {
             return back()->with('error_create_data', 'Maaf! Terjadi kesalahan saat menyimpan data.')->withInput();
