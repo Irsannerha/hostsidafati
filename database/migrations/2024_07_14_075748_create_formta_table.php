@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('formta', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prodi_id');
+            $table->foreignId('jenis_pengajuan_id');
             $table->string('nama');
-            $table->string('nim');
+            $table->bigInteger('nim');
             $table->string('keperluan')->default('Permohonan Izin Penelitian Tugas Akhir');
             $table->string('instansi');
             $table->string('alamat_instansi');
@@ -23,7 +24,7 @@ return new class extends Migration
             $table->string('pelaksanaan')->default('Online');
             $table->date('waktu_mulai_pelaksanaan');
             $table->date('waktu_akhir_pelaksanaan');
-            $table->string('no_hp');
+            $table->bigInteger('no_hp');
             $table->string('email');
             $table->string('nama_pembimbing_satu');
             $table->string('nama_pembimbing_dua');

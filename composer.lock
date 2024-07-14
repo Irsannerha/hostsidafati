@@ -7107,7 +7107,6 @@
         },
         {
             "name": "laravel/sail",
-
             "version": "v1.30.2",
             "source": {
                 "type": "git",
@@ -7118,7 +7117,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/sail/zipball/f5a9699a1001e15de1aa5e7cb5c9f50a3f63f887",
                 "reference": "f5a9699a1001e15de1aa5e7cb5c9f50a3f63f887",
-
                 "shasum": ""
             },
             "require": {
@@ -7948,7 +7946,6 @@
                 }
             ],
             "time": "2024-07-10T11:48:06+00:00"
-
         },
         {
             "name": "sebastian/cli-parser",
@@ -9377,5 +9374,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

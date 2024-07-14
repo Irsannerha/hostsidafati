@@ -13,6 +13,7 @@ class FormTA extends Model
 
     protected $fillable = [
         'prodi_id',
+        'jenis_pengajuan_id',
         'nama',
         'nim',
         'keperluan',
@@ -35,5 +36,9 @@ class FormTA extends Model
     public function Prodi()
     {
         return $this->belongsTo(Prodi::class, 'prodi_id', 'id');
+    }
+    public function jenisPengajuan()
+    {
+        return $this->belongsTo(JenisPengajuan::class, 'jeni_pengajuan', 'id');
     }
 }
