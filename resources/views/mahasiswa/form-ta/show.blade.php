@@ -1,6 +1,6 @@
 <style>
     .modal-sm {
-        max-width: 50%;
+        max-width: 80%;
         /* Atur lebar maksimum modal */
         max-height: 95%;
         /* Atur tinggi maksimum modal */
@@ -74,34 +74,45 @@
 <!-- Modal Lihat -->
 <div class="modal fade" id="showModal{{ $ta->id }}" tabindex="-1" role="dialog"
     aria-labelledby="showModalLabel{{ $ta->id }}" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-        <div class="modal-content" data-bgcolor="#d0d0d0">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+        <div class="modal-content p-6" data-bgcolor="#ffffff">
             <div class="modal-header">
-                <h5 class="modal-title" id="showModalLabel{{ $ta->id }}"><i class="fa fa-paperclip"
-                        aria-hidden="true"></i> Detail Data Pengajuan Tugas Akhir</h5>
+                <h5 class="modal-title" id="showModalLabel{{ $ta->id }}">
+                    Detail Data Pengajuan Tugas Akhir</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body table-responsive">
-                <div class="pd-20 card-box card-hdr" data-bgcolor="#fff">
-                    <div class="container-fluid">
-                        <!-- Header row -->
-                        <div class="row font-weight-bold border-bottom">
-                            <div class="col-2">No</div>
-                            <div class="col-10">Nama</div>
-                        </div>
-                        <!-- Data rows -->
-                        <div class="row border-bottom">
-                            <div class="col-2">1</div>
-                            <div class="col-10">Mahasiswa 1</div>
-                        </div>
-                        <!-- Add more rows as needed -->
+            <div class="modal-body table-responsive" data-bgcolor="#fff">
+                <p>Tanggal Pengajuan : <span class="font-bold">12-04-2040</span></p>
+                <div class="flex flex-col w-full text-center border-x-[1px] border-t-[1px] border-black">
+                    <div class="flex w-full bg-primary-main text-white border-b border-black">
+                        <div class="w-1/3 px-4 py-2 font-bold ">Status Pengajuan</div>
+                        <div class="w-1/3 px-4 py-2 font-bold border-x border-black">Keterangan</div>
+                        <div class="w-1/3 px-4 py-2 font-bold ">Timestamp</div>
+                    </div>
+                    <div class="flex w-full border-b border-black">
+                        <div class="w-1/3 px-4 py-2 bg-gray-200">Telah di Verifikasi Dosen Wali</div>
+                        <div class="w-1/3 px-4 py-2 border-x border-black">-</div>
+                        <div class="w-1/3 px-4 py-2">2024-07-07 12.00.01</div>
+                    </div>
+                    <div class="flex w-full border-b  border-black">
+                        <div class="w-1/3 px-4 py-2 bg-gray-200">Telah di Verifikasi Koordinator Prodi</div>
+                        <div class="w-1/3 px-4 py-2 border-x border-black">-</div>
+                        <div class="w-1/3 px-4 py-2">2024-06-06 12.00.01</div>
+                    </div>
+                    <div class="flex w-full border-b  border-black">
+                        <div class="w-1/3 px-4 py-2 bg-gray-200">Telah di Validasi Dekan</div>
+                        <div class="w-1/3 px-4 py-2 border-x border-black">-</div>
+                        <div class="w-1/3 px-4 py-2">2024-06-06 12.00.01</div>
                     </div>
                 </div>
             </div>
+            <p class="ml-3">Silahkan klik pada tautan disini untuk mulai mengunduh file</p>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                <button type="button"
+                    class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold"
+                    data-dismiss="modal">Selesai</button>
             </div>
         </div>
     </div>

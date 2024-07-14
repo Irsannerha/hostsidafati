@@ -1,30 +1,19 @@
 <x-mahasiswa-app>
     <div class="mobile-menu-overlay"></div>
     <div class="main-container">
-        <div class="pd-ltr-20 xs-pd-20-10">
-            <div class="min-height-200px">
-                <div class="page-header">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="title font-weight-bold">
-                                <h4>Dashboard</h4>
-                            </div>
-                            <!-- <nav aria-lalubi="breadcrumb" role="navigation">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item font-weight-bold h5">
-                                        <a href="/">Dashboard</a>
-                                    </li>
-                                </ol>
-                            </nav> -->
-                        </div>
-                        <div class="col-md-6 col-sm-12 text-right">
+        <div class="">
+            <div class="">
+                <div class="bg-primary-main rounded-11 py-[31px] px-6 mb-4 mt-3">
+                    <div class="">
+                        <h4 class="text-white">Dashboard</h4>
+                        <!-- <div class="col-md-6 col-sm-12 text-right">
                             <div class="time">
                                 <button id="dateTime" class="btn btn-primary font-weight-bold" type="button"
                                     data-toggle="dropdown">
                                     <span id="currentDateTime"></span>
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- Summary Counts Start -->
