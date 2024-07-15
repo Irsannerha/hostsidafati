@@ -167,6 +167,7 @@
 </x-dosen-app>
 
 <script>
+    // console.log($formta)
     document.addEventListener('DOMContentLoaded', function () {
         const countStatuses = () => {
             const rows = document.querySelectorAll('#dataTable tbody tr');
