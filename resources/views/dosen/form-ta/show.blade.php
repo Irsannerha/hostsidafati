@@ -231,20 +231,61 @@ echo $hari_indo . ', ' . $tgl_kegiatan->format('d') . ' ' . $bulan_indo . ' ' . 
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button"
-                    class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold"
-                    data-dismiss="modal">Tolak</button>
+                @if ($ta->status != 'Selesai')
+                    <button type="button" id="cancel-btn"
+                        class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold"
+                        onclick="toggleForm()">Tolak</button>
 
-                <button type="button"
-                    class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold"
-                    data-dismiss="modal" onclick="showAlert({{$ta->id}})">Setuju</button>
+                    <div id="form-canceled" class="hidden w-full">
+                        <form action="" method="POST">
+                            @csrf
+                            @method('POST')
+                            <textarea class="form-control @error('keterangan') is-invalid @enderror"
+                                placeholder="Masukkan alasan mengapa pengajuan ini ditolak" name="keterangan"
+                                id="keterangan" rows="3">{{ old('keterangan') }}</textarea>
+                            <button type="submit"
+                                class="border mt-3 border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold float-end">Kirim</button>
+                        </form>
+                        <button type="button" id="cancel-btn"
+                            class="border mt-3 border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold"
+                            onclick="toggleForm()">Batal</button>
+                    </div>
+
+                    <div id="accept-btn">
+                        <form action="{{ route('dosen.form-ta.update', $ta->id)}}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <input class="hidden" type="text" value="Selesai">
+                            <button type="submit"
+                                class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold">Setuju</button>
+                        </form>
+                    </div>
+                @else
+                    <button type="button"
+                        class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold"
+                        data-dismiss="modal">Tutup</button>
+                @endif
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    function showAlert(id) {
-        alert("Setuju" + id);
+    function toggleForm() {
+        const form = document.getElementById('form-canceled');
+        const accept = document.getElementById('accept-btn');
+        const cancel = document.getElementById('cancel-btn');
+        if (form.classList.contains('hidden')) {
+            form.classList.remove('hidden');
+            form.classList.add('block');
+            accept.classList.add('hidden');
+            cancel.classList.add('hidden');
+        } else {
+            form.classList.remove('block');
+            form.classList.add('hidden');
+            accept.classList.remove('hidden');
+            cancel.classList.remove('hidden');
+        }
     }
 </script>

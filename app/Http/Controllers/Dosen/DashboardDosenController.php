@@ -18,6 +18,7 @@ class DashboardDosenController extends Controller
         $formta = FormTA::all();
         $prodi = Prodi::all();
         return view('dosen.dashboard', compact('formta', 'prodi'));
+        // return $formta;
     }
 
     /**
