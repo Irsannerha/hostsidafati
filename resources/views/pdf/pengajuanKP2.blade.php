@@ -1,5 +1,5 @@
 <head>
-    <title>Permohonan Cuti Akademik</title>
+    <title>Permohonana Surat Pengantar Kerja Praktek 2</title>
     <style>
         .container {
             margin: 0 auto;

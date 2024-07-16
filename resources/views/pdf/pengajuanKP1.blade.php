@@ -1,6 +1,14 @@
 <head>
-    <title>Surat Rekomendasi</title>
+    <title>Surat Pengajuan Pengantar Kerja Praktik</title>
     <style>
+        @page {
+            /* create space for header */
+
+            margin: 172px 60px 80px 60px !important;
+
+            /* create space for footer */
+        }
+
         .container {
             margin: 0 auto;
         }
@@ -75,13 +83,23 @@
         table {
             width: 100%;
             margin-top: 20px;
+            font-size: 16px;
+        }
+
+        th {
+            width: 45%;
+            text-align: left !important;
+            font-weight: normal;
+        }
+
+        th,
+        td {
+            padding-left: 5px;
         }
 
         th:first-child,
-        th:last-child {
-            width: 230px;
-            text-align: left;
-            font-weight: normal;
+        td:first-child {
+            padding-left: 0px !important;
         }
 
         .qrcode {
@@ -92,7 +110,7 @@
 <x-pdf-app>
     <main class="container">
         <div class="header">
-            FORM PENGAJUAN SURAT REKOMENDASI
+            FORM PENGAJUAN SURAT PENGANTAR KERJA PRAKTIK
         </div>
         <div class="content">
             <div class="section2">
@@ -112,7 +130,12 @@
                     <span class="value"></span>
                 </div>
                 <div class="line">
-                    <span class="label">No. Telepon/HP</span>
+                    <span class="label long">Alamat Lengkap</span>
+                    <span class="separator long">:</span>
+                    <span class="value long"></span>
+                </div>
+                <div class="line">
+                    <span class="label">No. Telepon</span>
                     <span class="separator">:</span>
                     <span class="value"></span>
                 </div>
@@ -122,15 +145,29 @@
                     <span class="value"></span>
                 </div>
                 <div class="line">
-                    <span class="label long">Prestasi bidang Akademik & Non Akademik yang pernah
-                        dicapai</span>
+                    <span class="label long">Nama Instansi</span>
                     <span class="separator long">:</span>
                     <span class="value long"></span>
                 </div>
                 <div class="line">
-                    <span class="label long">Program yang akan diikuti</span>
+                    <span class="label long">Nama Pimpinan Instansi</span>
                     <span class="separator long">:</span>
                     <span class="value long"></span>
+                </div>
+                <div class="line">
+                    <span class="label">Waktu Pelaksanaan</span>
+                    <span class="separator">:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="line">
+                    <span class="label long">Alamat Instansi</span>
+                    <span class="separator long">:</span>
+                    <span class="value long"></span>
+                </div>
+                <div class="line">
+                    <span class="label">No. Telepon Instansi</span>
+                    <span class="separator">:</span>
+                    <span class="value"></span>
                 </div>
             </div>
             <div class="content">
@@ -146,32 +183,30 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan="4">Mengetahui,</th>
+                    <th>Mengetahui,</th>
+                    <th colspan="2">Menyetujui,</th>
                 </tr>
                 <tr>
-                    <th>Dosen wali</th>
-                    <th></th>
-                    <th></th>
+                    <th>Dosen Wali</th>
+                    <th>Koordinator KP Prodi</th>
                     <th>Mahasiswa Ybs,</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><img class="qrcode" src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code"></td>
-                    <td></td>
-                    <td></td>
+                    <td><img class="qrcode" src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code"></td>
                     <td><img class="qrcode" src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code"></td>
                 </tr>
-                <tr>
-                    <td>Bendry Lakburlawal, svdvdvsdv dsbddvf dbsdfds</td>
-                    <td></td>
-                    <td></td>
-                    <td>Rin Takahashri dfasvasv advas vvsvas</td>
+                <tr class="name">
+                    <td>Dr. Eng. Feerzet Achmad Bendry Lakburlawal, S.T., M.T.</td>
+                    <td>Dr. Eng. Feerzet Achmad, S.T., M.T.</td>
+                    <td>Dr. Eng. Feerzet Achmad, S.T., M.T.</td>
+
                 </tr>
-                <tr>
-                    <td>NIP/NRK. 1211401111132425354</td>
-                    <td></td>
-                    <td></td>
+                <tr class="no-id">
+                    <td>NIP/NRK. 1975041720171091</td>
+                    <td>NIP/NRK. 1975041720171091</td>
                     <td>NIM. 121140111111 </td>
                 </tr>
             </tbody>

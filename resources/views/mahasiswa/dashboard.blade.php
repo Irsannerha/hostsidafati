@@ -120,7 +120,7 @@
                                     @foreach ($formta as $ta)
                                         <tr data-status="{{ $ta->status }}">
                                             <td class="table-plus">{{ $loop->iteration }}</td>
-                                            <td>{{ $ta->prodi ? $ta->prodi->prodi : '' }}</td>
+                                            <td>{{ $ta->keperluan }}</td>
                                             <td>
                                                 @if($ta->status == 'Selesai')
                                                     <span class="badge badge-success"
