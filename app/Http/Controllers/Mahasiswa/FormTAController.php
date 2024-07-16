@@ -88,6 +88,7 @@ class FormTAController extends Controller
                 $formta->instansi != $request->instansi ||
                 $formta->alamat_instansi != $request->alamat_instansi ||
                 $formta->tjp != $request->tjp ||
+                $formta->status == 'Ditolak' ||
                 $formta->pelaksanaan != $request->pelaksanaan ||
                 $formta->waktu_mulai_pelaksanaan != $request->waktu_mulai_pelaksanaan ||
                 $formta->waktu_akhir_pelaksanaan != $request->waktu_akhir_pelaksanaan ||
@@ -110,6 +111,7 @@ class FormTAController extends Controller
                 $formta->waktu_mulai_pelaksanaan = $validatedData['waktu_mulai_pelaksanaan'];
                 $formta->waktu_akhir_pelaksanaan = $validatedData['waktu_akhir_pelaksanaan'];
                 $formta->no_hp = $validatedData['no_hp'];
+                $formta->status = 'Diproses';
                 $formta->email = $validatedData['email'];
                 $formta->nama_pembimbing_satu = $validatedData['nama_pembimbing_satu'];
                 $formta->nama_pembimbing_dua = $validatedData['nama_pembimbing_dua'];

@@ -245,7 +245,7 @@ Route::get('/prestasi', [HomeController::class, 'prestasi'])->name('prestasi');
 Route::post('/prestasi', [HomeController::class, 'UploadPrestasi'])->name('prestasi.store');
 Route::post('/kegiatan', [HomeController::class, 'UploadKegiatan'])->name('kegiatan.store');
 Route::get('/tentang', [HomeController::class, 'tentang'])->name('tentang');
-// Route::get('/form-ta', [HomeController::class, 'formta'])->name('formta');
+Route::get('/form-ta', [PDFController::class, 'generatePDF'])->name('formta');
 // Route::post('/form-ta', [HomeController::class, 'UploadFormTA'])->name('formta.store');
 // Route::get('/form-kp', [HomeController::class, 'formkp'])->name('formkp');
 // Route::post('/form-kp', [HomeController::class, 'UploadFormKP'])->name('formkp.store');

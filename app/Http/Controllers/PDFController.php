@@ -12,7 +12,6 @@ class PDFController extends Controller
     {
         $data = "Nama : Henry Carngie\nNIM : 121140054\nAlamat : Kulon\nTanggal : 12-11-2024\nPengajuan TA";
         $qrCode = base64_encode(QrCode::format('svg')->size(300)->generate($data));
-
         $pdf = PDF::loadView('pdf.pengajuanTA', ['data' => $data, 'qrCode' => $qrCode]);
         $pdf->setPaper('A4', 'portrait');
         $pdf->render();
