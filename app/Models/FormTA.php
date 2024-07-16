@@ -29,6 +29,10 @@ class FormTA extends Model
         'nama_pembimbing_dua',
         'judul',
         'status',
+        'dosen_wali',
+        'koor_prodi',
+        'tekndik_checking',
+        'dekan',
         'keterangan',
 
     ];
@@ -39,6 +43,6 @@ class FormTA extends Model
     }
     public function jenisPengajuan()
     {
-        return $this->belongsTo(JenisPengajuan::class, 'jeni_pengajuan', 'id');
+        return $this->belongsTo(JenisPengajuan::class, 'jenis_pengajuan_id', 'id');
     }
 }

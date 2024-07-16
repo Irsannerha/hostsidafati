@@ -18,4 +18,7 @@ class JenisPengajuan extends Model
     public function formTa(){
         return $this->hasMany(FormTa::class);
     }
+    public function keterangaPengajuan(){
+        return $this->hasMany(KeteranganPengajuan::class);
+    }
 }

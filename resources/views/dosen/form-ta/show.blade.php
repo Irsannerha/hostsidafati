@@ -127,34 +127,34 @@
                         <dd class="custom-dd"><span class="font-bold mr-3">:</span>
                             @if($ta->pelaksanaan == 'Offline')
                                 <span class="badge badge-success"
-                                    style="border-radius: 10px; padding: 0.2rem 1.2rem; font-size: 15px;">Offline</span>
+                                    style="border-radius: 10px; padding: 0.2rem 1.2rem; font-size: 15px;">{{ $ta->pelaksanaan }}</span>
                             @else
                                 <span class="badge badge-danger"
-                                    style="border-radius: 10px; padding: 0.2rem 1.2rem; font-size: 15px;">Online</span>
+                                    style="border-radius: 10px; padding: 0.2rem 1.2rem; font-size: 15px;">{{ $ta->pelaksanaan }}</span>
                             @endif
                         </dd>
 
                         <dt>Waktu Mulai Pelaksanaan</dt>
                         <dd class="custom-dd"><span class="font-bold mr-3">:</span>
                             <?php
-$bulan = ['January' => 'Januari', 'February' => 'Februari', 'March' => 'Maret', 'April' => 'April', 'May' => 'Mei', 'June' => 'Juni', 'July' => 'Juli', 'August' => 'Agustus', 'September' => 'September', 'October' => 'Oktober', 'November' => 'November', 'December' => 'Desember'];
-$hari = ['Monday' => 'Senin', 'Tuesday' => 'Selasa', 'Wednesday' => 'Rabu', 'Thursday' => 'Kamis', 'Friday' => 'Jum\'at', 'Saturday' => 'Sabtu', 'Sunday' => 'Minggu'];
-$waktu_mulai_pelaksanaan = \Carbon\Carbon::parse($ta->waktu_mulai_pelaksanaan);
-$bulan_indo = str_replace(array_keys($bulan), array_values($bulan), $waktu_mulai_pelaksanaan->format('F'));
-$hari_indo = str_replace(array_keys($hari), array_values($hari), $waktu_mulai_pelaksanaan->format('l'));
-echo $hari_indo . ', ' . $waktu_mulai_pelaksanaan->format('d') . ' ' . $bulan_indo . ' ' . $waktu_mulai_pelaksanaan->format('Y');
+                                $bulan = ['January' => 'Januari', 'February' => 'Februari', 'March' => 'Maret', 'April' => 'April', 'May' => 'Mei', 'June' => 'Juni', 'July' => 'Juli', 'August' => 'Agustus', 'September' => 'September', 'October' => 'Oktober', 'November' => 'November', 'December' => 'Desember'];
+                                $hari = ['Monday' => 'Senin', 'Tuesday' => 'Selasa', 'Wednesday' => 'Rabu', 'Thursday' => 'Kamis', 'Friday' => 'Jum\'at', 'Saturday' => 'Sabtu', 'Sunday' => 'Minggu'];
+                                $waktu_mulai_pelaksanaan = \Carbon\Carbon::parse($ta->waktu_mulai_pelaksanaan);
+                                $bulan_indo = str_replace(array_keys($bulan), array_values($bulan), $waktu_mulai_pelaksanaan->format('F'));
+                                $hari_indo = str_replace(array_keys($hari), array_values($hari), $waktu_mulai_pelaksanaan->format('l'));
+                                echo $hari_indo . ', ' . $waktu_mulai_pelaksanaan->format('d') . ' ' . $bulan_indo . ' ' . $waktu_mulai_pelaksanaan->format('Y');
                             ?>
                         </dd>
 
                         <dt>Waktu Akhir Pelaksanaan</dt>
                         <dd class="custom-dd"><span class="font-bold mr-3">:</span>
                             <?php
-$bulan = ['January' => 'Januari', 'February' => 'Februari', 'March' => 'Maret', 'April' => 'April', 'May' => 'Mei', 'June' => 'Juni', 'July' => 'Juli', 'August' => 'Agustus', 'September' => 'September', 'October' => 'Oktober', 'November' => 'November', 'December' => 'Desember'];
-$hari = ['Monday' => 'Senin', 'Tuesday' => 'Selasa', 'Wednesday' => 'Rabu', 'Thursday' => 'Kamis', 'Friday' => 'Jum\'at', 'Saturday' => 'Sabtu', 'Sunday' => 'Minggu'];
-$waktu_akhir_pelaksanaan = \Carbon\Carbon::parse($ta->waktu_akhir_pelaksanaan);
-$bulan_indo = str_replace(array_keys($bulan), array_values($bulan), $waktu_akhir_pelaksanaan->format('F'));
-$hari_indo = str_replace(array_keys($hari), array_values($hari), $waktu_akhir_pelaksanaan->format('l'));
-echo $hari_indo . ', ' . $waktu_akhir_pelaksanaan->format('d') . ' ' . $bulan_indo . ' ' . $waktu_akhir_pelaksanaan->format('Y');
+                                $bulan = ['January' => 'Januari', 'February' => 'Februari', 'March' => 'Maret', 'April' => 'April', 'May' => 'Mei', 'June' => 'Juni', 'July' => 'Juli', 'August' => 'Agustus', 'September' => 'September', 'October' => 'Oktober', 'November' => 'November', 'December' => 'Desember'];
+                                $hari = ['Monday' => 'Senin', 'Tuesday' => 'Selasa', 'Wednesday' => 'Rabu', 'Thursday' => 'Kamis', 'Friday' => 'Jum\'at', 'Saturday' => 'Sabtu', 'Sunday' => 'Minggu'];
+                                $waktu_akhir_pelaksanaan = \Carbon\Carbon::parse($ta->waktu_akhir_pelaksanaan);
+                                $bulan_indo = str_replace(array_keys($bulan), array_values($bulan), $waktu_akhir_pelaksanaan->format('F'));
+                                $hari_indo = str_replace(array_keys($hari), array_values($hari), $waktu_akhir_pelaksanaan->format('l'));
+                                echo $hari_indo . ', ' . $waktu_akhir_pelaksanaan->format('d') . ' ' . $bulan_indo . ' ' . $waktu_akhir_pelaksanaan->format('Y');
                             ?>
                         </dd>
 
@@ -195,37 +195,37 @@ echo $hari_indo . ', ' . $waktu_akhir_pelaksanaan->format('d') . ' ' . $bulan_in
 
                         <dd class="custom-dd"><span class="font-bold mr-3">:</span>
                             <?php
-$bulan = [
-    'January' => 'Januari',
-    'February' => 'Februari',
-    'March' => 'Maret',
-    'April' => 'April',
-    'May' => 'Mei',
-    'June' => 'Juni',
-    'July' => 'Juli',
-    'August' => 'Agustus',
-    'September' => 'September',
-    'October' => 'Oktober',
-    'November' => 'November',
-    'December' => 'Desember'
-];
+                                $bulan = [
+                                    'January' => 'Januari',
+                                    'February' => 'Februari',
+                                    'March' => 'Maret',
+                                    'April' => 'April',
+                                    'May' => 'Mei',
+                                    'June' => 'Juni',
+                                    'July' => 'Juli',
+                                    'August' => 'Agustus',
+                                    'September' => 'September',
+                                    'October' => 'Oktober',
+                                    'November' => 'November',
+                                    'December' => 'Desember'
+                                ];
 
-$hari = [
-    'Monday' => 'Senin',
-    'Tuesday' => 'Selasa',
-    'Wednesday' => 'Rabu',
-    'Thursday' => 'Kamis',
-    'Friday' => 'Jum\'at',
-    'Saturday' => 'Sabtu',
-    'Sunday' => 'Minggu'
-];
+                                $hari = [
+                                    'Monday' => 'Senin',
+                                    'Tuesday' => 'Selasa',
+                                    'Wednesday' => 'Rabu',
+                                    'Thursday' => 'Kamis',
+                                    'Friday' => 'Jum\'at',
+                                    'Saturday' => 'Sabtu',
+                                    'Sunday' => 'Minggu'
+                                ];
 
-$tgl_kegiatan = \Carbon\Carbon::parse($ta->created_at)->timezone('Asia/Jakarta');
-$bulan_indo = str_replace(array_keys($bulan), array_values($bulan), $tgl_kegiatan->format('F'));
-$hari_indo = str_replace(array_keys($hari), array_values($hari), $tgl_kegiatan->format('l'));
+                                $tgl_kegiatan = \Carbon\Carbon::parse($ta->created_at)->timezone('Asia/Jakarta');
+                                $bulan_indo = str_replace(array_keys($bulan), array_values($bulan), $tgl_kegiatan->format('F'));
+                                $hari_indo = str_replace(array_keys($hari), array_values($hari), $tgl_kegiatan->format('l'));
 
-echo $hari_indo . ', ' . $tgl_kegiatan->format('d') . ' ' . $bulan_indo . ' ' . $tgl_kegiatan->format('Y') . ' / Pukul : ' . $tgl_kegiatan->format('H:i') . ' WIB';
-                        ?>
+                                echo $hari_indo . ', ' . $tgl_kegiatan->format('d') . ' ' . $bulan_indo . ' ' . $tgl_kegiatan->format('Y') . ' / Pukul : ' . $tgl_kegiatan->format('H:i') . ' WIB';
+                            ?>
                         </dd>
                     </dl>
                 </div>
@@ -237,7 +237,7 @@ echo $hari_indo . ', ' . $tgl_kegiatan->format('d') . ' ' . $bulan_indo . ' ' . 
                         onclick="toggleForm()">Tolak</button>
 
                     <div id="form-canceled" class="hidden w-full">
-                        <form action="" method="POST">
+                        <form action="{{ route('dosen.form-ta.tolak', ['id' => $ta->id]) }}" method="POST">
                             @csrf
                             @method('POST')
                             <textarea class="form-control @error('keterangan') is-invalid @enderror"
@@ -252,11 +252,9 @@ echo $hari_indo . ', ' . $tgl_kegiatan->format('d') . ' ' . $bulan_indo . ' ' . 
                     </div>
 
                     <div id="accept-btn">
-                        <form action="{{ route('dosen.form-ta.update', $ta->id)}}" method="POST"
+                        <form action="{{ route('dosen.form-ta.terima', ['id' => $ta->id])}}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
-                            <input class="hidden" type="text" value="Selesai">
                             <button type="submit"
                                 class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold">Setuju</button>
                         </form>

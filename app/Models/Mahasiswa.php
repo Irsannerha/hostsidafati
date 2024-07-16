@@ -27,7 +27,7 @@ class Mahasiswa extends Model
         'nama',
         'slug_mahasiswa',
         'fakultas',
-        'kode_prodi',
+        'prodi_id',
         'email'
     ];
 

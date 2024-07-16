@@ -48,7 +48,7 @@
                                         <select name="prodi_id" class="form-control">
                                             <option value="">Pilih Program Studi</option>
                                             @foreach($prodi as $p)
-                                                <option value="{{ $p->id }}" {{ $p->id == $formta->prodi_id ? 'selected' : '' }}>{{ $p->prodi }}</option>
+                                                <option value="{{ $p->id }}" {{ old('prodi_id', $formta->prodi_id) == $p->id ? 'selected' : '' }}>{{ $p->prodi }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-bold">Nama</label>
                                         <input type="text" name="nama" class="form-control"
-                                            value="{{ old('nama', $formta->nama) }}" placeholder="Masukkan Nama" />
+                                            value="{{ old('nama', $formta->nama) }}" placeholder="Masukkan Nama" required @readonly(true)/>
                                     </div>
                                     @error('nama')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -70,7 +70,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-bold">NIM</label>
                                         <input type="number" name="nim" class="form-control"
-                                            value="{{ old('nim', $formta->nim) }}" placeholder="Masukkan NIM" />
+                                            value="{{ old('nim', $formta->nim) }}" placeholder="Masukkan NIM" required @readonly(true)/>
                                     </div>
                                     @error('nim')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -79,7 +79,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">Keperluan</label>
-                                        <select name="keperluan" class="form-control">
+                                        <select name="keperluan" class="form-control" required>
                                             <option value="Permohonan Izin Penelitian Tugas Akhir" {{ $formta->keperluan == 'Permohonan Izin Penelitian Tugas Akhir' ? 'selected' : '' }}>Permohonan Izin Penelitian Tugas Akhir</option>
                                             <option value="Permohonan Data Tugas Akhir" {{ $formta->keperluan == 'Permohonan Data Tugas Akhir' ? 'selected' : '' }}>
                                                 Permohonan Data Tugas Akhir</option>
@@ -94,7 +94,7 @@
                                         <label class="font-weight-bold">Instansi</label>
                                         <input type="text" name="instansi" class="form-control"
                                             value="{{ old('instansi', $formta->instansi) }}"
-                                            placeholder="Masukkan Nama Instansi" />
+                                            placeholder="Masukkan Nama Instansi" required/>
                                     </div>
                                     @error('instansi')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -105,7 +105,7 @@
                                         <label class="font-weight-bold">Alamat Instansi</label>
                                         <input type="text" name="alamat_instansi" class="form-control"
                                             value="{{ old('alamat_instansi', $formta->alamat_instansi) }}"
-                                            placeholder="Masukkan Alamat Instansi" />
+                                            placeholder="Masukkan Alamat Instansi" required/>
                                     </div>
                                     @error('alamat_instansi')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -122,7 +122,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="font-weight-bold">Pelaksanaan</label>
-                                        <select name="pelaksanaan" class="form-control">
+                                        <select name="pelaksanaan" class="form-control" required>
                                             <option value="Offline" {{ $formta->pelaksanaan == 'Offline' ? 'selected' : '' }}>Offline</option>
                                             <option value="Online" {{ $formta->pelaksanaan == 'Online' ? 'selected' : '' }}>Online</option>
                                         </select>
@@ -135,7 +135,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-bold">Waktu Mulai Pelaksanaan</label>
                                         <input type="date" name="waktu_mulai_pelaksanaan" class="form-control"
-                                            value="{{ old('waktu_mulai_pelaksanaan', $formta->waktu_mulai_pelaksanaan) }}" />
+                                            value="{{ old('waktu_mulai_pelaksanaan', $formta->waktu_mulai_pelaksanaan) }}" required/>
                                     </div>
                                     @error('waktu_mulai_pelaksanaan')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -145,7 +145,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-bold">Waktu Akhir Pelaksanaan</label>
                                         <input type="date" name="waktu_akhir_pelaksanaan" class="form-control"
-                                            value="{{ old('waktu_akhir_pelaksanaan', $formta->waktu_akhir_pelaksanaan) }}" />
+                                            value="{{ old('waktu_akhir_pelaksanaan', $formta->waktu_akhir_pelaksanaan) }}" required/>
                                     </div>
                                     @error('waktu_akhir_pelaksanaan')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -155,7 +155,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-bold">No. HP</label>
                                         <input type="number" name="no_hp" class="form-control"
-                                            value="{{ old('no_hp', $formta->no_hp) }}" placeholder="Masukkan No. HP" />
+                                            value="{{ old('no_hp', $formta->no_hp) }}" placeholder="Masukkan No. HP" required/>
                                     </div>
                                     @error('no_hp')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -165,7 +165,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-bold">Email</label>
                                         <input type="email" name="email" class="form-control"
-                                            value="{{ old('email', $formta->email) }}" placeholder="Masukkan Email" />
+                                            value="{{ old('email', $formta->email) }}" placeholder="Masukkan Email" required @readonly(true)/>
                                     </div>
                                     @error('email')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -176,7 +176,7 @@
                                         <label class="font-weight-bold">Nama Pembimbing Satu</label>
                                         <input type="text" name="nama_pembimbing_satu" class="form-control"
                                             value="{{ old('nama_pembimbing_satu', $formta->nama_pembimbing_satu) }}"
-                                            placeholder="Masukkan Nama Pembimbing Satu" />
+                                            placeholder="Masukkan Nama Pembimbing Satu" required/>
                                     </div>
                                     @error('nama_pembimbing_satu')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -187,7 +187,7 @@
                                         <label class="font-weight-bold">Nama Pembimbing Dua</label>
                                         <input type="text" name="nama_pembimbing_dua" class="form-control"
                                             value="{{ old('nama_pembimbing_dua', $formta->nama_pembimbing_dua) }}"
-                                            placeholder="Masukkan Nama Pembimbing Dua" />
+                                            placeholder="Masukkan Nama Pembimbing Dua" required/>
                                     </div>
                                     @error('nama_pembimbing_dua')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -197,7 +197,7 @@
                                     <div class="form-group">
                                         <label class="font-weight-bold">Judul</label>
                                         <textarea name="judul" class="form-control"
-                                            placeholder="Masukkan Judul">{{ old('judul', $formta->judul) }}</textarea>
+                                            placeholder="Masukkan Judul" required>{{ old('judul', $formta->judul) }}</textarea>
                                     </div>
                                     @error('judul')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>

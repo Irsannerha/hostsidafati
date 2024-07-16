@@ -30,6 +30,10 @@ return new class extends Migration
             $table->string('nama_pembimbing_dua');
             $table->string('judul');
             $table->string('status')->default('Diproses');
+            $table->boolean('dosen_wali')->default(false);
+            $table->boolean('koor_prodi')->default(false);
+            $table->boolean('tekndik_checking')->default(false);
+            $table->boolean('dekan')->default(false);
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });

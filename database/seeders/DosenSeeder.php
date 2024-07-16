@@ -16,6 +16,7 @@ class DosenSeeder extends Seeder
         $dostap = [
             [
                 'prodi_id' => 1,
+                'email' => 'dosen@test.com',
                 'nama' => 'Bilal Al Farishi, B.Sc(Hons)., M.Sc.',
                 'nip_nrk' => '199208212019031023',
                 'tgl_lahir' => '1992-08-21',
@@ -39,7 +40,7 @@ class DosenSeeder extends Seeder
                 'sk_pengaktifan_kembali' => '',
 
             ],
-            
+
         ];
 
         foreach ($dostap as $dostap) {
