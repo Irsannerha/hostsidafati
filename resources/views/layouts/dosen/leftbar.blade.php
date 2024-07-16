@@ -44,8 +44,8 @@
                         <span class="micon fa fa-institution"></span><span class="mtext">Akademik</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('dosen.form-ta.create') }}">Pengajuan Tugas Akhir</a></li>
-                        <li><a href="{{ route('dosen.form-ta.edit', 3) }}">Pengajuan Kerja Praktik</a></li>
+                        <li><a href="">Pengajuan Tugas Akhir</a></li>
+                        <li><a href="">Pengajuan Kerja Praktik</a></li>
                         <li><a href="{{ route('mahasiswa.form-khs.create') }}">Pengajuan
                                 KHS/Transkrip/Dokumen</a></li>
                         <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pendaftaran Yudisium</a></li>

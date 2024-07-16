@@ -231,7 +231,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
         Route::get('/dashboard', [DashboardDosenController::class, 'index'])->name('dashboard');
-        Route::resource('form-ta', FormTADosenController::class);
+        Route::post('/form-ta/tolak/{id}', [FormTADosenController::class, 'tolak'])->name('form-ta.tolak');
+        Route::post('/form-ta/terima/{id}', [FormTADosenController::class, 'terima'])->name('form-ta.terima');
     });
 });
 

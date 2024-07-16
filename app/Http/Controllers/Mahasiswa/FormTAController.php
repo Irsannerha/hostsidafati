@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\FormTA;
 use App\Models\Prodi;
+use App\Models\Mahasiswa;
+use Illuminate\Support\Facades\Auth;
 
 class FormTAController extends Controller
 {
@@ -20,8 +22,10 @@ class FormTAController extends Controller
 
     public function create()
     {
+        $user = Auth::user();
         $prodi = Prodi::all();
-        return view('mahasiswa.form-ta.create', compact('prodi'));
+        $mahasiswa = Mahasiswa::where('email', $user->email)->first();
+        return view('mahasiswa.form-ta.create', compact('prodi', 'mahasiswa'));
     }
 
     public function store(FormTARequest $request)
@@ -31,6 +35,7 @@ class FormTAController extends Controller
         try {
             $formta = new FormTA;
             $formta->prodi_id = $validatedData['prodi_id'];
+            $formta->jenis_pengajuan_id = 1;
             $formta->nama = $validatedData['nama'];
             $formta->nim = $validatedData['nim'];
             $formta->keperluan = $validatedData['keperluan'];

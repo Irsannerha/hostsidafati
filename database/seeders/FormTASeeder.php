@@ -14,14 +14,12 @@ class FormTASeeder extends Seeder
     public function run(): void
     {
         for ($i = 1; $i <= 1; $i++) {
-            // Untuk memastikan bahwa prodi_id hanya dari 1 sampai 50
-            $prodi_id = rand(1, 22);
 
             FormTA::create([
-                'prodi_id' => $prodi_id,
+                'prodi_id' => 7,
                 'jenis_pengajuan_id' => 1,
-                'nama' => 'Mahasiswa ' . $i,
-                'nim' => 120140000 . $i,
+                'nama' => 'fadhil firoos ',
+                'nim' => 121140142,
                 'keperluan' => 'Permohonan Izin Penelitian Tugas Akhir',
                 'instansi' => 'Telkomsel Telecommunication Center Lampung',
                 'alamat_instansi' => 'Jalan. Soekarno Hatta No. 10, Bandar Lampung',

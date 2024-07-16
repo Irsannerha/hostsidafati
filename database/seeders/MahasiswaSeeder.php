@@ -22,8 +22,8 @@ class MahasiswaSeeder extends Seeder
                 'nama'=>'fadhil firoos',
                 'slug_mahasiswa'=>'fadhil-firoos',
                 'fakultas'=>'Fakultas Teknologi Industri',
-                'kode_prodi'=>7,
-                'email'=>'Mahasiswa@test.com',
+                'prodi_id'=>7,
+                'email'=>'mahasiswa@test.com',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
 

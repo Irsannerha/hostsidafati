@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password')
             ],
             [
-                'name' => 'Mahasiswa',
+                'name' => 'fadhil firoos',
                 'email' => 'mahasiswa@test.com',
                 'role' => 'mahasiswa',
                 'status' => 'aktif',

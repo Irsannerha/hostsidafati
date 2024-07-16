@@ -91,21 +91,15 @@
                         <div class="w-1/3 px-4 py-2 font-bold border-x border-black">Keterangan</div>
                         <div class="w-1/3 px-4 py-2 font-bold ">Timestamp</div>
                     </div>
-                    <div class="flex w-full border-b border-black">
-                        <div class="w-1/3 px-4 py-2 bg-gray-200">Telah di Verifikasi Dosen Wali</div>
-                        <div class="w-1/3 px-4 py-2 border-x border-black">-</div>
-                        <div class="w-1/3 px-4 py-2">2024-07-07 12.00.01</div>
-                    </div>
-                    <div class="flex w-full border-b  border-black">
-                        <div class="w-1/3 px-4 py-2 bg-gray-200">Telah di Verifikasi Koordinator Prodi</div>
-                        <div class="w-1/3 px-4 py-2 border-x border-black">-</div>
-                        <div class="w-1/3 px-4 py-2">2024-06-06 12.00.01</div>
-                    </div>
-                    <div class="flex w-full border-b  border-black">
-                        <div class="w-1/3 px-4 py-2 bg-gray-200">Telah di Validasi Dekan</div>
-                        <div class="w-1/3 px-4 py-2 border-x border-black">-</div>
-                        <div class="w-1/3 px-4 py-2">2024-06-06 12.00.01</div>
-                    </div>
+                    @foreach ($ket_pengajuan as $keterangan)
+                        @if ($keterangan->jenis_pengajuan_id == $ta->jenis_pengajuan_id && $keterangan->id_pengajuan == $ta->id)
+                            <div class="flex w-full border-b border-black">
+                                <div class="w-1/3 px-4 py-2 bg-gray-200">{{ $keterangan->status_keterangan }}</div>
+                                <div class="w-1/3 px-4 py-2 border-x border-black">{{ $keterangan->keterangan }}</div>
+                                <div class="w-1/3 px-4 py-2">{{ $keterangan->created_at }}</div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <p class="ml-3">Silahkan klik pada tautan disini untuk mulai mengunduh file</p>

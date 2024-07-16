@@ -51,7 +51,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nama">Nama</label>
-                                        <input class="form-control @error('nama') is-invalid @enderror" type="text" placeholder="Nama" name="nama" id="nama" value="{{ old('nama') }}" required>
+                                        <input class="form-control @error('nama') is-invalid @enderror" type="text" placeholder="Nama" name="nama" id="nama" value="{{ old('nama', $mahasiswa->nama) }}" required @readonly(true)>
                                     </div>
                                     @error('nama')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -62,7 +62,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nim">NIM</label>
-                                        <input class="form-control @error('nim') is-invalid @enderror" type="number" placeholder="NIM" name="nim" id="nim" {{ old('nim') }} required>
+                                        <input class="form-control @error('nim') is-invalid @enderror" type="number" placeholder="NIM" name="nim" id="nim" value="{{ old('nim', $mahasiswa->nim) }}" required @readonly(true)>
                                     </div>
                                     @error('nim')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
@@ -79,14 +79,14 @@
                                         <select name="prodi_id" class="form-control @error('prodi_id') is-invalid @enderror">
                                             <option value="">Pilih Program Studi</option>
                                             @foreach($prodi as $p)
-                                                <option value="{{ $p->id }}" {{ old('prodi_id') == $p->id ? 'selected' : '' }}>{{ $p->prodi }}</option>
+                                                <option value="{{ $p->id }}" {{ old('prodi_id', $mahasiswa->prodi_id) == $p->id ? 'selected' : '' }} >{{ $p->prodi }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     @error('prodi_id')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Prodi</small>
+                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Prodi dan Pastikan Telah Sesuai </small>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
@@ -216,7 +216,7 @@
                                     <div class="form-group">
                                         <label for="email">Email Mahasiswa</label>
                                         <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email"
-                                            id="email" value="{{ old('email') }}" required>
+                                            id="email" value="{{ old('email', $mahasiswa->email) }}" required @readonly(true)>
                                     </div>
                                     @error('email')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
