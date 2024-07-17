@@ -1,6 +1,16 @@
 <x-mahasiswa-app>
     <div class="mobile-menu-overlay"></div>
     <div class="main-container">
+
+        <!-- <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div> -->
+
         <div class="">
             <div class="">
                 <div class="bg-primary-main rounded-11 py-[31px] px-6 mb-4 mt-3">
@@ -150,7 +160,6 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
                 <!-- Simple Datatable End -->
             </div>
@@ -163,10 +172,13 @@
             window.location.href = "{{ url('prodi/export') }}";
         }
     </script>
-
+    @include('mahasiswa.form-krs.select')
 </x-mahasiswa-app>
 
 <script>
+    // let toastContent = document.querySelector('.toast');
+    // const toast = new bootstrap.Toast(toastContent).show();
+
     document.addEventListener('DOMContentLoaded', function () {
         const countStatuses = () => {
             const rows = document.querySelectorAll('#dataTable tbody tr');

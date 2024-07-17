@@ -9,6 +9,7 @@
         "barryvdh/laravel-dompdf": "^2.2",
         "cviebrock/eloquent-sluggable": "^10.0",
         "guzzlehttp/guzzle": "^7.2",
+        "hasnayeen/blade-eva-icons": "^2.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",

@@ -1,57 +1,68 @@
 <head>
-    <title>Permohonan Cuti Akademik</title>
+    <title>Surat Permohonan Pengantar Izin / Permintaan Data Tugas Akhir</title>
     <style>
+        @page {
+            /* create space for header */
+
+            margin: 160px 60px 70px 60px !important;
+
+            /* create space for footer */
+        }
+
         .container {
-            margin: 0 auto;
+            margin: 0 auto !important;
             font-size: 16px;
-            line-height: 1.5;
+            line-height: 1.3;
         }
 
         .header {
-            margin-bottom: 20px;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: -10;
+            margin-bottom: 10px;
+            text-align: center;
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 18px;
         }
 
         .content {
             margin-bottom: 10px;
         }
 
-        .signature {
-            margin-top: 20px;
-            position: absolute;
-            right: 40;
-        }
-
         table {
             border: 1px solid black;
             border-collapse: collapse;
             width: 100%;
+            position: relative;
         }
 
-        th,
-        td {
+        .signature {
+            border: none !important;
+            width: 90%;
+            margin: auto !important;
+        }
+
+        .head,
+        .data {
             border: 1px solid black;
-            text-align: center;
-            padding: 5px 0;
+            font-size: 14px;
         }
 
-        th:not(th:first-child),
-        td:not(td:first-child) {
-            width: 100px;
+        .data {
+            padding: 5px 0 5px 5px;
+            vertical-align: top;
+        }
+
+        .head,
+        .data {
+            width: 25%;
         }
 
         .qrcode {
             width: 80px;
             height: 80px;
-            margin: 10px auto;
+            margin: 5px auto 5px 10px;
         }
 
         .line {
-            margin-bottom: 5px;
             clear: both;
         }
 
@@ -90,96 +101,147 @@
         }
 
         .date {
-            position: absolute;
-            right: 0;
-            top: -4;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .title {
+            border: 1px solid black;
+            padding-left: 2px;
+            font-size: 14px;
         }
     </style>
 </head>
 <x-pdf-app>
     <main class="container">
         <div class="header">
-            <div class="line">
-                <span class="label">Lampiran</span>
-                <span class="separator">:</span>
-                <span class="value">-</span>
-            </div>
-            <div class="line">
-                <span class="label">Perihal</span>
-                <span class="separator">:</span>
-                <span class="value">Pengantar Kerja Praktik</span>
-            </div>
+            FORM PERMOHONAN PENGANTAR PENELITIAN
         </div>
-        <p class="date">Lampung Selatan, Selasa 31 Desember 2030</p>
         <div class="content">
-            <p>Yth.</p>
-            <p>Dekan Fakultas Teknologi Industri</p>
-            <p>Institut Teknologi Sumatera</p>
-            <br>
-
             <div class="section2">
-                <div class="line">Dengan Hormat,</div>
-                <div class="line">Berdasarkan petunjuk pelaksanaan Mata Kuliah Kerja Praktik, bahwa dalam pengajuan
-                    kegitatan Kerja Praktik, mahasiswa diwajibkan memenuhi persyaratan Kerja Praktik, Maka bersamaan
-                    dengan surat ini kami menyampaikan bahwa di bawah ini :</div>
+                <div class="line" style="margin-bottom: 2px;">Dengan hormat, yang bertanda tangan di bawah ini:</div>
+                <div class="line">
+                    <span class="label long">Nama Lengkap</span>
+                    <span class="separator long">:</span>
+                    <span class="value long"></span>
+                </div>
+                <div class="line">
+                    <span class="label">NIM</span>
+                    <span class="separator">:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="line">
+                    <span class="label">Program Studi</span>
+                    <span class="separator">:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="line">
+                    <span class="label long">Alamat</span>
+                    <span class="separator long">:</span>
+                    <span class="value long">Jln diponegoro haji jokowi dodo sutisto no 8 blok 100, Warung haji engkar
+                        sulistio, Margarf csdvdsnvgdfgdhdrhrtjdyjtfjdfhdryjrgbkje</span>
+                </div>
+                <div class="line">
+                    <span class="label">Telp/HP</span>
+                    <span class="separator">:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="line">
+                    <span class="label">Email</span>
+                    <span class="separator">:</span>
+                    <span class="value"></span>
+                </div>
+                <div class="line">
+                    <span class="label long">Pembimbing Skripsi</span>
+                    <span class="separator long">:</span>
+                    <span class="value long">1.</span>
+                </div>
+                <div class="line">
+                    <span class="label long"></span>
+                    <span class="separator long"></span>
+                    <span class="value long">2.</span>
+                </div>
+                <div class="line">
+                    <p>Dengan ini mengajukan permohonan surat pengantar penelitian yang ditunjukan ke instansi:</p>
+                </div>
                 <div>
                     <table>
                         <thead>
                             <tr>
-                                <th class="nomor">NO</th>
-                                <th>NAMA</th>
-                                <th>NIM</th>
-                                <th>PRODI</th>
+                                <th class="head">Instansi</th>
+                                <th class="head">Nama Pimpinan Instansi</th>
+                                <th class="head">Alamat Instansi & Telepon</th>
+                                <th class="head">Keperluan</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>1</td>
-                                <td>Bendry Lakburlawal</td>
-                                <td>121140111</td>
-                                <td>Teknik Informatika</td>
+                                <td class="data">1. PT Bermain Bersama</td>
+                                <td class="data">Bendry Lakburlawal, S.Th., M.Th</td>
+                                <td class="data">JJln diponegoro haji jokowi dodo sutisto no 8 blok 100, Warung haji
+                                    engkar sulistio,
+                                    <span>08213035311133</span>
+                                </td>
+                                <td class="data">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti </td>
                             </tr>
                             <tr>
-                                <td>1</td>
-                                <td>Bendry Lakburlawal</td>
-                                <td>121140111</td>
-                                <td>Teknik Informatika</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Bendry Lakburlawal</td>
-                                <td>121140111</td>
-                                <td>Teknik Informatika</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Bendry Lakburlawal</td>
-                                <td>121140111</td>
-                                <td>Teknik Informatika</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Bendry Lakburlawal</td>
-                                <td>121140111</td>
-                                <td>Teknik Informatika</td>
+                                <td class="data">1. PT Bermain Bersama</td>
+                                <td class="data">Bendry Lakburlawal, S.Th., M.Th</td>
+                                <td class="data">JJln diponegoro haji jokowi dodo sutisto no 8 blok 100, Warung haji
+                                    engkar sulistio,
+                                    Margarf csdvdsnv</td>
+                                <td class="data">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <p style="margin-top: 10px;">Untuk penelitian skripsi yang berjudul:</p>
+                <div class="line title">
+                    <p>PENGEMBANGAN WEBSITE JUDI ONLINE BERBASIS ARTIFICIAL INTELEGENSI APA FASNA VFDVI VDSB DSGBS HDVR
+                        CHTRH CNTR DCRTRT SCRB
+                        RHVYT BTHF NCB VT N YTYUKB6Y DCRTBR XEF EESX5G TRYJ YVU</p>
+                </div>
             </div>
         </div>
         <div class="content">
-            <p>Dinyatakan sudah <strong>MEMENUHI SYARAT</strong> untuk melaksanakan Mata Kuliah Kerja Praktik. Demikian
-                surat ini kami
-                sampaikan agar
-                dapat diperguakan sebagaimana mestinya.
-                Atas perhatian dan kerjasama yang baik, kami ucapkan terima kasih.</p>
+            <p>Sebagai bahan pertimbangan, saya lampirkan persyaratan yang ditetapkan :</p>
+            <p style="margin-left: 15px;">1. Transkrip Nilai, KHS Semester Terakhir dan KRS</p>
+            <p style="margin-top: 10px;">Demikian permohonan saya, atas perhatiannya diucapkan terima kasih.</p>
         </div>
-        <div class="signature">
-            <p>Koordinator Program Studi</p>
-            <img class="qrcode" src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code">
-            <p>Stevy Canny Louhenapessy, S.T., M.T.</p>
-            <p>NIP/NRK. 199105132022031006</p>
-        </div>
+        <div class="date">Lampung, Selasa, 31 Desember 2029</div>
+        <table class="signature">
+            <thead>
+                <tr>
+                    <th style="text-align: left; font-weight: normal;" colspan="4">Mengetahui,</th>
+                </tr>
+                <tr>
+                    <th style="text-align: left; font-weight: normal;">Koordinator Program Studi</th>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align: left; font-weight: normal;">Mahasiswa Ybs,</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img class="qrcode" src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code"></td>
+                    <td></td>
+                    <td></td>
+                    <td><img class="qrcode" src="data:image/svg+xml;base64,{{ $qrCode }}" alt="QR Code"></td>
+                </tr>
+                <tr>
+                    <td>Bendry Lakburlawal, svdvdvsdv dsbddvf dbsdfds</td>
+                    <td></td>
+                    <td></td>
+                    <td>Rin Takahashri dfasvasv advas vvsvas</td>
+                </tr>
+                <tr>
+                    <td>NIP/NRK. 1211401111132425354</td>
+                    <td></td>
+                    <td></td>
+                    <td>NIM. 121140111111 </td>
+                </tr>
+            </tbody>
+        </table>
+
     </main>
 </x-pdf-app>
