@@ -1,33 +1,6 @@
 <x-mahasiswa-app>
     <!-- Content start -->
     <div class="main-container">
-        <section class="bg-home bg-hexa" id="home">
-            <div class="home-center">
-                <div class="home-desc-center">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12 col-md-12 text-center">
-                                <div class="title-heading mt-4">
-                                    <h1 class="heading mb-1 font-weight-bold text-black">
-                                        Form Pengajuan Kerja Praktik
-                                    </h1>
-                                    <p class="para-desc text-black">
-                                        Selamat datang di Formulir Pengajuan Kerja Praktik Mahasiswa Fakultas Teknologi
-                                        Industri
-                                        ITERA. Formulir ini adalah langkah pertama dalam proses pengajuan kerja praktik
-                                        bagi
-                                        mahasiswa.
-                                        Melalui formulir ini, Anda dapat mengajukan permohonan kerja praktik yang akan
-                                        diproses
-                                        oleh Fakultas Teknologi Industri ITERA.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- home end -->
         <!-- clients start -->
         <section id="FormPengajuanKP">
@@ -91,6 +64,42 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="alamat_lengkap">Alamat Lengkap</label>
+                                        <textarea class="form-control" placeholder="Masukkan Alamat Anda"
+                                            name="alamat_lengkap" id="alamat_lengkap" rows="3"></textarea>
+                                    </div>
+                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
+                                        Contoh :
+                                        Jalan. Soekarno Hatta No. 10, Bandar Lampung </small>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="no_hp_mhs">No. Hp Mahasiswa</label>
+                                        <input class="form-control" type="tel" placeholder="No.Hp Mahasiswa"
+                                            name="no_hp_mhs" id="no_hp_mhs" required>
+                                    </div>
+                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
+                                        Nomor
+                                        Hp</small>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email Mahasiswa</label>
+                                        <input class="form-control" type="email" placeholder="Email" name="email"
+                                            id="email" required>
+                                    </div>
+                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
+                                        Email
+                                        Student ITERA @student.itera.ac.id</small>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label for="instansi">Instansi</label>
                                         <input class="form-control" type="text" placeholder="Instansi" name="instansi"
                                             id="instansi" required>
@@ -99,9 +108,6 @@
                                         Instansi
                                     </small>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="tjp">Tujuan Jabatan Pimpinan</label>
@@ -112,6 +118,10 @@
                                         PERLU
                                         memasukan Nama Pimpinan, Kecuali Permintaan dari Instansi Terkait </small>
                                 </div>
+
+                            </div>
+                            <br>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="alamat_instansi">Alamat Instansi</label>
@@ -121,6 +131,16 @@
                                     <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
                                         Contoh :
                                         Jalan. Soekarno Hatta No. 10, Bandar Lampung </small>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="no_hp_mhs">No. Hp Instansi</label>
+                                        <input class="form-control" type="tel" placeholder="No.Hp Instansi"
+                                            name="no_hp_ins" id="no_hp_ins" required>
+                                    </div>
+                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
+                                        Nomor
+                                        Hp</small>
                                 </div>
                             </div>
                             <br>
@@ -150,29 +170,20 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="no_hp_mhs">No. Hp Mahasiswa</label>
-                                        <input class="form-control" type="text" placeholder="No.Hp Mahasiswa"
-                                            name="no_hp_mhs" id="no_hp_mhs" required>
+                                        <label for="pengantar-prodi">Upload Pengantar Prodi</label>
+                                        <input class="" type="file" name="pengantar-prodi" id="pengantar-prodi"
+                                            required>
                                     </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Nomor
-                                        Hp</small>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Email Mahasiswa</label>
-                                        <input class="form-control" type="email" placeholder="Email" name="email"
-                                            id="email" required>
+                                        <label for="transkrip">Transkrip</label>
+                                        <input class="" type="file" name="transkrip" id="transkrip" required>
                                     </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Email
-                                        Student ITERA @student.itera.ac.id</small>
                                 </div>
                             </div>
-                            <br>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-block" type="submit">Submit</button>
+                                    <button class="btn btn-primary btn-block" type="submit"
+                                        onclick="nextPage()">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -203,7 +214,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- end row -->
             </div>
             <!-- end container-fluid -->
@@ -212,6 +222,11 @@
     <!-- End Content -->
 </x-mahasiswa-app>
 <!-- Sweet Alert -->
+<script>
+    function nextPage() {
+        window.location.href = "{{ route('mahasiswa.pengajuan-kp.step2') }}";
+    }
+</script>
 @if(session('success_create_data'))
     <script>
         swal({
@@ -220,6 +235,6 @@
             title: "{{ session('success_create_data') }}",
             showConfirmButton: false,
             timer: 3000
-        })
+        });
     </script>
 @endif

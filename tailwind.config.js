@@ -10,10 +10,12 @@ export default {
             colors: {
                 "primary-main": "#DAA520",
                 "secondary-btn": "#DEDEDE",
+                "modal-btn": "#FBFBFB",
             },
 
             borderRadius: {
-                11: "11px",
+                10: "0.625rem",
+                11: "0.688rem",
             },
 
             borderColor: {

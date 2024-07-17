@@ -42,7 +42,8 @@
         .qrcode {
             width: 80px;
             height: 80px;
-            margin: 10px auto;
+            /* margin: 10px auto; */
+            margin: 5px 15px;
         }
 
         .line {
@@ -100,10 +101,6 @@
         th:first-child,
         td:first-child {
             padding-left: 0px !important;
-        }
-
-        .qrcode {
-            margin: 5px 15px;
         }
     </style>
 </head>

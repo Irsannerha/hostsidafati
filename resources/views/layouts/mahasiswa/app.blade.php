@@ -76,6 +76,8 @@
         {{ $slot }}
     </div>
     @include('layouts.mahasiswa.footer')
+    @include('mahasiswa.form-krs.select')
+
     <!-- js -->
     <!-- End Card Box -->
 
