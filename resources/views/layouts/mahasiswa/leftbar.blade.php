@@ -46,7 +46,7 @@
                     <ul class="submenu">
                         <li>
                             <a href="{{route('mahasiswa.dashboard')}}" data-toggle="modal" data-target="#inputKrs">
-                                Lihat
+                                Layanan KRS dan Transkrip
                             </a>
                             <!-- <div class="modal fade" id="krs" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
@@ -58,7 +58,7 @@
                                 </div>
                             </div> -->
                         </li>
-                        <li><a href="#">Pengajuan Dispendansasi Kuliah</a>
+                        <li><a href="{{route('mahasiswa.form-dispen.create')}}">Pengajuan Dispendansasi Kuliah</a>
                         </li>
                         <li><a href="{{ route('mahasiswa.form-ta.create') }}">Pengantar TA/Survei Data TA</a></li>
                         <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Pengantar Kerja Praktik</a></li>

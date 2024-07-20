@@ -75,7 +75,7 @@ use App\Models\Prestasi;
 */
 
 Route::get('qr', [QrCodeController::class, 'show']);
-Route::get('/pengajuanTA', [PDFController::class, 'generatePDF']);
+Route::get('/pengajuanDispen', [PDFController::class, 'generatePDF']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -242,6 +242,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('form-krs', function () {
             return view('mahasiswa/form-krs/select');
         })->name('form-krs.select');
+        Route::get('form-dispen', function () {
+            return view('mahasiswa/form-dispen/create');
+        })->name('form-dispen.create');
     });
 
     Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {

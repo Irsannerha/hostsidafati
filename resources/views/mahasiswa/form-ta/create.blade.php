@@ -228,7 +228,7 @@
                                         @enderror
 
                                         <div class="form-group mt-3">
-                                            <label for="no_hp_mhs">No. Hp Instansi</label>
+                                            <label for="no_hp_ins">No. Hp Instansi</label>
                                             <input class="form-control" type="tel" placeholder="No.Hp Instansi"
                                                 name="no_hp_ins" id="no_hp_ins" required>
                                         </div>
@@ -287,7 +287,7 @@
                                         @enderror
 
                                         <div class="form-group mt-3">
-                                            <label for="no_hp_mhs2">No. Hp Instansi Kedua (Optional)</label>
+                                            <label for="no_hp_ins2">No. Hp Instansi Kedua (Optional)</label>
                                             <input class="form-control" type="tel" placeholder="No.Hp Instansi Kedua"
                                                 name="no_hp_ins2" id="no_hp_ins2">
                                         </div>
