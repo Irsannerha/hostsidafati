@@ -102,11 +102,22 @@
                     @endforeach
                 </div>
             </div>
-            <p class="ml-3">Silahkan klik pada tautan disini untuk mulai mengunduh file</p>
+            @if ($ta->status == 'Selesai')
+                <p class="ml-3">Silahkan klik pada tautan <a class="font-bold text-blue-600">disini</a> untuk mulai
+                    mengunduh file</p>
+            @endif
             <div class="modal-footer">
-                <button type="button"
-                    class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold"
-                    data-dismiss="modal">Selesai</button>
+                @if ($ta->status == 'Ditolak')
+                    <a id="canceled-form" href="{{route('mahasiswa.form-ta.edit', $ta->id)}}"
+                        class="border text-center border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold">Edit
+                        Pengajuan</a>
+                @else
+                    <button type="button" id="accept-form"
+                        class="border border-secondary-border md:w-[180px] py-1 rounded-md bg-secondary-btn font-bold"
+                        data-dismiss="modal">Selesai</button>
+                @endif
+
+
             </div>
         </div>
     </div>
