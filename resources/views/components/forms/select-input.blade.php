@@ -33,7 +33,7 @@
         @endif
         @foreach($options as $value => $label)
             <div class="p-10px cursor-pointer hover:bg-primary-main text-input-placeholder h-normal-input flex items-center hover:text-main-white font-semibold option-item"
-                onclick="selectOption('{{$id}}', '{{$label}}')">
+                onclick="selectOption('{{$id}}', '{{$label}}', '{{$value}}')">
                 {{$label}}
             </div>
         @endforeach
@@ -41,7 +41,7 @@
     <select name="{{$name}}" id="{{$id}}" class="hidden" {{$attributes}}>
         <option value="">{{$placeholder}}</option>
         @foreach($options as $value => $label)
-            <option value="{{$value}}">{{$label}}</option>
+            <option value="{{$value}}" {{ isset($selected) && $selected == $value ? 'selected' : '' }}>{{$label}}</option>
         @endforeach
     </select>
     @error($name)
@@ -65,11 +65,11 @@
         }
     }
 
-    function selectOption(id, label) {
+    function selectOption(id, label, value) {
         const displayElement = document.getElementById(id + "-trigger-value");
         const hiddenSelect = document.getElementById(id);
         displayElement.innerText = label;
-        hiddenSelect.value = label;
+        hiddenSelect.value = value;
         displayElement.classList.add('text-main-black');
         toggleDropdown(id);
     }
