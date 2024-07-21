@@ -81,7 +81,6 @@ class FormTAController extends Controller
         $formta->save();
 
         return back()->with('success_create_data', 'Selamat! Data Pengajuan Tugas Akhirmu Berhasil');
-
     }
 
     public function show($id)

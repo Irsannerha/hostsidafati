@@ -40,7 +40,6 @@ class FormTA extends Model
         'tekndik_checking',
         'dekan',
         'keterangan',
-
     ];
 
     public function Prodi()
