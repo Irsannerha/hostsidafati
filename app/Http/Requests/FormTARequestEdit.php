@@ -8,14 +8,14 @@ use App\Rules\CheckNim;
 use App\Rules\CheckProdi;
 use App\Rules\CheckEmail;
 
-class FormTARequest extends FormRequest
+class FormTARequestEdit extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -35,9 +35,9 @@ class FormTARequest extends FormRequest
             'nama_pembimbing_dua' => 'required|min:3|max:255',
             'alamat_mhs' => 'required|min:3|max:150',
             'judul_ta' => 'required|min:3|max:180',
-            'khs' => 'required|mimes:pdf|max:1024',
-            'krs' => 'required|mimes:pdf|max:1024',
-            'transkrip' => 'required|mimes:pdf|max:1024',
+            'khs' => 'nullable|mimes:pdf|max:1024',
+            'krs' => 'nullable|mimes:pdf|max:1024',
+            'transkrip' => 'nullable|mimes:pdf|max:1024',
             'nama_instansi_satu' => 'required|min:3|max:255',
             'nama_pimpinan_instansi_satu' => 'required|min:3|max:255',
             'no_hp_instansi_satu' => 'required|numeric|digits_between:10,15',
@@ -50,5 +50,4 @@ class FormTARequest extends FormRequest
             'keperluan_dua' => 'nullable|min:3|max:100',
         ];
     }
-
 }

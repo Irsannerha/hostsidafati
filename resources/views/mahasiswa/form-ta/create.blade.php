@@ -14,7 +14,7 @@
                                 dibaca
                                 panduan di bawah kolom!</em></small>
                         <br>
-                        <form action="{{ route('mahasiswa.form-ta.store') }}" method="POST">
+                        <form action="{{ route('mahasiswa.form-ta.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <section id="firstSection" class="">
                                 <div class="row">
@@ -24,9 +24,7 @@
                                         <input class="form-control @error('nama') is-invalid @enderror" type="text" placeholder="Nama" name="nama" id="nama" value="{{ old('nama', $mahasiswa->nama) }}" required @readonly(true)>
                                     </div>
                                     @error('nama')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nama Anda</small>
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
@@ -35,9 +33,7 @@
                                         <input class="form-control @error('nim') is-invalid @enderror" type="number" placeholder="NIM" name="nim" id="nim" value="{{ old('nim', $mahasiswa->nim) }}" required @readonly(true)>
                                     </div>
                                     @error('nim')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi NIM</small>
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -54,38 +50,30 @@
                                         </select>
                                     </div>
                                     @error('prodi_id')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Prodi dan Pastikan Telah Sesuai </small>
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="no_hp">No. Hp Mahasiswa</label>
-                                        <input class="form-control @error('no_hp') is-invalid @enderror" type="number" placeholder="No.Hp" name="no_hp"
-                                            id="no_hp" value="{{ old('no_hp') }}" required>
+                                        <label for="no_hp_mhs">No. Hp Mahasiswa</label>
+                                        <input class="form-control @error('no_hp_mhs') is-invalid @enderror" type="number" placeholder="No.Hp" name="no_hp_mhs"
+                                            id="no_hp_mhs" value="{{ old('no_hp_mhs') }}" required>
                                     </div>
-                                    @error('no_hp')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi No Hp Tanpa Tanda (+) Contoh: 6281234567890</small>
+                                    @error('no_hp_mhs')
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
                             <br>
                             <div class="row">
-                                 <div class="col-md-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">Email Mahasiswa</label>
                                         <input class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Email" name="email"
                                             id="email" value="{{ old('email', $mahasiswa->email) }}" required @readonly(true)>
                                     </div>
                                     @error('email')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Email
-                                        Student ITERA @student.itera.ac.id</small>
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
@@ -102,8 +90,6 @@
                                     </div>
                                     @error('keperluan')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Keperluan</small>
                                     @enderror
                                 </div>
                             </div>
@@ -116,11 +102,7 @@
                                             name="nama_pembimbing_satu" id="nama_pembimbing_satu" value="{{ old('nama_pembimbing_satu') }}" required>
                                     </div>
                                     @error('nama_pembimbing_satu')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Penulisan
-                                        nama lengkap dengan gelar</small>
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
@@ -130,38 +112,30 @@
                                             name="nama_pembimbing_dua" id="nama_pembimbing_dua" value="{{ old('nama_pembimbing_dua') }}" required>
                                     </div>
                                     @error('nama_pembimbing_dua')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Penulisan
-                                        nama lengkap dengan gelar</small>
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
                             <br>
                             <div class="row">
-                                 <div class="col-md-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="alamat_lengkap">Alamat Lengkap</label>
-                                        <textarea class="form-control" placeholder="Masukkan Alamat Anda"
-                                            name="alamat_lengkap" id="alamat_lengkap" rows="3"></textarea>
+                                        <label for="alamat_mhs">Alamat Lengkap</label>
+                                        <textarea class="form-control @error('alamat_mhs') is-invalid @enderror" placeholder="Masukkan Alamat Anda"
+                                            name="alamat_mhs" id="alamat_mhs" rows="3" required>{{ old('alamat_mhs') }}</textarea>
                                     </div>
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Contoh :
-                                        Jalan. Soekarno Hatta No. 10, Bandar Lampung </small>
+                                    @error('alamat_mhs')
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="judul">Judul TA</label>
-                                        <textarea class="form-control @error('judul') is-invalid @enderror" placeholder="Masukkan Judul TA"
-                                            name="judul" id="judul" rows="3">{{ old('judul') }}</textarea>
+                                        <label for="judul_ta">Judul TA</label>
+                                        <textarea class="form-control @error('judul_ta') is-invalid @enderror" placeholder="Masukkan Judul TA"
+                                            name="judul_ta" id="judul_ta" rows="3" required>{{ old('judul_ta') }}</textarea>
                                     </div>
-                                    @error('judul')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Judul
-                                        TA </small>
+                                    @error('judul_ta')
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -169,32 +143,32 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="file_khs">KHS</label>
-                                        <input class="form-control @error('file_khs') is-invalid @enderror" type="file"
-                                            name="file_khs" id="file_khs" value="{{ old('file_khs') }}" required>
+                                        <label for="khs">KHS</label>
+                                        <input class="form-control @error('khs') is-invalid @enderror" type="file"
+                                            name="khs" id="khs" required>
                                     </div>
-                                    @error('file_khs')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @error('khs')
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="file_krs">KRS</label>
-                                        <input class="form-control @error('file_krs') is-invalid @enderror" type="file"
-                                            name="file_krs" id="file_krs" value="{{ old('file_krs') }}" required>
+                                        <label for="krs">KRS</label>
+                                        <input class="form-control @error('krs') is-invalid @enderror" type="file"
+                                            name="krs" id="krs" required>
                                     </div>
-                                    @error('file_krs')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @error('krs')
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="file_transkrip">Transkrip</label>
-                                        <input class="form-control @error('file_transkrip') is-invalid @enderror" type="file"
-                                            name="file_transkrip" id="file_transkrip" value="{{ old('file_transkrip') }}" required>
+                                        <label for="transkrip">Transkrip</label>
+                                        <input class="form-control @error('transkrip') is-invalid @enderror" type="file"
+                                            name="transkrip" id="transkrip" required>
                                     </div>
-                                    @error('file_transkrip')
-                                    <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                    @error('transkrip')
+                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -207,111 +181,99 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="instansi">Instansi</label>
-                                            <input class="form-control @error('instansi') is-invalid @enderror" type="text" placeholder="Instansi" name="instansi"
-                                                id="instansi" value="{{ old('instansi') }}" required>
+                                            <label for="nama_instansi_satu">Instansi</label>
+                                            <input class="form-control @error('nama_instansi_satu') is-invalid @enderror" type="text" placeholder="Instansi" name="nama_instansi_satu"
+                                                id="nama_instansi_satu" value="{{ old('nama_instansi_satu') }}" required>
                                         </div>
-                                        @error('instansi')
-                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                        @else
-                                        <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Instansi</small>
+                                        @error('nama_instansi_satu')
+                                            <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                         @enderror
 
                                         <div class="form-group mt-3">
-                                            <label for="nama_pimpinan">Nama Pimpinan Instansi</label>
-                                            <input class="form-control" type="text" placeholder="Masukkan Nama Pimpinan Instansi" name="nama_pimpinan" id="nama_pimpinan" required >
+                                            <label for="nama_pimpinan_instansi_satu">Nama Pimpinan Instansi</label>
+                                            <input class="form-control" type="text" placeholder="Masukkan Nama Pimpinan Instansi" name="nama_pimpinan_instansi_satu" id="nama_pimpinan_instansi_satu" value="{{ old('nama_pimpinan_instansi_satu') }}" required >
                                         </div>
-                                        @error('nama_pimpinan')
-                                        <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                        @else
-                                        <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nama Anda Pimpinan</small>
+                                        @error('nama_pimpinan_instansi_satu')
+                                            <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                         @enderror
 
                                         <div class="form-group mt-3">
-                                            <label for="no_hp_mhs">No. Hp Instansi</label>
+                                            <label for="no_hp_instansi_satu">No. Hp Instansi</label>
                                             <input class="form-control" type="tel" placeholder="No.Hp Instansi"
-                                                name="no_hp_ins" id="no_hp_ins" required>
+                                                name="no_hp_instansi_satu" id="no_hp_instansi_satu" value="{{ old('no_hp_instansi_satu') }}" required>
                                         </div>
-                                        <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                            Nomor
-                                            Hp</small>
+                                        @error('no_hp_instansi_satu')
+                                            <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
+                                        @enderror
 
                                     </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="alamat_instansi">Alamat Instansi</label>
-                                        <textarea class="form-control @error('alamat_instansi') is-invalid @enderror" placeholder="Masukkan Alamat Instansi"
-                                            name="alamat_instansi" id="alamat_instansi" rows="2">{{ old('alamat_instansi') }}</textarea>
+                                        <label for="alamat_instansi_satu">Alamat Instansi</label>
+                                        <textarea class="form-control @error('alamat_instansi_satu') is-invalid @enderror" placeholder="Masukkan Alamat Instansi"
+                                            name="alamat_instansi_satu" id="alamat_instansi_satu" rows="2" required>{{ old('alamat_instansi_satu') }}</textarea>
                                     </div>
-                                    @error('alamat_instansi')
+                                    @error('alamat_instansi_satu')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Contoh :
-                                        Jalan. Soekarno Hatta No. 10, Bandar Lampung </small>
                                     @enderror
 
                                     <div class="form-group mt-3">
-                                        <label for="judul">Keperluan TA</label>
-                                        <textarea class="form-control @error('judul') is-invalid @enderror" placeholder="Masukkan Keperluan TA Kedua"
-                                            name="judul" id="judul" rows="2">{{ old('judul') }}</textarea>
+                                        <label for="keperluan_satu">Keperluan TA</label>
+                                        <textarea class="form-control @error('keperluan_satu') is-invalid @enderror" placeholder="Masukkan Keperluan TA Kedua"
+                                            name="keperluan_satu" id="keperluan_satu" rows="2" required>{{ old('keperluan_satu') }}</textarea>
                                     </div>
-                                    @error('judul')
+                                    @error('keperluan_satu')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @else
-                                    <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi
-                                        Judul
-                                        TA/Keperluan TA </small>
                                     @enderror
-                                    </div>
-                                    </div>
+                                </div>
+                                </div>
                                 <br>
                                 <div class="col-md-12 bg-primary-main text-white font-bold text-center py-2 rounded-10 mb-4">Data Instansi 2</div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="instansi2">Instansi Kedua (Optional)</label>
-                                            <input class="form-control @error('instansi2') is-invalid @enderror" type="text" placeholder="Instansi kedua" name="instansi2"
-                                                id="instansi2" value="{{ old('instansi2') }}">
+                                            <label for="nama_instansi_dua">Instansi Kedua (Optional)</label>
+                                            <input class="form-control @error('nama_instansi_dua') is-invalid @enderror" type="text" placeholder="Instansi kedua" name="nama_instansi_dua"
+                                                id="nama_instansi_dua" value="{{ old('nama_instansi_dua') }}">
                                         </div>
-                                        @error('instansi2')
+                                        @error('nama_instansi_dua')
                                         <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                         @enderror
 
                                         <div class="form-group mt-3">
-                                            <label for="nama_pimpinan2">Nama Pimpinan Instansi Kedua (Optional)</label>
-                                            <input class="form-control" type="text" placeholder="Masukkan Nama Pimpinan Instansi" name="nama_pimpinan2" id="nama_pimpinan2" >
+                                            <label for="nama_pimpinan_instansi_dua">Nama Pimpinan Instansi Kedua (Optional)</label>
+                                            <input class="form-control" type="text" placeholder="Masukkan Nama Pimpinan Instansi" name="nama_pimpinan_instansi_dua" id="nama_pimpinan_instansi_dua" value="{{ old('nama_pimpinan_instansi_dua') }}">
                                         </div>
-                                        @error('nama_pimpinan2')
+                                        @error('nama_pimpinan_instansi_dua')
                                         <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                         @enderror
 
                                         <div class="form-group mt-3">
-                                            <label for="no_hp_mhs2">No. Hp Instansi Kedua (Optional)</label>
+                                            <label for="no_hp_instansi_dua">No. Hp Instansi Kedua (Optional)</label>
                                             <input class="form-control" type="tel" placeholder="No.Hp Instansi Kedua"
-                                                name="no_hp_ins2" id="no_hp_ins2">
+                                                name="no_hp_instansi_dua" id="no_hp_instansi_dua" value="{{ old('no_hp_instansi_dua') }}">
                                         </div>
                                     </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="alamat_instansi2">Alamat Instansi Kedua (Optional)</label>
-                                        <textarea class="form-control @error('alamat_instansi2') is-invalid @enderror" placeholder="Masukkan Alamat Instansi Kedua"
-                                            name="alamat_instansi2" id="alamat_instansi2" rows="2">{{ old('alamat_instansi2') }}</textarea>
+                                        <label for="alamat_instansi_dua">Alamat Instansi Kedua (Optional)</label>
+                                        <textarea class="form-control @error('alamat_instansi_dua') is-invalid @enderror" placeholder="Masukkan Alamat Instansi Kedua"
+                                            name="alamat_instansi_dua" id="alamat_instansi_dua" rows="2">{{ old('alamat_instansi_dua') }}</textarea>
                                     </div>
-                                    @error('alamat_instansi2')
+                                    @error('alamat_instansi_dua')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
 
                                     <div class="form-group mt-3">
-                                        <label for="judul2">Keperluan TA (Optional)</label>
-                                        <textarea class="form-control @error('judul2') is-invalid @enderror" placeholder="Masukkan Keperluan TA Kedua"
-                                            name="judul2" id="judul2" rows="2">{{ old('judul2') }}</textarea>
+                                        <label for="keperluan_dua">Keperluan TA (Optional)</label>
+                                        <textarea class="form-control @error('keperluan_dua') is-invalid @enderror" placeholder="Masukkan Keperluan TA Kedua"
+                                            name="keperluan_dua" id="keperluan_dua" rows="2">{{ old('keperluan_dua') }}</textarea>
                                     </div>
-                                    @error('judul2')
+                                    @error('keperluan_dua')
                                     <small class="invalid-feedback font-5" style="margin-top: -10px; display: block;">{{ $message }}</small>
                                     @enderror
-                                    </div>
-                                    </div>
+                                </div>
+                                </div>
                                 <br>
                                 <div class="flex justify-between">
                                     <div class="col-md-2">
