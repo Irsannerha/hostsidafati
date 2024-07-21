@@ -19,8 +19,9 @@
                             <x-forms.input name="nim" placeholder="Masukkan NIM Anda" required />
                         </div>
                         <div>
-                            <x-forms.label name="fakultas" required>Fakultas</x-forms.label>
-                            <x-forms.input name="fakultas" value="Fakultas Teknologi Sumatera" readonly />
+                            <x-forms.label name="keperluan" required>Keperluan</x-forms.label>
+                            <x-forms.select-input name="keperluan" tabindex="0" placeholder="Pilih Keperluan Anda"
+                                :options="['value1' => 'keperluan 1', 'value2' => 'keperluan 2']" />
                         </div>
                         <div>
                             <x-forms.label name="kode_prodi" required>Program Studi</x-forms.label>

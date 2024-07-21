@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FormTARequest;
+use App\Http\Requests\FormTARequestEdit;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use PDF;
 use App\Models\FormTA;
 use App\Models\Prodi;
 use App\Models\Mahasiswa;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class FormTAController extends Controller
@@ -30,32 +33,55 @@ class FormTAController extends Controller
 
     public function store(FormTARequest $request)
     {
+        // dd($request->all());
         $validatedData = $request->validated();
 
-        try {
-            $formta = new FormTA;
-            $formta->prodi_id = $validatedData['prodi_id'];
-            $formta->jenis_pengajuan_id = 1;
-            $formta->nama = $validatedData['nama'];
-            $formta->nim = $validatedData['nim'];
-            $formta->keperluan = $validatedData['keperluan'];
-            $formta->instansi = $validatedData['instansi'];
-            $formta->alamat_instansi = $validatedData['alamat_instansi'];
-            $formta->tjp = $validatedData['tjp'];
-            $formta->pelaksanaan = $validatedData['pelaksanaan'];
-            $formta->waktu_mulai_pelaksanaan = $validatedData['waktu_mulai_pelaksanaan'];
-            $formta->waktu_akhir_pelaksanaan = $validatedData['waktu_akhir_pelaksanaan'];
-            $formta->no_hp = $validatedData['no_hp'];
-            $formta->email = $validatedData['email'];
-            $formta->nama_pembimbing_satu = $validatedData['nama_pembimbing_satu'];
-            $formta->nama_pembimbing_dua = $validatedData['nama_pembimbing_dua'];
-            $formta->judul = $validatedData['judul'];
-            $formta->save();
+        $khs = $request->file('file_khs');
+        $krs = $request->file('file_krs');
+        $transkrip = $request->file('file_transkrip');
 
-            return back()->with('success_create_data', 'Selamat! Data Pengajuan Tugas Akhirmu Berhasil');
-        } catch (\Exception $e) {
-            return back()->with('error_create_data', 'Maaf! Terjadi kesalahan saat menyimpan data.')->withInput();
-        }
+        $timestamp = Carbon::now()->format('Y-m-d_H-i-s');
+        $nim = $request->nim;
+
+        $khs_name_file = "{$nim}-{$timestamp}.{$khs->getClientOriginalExtension()}";
+        $krs_name_file = "{$nim}-{$timestamp}.{$krs->getClientOriginalExtension()}";
+        $transkrip_name_file = "{$nim}-{$timestamp}.{$transkrip->getClientOriginalExtension()}";
+
+        $path_khs = 'mahasiswa/form-ta/khs/';
+        $path_krs = 'mahasiswa/form-ta/krs/';
+        $path_transkrip = 'mahasiswa/form-ta/transkrip/';
+
+        Storage::disk('public')->putFileAs($path_khs, $khs, $khs_name_file);
+        Storage::disk('public')->putFileAs($path_krs, $krs, $krs_name_file);
+        Storage::disk('public')->putFileAs($path_transkrip, $transkrip, $transkrip_name_file);
+
+        $formta = new FormTA;
+        $formta->jenis_pengajuan_id = 1;
+        $formta->nama = $validatedData['nama'];
+        $formta->nim = $validatedData['nim'];
+        $formta->keperluan = $validatedData['keperluan'];
+        $formta->prodi_id = $validatedData['kode_prodi'];
+        $formta->no_hp_mahasiswa = $validatedData['no_hp_mhs'];
+        $formta->email = $validatedData['email'];
+        $formta->nama_pembimbing_satu = $validatedData['pembimbing_1'];
+        $formta->nama_pembimbing_dua = $validatedData['pembimbing_2'];
+        $formta->alamat_mahasiswa = $validatedData['alamat_mhs'];
+        $formta->judul_ta = $validatedData['judul_ta'];
+        $formta->khs = $khs_name_file;
+        $formta->krs = $krs_name_file;
+        $formta->transkrip = $transkrip_name_file;
+        $formta->nama_instansi_satu = $validatedData['nama_instansi_1'];
+        $formta->jabatan_instansi_satu = $validatedData['jabatan_instansi_1'];
+        $formta->alamat_instansi_satu = $validatedData['alamat_instansi_1'];
+        $formta->no_hp_instansi_satu = $validatedData['no_hp_instansi_1'];
+        $formta->nama_instansi_dua = $validatedData['nama_instansi_2'];
+        $formta->jabatan_instansi_dua = $validatedData['jabatan_instansi_2'];
+        $formta->alamat_instansi_dua = $validatedData['alamat_instansi_2'];
+        $formta->no_hp_instansi_dua = $validatedData['no_hp_instansi_2'];
+        $formta->save();
+
+        return back()->with('success_create_data', 'Selamat! Data Pengajuan Tugas Akhirmu Berhasil');
+
     }
 
     public function show($id)
@@ -71,7 +97,7 @@ class FormTAController extends Controller
         return view('mahasiswa.form-ta.edit', compact('formta', 'prodi'));
     }
 
-    public function update(FormTARequest $request, $id)
+    public function update(FormTARequestEdit $request, $id)
     {
         $validatedData = $request->validated();
         try {
@@ -99,23 +125,50 @@ class FormTAController extends Controller
                 $formta->judul != $request->judul
             ) {
 
+                $khs = $request->file('khs');
+                $krs = $request->file('krs');
+                $transkrip = $request->file('transkrip');
 
-                $formta->prodi_id = $validatedData['prodi_id'];
+                $timestamp = Carbon::now()->format('Y-m-d_H-i-s');
+                $nim = $request->nim;
+
+                $khs_name_file = "{$nim}-{$timestamp}.{$khs->getClientOriginalExtension()}";
+                $krs_name_file = "{$nim}-{$timestamp}.{$krs->getClientOriginalExtension()}";
+                $transkrip_name_file = "{$nim}-{$timestamp}.{$transkrip->getClientOriginalExtension()}";
+
+                $path_khs = 'mahasiswa/form-ta/khs/';
+                $path_krs = 'mahasiswa/form-ta/krs/';
+                $path_transkrip = 'mahasiswa/form-ta/transkrip/';
+
+                Storage::disk('public')->putFileAs($path_khs, $khs, $khs_name_file);
+                Storage::disk('public')->putFileAs($path_krs, $krs, $krs_name_file);
+                Storage::disk('public')->putFileAs($path_transkrip, $transkrip, $transkrip_name_file);
+
+                $formta = new FormTA;
+                $formta->jenis_pengajuan_id = 1;
                 $formta->nama = $validatedData['nama'];
                 $formta->nim = $validatedData['nim'];
-                $formta->keperluan = $validatedData['keperluan'];
-                $formta->instansi = $validatedData['instansi'];
-                $formta->alamat_instansi = $validatedData['alamat_instansi'];
-                $formta->tjp = $validatedData['tjp'];
-                $formta->pelaksanaan = $validatedData['pelaksanaan'];
-                $formta->waktu_mulai_pelaksanaan = $validatedData['waktu_mulai_pelaksanaan'];
-                $formta->waktu_akhir_pelaksanaan = $validatedData['waktu_akhir_pelaksanaan'];
-                $formta->no_hp = $validatedData['no_hp'];
-                $formta->status = 'Diproses';
+                $formta->prodi_id = $validatedData['prodi_id'];
+                $formta->no_hp_mahasiswa = $validatedData['no_hp_mhs'];
                 $formta->email = $validatedData['email'];
                 $formta->nama_pembimbing_satu = $validatedData['nama_pembimbing_satu'];
                 $formta->nama_pembimbing_dua = $validatedData['nama_pembimbing_dua'];
-                $formta->judul = $validatedData['judul'];
+                $formta->alamat_mahasiswa = $validatedData['alamat_mhs'];
+                $formta->judul_ta = $validatedData['judul_ta'];
+                $formta->khs = $khs_name_file;
+                $formta->krs = $krs_name_file;
+                $formta->transkrip = $transkrip_name_file;
+                $formta->nama_instansi_satu = $validatedData['nama_instansi_satu'];
+                $formta->nama_pimpinan_instansi_satu = $validatedData['nama_pimpinan_instansi_satu'];
+                $formta->no_hp_instansi_satu = $validatedData['no_hp_instansi_satu'];
+                $formta->alamat_instansi_satu = $validatedData['alamat_instansi_satu'];
+                $formta->keperluan_satu = $validatedData['keperluan_satu'];
+                $formta->nama_instansi_dua = $validatedData['nama_instansi_dua'];
+                $formta->nama_pimpinan_instansi_dua = $validatedData['nama_pimpinan_instansi_dua'];
+                $formta->no_hp_instansi_dua = $validatedData['no_hp_instansi_dua'];
+                $formta->alamat_instansi_dua = $validatedData['alamat_instansi_dua'];
+                $formta->keperluan_dua = $validatedData['keperluan_dua'];
+                $formta->save();
 
                 $formta->save();
 
@@ -130,8 +183,17 @@ class FormTAController extends Controller
 
     public function destroy($id)
     {
-        $formta = FormTA::find($id);
+        $formta = FormTA::findOrFail($id);
         $formta->delete();
         return redirect()->route('mahasiswa.form-ta.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+
+    public function loadPdf($id)
+    {
+        $data = FormTA::findOrFail($id);
+        $pdf = PDF::loadView('pdf.pengajuanTA', compact('data'));
+        $pdf->setPaper('A4', 'portrait');
+        $pdf->render();
+
     }
 }
