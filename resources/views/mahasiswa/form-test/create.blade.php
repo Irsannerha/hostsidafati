@@ -77,58 +77,35 @@
                 </section>
                 <!-- Slide kedua -->
                 <section id="addSection" class="hidden">
-                    <!-- Data Instansi -->
-                    <section>
-                        <x-cards.section>Data Instansi 1</x-cards.section>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <x-forms.label name="nama_instansi_1" required>Nama Instansi</x-forms.label>
-                                <x-forms.input name="nama_instansi_1" placeholder="Masukkan nama instansi Anda"
-                                    required />
+                    @for ($i = 1; $i <= 2; $i++)
+                        <!-- Data Instansi -->
+                        <section id="section-{{$i}}">
+                            <x-cards.section>Data Instansi {{$i}}</x-cards.section>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <x-forms.label name="nama_instansi{{$i}}" required>Nama Instansi</x-forms.label>
+                                    <x-forms.input name="nama_instansi{{$i}}" placeholder="Masukkan nama instansi Anda"
+                                        required />
+                                </div>
+                                <div>
+                                    <x-forms.label name="jabatan_instansi{{$i}}" required info="hanya jabatan saja">Tujuan
+                                        Jabatan</x-forms.label>
+                                    <x-forms.input name="jabatan_instansi{{$i}}"
+                                        placeholder="Masukkan jabatan Anda di instansi" required />
+                                </div>
+                                <div>
+                                    <x-forms.label name="alamat_instansi{{$i}}" required>Alamat Lengkap</x-forms.label>
+                                    <x-forms.input name="alamat_instansi{{$i}}" required textarea="true" rows="6"
+                                        placeholder="Masukkan alamat instansi Anda dengan lengkap..."></x-forms.input>
+                                </div>
+                                <div>
+                                    <x-forms.label name="no_hp_instansi{{$i}}" required>No. Hp Instansi</x-forms.label>
+                                    <x-forms.input name="no_hp_instansi{{$i}}"
+                                        placeholder="Masukkan nomor telepon instansi Anda" type="tel" required />
+                                </div>
                             </div>
-                            <div>
-                                <x-forms.label name="jabatan_instansi_1" required info="hanya jabatan saja">Tujuan
-                                    Jabatan</x-forms.label>
-                                <x-forms.input name="jabatan_instansi_1" placeholder="Masukkan jabatan Anda di instansi"
-                                    required />
-                            </div>
-                            <div>
-                                <x-forms.label name="alamat_instansi_1" required>Alamat Lengkap</x-forms.label>
-                                <x-forms.input name="alamat_instansi_1" required textarea="true" rows="6"
-                                    placeholder="Masukkan alamat instansi Anda dengan lengkap..."></x-forms.input>
-                            </div>
-                            <div>
-                                <x-forms.label name="no_hp_instansi_1" required>No. Hp Instansi</x-forms.label>
-                                <x-forms.input name="no_hp_instansi_1"
-                                    placeholder="Masukkan nomor telepon instansi Anda" type="tel" required />
-                            </div>
-                        </div>
-                    </section>
-                    <section>
-                        <x-cards.section>Data Instansi 2</x-cards.section>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <x-forms.label name="nama_instansi_2">Nama Instansi</x-forms.label>
-                                <x-forms.input name="nama_instansi_2" placeholder="Masukkan nama instansi Anda" />
-                            </div>
-                            <div>
-                                <x-forms.label name="jabatan_instansi_2" info="hanya jabatan saja">Tujuan
-                                    Jabatan</x-forms.label>
-                                <x-forms.input name="jabatan_instansi_2"
-                                    placeholder="Masukkan jabatan Anda di instansi" />
-                            </div>
-                            <div>
-                                <x-forms.label name="alamat_instansi_2">Alamat Lengkap</x-forms.label>
-                                <x-forms.input name="alamat_instansi_2" textarea="true" rows="6"
-                                    placeholder="Masukkan alamat instansi Anda dengan lengkap..."></x-forms.input>
-                            </div>
-                            <div>
-                                <x-forms.label name="no_hp_instansi_2">No. Hp Instansi</x-forms.label>
-                                <x-forms.input name="no_hp_instansi_2"
-                                    placeholder="Masukkan nomor telepon instansi Anda" type="tel" />
-                            </div>
-                        </div>
-                    </section>
+                        </section>
+                    @endfor
                     <div class="flex justify-between mt-16">
                         <x-button.primary onclick="hideSection()" type="button">Kembali</x-button.primary>
                         <x-button.primary>Submit</x-button.primary>
