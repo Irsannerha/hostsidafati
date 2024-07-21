@@ -36,9 +36,9 @@ class FormTAController extends Controller
         // dd($request->all());
         $validatedData = $request->validated();
 
-        $khs = $request->file('khs');
-        $krs = $request->file('krs');
-        $transkrip = $request->file('transkrip');
+        $khs = $request->file('file_khs');
+        $krs = $request->file('file_krs');
+        $transkrip = $request->file('file_transkrip');
 
         $timestamp = Carbon::now()->format('Y-m-d_H-i-s');
         $nim = $request->nim;
@@ -59,26 +59,25 @@ class FormTAController extends Controller
         $formta->jenis_pengajuan_id = 1;
         $formta->nama = $validatedData['nama'];
         $formta->nim = $validatedData['nim'];
-        $formta->prodi_id = $validatedData['prodi_id'];
+        $formta->keperluan = $validatedData['keperluan'];
+        $formta->prodi_id = $validatedData['kode_prodi'];
         $formta->no_hp_mahasiswa = $validatedData['no_hp_mhs'];
         $formta->email = $validatedData['email'];
-        $formta->nama_pembimbing_satu = $validatedData['nama_pembimbing_satu'];
-        $formta->nama_pembimbing_dua = $validatedData['nama_pembimbing_dua'];
+        $formta->nama_pembimbing_satu = $validatedData['pembimbing_1'];
+        $formta->nama_pembimbing_dua = $validatedData['pembimbing_2'];
         $formta->alamat_mahasiswa = $validatedData['alamat_mhs'];
         $formta->judul_ta = $validatedData['judul_ta'];
         $formta->khs = $khs_name_file;
         $formta->krs = $krs_name_file;
         $formta->transkrip = $transkrip_name_file;
-        $formta->nama_instansi_satu = $validatedData['nama_instansi_satu'];
-        $formta->nama_pimpinan_instansi_satu = $validatedData['nama_pimpinan_instansi_satu'];
-        $formta->no_hp_instansi_satu = $validatedData['no_hp_instansi_satu'];
-        $formta->alamat_instansi_satu = $validatedData['alamat_instansi_satu'];
-        $formta->keperluan_satu = $validatedData['keperluan_satu'];
-        $formta->nama_instansi_dua = $validatedData['nama_instansi_dua'];
-        $formta->nama_pimpinan_instansi_dua = $validatedData['nama_pimpinan_instansi_dua'];
-        $formta->no_hp_instansi_dua = $validatedData['no_hp_instansi_dua'];
-        $formta->alamat_instansi_dua = $validatedData['alamat_instansi_dua'];
-        $formta->keperluan_dua = $validatedData['keperluan_dua'];
+        $formta->nama_instansi_satu = $validatedData['nama_instansi_1'];
+        $formta->jabatan_instansi_satu = $validatedData['jabatan_instansi_1'];
+        $formta->alamat_instansi_satu = $validatedData['alamat_instansi_1'];
+        $formta->no_hp_instansi_satu = $validatedData['no_hp_instansi_1'];
+        $formta->nama_instansi_dua = $validatedData['nama_instansi_2'];
+        $formta->jabatan_instansi_dua = $validatedData['jabatan_instansi_2'];
+        $formta->alamat_instansi_dua = $validatedData['alamat_instansi_2'];
+        $formta->no_hp_instansi_dua = $validatedData['no_hp_instansi_2'];
         $formta->save();
 
         return back()->with('success_create_data', 'Selamat! Data Pengajuan Tugas Akhirmu Berhasil');
