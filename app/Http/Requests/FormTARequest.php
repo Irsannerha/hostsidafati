@@ -26,21 +26,28 @@ class FormTARequest extends FormRequest
     public function rules(): array
     {
         return [
-            'prodi_id' => ['required', new CheckProdi],
             'nama' => ['required', 'min:3', 'max:255', new CheckNama],
             'nim' => ['required', 'numeric', 'digits:9', new CheckNim],
-            'keperluan' => 'required',
-            'instansi' => 'required|min:3|max:255',
-            'alamat_instansi' => 'required|min:3|max:255',
-            'tjp' => 'nullable',
-            'pelaksanaan' => 'required',
-            'waktu_mulai_pelaksanaan' => 'required|date_format:Y-m-d',
-            'waktu_akhir_pelaksanaan' => 'required|date_format:Y-m-d',
-            'no_hp' => 'required|numeric|digits_between:10,15',
+            'prodi_id' => ['required', new CheckProdi],
+            'no_hp_mhs' => 'required|numeric|digits_between:10,15',
             'email' => ['required', 'email', new CheckEmail],
             'nama_pembimbing_satu' => 'required|min:3|max:255',
             'nama_pembimbing_dua' => 'required|min:3|max:255',
-            'judul' => 'required|min:3',
+            'alamat_mhs' => 'required|min:3|max:150',
+            'judul_ta' => 'required|min:3|max:180',
+            'khs' => 'required|mimes:pdf|max:1024',
+            'krs' => 'required|mimes:pdf|max:1024',
+            'transkrip' => 'required|mimes:pdf|max:1024',
+            'nama_instansi_satu' => 'required|min:3|max:255',
+            'nama_pimpinan_instansi_satu' => 'required|min:3|max:255',
+            'no_hp_instansi_satu' => 'required|numeric|digits_between:10,15',
+            'alamat_instansi_satu' => 'required|min:3|max:100',
+            'keperluan_satu' => 'required|min:3|max:100',
+            'nama_instansi_dua' => 'nullable|min:3|max:255',
+            'nama_pimpinan_instansi_dua' => 'nullable|min:3|max:255',
+            'no_hp_instansi_dua' => 'nullable|numeric|digits_between:10,15',
+            'alamat_instansi_dua' => 'nullable|min:3|max:100',
+            'keperluan_dua' => 'nullable|min:3|max:100',
         ];
     }
 
