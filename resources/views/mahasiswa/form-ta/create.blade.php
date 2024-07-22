@@ -1,5 +1,5 @@
 <x-mahasiswa-app>
-    <main class="main-container" id="FormPengajuanDispen">
+    <main class="main-container" id="FormPengajuanTA">
         <section class="m-40px">
             <h2 class="text-main-black">Form Permohonan Pengantar Izin / Permintaan Data Tugas Akhir</h2>
             <hr class="border-1 mt-10px border-secondary-border">
@@ -8,7 +8,6 @@
                 @csrf
                 <!-- Slide pertama -->
                 <section id="firstSection">
-                    <x-cards.section>Data Instansi</x-cards.section>
                     <div class="grid grid-cols-2 gap-6">
                         <div>
                             <x-forms.label name="nama" required>Nama</x-forms.label>
@@ -88,10 +87,11 @@
                                     required />
                             </div>
                             <div>
-                                <x-forms.label name="jabatan_instansi_1" required info="hanya jabatan saja">Tujuan
-                                    Jabatan</x-forms.label>
-                                <x-forms.input name="jabatan_instansi_1" placeholder="Masukkan jabatan Anda di instansi"
-                                    required />
+                                <x-forms.label name="nama_pimpinan_instansi_1" required>Nama
+                                    Pimpinan Instansi
+                                </x-forms.label>
+                                <x-forms.input name="nama_pimpinan_instansi_1"
+                                    placeholder="Masukan nama pimpinan instansi" required />
                             </div>
                             <div>
                                 <x-forms.label name="alamat_instansi_1" required>Alamat Lengkap</x-forms.label>
@@ -113,10 +113,11 @@
                                 <x-forms.input name="nama_instansi_2" placeholder="Masukkan nama instansi Anda" />
                             </div>
                             <div>
-                                <x-forms.label name="jabatan_instansi_2" info="hanya jabatan saja">Tujuan
-                                    Jabatan</x-forms.label>
-                                <x-forms.input name="jabatan_instansi_2"
-                                    placeholder="Masukkan jabatan Anda di instansi" />
+                                <x-forms.label name="nama_pimpinan_instansi_2" required>Nama
+                                    Pimpinan Instansi
+                                </x-forms.label>
+                                <x-forms.input name="nama_pimpinan_instansi_2"
+                                    placeholder="Masukan nama pimpinan instansi" required />
                             </div>
                             <div>
                                 <x-forms.label name="alamat_instansi_2">Alamat Lengkap</x-forms.label>

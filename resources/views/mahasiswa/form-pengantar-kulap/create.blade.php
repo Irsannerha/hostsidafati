@@ -1,7 +1,7 @@
 <x-mahasiswa-app>
-    <main class="main-container" id="FormPengajuanMenampilkanMatkul">
+    <main class="main-container" id="FormPengantarKulap">
         <section class="m-40px">
-            <h2 class="text-main-black">Form Permohonan Menampilkan Mata Kuliah</h2>
+            <h2 class="text-main-black">Form Pengajuan Pengantar Kuliah Lapangan</h2>
             <hr class="border-1 mt-10px border-secondary-border">
 
             <form action="" method="POST">
@@ -79,61 +79,6 @@
 
         </section>
     </main>
-    <script>
-        let addNewMatkulBtn = document.getElementById('addNewMatkulBtn');
-        addNewMatkulBtn.addEventListener('click', addNewMatkul);
-
-        let newMatkulCount = 1;
-        const maxMatkul = 5;
-
-        function addNewMatkul() {
-            // if (oldMatkulCount >= maxMatkul) return;
-            const newMatkulContainer = document.getElementById('newMatkulCountainer');
-            const newMatkulDiv = document.createElement('div');
-            newMatkulDiv.classList.add('matkul-item', 'mt-3');
-            newMatkulDiv.innerHTML = `
-                    <div class="grid grid-cols-2 gap-6">
-                            <div>
-                                <x-forms.label name="tampilkan_nama_matkul_${newMatkulCount + 1}">Nama Mata Kuliah</x-forms.label>
-                                <x-forms.input name="tampilkan_nama_matkul_${newMatkulCount + 1}"
-                                    placeholder="Nama MK tanpa disingkat. Contoh : Kimia Dasar" />
-                            </div>
-                            <div>
-                                <x-forms.label name="tampilkan_kode_matkul_${newMatkulCount + 1}">Kode Mata Kuliah</x-forms.label>
-                                <x-forms.input name="tampilkan_kode_matkul_${newMatkulCount + 1}" placeholder="Kode MK. Contoh : IF3011" />
-                            </div>
-                            <div>
-                                <x-forms.label name="tampilkan_sks_${newMatkulCount + 1}">SKS</x-forms.label>
-                                <x-forms.input name="tampilkan_sks_${newMatkulCount + 1}" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3"
-                                    type="number" />
-                            </div>
-                            <div>
-                                <x-forms.label name="tampilkan_nilai_${newMatkulCount + 1}">Nilai</x-forms.label>
-                                <x-forms.input name="tampilkan_nilai_${newMatkulCount + 1}" placeholder="Contoh : AB, C, Dll" />
-                            </div>
-                        </div>
-                        <x-button.delete onclick="removeMatkul(this)" class="mt-10px">Hapus</x-button.delete>
-                `;
-            newMatkulContainer.appendChild(newMatkulDiv);
-            newMatkulCount++;
-            newMatkulContainer.classList.remove('hidden');
-            if (newMatkulCount === maxMatkul) {
-                document.getElementById('addNewCountainer').classList.add('hidden');
-                return;
-            }
-        }
-
-        function removeMatkul(button) {
-            const newMatkulDiv = button.parentElement;
-            newMatkulDiv.remove();
-            newMatkulCount--;
-            document.getElementById('addNewCountainer').classList.remove('hidden');
-            document.getElementById('addNewCountainer').classList.add('block');
-            if (newMatkulCount === 0) {
-                document.getElementById('newMatkulContainer').classList.add('hidden');
-            }
-        }
-    </script>
 </x-mahasiswa-app>
 @if(session('success_create_data'))
     <script>

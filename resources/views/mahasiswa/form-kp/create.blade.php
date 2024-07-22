@@ -1,5 +1,5 @@
 <x-mahasiswa-app>
-    <main class="main-container" id="FormPengajuanDispen">
+    <main class="main-container" id="FormPengajuanKP">
         <section class="m-40px">
             <h2 class="text-main-black">Form Pengajuan Kerja Praktik</h2>
             <hr class="border-1 mt-10px border-secondary-border">
