@@ -245,6 +245,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('form-dispen', function () {
             return view('mahasiswa/form-dispen/create');
         })->name('form-dispen.create');
+        Route::get('form-pengantar-kulap', function () {
+            return view('mahasiswa/form-pengantar-kulap/create');
+        })->name('form-pengantar-kulap.create');
         Route::get('form-test', function () {
             return view('mahasiswa/form-test/create');
         })->name('form-test.create');

@@ -1,15 +1,13 @@
 <x-mahasiswa-app>
-    <main class="main-container" id="FormPengajuanDispen">
+    <main class="main-container" id="FormPengajuanMenampilkanMatkul">
         <section class="m-40px">
-            <h2 class="text-main-black">Form Permohonan Pengantar Izin / Permintaan Data Tugas Akhir</h2>
+            <h2 class="text-main-black">Form Permohonan Menampilkan Mata Kuliah</h2>
             <hr class="border-1 mt-10px border-secondary-border">
 
             <form action="" method="POST">
                 @csrf
-                <!-- Slide pertama -->
-                <section id="firstSection">
-                    <x-cards.section>Data Instansi</x-cards.section>
-                    <div class="grid grid-cols-2 gap-6">
+                <div id="firstSection">
+                    <section class="grid grid-cols-2 gap-6">
                         <div>
                             <x-forms.label name="nama" required>Nama</x-forms.label>
                             <x-forms.input name="nama" placeholder="Masukkan nama Anda" required />
@@ -19,13 +17,9 @@
                             <x-forms.input name="nim" placeholder="Masukkan NIM Anda" required />
                         </div>
                         <div>
-                            <x-forms.label name="fakultas" required>Fakultas</x-forms.label>
-                            <x-forms.input name="fakultas" value="Fakultas Teknologi Sumatera" readonly />
-                        </div>
-                        <div>
                             <x-forms.label name="kode_prodi" required>Program Studi</x-forms.label>
                             <x-forms.select-input name="kode_prodi" tabindex="0" placeholder="Pilih program studi Anda"
-                                :options="['value1' => 'Teknik Informatika', 'value2' => 'Teknik Industri', 'value3' => 'Teknik Biomedis']" />
+                                :options="['0' => 'Teknik Informatika', '1' => 'Teknik Industri', '2' => 'Teknik Biomedis']" />
                         </div>
                         <div>
                             <x-forms.label name="no_hp_mhs" required>No.Hp Mahasiswa</x-forms.label>
@@ -33,106 +27,132 @@
                                 required />
                         </div>
                         <div>
-                            <x-forms.label name="email" required>Email</x-forms.label>
-                            <x-forms.input name="email" placeholder="Masukkan email Anda" type="email" required />
-                        </div>
-                        <div>
-                            <x-forms.label name="pembimbing_1" required>Nama Pebimbing 1</x-forms.label>
-                            <x-forms.input name="pembimbing_1" placeholder="Masukkan nama dosen pembimbing 1"
-                                type="text" required />
-                        </div>
-                        <div>
-                            <x-forms.label name="pembimbing_2" required>Nama Pebimbing 2</x-forms.label>
-                            <x-forms.input name="pembimbing_2" placeholder="Masukkan nama dosen pembimbing 2"
-                                type="text" required />
-                        </div>
-                        <div>
                             <x-forms.label name="alamat_mhs" required>Alamat Lengkap</x-forms.label>
                             <x-forms.input name="alamat_mhs" required textarea="true" rows="6"
                                 placeholder="Masukan alamat Anda dengan lengkap..."></x-forms.input>
                         </div>
                         <div>
-                            <x-forms.label name="judul_ta" required>Judul TA</x-forms.label>
-                            <x-forms.input name="judul_ta" required textarea="true" rows="6"
-                                placeholder="Masukan Judul Tugas Akhir anda dengan lengkap"></x-forms.input>
+                            <x-forms.label name="email" required>Email</x-forms.label>
+                            <x-forms.input name="email" placeholder="Masukkan email Anda" type="email" required />
                         </div>
-                        <div class="grid grid-cols-3 gap-20 col-span-2">
+                    </section>
+                    <!-- Mata Kuliah Baru -->
+                    <section>
+                        <x-cards.section>Data Instansi</x-cards.section>
+                        <div class="grid grid-cols-2 grid-flow-row gap-6">
                             <div>
-                                <x-forms.label name="file_khs" required info="maks 1mb">KHS</x-forms.label>
-                                <x-forms.input-file name="file_khs" required />
+                                <x-forms.label name="nama_instansi" required>Nama Instansi</x-forms.label>
+                                <x-forms.input name="nama_instansi" placeholder="Masukkan nama instansi Anda"
+                                    required />
+                            </div>
+                            <div class="row-span-3">
+                                <x-forms.label name="alamat_instansi" required>Alamat Instansi</x-forms.label>
+                                <x-forms.input name="alamat_instansi" required textarea="true" rows="5"
+                                    placeholder="Masukan alamat dengan lengkap.."></x-forms.input>
                             </div>
                             <div>
-                                <x-forms.label name="file_krs" required info="maks 1mb">KRS</x-forms.label>
-                                <x-forms.input-file name="file_krs" required />
+                                <x-forms.label name="nama_pimpinan_instansi" required>Nama
+                                    Pimpinan Instansi
+                                </x-forms.label>
+                                <x-forms.input name="nama_pimpinan_instansi"
+                                    placeholder="Masukan nama pimpinan instansi" required />
                             </div>
-                            <div>
-                                <x-forms.label name="file_transkrip" required info="maks 1mb">Transkrip</x-forms.label>
-                                <x-forms.input-file name="file_transkrip" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-end mt-16">
-                        <x-button.primary onclick="hideSection()" type="button">Lanjutkan</x-button.primary>
-                    </div>
-                </section>
-                <!-- Slide kedua -->
-                <section id="addSection" class="hidden">
-                    @for ($i = 1; $i <= 2; $i++)
-                        <!-- Data Instansi -->
-                        <section id="section-{{$i}}">
-                            <x-cards.section>Data Instansi {{$i}}</x-cards.section>
                             <div class="grid grid-cols-2 gap-6">
                                 <div>
-                                    <x-forms.label name="nama_instansi{{$i}}" required>Nama Instansi</x-forms.label>
-                                    <x-forms.input name="nama_instansi{{$i}}" placeholder="Masukkan nama instansi Anda"
-                                        required />
+                                    <x-forms.label name="file_ksm" required info="maks 1mb">Upload KSM
+                                    </x-forms.label>
+                                    <x-forms.input-file name="file_ksm" required />
                                 </div>
                                 <div>
-                                    <x-forms.label name="jabatan_instansi{{$i}}" required info="hanya jabatan saja">Tujuan
-                                        Jabatan</x-forms.label>
-                                    <x-forms.input name="jabatan_instansi{{$i}}"
-                                        placeholder="Masukkan jabatan Anda di instansi" required />
-                                </div>
-                                <div>
-                                    <x-forms.label name="alamat_instansi{{$i}}" required>Alamat Lengkap</x-forms.label>
-                                    <x-forms.input name="alamat_instansi{{$i}}" required textarea="true" rows="6"
-                                        placeholder="Masukkan alamat instansi Anda dengan lengkap..."></x-forms.input>
-                                </div>
-                                <div>
-                                    <x-forms.label name="no_hp_instansi{{$i}}" required>No. Hp Instansi</x-forms.label>
-                                    <x-forms.input name="no_hp_instansi{{$i}}"
-                                        placeholder="Masukkan nomor telepon instansi Anda" type="tel" required />
+                                    <x-forms.label name="file_pengantar_prodi" required info="maks 1mb">Upload Pengantar
+                                        Prodi</x-forms.label>
+                                    <x-forms.input-file name="file_pengantar_prodi" required />
                                 </div>
                             </div>
-                        </section>
-                    @endfor
-                    <div class="flex justify-between mt-16">
-                        <x-button.primary onclick="hideSection()" type="button">Kembali</x-button.primary>
+                        </div>
+                    </section>
+                    <div class="flex justify-end mt-16">
                         <x-button.primary>Submit</x-button.primary>
                     </div>
-                </section>
+                </div>
             </form>
 
         </section>
     </main>
     <script>
-        function hideSection() {
-            let addSection = document.getElementById("addSection");
-            let firstSection = document.getElementById("firstSection");
-            let hideBtn = document.getElementById("hideBtn");
-            let submitBtn = document.getElementById("submitBtn");
+        let addNewMatkulBtn = document.getElementById('addNewMatkulBtn');
+        addNewMatkulBtn.addEventListener('click', addNewMatkul);
 
-            if (addSection.classList.contains("hidden")) {
-                addSection.classList.remove("hidden");
-                firstSection.classList.add("hidden");
-                hideBtn.classList.add("hidden");
-                hideBtn.classList.remove("flex");
-            } else {
-                addSection.classList.add("hidden");
-                firstSection.classList.remove("hidden");
-                hideBtn.classList.remove("hidden");
-                hideBtn.classList.add("flex");
+        let newMatkulCount = 1;
+        const maxMatkul = 5;
+
+        function addNewMatkul() {
+            // if (oldMatkulCount >= maxMatkul) return;
+            const newMatkulContainer = document.getElementById('newMatkulCountainer');
+            const newMatkulDiv = document.createElement('div');
+            newMatkulDiv.classList.add('matkul-item', 'mt-3');
+            newMatkulDiv.innerHTML = `
+                    <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <x-forms.label name="tampilkan_nama_matkul_${newMatkulCount + 1}">Nama Mata Kuliah</x-forms.label>
+                                <x-forms.input name="tampilkan_nama_matkul_${newMatkulCount + 1}"
+                                    placeholder="Nama MK tanpa disingkat. Contoh : Kimia Dasar" />
+                            </div>
+                            <div>
+                                <x-forms.label name="tampilkan_kode_matkul_${newMatkulCount + 1}">Kode Mata Kuliah</x-forms.label>
+                                <x-forms.input name="tampilkan_kode_matkul_${newMatkulCount + 1}" placeholder="Kode MK. Contoh : IF3011" />
+                            </div>
+                            <div>
+                                <x-forms.label name="tampilkan_sks_${newMatkulCount + 1}">SKS</x-forms.label>
+                                <x-forms.input name="tampilkan_sks_${newMatkulCount + 1}" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3"
+                                    type="number" />
+                            </div>
+                            <div>
+                                <x-forms.label name="tampilkan_nilai_${newMatkulCount + 1}">Nilai</x-forms.label>
+                                <x-forms.input name="tampilkan_nilai_${newMatkulCount + 1}" placeholder="Contoh : AB, C, Dll" />
+                            </div>
+                        </div>
+                        <x-button.delete onclick="removeMatkul(this)" class="mt-10px">Hapus</x-button.delete>
+                `;
+            newMatkulContainer.appendChild(newMatkulDiv);
+            newMatkulCount++;
+            newMatkulContainer.classList.remove('hidden');
+            if (newMatkulCount === maxMatkul) {
+                document.getElementById('addNewCountainer').classList.add('hidden');
+                return;
+            }
+        }
+
+        function removeMatkul(button) {
+            const newMatkulDiv = button.parentElement;
+            newMatkulDiv.remove();
+            newMatkulCount--;
+            document.getElementById('addNewCountainer').classList.remove('hidden');
+            document.getElementById('addNewCountainer').classList.add('block');
+            if (newMatkulCount === 0) {
+                document.getElementById('newMatkulContainer').classList.add('hidden');
             }
         }
     </script>
 </x-mahasiswa-app>
+@if(session('success_create_data'))
+    <script>
+        swal({
+            position: 'center',
+            type: 'success',
+            title: "{{ session('success_create_data') }}",
+            showConfirmButton: false,
+            timer: 3000
+        })
+    </script>
+@elseif(session('error_create_data'))
+    <script>
+        swal({
+            position: 'center',
+            type: 'error',
+            title: "{{ session('error_create_data') }}",
+            showConfirmButton: false,
+            timer: 3000
+        })
+    </script>
+@endif

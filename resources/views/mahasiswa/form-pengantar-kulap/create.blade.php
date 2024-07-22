@@ -1,7 +1,7 @@
 <x-mahasiswa-app>
-    <main class="main-container" id="FormPengajuanMenampilkanMatkul">
+    <main class="main-container" id="FormPengantarKulap">
         <section class="m-40px">
-            <h2 class="text-main-black">Form Permohonan Menampilkan Mata Kuliah</h2>
+            <h2 class="text-main-black">Form Pengajuan Pengantar Kuliah Lapangan</h2>
             <hr class="border-1 mt-10px border-secondary-border">
 
             <form action="" method="POST">
@@ -22,50 +22,53 @@
                                 :options="['0' => 'Teknik Informatika', '1' => 'Teknik Industri', '2' => 'Teknik Biomedis']" />
                         </div>
                         <div>
-                            <x-forms.label name="doswal" required>Dosen wali</x-forms.label>
-                            <x-forms.input name="doswal" placeholder="Masukan nama dosen wali Anda" type="text"
+                            <x-forms.label name="no_hp_mhs" required>No.Hp Mahasiswa</x-forms.label>
+                            <x-forms.input name="no_hp_mhs" placeholder="Masukkan nomor telepon Anda" type="tel"
                                 required />
                         </div>
                         <div>
-                            <x-forms.label name="alasan_menampilkan" required>Alasan Menampilkan MK</x-forms.label>
-                            <x-forms.input name="alasan_menampilkan" required textarea="true" rows="6"
-                                placeholder="Jelaskan dengan rinci alasan menampilkan Mata Kuliah"></x-forms.input>
+                            <x-forms.label name="alamat_mhs" required>Alamat Lengkap</x-forms.label>
+                            <x-forms.input name="alamat_mhs" required textarea="true" rows="6"
+                                placeholder="Masukan alamat Anda dengan lengkap..."></x-forms.input>
                         </div>
                         <div>
-                            <x-forms.label name="koor_prodi" required>Koordinator Prodi</x-forms.label>
-                            <x-forms.input name="koor_prodi" placeholder="Masukan nama koordinator prodi Anda"
-                                type="text" required />
+                            <x-forms.label name="email" required>Email</x-forms.label>
+                            <x-forms.input name="email" placeholder="Masukkan email Anda" type="email" required />
                         </div>
                     </section>
                     <!-- Mata Kuliah Baru -->
                     <section>
-                        <x-cards.section>Mata Kuliah yang ingin ditampilkan</x-cards.section>
-                        <div class="grid grid-cols-2 gap-6">
+                        <x-cards.section>Data Instansi</x-cards.section>
+                        <div class="grid grid-cols-2 grid-flow-row gap-6">
                             <div>
-                                <x-forms.label name="tampilkan_nama_matkul_1" required>Nama Mata Kuliah</x-forms.label>
-                                <x-forms.input name="tampilkan_nama_matkul_1"
-                                    placeholder="Nama MK tanpa disingkat. Contoh : Kimia Dasar" required />
-                            </div>
-                            <div>
-                                <x-forms.label name="tampilkan_kode_matkul_1" required>Kode Mata Kuliah</x-forms.label>
-                                <x-forms.input name="tampilkan_kode_matkul_1" placeholder="Kode MK. Contoh : IF3011"
+                                <x-forms.label name="nama_instansi" required>Nama Instansi</x-forms.label>
+                                <x-forms.input name="nama_instansi" placeholder="Masukkan nama instansi Anda"
                                     required />
                             </div>
-                            <div>
-                                <x-forms.label name="tampilkan_sks_1" required>SKS</x-forms.label>
-                                <x-forms.input name="tampilkan_sks_1" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3"
-                                    type="number" required />
+                            <div class="row-span-3">
+                                <x-forms.label name="alamat_instansi" required>Alamat Instansi</x-forms.label>
+                                <x-forms.input name="alamat_instansi" required textarea="true" rows="5"
+                                    placeholder="Masukan alamat dengan lengkap.."></x-forms.input>
                             </div>
                             <div>
-                                <x-forms.label name="tampilkan_nilai_1" required>Nilai</x-forms.label>
-                                <x-forms.input name="tampilkan_nilai_1" placeholder="Contoh : AB, C, Dll" required />
+                                <x-forms.label name="nama_pimpinan_instansi" required>Nama
+                                    Pimpinan Instansi
+                                </x-forms.label>
+                                <x-forms.input name="nama_pimpinan_instansi"
+                                    placeholder="Masukan nama pimpinan instansi" required />
                             </div>
-                        </div>
-                        <div id="newMatkulCountainer" class="mt-12">
-
-                        </div>
-                        <div id="addNewCountainer" class="flex justify-center font-semibold my-24px">
-                            <x-button.add id="addNewMatkulBtn">Tambah mata kuliah</x-button.add>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <x-forms.label name="file_ksm" required info="maks 1mb">Upload KSM
+                                    </x-forms.label>
+                                    <x-forms.input-file name="file_ksm" required />
+                                </div>
+                                <div>
+                                    <x-forms.label name="file_pengantar_prodi" required info="maks 1mb">Upload Pengantar
+                                        Prodi</x-forms.label>
+                                    <x-forms.input-file name="file_pengantar_prodi" required />
+                                </div>
+                            </div>
                         </div>
                     </section>
                     <div class="flex justify-end mt-16">
