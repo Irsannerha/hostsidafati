@@ -248,6 +248,18 @@ Route::middleware(['auth'])->group(function () {
         Route::get('form-pengantar-kulap', function () {
             return view('mahasiswa/form-pengantar-kulap/create');
         })->name('form-pengantar-kulap.create');
+        Route::get('form-cuti-akademik', function () {
+            return view('mahasiswa/form-cuti-akademik/create');
+        })->name('form-cuti-akademik.create');
+        Route::get('form-rekom-mahasiswa', function () {
+            return view('mahasiswa/form-rekom-mahasiswa/create');
+        })->name('form-rekom-mahasiswa.create');
+        Route::get('form-pemotongan-ukt', function () {
+            return view('mahasiswa/form-pemotongan-ukt/create');
+        })->name('form-pemotongan-ukt.create');
+        Route::get('form-pengantar-studio', function () {
+            return view('mahasiswa/form-pengantar-studio/create');
+        })->name('form-pengantar-studio.create');
         Route::get('form-test', function () {
             return view('mahasiswa/form-test/create');
         })->name('form-test.create');
