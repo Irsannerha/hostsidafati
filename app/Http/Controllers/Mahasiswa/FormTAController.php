@@ -37,6 +37,7 @@ class FormTAController extends Controller
         $transkrip = $request->file('transkrip');
 
         $timestamp = Carbon::now()->format('Y-m-d_H-i-s');
+        
         $nim = $request->nim;
 
         $khs_name_file = "{$nim}-{$timestamp}.{$khs->getClientOriginalExtension()}";
