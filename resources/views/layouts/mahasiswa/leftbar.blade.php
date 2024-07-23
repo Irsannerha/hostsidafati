@@ -44,14 +44,24 @@
                         <span class="micon fa fa-institution"></span><span class="mtext">Akademik</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('mahasiswa.form-ta.create') }}">Pengajuan Tugas Akhir</a></li>
-                        <li><a href="{{ route('mahasiswa.form-ta.edit', 3) }}">Pengajuan Kerja Praktik</a></li>
-                        <li><a href="{{ route('mahasiswa.form-khs.create') }}">Pengajuan
-                                KHS/Transkrip/Dokumen</a></li>
-                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pendaftaran Yudisium</a></li>
-                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Dispendansasi Kuliah</a>
+                        <li>
+                            <a href="{{route('mahasiswa.dashboard')}}" data-toggle="modal" data-target="#inputKrs">
+                                Layanan KRS dan Transkrip
+                            </a>
+                            <!-- <div class="modal fade" id="krs" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            Cek
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
                         </li>
-                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Pengantar Kerja</a>
+                        <li><a href="{{route('mahasiswa.form-dispen.create')}}">Pengajuan Dispendansasi Kuliah</a>
+                        </li>
+                        <li><a href="{{ route('mahasiswa.form-ta.create') }}">Pengantar TA/Survei Data TA</a></li>
+                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Pengantar Kerja Praktik</a></li>
                         <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Pengantar Kuliah
                                 Lapangan</a>
                         </li>
@@ -62,14 +72,13 @@
                         <span class="micon fa fa-graduation-cap"></span><span class="mtext">Kemahasiswaan</span>
                     </a>
                     <ul class="submenu">
+                        <li><a href="#">Pengajuan Cuti Akademik</a></li>
                         <li><a href="#">Pengajuan Pemotongan UKT</a></li>
-                        <li><a href="#">Pengajuan Pengajuan Cuti</a></li>
                         <li><a href="#">Pengajuan Permohonanan Pengantar Studio</a></li>
-                        <li><a href="#">Pengajuan Pengunduran Diri Mahasiswa</a></li>
                         <li><a href="#">Pengajuan Rekomendasi Mahasiswa</a></li>
-                        <li><a href="#">Peminjaman Alat Laboratorium</a></li>
-                        <li><a href="#">Permohonanan Izin Penelitian</a></li>
-
+                        <li><a href="#">Pengunduran Diri Mahasiswa</a></li>
+                        <li><a href="#">Sistem Informasi Yudisium</a></li>
+                        <li><a href="#">Permohonana Pangantar Izin Penelitian dan Alat Lab</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

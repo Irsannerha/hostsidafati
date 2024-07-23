@@ -43,6 +43,7 @@ use App\Http\Controllers\Mahasiswa\FormBukrimController;
 use App\Http\Controllers\Mahasiswa\FormTAController;
 use App\Http\Controllers\Mahasiswa\FormKPController;
 use App\Http\Controllers\Mahasiswa\FormKHSController;
+use App\Http\Controllers\Mahasiswa\FormPerubahanKRSController;
 
 //Dosen
 use App\Http\Controllers\Dosen\DashboardDosenController;
@@ -74,7 +75,7 @@ use App\Models\Prestasi;
 */
 
 Route::get('qr', [QrCodeController::class, 'show']);
-Route::get('/pengajuanTA', [PDFController::class, 'generatePDF']);
+Route::get('/pengajuanDispen', [PDFController::class, 'generatePDF']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -226,7 +227,27 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('form-ta', FormTAController::class);
         Route::resource('form-bukrim', FormBukrimController::class);
         Route::resource('form-kp', FormKPController::class);
-        Route::resource('form-khs', FormKHSController::class);
+        Route::get('perubahan-krs', function () {
+            return view('mahasiswa/form-krs/perubahan-krs/create');
+        })->name('form-krs.perubahan-krs.create');
+        Route::get('pengisian-krs', function () {
+            return view('mahasiswa/form-krs/pengisian-krs/create');
+        })->name('form-krs.pengisian-krs.create');
+        Route::get('penghapusan-matkul', function () {
+            return view('mahasiswa/form-krs/penghapusan-matkul/create');
+        })->name('form-krs.penghapusan-matkul.create');
+        Route::get('menampilkan-matkul', function () {
+            return view('mahasiswa/form-krs/menampilkan-matkul/create');
+        })->name('form-krs.menampilkan-matkul.create');
+        Route::get('form-krs', function () {
+            return view('mahasiswa/form-krs/select');
+        })->name('form-krs.select');
+        Route::get('form-dispen', function () {
+            return view('mahasiswa/form-dispen/create');
+        })->name('form-dispen.create');
+        Route::get('form-test', function () {
+            return view('mahasiswa/form-test/create');
+        })->name('form-test.create');
     });
 
     Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
@@ -235,7 +256,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/form-ta/terima/{id}', [FormTADosenController::class, 'terima'])->name('form-ta.terima');
     });
 });
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/data', [HomeController::class, 'data'])->name('data');
 Route::get('/kegiatan', [HomeController::class, 'kegiatan'])->name('kegiatan');
@@ -245,7 +265,7 @@ Route::get('/prestasi', [HomeController::class, 'prestasi'])->name('prestasi');
 Route::post('/prestasi', [HomeController::class, 'UploadPrestasi'])->name('prestasi.store');
 Route::post('/kegiatan', [HomeController::class, 'UploadKegiatan'])->name('kegiatan.store');
 Route::get('/tentang', [HomeController::class, 'tentang'])->name('tentang');
-// Route::get('/form-ta', [HomeController::class, 'formta'])->name('formta');
+Route::get('/form-ta', [PDFController::class, 'generatePDF'])->name('formta');
 // Route::post('/form-ta', [HomeController::class, 'UploadFormTA'])->name('formta.store');
 // Route::get('/form-kp', [HomeController::class, 'formkp'])->name('formkp');
 // Route::post('/form-kp', [HomeController::class, 'UploadFormKP'])->name('formkp.store');

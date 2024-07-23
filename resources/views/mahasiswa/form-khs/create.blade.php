@@ -1,37 +1,10 @@
 <x-mahasiswa-app>
     <div class="main-container">
         <!-- Content start -->
-        <section class="bg-home bg-hexa" id="home">
-            <div class="home-center">
-                <div class="home-desc-center">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12 col-md-12 text-center">
-                                <div class="title-heading mt-4">
-                                    <h1 class="heading mb-1 font-weight-bold text-black">
-                                        Form Pengajuan KHS/Transkrip/Dokumen Lainnya (Untuk Mahasiswa)
-                                    </h1>
-                                    <p class="para-desc text-black">
-                                        Selamat datang di Formulir Pengajuan KHS/Transkrip/Dokumen Mahasiswa Fakultas
-                                        Teknologi Industri ITERA. Formulir ini disediakan khusus untuk mahasiswa
-                                        Fakultas
-                                        Teknologi Industri ITERA yang akan mengajukan permohonan KHS/Transkrip/Dokumen
-                                        Lainnya.
-                                        Melalui formulir ini, Anda dapat mengajukan permohonan KHS/Transkrip/Dokumen
-                                        Lainnya
-                                        dengan mudah serta mengisi semua data yang diperlukan dengan benar dan lengkap.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- home end -->
 
         <!-- clients start -->
-        <section id="FormPengajuanTA">
+        <section id="FormPengajuanKHS">
             <div class="container">
                 <div class="clients p-4 bg-gradient-1">
                     <a href="{{ route('mahasiswa.form-bukrim.create')}}" class="btn btn-primary float-right btn-key">

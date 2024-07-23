@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('jenis_pengajuan_id');
             $table->string('nama');
             $table->bigInteger('nim');
+            $table->string('keperluan');
             $table->bigInteger('no_hp_mahasiswa');
             $table->string('email');
             $table->string('nama_pembimbing_satu');
@@ -27,15 +28,14 @@ return new class extends Migration
             $table->string('krs');
             $table->string('transkrip');
             $table->string('nama_instansi_satu');
-            $table->string('nama_pimpinan_instansi_satu');
+            $table->string('jabatan_instansi_satu');
             $table->string('no_hp_instansi_satu');
             $table->string('alamat_instansi_satu');
-            $table->string('keperluan_satu')->default('Permohonan Izin Penelitian Tugas Akhir');
+            // $table->string('keperluan_satu')->default('Permohonan Izin Penelitian Tugas Akhir');
             $table->string('nama_instansi_dua')->nullable();
-            $table->string('nama_pimpinan_instansi_dua')->nullable();
+            $table->string('jabatan_instansi_dua')->nullable();
             $table->string('no_hp_instansi_dua')->nullable();
             $table->string('alamat_instansi_dua')->nullable();
-            $table->string('keperluan_dua')->nullable();
             $table->string('status')->default('Diproses');
             $table->boolean('dosen_wali')->default(false);
             $table->boolean('koor_prodi')->default(false);

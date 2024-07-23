@@ -1,5 +1,5 @@
 <head>
-    <title>Permohonan Cuti Akademik</title>
+    <title>Surat Rekomendasi</title>
     <style>
         .container {
             margin: 0 auto;
@@ -146,7 +146,7 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan="4">Mengetahui</th>
+                    <th colspan="4">Mengetahui,</th>
                 </tr>
                 <tr>
                     <th>Dosen wali</th>
