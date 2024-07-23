@@ -72,10 +72,13 @@
                         <span class="micon fa fa-graduation-cap"></span><span class="mtext">Kemahasiswaan</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="#">Pengajuan Cuti Akademik</a></li>
-                        <li><a href="#">Pengajuan Pemotongan UKT</a></li>
-                        <li><a href="#">Pengajuan Permohonanan Pengantar Studio</a></li>
-                        <li><a href="#">Pengajuan Rekomendasi Mahasiswa</a></li>
+                        <li><a href="{{route('mahasiswa.form-cuti-akademik.create')}}">Pengajuan Cuti Akademik</a></li>
+                        <li><a href="{{route('mahasiswa.form-pemotongan-ukt.create')}}">Pengajuan Pemotongan UKT</a>
+                        </li>
+                        <li><a href="{{route('mahasiswa.form-pengantar-studio.create')}}">Pengajuan Permohonanan
+                                Pengantar Studio</a></li>
+                        <li><a href="{{route('mahasiswa.form-rekom-mahasiswa.create')}}">Pengajuan Rekomendasi
+                                Mahasiswa</a></li>
                         <li><a href="#">Pengunduran Diri Mahasiswa</a></li>
                         <li><a href="#">Sistem Informasi Yudisium</a></li>
                         <li><a href="#">Permohonana Pangantar Izin Penelitian dan Alat Lab</a></li>
