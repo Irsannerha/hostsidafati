@@ -44,13 +44,9 @@
 
     .custom-dd {
       border: 1px solid #999;
-      /* Border dengan ketebalan 1px dan warna abu-abu */
       border-radius: 5px;
-      /* Radius border 5px */
       padding: 4px;
-      /* Padding untuk jarak antara konten dan border */
       font-size: 14px;
-      /* Ukuran font */
     }
 
     .custom-dd ol {
@@ -87,7 +83,7 @@
                 <div class="pd-20 card-box card-hdr" style="background-color: #fff;">
                     <dl class="text-content-box">
                         <dt>Program Studi</dt>
-                        <dd class="custom-dd">{{ $prestasi->Prodi->prodi }}</dd>
+                        <dd class="custom-dd">{{ $prestasi->Prodi ? $prestasi->Prodi->prodi : 'N/A' }}</dd>
 
                         <dt>Nama Mahasiswa/Peserta/Ketua</dt>
                         <dd class="custom-dd">{{ $prestasi->nama_mahasiswa }}</dd>

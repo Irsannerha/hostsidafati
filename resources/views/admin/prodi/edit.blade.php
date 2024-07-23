@@ -167,12 +167,6 @@
                             <div id="sk_prodi_info"></div>
                         </div>
                     </div>
-                    <!-- <div class="col-md-4 col-sm-12">
-                        <div class="form-group">
-                            <label class="font-weight-bold">SK Program Studi</label>
-                            <input type="file" name="sk_prodi" class="form-control height-auto" value="{{ old('sk_prodi', $prodi->sk_prodi) }}" placeholder="Masukkan SK Perpanjangan Tubel">
-                        </div>
-                    </div> -->
                     <div class="col-md-4 col-sm-12">
                       <div class="form-group">
                           <label class="font-weight-bold">Upload Foto (Ukuran: 683 x 1024)</label>
@@ -187,7 +181,7 @@
                   @else
                       <div class="col-md-2 col-sm-12">
                           <label class="font-weight-bold">Foto saat ini:</label>
-                          <img src="{{ asset('vendors/images/foto683x1024.png') }}" alt="Default Foto" style="width: 250px; height: 250px; object-fit: cover;">
+                          <img src="{{ asset('vendors/images/foto222x304.png') }}" alt="Default Foto" style="width: 250px; height: 250px; object-fit: cover;">
                       </div>
                   @endif
                     <div class="col-md-12">

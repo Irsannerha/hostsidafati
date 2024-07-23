@@ -120,6 +120,29 @@ class KeluarController extends Controller
         }
     }
 
+    public function getChartDataKeluar()
+    {
+        $data = Keluar::with('prodi')->get();
+
+        $labels = $data->map(function($item) {
+            return $item->prodi->prodi;
+        });
+
+        $mhs_keluar_genap = $data->pluck('mhs_keluar_genap');
+        $mhs_keluar_ganjil = $data->pluck('mhs_keluar_ganjil');
+        $total = $mhs_keluar_genap->zip($mhs_keluar_ganjil)->map(function($item) {
+            return $item[0] + $item[1];
+        });
+
+        return response()->json([
+            'labels' => $labels,
+            'mhs_keluar_genap' => $mhs_keluar_genap,
+            'mhs_keluar_ganjil' => $mhs_keluar_ganjil,
+            'total' => $total,
+        ]);
+    }
+
+
     public function export()
     {
         return Excel::download(new KeluarExport, 'Mahasiswa Keluar.xlsx');

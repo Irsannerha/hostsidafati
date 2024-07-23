@@ -140,6 +140,7 @@ class UndurDiriController extends Controller
             'total' => $total,
         ]);
     }
+    
 
     public function export()
     {

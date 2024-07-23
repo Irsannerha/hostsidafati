@@ -126,6 +126,28 @@ class WafatController extends Controller
         }
     }
 
+    public function getChartDataWafat()
+    {
+        $data = Wafat::with('prodi')->get();
+
+        $labels = $data->map(function($item) {
+            return $item->prodi->prodi;
+        });
+
+        $mhs_wafat_genap = $data->pluck('mhs_wafat_genap');
+        $mhs_wafat_ganjil = $data->pluck('mhs_wafat_ganjil');
+        $total = $mhs_wafat_genap->zip($mhs_wafat_ganjil)->map(function($item) {
+            return $item[0] + $item[1];
+        });
+
+        return response()->json([
+            'labels' => $labels,
+            'mhs_wafat_genap' => $mhs_wafat_genap,
+            'mhs_wafat_ganjil' => $mhs_wafat_ganjil,
+            'total' => $total,
+        ]);
+    }
+
     public function export()
     {
         return Excel::download(new WafatExport, 'wafat.xlsx');

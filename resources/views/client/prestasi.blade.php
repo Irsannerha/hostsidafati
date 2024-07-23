@@ -114,7 +114,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="url_penyelenggara">URL/Link Penyelenggara Kegiatan/Lomba</label>
-                                    <input class="form-control" type="text" placeholder="URL Penyelenggara" name="url_penyelenggara" id="url_penyelenggara" required />
+                                    <input class="form-control" type="url" placeholder="URL Penyelenggara" name="url_penyelenggara" id="url_penyelenggara" required />
                                 </div>
                                 <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Link Informasi lomba dari Sosmed/Website</small>
                             </div>
@@ -224,4 +224,17 @@
         timer: 3000
     })
 </script>
+@endif
+@if($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            swal({
+                position: 'center',
+                type: 'error',
+                title: 'Data yang Anda masukkan tidak sesuai:',
+                html: `{!! implode('<br>', $errors->all()) !!}`,
+                showConfirmButton: true,
+            });
+        });
+    </script>
 @endif

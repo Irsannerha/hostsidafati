@@ -112,6 +112,28 @@ class MhsTAController extends Controller
         }
     }
 
+    public function getChartDataMhsTA()
+{
+    $mhsTAData = MhsTA::with('prodi')->get();
+    
+    // Get unique prodi names
+    $labels = $mhsTAData->map(function($item) {
+        return $item->prodi->prodi; 
+    })->unique()->values();
+    
+    // Group by prodi and sum the number of mhs_ta per prodi
+    $mhsTASumByProdi = $mhsTAData->groupBy('prodi.prodi')->map(function($group) {
+        return $group->sum('mhs_ta');
+    });
+    
+    return response()->json([
+        'labels' => $labels,
+        'mhsTASum' => $labels->map(function($label) use ($mhsTASumByProdi) {
+            return $mhsTASumByProdi->get($label, 0);
+        }),
+    ]);
+}
+
     public function export() 
     {
         return Excel::download(new MhsTAExport, 'TugasAkhir.xlsx');

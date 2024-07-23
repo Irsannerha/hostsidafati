@@ -1,4 +1,3 @@
-
 <x-admin-app>
 @if(auth()->user()->role == 'superadmin')
   <div class="main-container">
@@ -24,23 +23,82 @@
                   </div>
               </div>
           </div>
-                <div class="row">
-                     <div class="col-sm-12 mb-30">
-						<div class="card-box height-100-p pd-20">
-							<h2 class="h4 mb-20">Activity</h2>
-							<div id="chartmhs"></div>
-						</div>
-					</div>
-                     <div class="col-xl-6 col-lg-6 col-md-6 mb-20">
-                            <div class="card-box">
-                                <h2 class="h4 mb-20">Pergerakan Jumlah Mahasiswa Fakultas Teknologi Industri</h2>
-                                <div class="chartCard">
-                                    <div class="chartBoxBar">
-                                        <canvas id="myChartBar"></canvas>
-                                    </div>
-                                </div>
+            <div class="row">
+                <div class="col-md-12 mb-20">
+                    <div class="card-box height-100-p pd-20">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
+                            <div class="h5 mb-md-0 text-dark">Grafik Pegawai</div>
+                            <div class="form-group mb-md-0">
+                                <select class="form-control form-control-sm selectpicker">
+                                    <option value="aktif">Jumlah Dosen</option>
+                                </select>
                             </div>
                         </div>
+                        <div class="chart">
+                            <div class="row">
+                                <div class="col-md-12 chart">
+                                    <canvas id="myChartJumlahDosen"></canvas>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-20">
+                    <div class="card-box height-100-p pd-20">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
+                            <div class="h5 mb-md-0 text-dark">Grafik Rekap Mahasiswa</div>
+                            <div class="form-group mb-md-0">
+                                <select id="chartSelectorRekap" class="form-control form-control-sm selectpicker">
+                                    <option value="aktifpmb">Mahasiswa Aktif + PMB</option>
+                                    <option value="undurdiri">Mahasiswa Mengundurkan Diri</option>
+                                    <option value="keluar">Mahasiswa Dikeluarkan</option>
+                                    <option value="wafat">Mahasiswa Wafat</option>
+                                    <option value="lulus">Mahasiswa Lulus/Wisuda</option>
+                                    <option value="MhsTA">Mahasiswa Lulusan Tugas Akhir</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <div class="row">
+                                <div class="col-md-12 chart">
+                                    <canvas id="myChartMhsAktif"></canvas>
+                                    <canvas id="myChartUndurDiri"></canvas>
+                                    <canvas id="myChartKeluar"></canvas>
+                                    <canvas id="myChartWafat"></canvas>
+                                    <canvas id="myChartLulus"></canvas>
+                                    <canvas id="myChartMhsTA"></canvas>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-20">
+                    <div class="card-box height-100-p pd-20">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
+                            <div class="h5 mb-md-0 text-dark">Grafik Kemahasiswaan</div>
+                                <div class="form-group mb-md-0">
+                                    <select id="chartSelector" class="form-control form-control-sm selectpicker">
+                                        <option value="prestasi">Prestasi Mahasiswa</option>
+                                        <option value="kegiatan">Izin Kegiatan HIMA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        <div class="chart">
+                            <div class="row">
+                                <div class="col-md-12 chart">
+                                    <canvas id="myChartPrestasi"></canvas>
+                                    <canvas id="myChartKegiatan"></canvas>
+                                 </div>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
 						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-30">
                             <div class="card-box height-100-p overflow-hidden">
                                 <div class="profile-tab height-100-p">
@@ -232,7 +290,7 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Jumlah Dosen</div>
-                              <div class="font-30 weight-500 purecounter" data-purecounter-end="125">0</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countAllDosen }}">0</div>
                           </div>
                           <div class="max-width-150">
                               <!-- <div id="appointment-chart"></div> -->
@@ -596,7 +654,7 @@
                           <div class="weight-600 font-30 text-blue">Admin {{Auth::user()->name}}!</div>
                       </h4>
                       <p class="font-18 max-width-600">
-                          Anda telah berhasil masuk ke dalam sistem sebagai <span class="font-weight-bold">{{Auth::user()->name}}</span> SIDAFATI. 
+                          Anda telah berhasil masuk ke dalam sistem sebagai <span class="font-weight-bold">{{ Auth::user()->name}} </span> HARMONY. 
                           Mohon gunakan hak akses ini dengan penuh tanggung jawab dan pastikan untuk menjaga kerahasiaan serta integritas data yang disimpan dalam sistem. 
                           Terima kasih atas kerjasamanya dalam menjaga keamanan informasi.
                       </p>
@@ -604,10 +662,10 @@
               </div>
           </div>
           <div class="row">
-                <div class="col-md-8 mb-20">
+                <div class="col-md-12 mb-20">
                     <div class="card-box height-100-p pd-20">
                         <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
-                            <div class="h5 mb-md-0 text-dark">Grafik Data Pegawai</div>
+                            <div class="h5 mb-md-0 text-dark">Grafik Pegawai</div>
                             <div class="form-group mb-md-0">
                                 <select class="form-control form-control-sm selectpicker">
                                     <option value="aktif">Jumlah Dosen</option>
@@ -617,7 +675,7 @@
                         <div class="chart">
                             <div class="row">
                                 <div class="col-md-12 chart">
-                                    <canvas id="myChartMhsAktif"></canvas>
+                                    <canvas id="myChartJumlahDosen"></canvas>
                                 </div>
                             </div>  
                         </div>
@@ -682,7 +740,7 @@
                       <div class="d-flex justify-content-between align-items-end">
                           <div class="text-white">
                               <div class="font-14 font-weight-bold">Jumlah Dosen</div>
-                              <div class="font-30 weight-500 purecounter" data-purecounter-end="125">0</div>
+                              <div class="font-30 weight-500 purecounter" data-purecounter-end="{{ $countAllDosen }}">0</div>
                           </div>
                           <div class="max-width-150">
                               <!-- <div id="appointment-chart"></div> -->
@@ -850,18 +908,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8 mb-20">
+                <div class="col-md-12 mb-20">
                     <div class="card-box height-100-p pd-20">
                         <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
                             <div class="h5 mb-md-0 text-dark">Grafik Rekap Mahasiswa</div>
                             <div class="form-group mb-md-0">
-                                <select class="form-control form-control-sm selectpicker">
-                                    <option value="aktif">Mahasiswa Aktif + PMB</option>
-                                    <option value="mengundurkan">Mahasiswa Mengundurkan Diri</option>
-                                    <option value="dikeluarkan">Mahasiswa Dikeluarkan</option>
+                                <select id="chartSelectorRekap" class="form-control form-control-sm selectpicker">
+                                    <option value="aktifpmb">Mahasiswa Aktif + PMB</option>
+                                    <option value="undurdiri">Mahasiswa Mengundurkan Diri</option>
+                                    <option value="keluar">Mahasiswa Dikeluarkan</option>
                                     <option value="wafat">Mahasiswa Wafat</option>
                                     <option value="lulus">Mahasiswa Lulus/Wisuda</option>
-                                    <option value="tugasAkhir">Mahasiswa Lulusan Tugas Akhir</option>
+                                    <option value="MhsTA">Mahasiswa Lulusan Tugas Akhir</option>
                                 </select>
                             </div>
                         </div>
@@ -869,6 +927,11 @@
                             <div class="row">
                                 <div class="col-md-12 chart">
                                     <canvas id="myChartMhsAktif"></canvas>
+                                    <canvas id="myChartUndurDiri"></canvas>
+                                    <canvas id="myChartKeluar"></canvas>
+                                    <canvas id="myChartWafat"></canvas>
+                                    <canvas id="myChartLulus"></canvas>
+                                    <canvas id="myChartMhsTA"></canvas>
                                 </div>
                             </div>  
                         </div>
@@ -1072,31 +1135,113 @@
                           <div class="weight-600 font-30 text-blue">Admin {{Auth::user()->name}}!</div>
                       </h4>
                       <p class="font-18 max-width-600">
-                          Anda telah berhasil masuk ke dalam sistem sebagai <span class="font-weight-bold">{{Auth::user()->name}}</span> SIDAFATI. 
+                          Anda telah berhasil masuk ke dalam sistem sebagai <span class="font-weight-bold">{{Auth::user()->name}}</span> HARMONY. 
                           Mohon gunakan hak akses ini dengan penuh tanggung jawab dan pastikan untuk menjaga kerahasiaan serta integritas data yang disimpan dalam sistem. 
                           Terima kasih atas kerjasamanya dalam menjaga keamanan informasi.
                       </p>
                   </div>
               </div>
           </div>
+          <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Riwayat Perizinan</h2>
+          </div>
+            <div class="row pb-10">
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-20">
+                    <div class="card-box mb-10">
+                        <div id="carouselPerizinan" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                @for ($i = 1; $i <= 12; $i++)
+                                    <li data-target="#carouselPerizinan" data-slide-to="{{ $i-1 }}" class="{{ $i == 1 ? 'active' : '' }}"></li>
+                                @endfor
+                            </ol>
+                            <div class="carousel-inner">
+                                @for ($i = 1; $i <= 12; $i++)
+                                    @php
+                                        $monthName = \Carbon\Carbon::create()->month($i)->translatedFormat('F');
+                                        $kegiatanCount = $kegiatanPerBulan[$i];
+                                    @endphp
+                                    <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
+                                        <img class="d-block w-100" src="{{ url('vendors/images/img1.png') }}" alt="Slide {{ $i }}" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5 class="color-dark">Tahun {{ $currentYear }} &mdash; {{ $monthName }}</h5>
+                                            <p class="text-dark weight-600 font-30">Terdapat {{ $kegiatanCount }} Perizinan Kegiatan Mahasiswa</p>
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselPerizinan" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselPerizinan" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="title pb-20">
+              <h2 class="h3 mb-0">Data Riwayat Prestasi</h2>
+          </div>
+            <div class="row pb-10">
+                <div class="col-xl-12 col-lg-12 col-md-12 mb-20">
+                    <div class="card-box mb-10">
+                        <div id="carouselPrestasi" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                @for ($i = 1; $i <= 12; $i++)
+                                    <li data-target="#carouselPrestasi" data-slide-to="{{ $i-1 }}" class="{{ $i == 1 ? 'active' : '' }}"></li>
+                                @endfor
+                            </ol>
+                            <div class="carousel-inner">
+                                @for ($i = 1; $i <= 12; $i++)
+                                    @php
+                                        $monthName = \Carbon\Carbon::create()->month($i)->translatedFormat('F');
+                                        $prestasiCount = $prestasiPerBulan[$i];
+                                    @endphp
+                                    <div class="carousel-item {{ $i == 1 ? 'active' : '' }}">
+                                        <img class="d-block w-100" src="{{ url('vendors/images/img1.png') }}" alt="Slide {{ $i }}" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5 class="color-dark">Tahun {{ $currentYear }} &mdash; {{ $monthName }}</h5>
+                                            <p class="text-dark weight-600 font-30">Terdapat {{ $prestasiCount }} Prestasi Mahasiswa</p>
+                                        </div>
+                                    </div>
+                                @endfor
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselPrestasi" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselPrestasi" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
           <div class="row pb-10">
-					<div class="col-md-8 mb-20">
-						<div class="card-box height-100-p pd-20">
-							<div
-								class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3"
-							>
-								<div class="h5 mb-md-0 text-dark">Kemahasiswaan</div>
-								<div class="form-group mb-md-0">
-                                <select class="form-control form-control-sm selectpicker">
-                                    <option value="">Prestasi Mahasiswa</option>
-                                    <option value="">Izin Kegiatan HIMA</option>
-                                    
-                                </select>
-								</div>
-							</div>
-							<canvas id="myChartBar"></canvas>
-						</div>
-					</div>
+                    <div class="col-md-8 mb-20">
+                        <div class="card-box height-100-p pd-20">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3">
+                                <div class="h5 mb-md-0 text-dark">Grafik Kemahasiswaan</div>
+                                <div class="form-group mb-md-0">
+                                    <select id="chartSelector" class="form-control form-control-sm selectpicker">
+                                        <option value="prestasi">Prestasi Mahasiswa</option>
+                                        <option value="kegiatan">Izin Kegiatan HIMA</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="chart">
+                                <div class="row">
+                                    <div class="col-md-12 chart">
+                                        <canvas id="myChartPrestasi"></canvas>
+                                        <canvas id="myChartKegiatan"></canvas>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
 					<div class="col-md-4 mb-20">
 						<div
 							class="card-box min-height-200px pd-20 mb-20"
@@ -1171,16 +1316,15 @@
         });
     });
 </script>
-@if(session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Login Berhasil!',
-                text: "{{ session('success') }}",
-                showConfirmButton: false,
-                timer: 3000
-            });
-        </script>
+        @if(session('success'))
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Berhasil!',
+                    text: "{{ session('success') }}",
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            </script>
         @endif
-
 </x-admin-app>

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormSTM;
 use App\Models\Prodi;
+use App\Exports\FormstmExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormSTMController extends Controller
 {
@@ -71,5 +73,10 @@ class FormSTMController extends Controller
         $formstm = FormSTM::find($id);
         $formstm->delete();
         return redirect()->route('superadmin.form-stm.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FormstmExport, 'formstm.xlsx');
     }
 }

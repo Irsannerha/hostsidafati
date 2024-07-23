@@ -99,7 +99,6 @@
                     </div>
                 </div>
                 <!-- Summary Counts End -->
-
                 <!-- Simple Datatable start -->
                 <div class="card-box mb-30">
                     <div class="pd-20">

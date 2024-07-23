@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormBukrim;
 use App\Models\Prodi;
+use App\Exports\FormbukrimExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormBukrimController extends Controller
 {
@@ -87,5 +89,10 @@ class FormBukrimController extends Controller
         $formbukrim = FormBukrim::find($id);
         $formbukrim->delete();
         return redirect()->route('superadmin.form-bukrim.index')->with('success_delete_data', 'Data berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new FormbukrimExport, 'formbukrim.xlsx');
     }
 }

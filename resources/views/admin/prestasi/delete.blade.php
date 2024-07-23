@@ -17,7 +17,7 @@
                                         <center><span><small><span class="btn btn-outline-primary btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">{{ $prestasi->nama_mahasiswa }}</span></small></span></center>
                                         <center><h6><span class="font-10 font-weight-bold">---------------------</span></h6></center>
                                         <center><span><small><span class="btn btn-outline-primary btn-lg" style="border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 12px;">{{ $prestasi->nim }}</span></small></span></center>
-                                        <center><h6><span style="font-size: 12px;">{{ $prestasi->prodi->prodi }}</span></h6></center>
+                                        <center><h6><span style="font-size: 12px;">{{ $prestasi->Prodi ? $prestasi->Prodi->prodi : 'N/A' }}</span></h6></center>
                                     </div>
                                 </div>
                                 <div class="modal-footer text-center justify-content-center">

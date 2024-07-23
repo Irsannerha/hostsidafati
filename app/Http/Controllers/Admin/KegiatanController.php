@@ -15,7 +15,15 @@ class KegiatanController extends Controller
     public function index()
     {
         $kegiatan = Kegiatan::all();
-        return view('admin.kegiatan.index', compact('kegiatan'));
+        $prodi = Prodi::all();
+        $jumlahPerTahunPerProdi = Kegiatan::where('nama_kegiatan', 'like', '%HIMA%')
+        ->join('prodi', 'kegiatan.prodi_id', '=', 'prodi.id')
+        ->selectRaw('YEAR(tgl_kegiatan) as tahun, prodi.prodi as prodi, COUNT(*) as jumlah')
+        ->groupBy('tahun', 'prodi')
+        ->orderBy('tahun', 'desc')
+        ->get();
+
+    return view('admin.kegiatan.index', compact('kegiatan', 'prodi','jumlahPerTahunPerProdi'));
     }
 
     public function create()
@@ -52,7 +60,7 @@ class KegiatanController extends Controller
             'nama_pemohon' => 'required',
             'no_hp' => 'required',
             'status' => 'required',
-            'keterangan' => 'required',
+            'keterangan' => 'nullable',
             'surat_izin' => 'mimes:pdf|max:2048',
         ]);
 
@@ -100,8 +108,32 @@ class KegiatanController extends Controller
         }
     }
 
+    public function getChartData()
+    {
+        $kegiatanData = Kegiatan::with('prodi')->get();
+
+        // Get unique prodi names
+        $labels = $kegiatanData->map(function($item) {
+            return $item->prodi->prodi; 
+        })->unique()->values();
+
+        // Group by prodi and count the number of kegiatan per prodi
+        $kegiatanCountByProdi = $kegiatanData->groupBy('prodi.prodi')->map(function($group) {
+            return $group->count();
+        });
+
+        return response()->json([
+            'labels' => $labels,
+            'kegiatanCount' => $labels->map(function($label) use ($kegiatanCountByProdi) {
+                return $kegiatanCountByProdi->get($label, 0);
+            }),
+        ]);
+    }
+
     public function export()
     {
         return Excel::download(new KegiatanExport, 'kegiatan.xlsx');
     }
+
+   
 }

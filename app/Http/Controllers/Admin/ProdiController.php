@@ -44,7 +44,6 @@ class ProdiController extends Controller
 
         $prodi = new Prodi;
         $prodi->prodi = $request->prodi;
-        $prodi->foto = $request->file('foto')->store('/');
         $prodi->email = $request->email;
         $prodi->kapro = $request->kapro;
         $prodi->fakultas = $request->fakultas;
@@ -60,6 +59,13 @@ class ProdiController extends Controller
             $prodi->sk_prodi = $file_name;
             $prodi->update();
             $sk_prodi->move('../public/assets/sk_prodi/', $file_name);
+        }
+        $prodi->foto = $request->foto;
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_Foto_' . $prodi->prodi . '.' . $foto->getClientOriginalExtension();
+            $foto->move(public_path('assets/foto/'), $file_name);
+            $prodi->foto = 'assets/foto/' . $file_name; 
         }
         $prodi->save();
 

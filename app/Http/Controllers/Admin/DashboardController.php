@@ -33,6 +33,7 @@ class DashboardController extends Controller
         if ($latestTahun !== null) {
             $tahun->push($latestTahun);
         }
+        $countAllDosen = Prodi::sum('jumlah_dosen');
         $countProdi = Prodi::count();
         $countPejabat = Pejabat::count();
         $countDosen = Dosen::count();
@@ -59,6 +60,34 @@ class DashboardController extends Controller
 
         $hasilGabungan = $mhsAktif - $mhsUndurDiri - $mhsKeluar - $mhsWafat - $mhsLulus;
 
+        $currentYear = date('Y');
+
+        $kegiatan = Kegiatan::whereYear('tgl_kegiatan', $currentYear)
+            ->selectRaw('MONTH(tgl_kegiatan) as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get()
+            ->keyBy('month');
+
+        // Ambil jumlah kegiatan per bulan
+        $kegiatanPerBulan = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $kegiatanPerBulan[$i] = isset($kegiatan[$i]) ? $kegiatan[$i]->count : 0;
+        }
+
+        $prestasi = Prestasi::whereYear('tgl_kegiatan', $currentYear)
+            ->selectRaw('MONTH(tgl_kegiatan) as month, COUNT(*) as count')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get()
+            ->keyBy('month'); // keyBy untuk mempermudah akses berdasarkan bulan
+
+        // Ambil jumlah prestasi per bulan
+        $prestasiPerBulan = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $prestasiPerBulan[$i] = isset($prestasi[$i]) ? $prestasi[$i]->count : 0;
+        }
+
         return view('admin.dashboard', 
         compact (
         'tahun', 
@@ -79,6 +108,13 @@ class DashboardController extends Controller
         'mhsWafat',
         'mhsLulus',
         'hasilGabungan',
+        'countAllDosen',
+        'currentYear',
+        'kegiatan',
+        'kegiatanPerBulan',
+        'prestasi',
+        'prestasiPerBulan',
     ));
     }
+    
 }

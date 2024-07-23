@@ -33,9 +33,9 @@
             <div class="card-box mb-30">
                 <div class="pd-20">
                     <div class="btn-group btn-group-toggle font-weight-400" data-toggle="buttons">
-                        <button class="btn btn-primary" onclick="exportToPDF()">Cetak</button>
+                        <!-- <button class="btn btn-primary" onclick="exportToPDF()">Cetak</button> -->
                         <button class="btn btn-primary" onclick="exportToExcel()">Excel</button>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ImportModal">Import</button>
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ImportModal">Import</button> -->
                     </div>
                     <a href="{{ route('superadmin.user.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
                 </div>
@@ -92,6 +92,11 @@
 </div>
  <!-- Datatable Setting js -->
  <script src="{{ asset('vendors/scripts/datatable-setting.js') }}"></script>
+ <script>
+    function exportToExcel() {
+        window.location.href = "{{ url('users/export') }}";
+    }
+</script>
 </x-admin-app>
 
 <!-- Sweet Alert -->

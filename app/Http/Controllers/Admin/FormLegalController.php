@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FormLegal;
 use App\Models\Prodi;
+use App\Exports\FormlegalExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FormLegalController extends Controller
 {
@@ -70,4 +72,9 @@ class FormLegalController extends Controller
         $formlegal->delete();
         return redirect()->route('superadmin.form-legal.index')->with('success_delete_data', 'Data berhasil dihapus');
     }
+
+    public function export()
+    {
+        return Excel::download(new FormlegalExport, 'formlegal.xlsx'); 
+    }   
 }

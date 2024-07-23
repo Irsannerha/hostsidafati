@@ -137,7 +137,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="no_hp">Kontak/No.Telp/WA</label>
-                                    <input class="form-control" type="text" placeholder="Kontak/No.Telp/WA" name="no_hp" id="no_hp" required>
+                                    <input class="form-control" type="number" placeholder="Kontak/No.Telp/WA" name="no_hp" id="no_hp" required>
                                 </div>
                                 <small class="text-dark font-5" style="margin-top: -10px; display: block;">*Isi Nomor Hp/Telp/Wa</small>
                             </div>
@@ -239,7 +239,7 @@
                     </button>
                 </div>
              </div>
-        </section>
+</section>
         <!-- clients end -->
         <!-- features start -->
         <section class="section-sm" id="faq" style="margin-top: -100px">
@@ -274,6 +274,19 @@
 </script>
 @endif
 
+@if($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            swal({
+                position: 'center',
+                type: 'error',
+                title: 'Data yang Anda masukkan tidak sesuai:',
+                html: `{!! implode('<br>', $errors->all()) !!}`,
+                showConfirmButton: true,
+            });
+        });
+    </script>
+@endif
 <script>
 $(document).ready( function () {
     $('#example').DataTable();

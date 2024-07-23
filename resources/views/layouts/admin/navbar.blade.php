@@ -1,3 +1,65 @@
+<?php
+
+use App\Models\Prestasi;
+
+// Fetch latest 5 achievements
+$prestasi = Prestasi::orderBy('created_at', 'desc')->take(150)->get();
+$prestasi_count = Prestasi::whereYear('tgl_kegiatan', date('Y'))->count();
+
+?>
+<style>
+    .notification-list ul {
+        list-style-type: none;
+        padding: 0; 
+        margin: 0; 
+    }
+
+    .notification-list ul li {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd; 
+    }
+
+    .notification-list ul li .left-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .notification-list ul li h3 {
+        margin: 0; 
+        margin-left: 10px; 
+        font-size: 14px; 
+        font-weight: bold; 
+    }
+
+    .notification-list ul li p {
+        margin: 0; 
+        margin-left: 10px; 
+        font-size: 12px; 
+    }
+
+    .timing {
+        font-size: 10px; 
+        color: gray; 
+    }
+
+    .fa-trophy {
+        font-size: 30px; 
+        margin-right: 10px; 
+    }
+    .left  {
+        font-size: 15px;;
+        font-weight: bold;
+        position: absolute;
+        right: 10px;
+        top: 21px;
+        border-radius: 10px; 
+        padding: 0.4rem 0.6rem; 
+        font-size: 13px;
+    }
+</style>
 <div class="header">
     <div class="header-left">
         <div class="menu-icon bi bi-list"></div>
@@ -51,30 +113,29 @@
             <div class="dropdown">
                 <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
                     <i class="icon-copy dw dw-notification"></i>
-                    <span class="badge notification-active custom-badge"></span>
+                    <span class="badge notification-active custom-badge blink" id="notif"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="Notification">
                         <h3 class="weight-600 font-16 text-blue">
-                            Notification
+                            Notifikasi
+                            <span class="badge badge-warning btn-lg left">{{ $prestasi_count > 9 ? '9+' : $prestasi_count }}</span>
                         </h3>
                     </div>
                     <div class="notification-list mx-h-350 customscroll">
-                        <ul>
+                        <ul id="notificationList">
+                            @foreach($prestasi as $item)
                             <li>
-                                <a href="#">
-                                    <img src="/vendors/images/img.jpg" alt="" />
-                                    <h3>John Doe</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                </a>
+                                <div class="left-content">
+                                    <i class="icon-copy fa fa-trophy" aria-hidden="true"></i>
+                                    <div>
+                                        <h3>{{ $item->nama_mahasiswa }}</h3>
+                                        <p>{{ $item->jenis_prestasi }}</p>
+                                    </div>
+                                </div>
+                                <p class="timing">{{ $item->created_at->diffForHumans() }}</p>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/vendors/images/photo1.jpg" alt="" />
-                                    <h3>Lea R. Frith</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
-                                </a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

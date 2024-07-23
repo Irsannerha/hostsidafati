@@ -100,6 +100,29 @@ class PrestasiController extends Controller
             return redirect()->route('kemahasiswaan.prestasi.index')->with('success_delete_data', 'Data berhasil dihapus');
         }
     }
+    
+    public function getChartData()
+    {
+        $prestasiData = Prestasi::with('prodi')->get();
+    
+        // Get unique prodi names
+        $labels = $prestasiData->map(function($item) {
+            return $item->prodi->prodi; 
+        })->unique()->values();
+    
+        // Group by prodi and count the number of prestasi per prodi
+        $prestasiCountByProdi = $prestasiData->groupBy('prodi.prodi')->map(function($group) {
+            return $group->count();
+        });
+    
+        return response()->json([
+            'labels' => $labels,
+            'prestasiCount' => $labels->map(function($label) use ($prestasiCountByProdi) {
+                return $prestasiCountByProdi->get($label, 0);
+            }),
+        ]);
+    }
+    
 
     public function export() 
     {
