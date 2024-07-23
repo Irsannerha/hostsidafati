@@ -5,7 +5,7 @@
             <h2 class="text-main-black">Form Permohonan Pengantar Izin / Permintaan Data Tugas Akhir</h2>
             <hr class="border-1 mt-10px border-secondary-border">
 
-            <form action="{{route('mahasiswa.form-ta.store')}}" method="POST">
+            <form action="" method="POST">
                 @csrf
                 <!-- Slide pertama -->
                 <section id="firstSection">
@@ -21,12 +21,12 @@
                         <div>
                             <x-forms.label name="keperluan" required>Keperluan</x-forms.label>
                             <x-forms.select-input name="keperluan" tabindex="0" placeholder="Pilih Keperluan Anda"
-                                :options="['0' => 'TA', '1' => 'Libur']" />
+                                :options="['value1' => 'keperluan 1', 'value2' => 'keperluan 2']" />
                         </div>
                         <div>
                             <x-forms.label name="kode_prodi" required>Program Studi</x-forms.label>
                             <x-forms.select-input name="kode_prodi" tabindex="0" placeholder="Pilih program studi Anda"
-                                :options="['0' => 'IF', '1' => 'ITERA']" />
+                                :options="['value1' => 'Teknik Informatika', 'value2' => 'Teknik Industri', 'value3' => 'Teknik Biomedis']" />
                         </div>
                         <div>
                             <x-forms.label name="no_hp_mhs" required>No.Hp Mahasiswa</x-forms.label>
@@ -500,6 +500,7 @@
         }
     </script>
 </x-mahasiswa-app>
+<<<<<<< HEAD
 <!-- Sweet Alert -->
 @if(session('success_create_data'))
     <script>
@@ -522,3 +523,5 @@
         })
     </script>
 @endif
+=======
+>>>>>>> parent of 36fad12 (Merge pull request #15 from Irsannerha/FE-TestFormInput)
