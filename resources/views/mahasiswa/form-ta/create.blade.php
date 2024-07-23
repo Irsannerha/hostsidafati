@@ -500,28 +500,3 @@
         }
     </script>
 </x-mahasiswa-app>
-<<<<<<< HEAD
-<!-- Sweet Alert -->
-@if(session('success_create_data'))
-    <script>
-        swal({
-            position: 'center',
-            type: 'success',
-            title: "{{ session('success_create_data') }}",
-            showConfirmButton: false,
-            timer: 3000
-        })
-    </script>
-@elseif(session('error_create_data'))
-    <script>
-        swal({
-            position: 'center',
-            type: 'error',
-            title: "{{ session('error_create_data') }}",
-            showConfirmButton: false,
-            timer: 3000
-        })
-    </script>
-@endif
-=======
->>>>>>> parent of 36fad12 (Merge pull request #15 from Irsannerha/FE-TestFormInput)
