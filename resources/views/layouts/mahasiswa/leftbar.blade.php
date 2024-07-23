@@ -62,7 +62,7 @@
                         </li>
                         <li><a href="{{ route('mahasiswa.form-ta.create') }}">Pengantar TA/Survei Data TA</a></li>
                         <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Pengantar Kerja Praktik</a></li>
-                        <li><a href="{{ route('mahasiswa.form-kp.create') }}">Pengajuan Pengantar Kuliah
+                        <li><a href="{{ route('mahasiswa.form-pengantar-kulap.create') }}">Pengajuan Pengantar Kuliah
                                 Lapangan</a>
                         </li>
                     </ul>

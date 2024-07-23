@@ -1,290 +1,166 @@
 <x-mahasiswa-app>
-    <div class="main-container">
-        <!-- Content start -->
-        <!-- home end -->
-        <!-- clients start -->
-        <section id="FormPermohonanPengisianKRS">
-            <div class="container">
-                <div class="clients p-4 bg-gradient-1">
-                    <div class="card-body">
-                        <div class="col-md-12">
-                        </div>
-                        <h2 class="title">Form Permohonan Pengisian KRS</h2>
-                        <hr>
-                        <br>
-                        <form action="" method="POST">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input class="form-control @error('nama') is-invalid @enderror" type="text"
-                                            placeholder="Masukkan nama Anda" name="nama" id="nama" required
-                                            @readonly(true)>
-                                    </div>
-                                    @error('nama')
-                                        <small class="invalid-feedback font-5"
-                                            style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nim">NIM</label>
-                                        <input class="form-control @error('nim') is-invalid @enderror" type="number"
-                                            placeholder="Masukkan NIM Anda" name="nim" id="nim" required
-                                            @readonly(true)>
-                                    </div>
-                                    @error('nim')
-                                        <small class="invalid-feedback font-5"
-                                            style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="prodi_id">Program Studi</label>
-                                        <select name="prodi_id"
-                                            class="form-control @error('prodi_id') is-invalid @enderror">
-                                            <option value="">Pilih program studi Anda</option>
-                                        </select>
-                                    </div>
-                                    @error('prodi_id')
-                                        <small class="invalid-feedback font-5"
-                                            style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="tahun_ak">Tahun Akademik</label>
-                                    <div class="form-group row relative">
-                                        <div class="col-md-6">
-                                            <input class="form-control @error('tahun_ak1') is-invalid @enderror"
-                                                type="datetime" placeholder="Tahun awal periode" name="tahun_ak"
-                                                id="tahun_ak1" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input class="form-control @error('tahun_ak2') is-invalid @enderror"
-                                                type="datetime" placeholder="Tahun awal periode" name="tahun_ak"
-                                                id="tahun_ak2" required>
-                                        </div>
-                                    </div>
-                                    @error('tahun_ak1')
-                                        <small class="invalid-feedback font-5"
-                                            style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="doswal">Dosen wali</label>
-                                        <input class="form-control" type="text"
-                                            placeholder="Masukan nama dosen wali anda" name="doswal" id="doswal"
-                                            value="{{ old('doswal') }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="koor_prodi">Koordinator Prodi</label>
-                                        <input class="form-control" type="text"
-                                            placeholder="Masukan nama koordinator prodi anda" name="koor_prodi"
-                                            id="koor_prodi" value="{{ old('koor_prodi') }}" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="alasan">Alasan Perubahan KRS</label>
-                                        <textarea class="form-control @error('alasan') is-invalid @enderror"
-                                            placeholder="Jelaskan dengan rinci alasan pengajuan perubahan KRS"
-                                            name="alasan" id="alasan" rows="3">{{ old('alasan') }}</textarea>
-                                    </div>
-                                    @error('alasan')
-                                        <small class="invalid-feedback font-5"
-                                            style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="semester">Semester</label>
-                                        <select name="semester"
-                                            class="form-control @error('semester') is-invalid @enderror">
-                                            <option value="">Pilih semester Anda</option>
-                                            <option value="ganjil">Ganjil</option>
-                                            <option value="genap">Genap</option>
-                                        </select>
-                                    </div>
-                                    @error('semester')
-                                        <small class="invalid-feedback font-5"
-                                            style="margin-top: -10px; display: block;">{{ $message }}</small>
-                                    @enderror
-                                </div>
-                            </div>
-                            <br>
-                            <div class="col-md-12 bg-primary-main text-white font-bold text-center py-2 rounded-10">Mata
-                                Kuliah yang ingin ditambahkan</div>
-                            <br>
+    <main class="main-container" id="FormPengajuanPengisianKRS">
+        <section class="m-40px">
+            <h2 class="text-main-black">Form Permohonan Pengisian KRS</h2>
+            <hr class="border-1 mt-10px border-secondary-border">
 
-                            <!-- Section Matkul Lama -->
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nama_matkul">Nama Mata Kuliah</label>
-                                        <input class="form-control" type="text"
-                                            placeholder="Nama MK tanpa disingkat. Contoh : Kimia Dasar"
-                                            name="nama_matkul" id="nama_matkul"
-                                            value="{{ old('nama_matkul') }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="kode_matkul">Kode Mata Kuliah</label>
-                                        <input class="form-control" type="text" placeholder="Kode MK. Contoh : IF3011"
-                                            name="kode_matkul" id="kode_matkul"
-                                            value="{{ old('kode_matkul') }}" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="kode_kelas">Kode Kelas</label>
-                                        <input class="form-control" type="text" placeholder="Kode Kelas. Contoh : RA"
-                                            name="kode_kelas" id="kode_kelas"
-                                            value="{{ old('kode_kelas') }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="sks">SKS</label>
-                                        <input class="form-control" type="text" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3"
-                                            name="sks" id="sks"
-                                            value="{{ old('sks') }}" required>
-                                    </div>
+            <form action="" method="POST">
+                @csrf
+                <div id="firstSection">
+                    <section class="grid grid-cols-2 gap-6">
+                        <div>
+                            <x-forms.label name="nama" required>Nama</x-forms.label>
+                            <x-forms.input name="nama" placeholder="Masukkan nama Anda" required />
+                        </div>
+                        <div>
+                            <x-forms.label name="nim" required>NIM</x-forms.label>
+                            <x-forms.input name="nim" placeholder="Masukkan NIM Anda" required />
+                        </div>
+                        <div>
+                            <x-forms.label name="kode_prodi" required>Program Studi</x-forms.label>
+                            <x-forms.select-input name="kode_prodi" tabindex="0" placeholder="Pilih program studi Anda"
+                                :options="['0' => 'Teknik Informatika', '1' => 'Teknik Industri', '2' => 'Teknik Biomedis']" />
+                        </div>
+                        <div>
+                            <x-forms.label name="tahun_akademik" required>Tahun Akademik</x-forms.label>
+                            <div class="grid grid-cols-7">
+                                <di class="col-span-3">
+                                    <x-forms.input name="tahun_akademik_1" placeholder="Tahun awal periode"
+                                        type="datetime" required />
+                                </di>
+                                <x-tabler-slash class="w-10 h-10 m-auto" />
+                                <div class="col-span-3">
+                                    <x-forms.input class="cols-span-3" name="tahun_akademik_2"
+                                        placeholder="Tahun akhir periode" type="datetime" required />
                                 </div>
                             </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="kelas">Kelas</label>
-                                        <input class="form-control" type="text" placeholder="Kelas"
-                                            name="kelas" id="kelas"
-                                            value="{{ old('kelas') }}" required>
-                                    </div>
-                                </div>
+                        </div>
+                        <div>
+                            <x-forms.label name="doswal" required>Dosen wali</x-forms.label>
+                            <x-forms.input name="doswal" placeholder="Masukan nama dosen wali Anda" type="text"
+                                required />
+                        </div>
+                        <div>
+                            <x-forms.label name="alasan_pengisian" required>Alasan Pengisian KRS</x-forms.label>
+                            <x-forms.input name="alasan_pengisian" required textarea="true" rows="6"
+                                placeholder="Jelaskan dengan rinci alasan terlambatnya pengisan KRS"></x-forms.input>
+                        </div>
+                        <div>
+                            <x-forms.label name="koor_prodi" required>Koordinator Prodi</x-forms.label>
+                            <x-forms.input name="koor_prodi" placeholder="Masukan nama koordinator prodi Anda"
+                                type="text" required />
+                        </div>
+                        <div>
+                            <x-forms.label name="semester" required>Semester</x-forms.label>
+                            <x-forms.select-input name="semester" tabindex="0" placeholder="Pilih semester Anda"
+                                :options="['0' => 'Ganjil', '1' => 'Genap']" />
+                        </div>
+                    </section>
+                    <!-- Mata Kuliah Baru -->
+                    <section>
+                        <x-cards.section>Mata Kuliah yang ingin ditambahkan</x-cards.section>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <x-forms.label name="nama_matkul_baru_1" required>Nama Mata Kuliah</x-forms.label>
+                                <x-forms.input name="nama_matkul_baru_1"
+                                    placeholder="Nama MK tanpa disingkat. Contoh : Kimia Dasar" required />
                             </div>
-                            <br>
-                            <!-- Section Tambah Matkul Lama -->
-                            <div id="matkulContainer" class="hidden">
-                                <!-- Form akan ditambahkan disini -->
+                            <div>
+                                <x-forms.label name="kode_matkul_baru_1" required>Kode Mata Kuliah</x-forms.label>
+                                <x-forms.input name="kode_matkul_baru_1" placeholder="Kode MK. Contoh : IF3011"
+                                    required />
                             </div>
-                            <div id="addContainer" class="col-md-12 font-bold flex justify-center">
-                                <button id="addMatkulBtn"
-                                    class="flex gap-1 bg-primary-main py-2 px-4 rounded-10 text-white">
-                                    <x-eva-plus-circle-outline class="w-6 h-6" />Tambah Mata Kuliah
-                                </button>
+                            <div>
+                                <x-forms.label name="kode_kelas_baru_1" required>Kode Kelas</x-forms.label>
+                                <x-forms.input name="kode_kelas_baru_1" placeholder="Kode Kelas. Contoh : RA"
+                                    required />
                             </div>
-                            <!-- Section Matkul Baru -->
-                            <br>
-                            <div class="col-md-2">
-                                <div class="form-group">
-                                    <button class="btn btn-primary btn-block" type="submit">Submit</button>
-                                </div>
+                            <div>
+                                <x-forms.label name="sks_baru_1" required>SKS</x-forms.label>
+                                <x-forms.input name="sks_baru_1" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3"
+                                    type="number" required />
                             </div>
-                        </form>
+                            <div>
+                                <x-forms.label name="kelas_baru_1" required>Kelas</x-forms.label>
+                                <x-forms.input name="kelas_baru_1" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3"
+                                    required />
+                            </div>
+                        </div>
+                        <div id="newMatkulCountainer" class="mt-12">
+
+                        </div>
+                        <div id="addNewCountainer" class="flex justify-center font-semibold my-24px">
+                            <x-button.add id="addNewMatkulBtn">Tambah mata kuliah</x-button.add>
+                        </div>
+                    </section>
+                    <div class="flex justify-end mt-16">
+                        <x-button.primary>Submit</x-button.primary>
                     </div>
                 </div>
-            </div>
+            </form>
+
         </section>
-        <!-- End Content -->
-    </div>
+    </main>
     <script>
-        let addMatkulBtn = document.getElementById('addMatkulBtn');
-        addMatkulBtn.addEventListener('click', addMatkul);
+        let addNewMatkulBtn = document.getElementById('addNewMatkulBtn');
+        addNewMatkulBtn.addEventListener('click', addNewMatkul);
 
-        let matkulCount = 1;
-        const maxMatkul = 8;
+        let newMatkulCount = 1;
+        const maxMatkul = 5;
 
-        function addMatkul() {
-            // if (matkulCount >= maxMatkul) return;
-            const matkulContainer = document.getElementById('matkulContainer');
-            const matkulDiv = document.createElement('div');
-            matkulDiv.classList.add('matkul-item', 'mt-3');
-            matkulDiv.innerHTML = `
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="nama_matkul${matkulCount}">Nama Mata Kuliah ke-${matkulCount + 1}</label>
-                            <input class="form-control" type="text" placeholder="Nama MK tanpa disingkat. Contoh : Kimia Dasar"
-                                name="nama_matkul${matkulCount}" id="nama_matkul${matkulCount}" value="{{ old('nama_matkul.${matkulCount}') }}"></div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="kode_matkul_${matkulCount}">Kode Mata Kuliah ke-${matkulCount + 1}</label>
-                            <input class="form-control" type="text" placeholder="Kode MK. Contoh : IF3011"
-                                name="kode_matkul${matkulCount}" id="kode_matkul${matkulCount}" value="{{ old('kode_matkul.${matkulCount}') }}"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="kode_kelas">Kode Kelas ke-${matkulCount + 1}</label>
-                            <input class="form-control" type="text" placeholder="Kode Kelas. Contoh : RA"
-                                name="kode_kelas" id="kode_kelas"
-                                value="{{ old('kode_kelas.${matkulCount}') }}">
+        function addNewMatkul() {
+            // if (oldMatkulCount >= maxMatkul) return;
+            const newMatkulContainer = document.getElementById('newMatkulCountainer');
+            const newMatkulDiv = document.createElement('div');
+            newMatkulDiv.classList.add('matkul-item', 'mt-3');
+            newMatkulDiv.innerHTML = `
+                    <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <x-forms.label name="nama_matkul_baru_${newMatkulCount + 1}">Nama Mata Kuliah Baru</x-forms.label>
+                                <x-forms.input name="nama_matkul_baru_${newMatkulCount + 1}"
+                                    placeholder="Nama MK tanpa disingkat. Contoh : Kimia Dasar" />
+                            </div>
+                            <div>
+                                <x-forms.label name="kode_matkul_baru_${newMatkulCount + 1}">Kode Mata Kuliah Baru</x-forms.label>
+                                <x-forms.input name="kode_matkul_baru_${newMatkulCount + 1}" placeholder="Kode MK. Contoh : IF3011" />
+                            </div>
+                            <div>
+                                <x-forms.label name="kode_kelas_baru_${newMatkulCount + 1}">Kode Kelas Baru</x-forms.label>
+                                <x-forms.input name="kode_kelas_baru_${newMatkulCount + 1}" placeholder="Kode Kelas. Contoh : RA" />
+                            </div>
+                            <div>
+                                <x-forms.label name="sks_baru_${newMatkulCount + 1}">SKS</x-forms.label>
+                                <x-forms.input name="sks_baru_${newMatkulCount + 1}" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3"
+                                    type="number" />
+                            </div>
+                            <div>
+                                <x-forms.label name="kelas_baru_${newMatkulCount + 1}">Kelas</x-forms.label>
+                                <x-forms.input name="kelas_baru_${newMatkulCount + 1}" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="sks">SKS ke-${matkulCount + 1}</label>
-                            <input class="form-control" type="text" placeholder="Jumlah SKS Mata Kuliah. Contoh : 3"
-                                name="sks" id="sks"
-                                value="{{ old('sks.${matkulCount}') }}">
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="kelas">Kelas ke-${matkulCount + 1}</label>
-                            <input class="form-control" type="text" placeholder="Kelas"
-                                name="kelas" id="kelas"
-                                vvalue="{{ old('kelas.${matkulCount}') }}">
-                        </div>
-                    </div>
-                </div>
-                <button class="bg-slate-800 py-1 px-3 text-white font-bold rounded-10 mb-4" onclick="removeMatkul(this)">Hapus</button>
-                 <br>
-            `;
-            matkulContainer.appendChild(matkulDiv);
-            matkulCount++;
-            matkulContainer.classList.remove('hidden');
-
-            if (matkulCount === maxMatkul) {
-                document.getElementById('addContainer').classList.add('hidden');
+                        <x-button.delete onclick="removeNewMatkul(this)" class="mt-10px">Hapus</x-button.delete>
+                `;
+            newMatkulContainer.appendChild(newMatkulDiv);
+            newMatkulCount++;
+            newMatkulContainer.classList.remove('hidden');
+            if (newMatkulCount === maxMatkul) {
+                document.getElementById('addNewCountainer').classList.add('hidden');
                 return;
             }
         }
 
-        function removeMatkul(button) {
-            const matkulDiv = button.parentElement;
-            matkulDiv.remove();
-            matkulCount--;
-            document.getElementById('addContainer').classList.remove('hidden');
-            if (matkulCount === 0) {
-                document.getElementById('matkulContainer').classList.add('hidden');
+        function removeNewMatkul(button) {
+            const newMatkulDiv = button.parentElement;
+            newMatkulDiv.remove();
+            newMatkulCount--;
+            document.getElementById('addNewCountainer').classList.remove('hidden');
+            document.getElementById('addNewCountainer').classList.add('block');
+            if (newMatkulCount === 0) {
+                document.getElementById('newMatkulContainer').classList.add('hidden');
             }
         }
     </script>
 </x-mahasiswa-app>
-<!-- Sweet Alert -->
 @if(session('success_create_data'))
     <script>
         swal({
