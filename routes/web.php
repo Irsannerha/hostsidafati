@@ -245,6 +245,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('form-dispen', function () {
             return view('mahasiswa/form-dispen/create');
         })->name('form-dispen.create');
+<<<<<<< HEAD
         Route::get('form-pengantar-kulap', function () {
             return view('mahasiswa/form-pengantar-kulap/create');
         })->name('form-pengantar-kulap.create');
@@ -263,6 +264,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('form-test', function () {
             return view('mahasiswa/form-test/create');
         })->name('form-test.create');
+=======
+>>>>>>> parent of 96d0443 (Merge pull request #12 from Irsannerha/FE-changeAllToComponents)
     });
 
     Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
