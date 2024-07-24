@@ -245,6 +245,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('form-dispen', function () {
             return view('mahasiswa/form-dispen/create');
         })->name('form-dispen.create');
+        Route::get('form-test', function () {
+            return view('mahasiswa/form-test/create');
+        })->name('form-test.create');
     });
 
     Route::middleware([Dosen::class])->name('dosen.')->prefix('dosen')->group(function () {
