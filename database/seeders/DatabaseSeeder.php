@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(LulusSeeder::class);
         // $this->call(MhsAktifSeeder::class);
         // $this->call(MhsTASeeder::class);
-        $this->call(FormTASeeder::class);
+        // $this->call(FormTASeeder::class);
         $this->call(FormKPSeeder::class);
         $this->call(FormKHSSeeder::class);
         $this->call(FormLegalSeeder::class);

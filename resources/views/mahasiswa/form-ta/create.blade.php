@@ -96,6 +96,7 @@
                                     </div>
                                     <input type="file" id="fileInput" name="file_krs" value="" class="hidden"
                                         accept="application/pdf" />
+                                        
                                     @error('file_krs')
                                     <small class="form-error invalid-feedback">{{ $message }}</small>
                                     @enderror
@@ -201,8 +202,6 @@
                         </div>
                     </section>
                 </form>
-
-
 
         </section>
         <!-- End Content -->
