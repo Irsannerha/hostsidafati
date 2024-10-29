@@ -129,7 +129,7 @@ class TaslabController extends Controller
 
     public function downloadTemplate()
     {
-        $file = public_path('assets/template/template_taslab.xlsx');
+        $file = public_path('assets/templateImport/template_taslab.xlsx');
         return response()->download($file);
     }
 
@@ -143,6 +143,6 @@ class TaslabController extends Controller
 
         Excel::import(new TaslabImport, $file);
 
-        return back()->with('success_import_data', 'Data Taslab berhasil diimport');
+        return back()->with('success_import_data', 'Data Taslab berhasil diimport.');
     }
 }

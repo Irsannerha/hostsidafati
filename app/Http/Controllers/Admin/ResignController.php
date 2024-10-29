@@ -124,7 +124,7 @@ class ResignController extends Controller
 
     public function downloadTemplate()
     {
-        $file = public_path('assets/template/template_resign.xlsx');
+        $file = public_path('assets/templateImport/template_resign.xlsx');
         return response()->download($file);
     }
 
@@ -138,6 +138,6 @@ class ResignController extends Controller
 
         Excel::import(new ResignImport, $file);
 
-        return back()->with('success_import_data', 'Data Resign berhasil diimport');
+        return back()->with('success_import_data', 'Data Resign berhasil diimport.');
     }
 }

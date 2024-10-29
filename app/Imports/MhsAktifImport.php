@@ -53,6 +53,8 @@ class MhsAktifImport implements ToModel, WithHeadingRow, WithStartRow
             'jumlah_mhs_aktif_ts' => $row['jumlah_mhs_aktif_ts'],
             'jumlah_mhs_aktif_th' => $row['jumlah_mhs_aktif_th'],
         ]);
+
+        // dd ($row);
     }
 
     public function startRow(): int

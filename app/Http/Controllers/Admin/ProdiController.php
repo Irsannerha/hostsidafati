@@ -136,7 +136,6 @@ class ProdiController extends Controller
     public function destroy($id)
     {
         $prodi = Prodi::find($id);
-        Storage::delete($prodi->foto);
         $prodi->delete();
 
         if (Auth::user()->role == 'superadmin') {
@@ -173,7 +172,7 @@ class ProdiController extends Controller
         ]);
 
         $file = $request->file('file');
-        // dd($file);
+        // dd ($file);
 
         Excel::import(new ProdiImport, $file);
 

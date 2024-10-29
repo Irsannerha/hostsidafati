@@ -149,7 +149,7 @@ class UndurDiriController extends Controller
 
     public function downloadTemplate()
     {
-        $template_path = public_path('assets/template/template_UndurDiri.xlsx');
+        $template_path = public_path('assets/templateImport/template_UndurDiri.xlsx');
         return response()->download($template_path);
     }
 
@@ -161,7 +161,7 @@ class UndurDiriController extends Controller
 
         Excel::import(new UndurDiriImport, $request->file('file'));
 
-        return back()->with('success_import_data', 'Data Undur Diri berhasil diimport');
+        return back()->with('success_import_data', 'Data Undur Diri berhasil diimport.');
     }
 }
 

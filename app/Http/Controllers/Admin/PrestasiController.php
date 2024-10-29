@@ -30,6 +30,13 @@ class PrestasiController extends Controller
         return view('admin.prestasi.show', compact('prestasi'));
     }
 
+    public function store(Request $request)
+    {
+        // Logika penyimpanan data prestasi ke database
+        Prestasi::create($request->all());
+        return redirect('/superadmin/prestasi');
+    }
+
     public function edit($id)
     {
         $prestasi = Prestasi::find($id);
@@ -126,6 +133,6 @@ class PrestasiController extends Controller
 
     public function export() 
     {
-        return Excel::download(new PrestasiExport, 'prestasi.xlsx');
+        return Excel::download(new PrestasiExport, 'MhsPrestasi.xlsx');
     }
 }

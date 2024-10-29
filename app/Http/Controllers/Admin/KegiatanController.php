@@ -38,6 +38,13 @@ class KegiatanController extends Controller
         return view('admin.kegiatan.show', compact('kegiatan'));
     }
 
+    public function store(Request $request)
+    {
+        // Logika penyimpanan data prestasi ke database
+        Kegiatan::create($request->all());
+        return redirect('/superadmin/kegiatan');
+    }
+
     public function edit($id)
     {
         $kegiatan = Kegiatan::find($id);
@@ -132,7 +139,7 @@ class KegiatanController extends Controller
 
     public function export()
     {
-        return Excel::download(new KegiatanExport, 'kegiatan.xlsx');
+        return Excel::download(new KegiatanExport, 'MhsKegiatan.xlsx');
     }
 
    

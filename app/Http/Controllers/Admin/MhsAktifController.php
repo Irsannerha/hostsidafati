@@ -217,12 +217,12 @@ class MhsAktifController extends Controller
 
     public function export()
     {
-        return Excel::download(new MhsAktifExport, 'MhsAktif + PMB.xlsx');
+        return Excel::download(new MhsAktifExport, 'MhsAktif_PMB.xlsx');
     }
 
     public function downloadTemplate()
     {
-        $file = public_path('assets/template/template_MhsAktif.xlsx');
+        $file = public_path('assets/templateImport/template_MhsAktif.xlsx');
         return response()->download($file);
     }
     
@@ -237,6 +237,6 @@ class MhsAktifController extends Controller
 
         Excel::import(new MhsAktifImport, $file);
 
-        return back()->with('success_import_data', 'Data Mhs Aktif + PMB berhasil diimport');
+        return back()->with('success_import_data', 'Data Mhs Aktif + PMB berhasil diimport.');
     }
 }

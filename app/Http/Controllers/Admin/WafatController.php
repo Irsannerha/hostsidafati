@@ -150,12 +150,12 @@ class WafatController extends Controller
 
     public function export()
     {
-        return Excel::download(new WafatExport, 'wafat.xlsx');
+        return Excel::download(new WafatExport, 'MhsWafat.xlsx');
     }
 
     public function downloadTemplate()
     {
-        $file = public_path('assets/template/template_Wafat.xlsx');
+        $file = public_path('assets/templateImport/template_Wafat.xlsx');
         return response()->download($file);
     }
 
@@ -169,6 +169,6 @@ class WafatController extends Controller
 
         Excel::import(new WafatImport, $file);
 
-        return back()->with('success_import_data', 'Data Mhs Wafat berhasil diimport');
+        return back()->with('success_import_data', 'Data Mhs Wafat berhasil diimport.');
     }
 }

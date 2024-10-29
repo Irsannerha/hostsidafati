@@ -10,6 +10,7 @@ class Dosbel extends Model
     use HasFactory;
     
     protected $table = 'dosbel';
+    
     protected $fillable = [
         'prodi_id',
         'nama',

@@ -136,12 +136,12 @@ class MhsTAController extends Controller
 
     public function export() 
     {
-        return Excel::download(new MhsTAExport, 'TugasAkhir.xlsx');
+        return Excel::download(new MhsTAExport, 'TahunAkademik.xlsx');
     }
 
     public function downloadTemplate()
     {
-        $file = public_path('assets/template/template_TugasAkhir.xlsx');
+        $file = public_path('assets/templateImport/template_TahunAkademik.xlsx');
         return response()->download($file);
     }
 
@@ -155,7 +155,7 @@ class MhsTAController extends Controller
 
         Excel::import(new MhsTAImport, $file);
 
-        return back()->with('success_import_data', 'Data Mhs Tugas Akhir berhasil diimport');
+        return back()->with('success_import_data', 'Data MhsTahunAkademik berhasil diimport.');
     }
 
 }

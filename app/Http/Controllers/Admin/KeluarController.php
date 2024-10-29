@@ -145,7 +145,13 @@ class KeluarController extends Controller
 
     public function export()
     {
-        return Excel::download(new KeluarExport, 'Mahasiswa Keluar.xlsx');
+        return Excel::download(new KeluarExport, 'MhsKeluar.xlsx');
+    }
+
+    public function downloadTemplate()
+    {
+        $template_path = public_path('assets/templateImport/template_Keluar.xlsx');
+        return response()->download($template_path);
     }
 
     public function import(Request $request)
@@ -158,6 +164,6 @@ class KeluarController extends Controller
 
         Excel::import(new KeluarImport, $file);
 
-        return back()->with('success_import_data', 'Data Mhs Keluar berhasil diimport');
+        return back()->with('success_import_data', 'Data Mhs Keluar berhasil diimport.');
     }
 }

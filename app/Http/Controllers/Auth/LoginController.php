@@ -36,12 +36,6 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(\Illuminate\Http\Request $request)
     {
         session()->flash('error', 'Email atau passwordnya salah nih, coba dicek lagi ya.');
-        return redirect()->back()->withInput($request->only($this->username(), 'remember'));
+        return redirect('/login')->withInput($request->only($this->username(), 'remember'));
     }
-
-    // public function __construct()
-    // {
-    //     $middleware('guest')->except('logout');
-
-    // }
 }

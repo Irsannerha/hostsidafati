@@ -16,10 +16,10 @@ class Superadmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && auth()->user()->role == 'superadmin' && auth()->user()->status == 'aktif') {
+        if (Auth::check() && auth()->user()->role === 'superadmin' && auth()->user()->status === 'aktif') {
             return $next($request);
         } else {
-            return redirect('login');
+            return redirect('/login')->with('error', 'Anda tidak memiliki akses sebagai superadmin.');
         }
     }
 }

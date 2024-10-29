@@ -48,14 +48,16 @@ use App\Http\Middleware\Akademik;
 use App\Http\Middleware\Kemahasiswaan;
 use App\Http\Middleware\Keuangan;
 use App\Http\Middleware\Prodi;
-use App\Models\Prestasi;
+use App\Models\Kegiatan;
+
+// use App\Models\Prestasi;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register web routes for your application. These 
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
@@ -64,6 +66,9 @@ use App\Models\Prestasi;
 Route::get('/', function () {
   return view('welcome');
 });
+Route::post('/superadmin/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
+Route::post('/superadmin/kegiatan', [KegiatanController::class, 'store'])->name('kegiatan.store');
+
 
 Auth::routes();
 
@@ -105,7 +110,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('form-rekom', FormRekomController::class);
     Route::resource('form-stm', FormSTMController::class);
     Route::resource('form-legal', FormLegalController::class);
-    Route::resource('form-bukrim', FormBukrimController::class);  
+    Route::resource('form-bukrim', FormBukrimController::class);
   });
 
   // Chart Data
@@ -123,6 +128,7 @@ Route::middleware(['auth'])->group(function () {
   // Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
   Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
   Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+  
 
 
 
@@ -142,7 +148,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('Keluar/export', [KeluarController::class, 'export']);
   Route::get('Wafat/export', [WafatController::class, 'export']);
   Route::get('Lulus/export', [LulusController::class, 'export']);
-  Route::get('TugasAkhir/export', [MhsTAController::class, 'export']);
+  Route::get('TahunAkademik/export', [MhsTAController::class, 'export']);
   Route::get('users/export', [UserController::class, 'export']);
   Route::get('formbukrim/export', [FormBukrimController::class, 'export']);
   Route::get('formstm/export', [FormSTMController::class, 'export']);
@@ -151,7 +157,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('formkhs/export', [FormKHSController::class, 'export']);
   Route::get('formkp/export', [FormKPController::class, 'export']);
   Route::get('formta/export', [FormTAController::class, 'export']);
-  Route::get('formlegal/export', [FormLegalController::class, 'export']); 
+  Route::get('formlegal/export', [FormLegalController::class, 'export']);
 
   // Import Data 
   Route::get('/prodi/template', [ProdiController::class, 'downloadTemplate'])->name('prodi.template');
@@ -180,8 +186,8 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/Wafat/import', [WafatController::class, 'import'])->name('Wafat.import');
   Route::get('/Lulus/template', [LulusController::class, 'downloadTemplate'])->name('Lulus.template');
   Route::post('/Lulus/import', [LulusController::class, 'import'])->name('Lulus.import');
-  Route::get('TugasAkhir/template', [MhsTAController::class, 'downloadTemplate'])->name('TugasAkhir.template');
-  Route::post('TugasAkhir/import', [MhsTAController::class, 'import'])->name('TugasAkhir.import');
+  Route::get('TahunAkademik/template', [MhsTAController::class, 'downloadTemplate'])->name('TahunAkademik.template');
+  Route::post('TahunAkademik/import', [MhsTAController::class, 'import'])->name('TahunAkademik.import');
 
   // PDF
   Route::get('/export-pdf', [ProdiController::class, 'exportToPDF'])->name('export.pdf');

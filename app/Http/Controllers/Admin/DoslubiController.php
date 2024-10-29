@@ -115,7 +115,7 @@ class DoslubiController extends Controller
 
     public function downloadTemplate()
     {
-        $file = public_path('assets/template/template_doslubi.xlsx');
+        $file = public_path('assets/templateImport/template_doslubi.xlsx');
         return response()->download($file);
     }
 
@@ -129,6 +129,6 @@ class DoslubiController extends Controller
 
         Excel::import(new DoslubiImport, $file);
 
-        return back()->with('success_import_data', 'Data Doslubi berhasil diimport');
+        return back()->with('success_import_data', 'Data Doslubi berhasil diimport.');
     }
 }

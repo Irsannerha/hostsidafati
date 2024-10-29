@@ -87,7 +87,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_cpns')) {
             $sk_cpns = $request->file('sk_cpns');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_CPNS' . $dosen->nama . '.' . $sk_cpns->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_CPNS_' . $dosen->nama . '.' . $sk_cpns->getClientOriginalExtension();
             $dosen->sk_cpns = $file_name;
             $dosen->update();
             $sk_cpns->move('../public/assets/sk_cpns/', $file_name);
@@ -95,7 +95,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_tubel')) {
             $sk_tubel = $request->file('sk_tubel');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Tubel' . $dosen->nama . '.' . $sk_tubel->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Tubel_' . $dosen->nama . '.' . $sk_tubel->getClientOriginalExtension();
             $dosen->sk_tubel = $file_name;
             $dosen->update();
             $sk_tubel->move('../public/assets/sk_tubel/', $file_name);
@@ -103,7 +103,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_perpanjangan_tubel')) {
             $sk_perpanjangan_tubel = $request->file('sk_perpanjangan_tubel');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Perpanjangan_Tubel' . $dosen->nama . '.' . $sk_perpanjangan_tubel->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Perpanjangan_Tubel_' . $dosen->nama . '.' . $sk_perpanjangan_tubel->getClientOriginalExtension();
             $dosen->sk_perpanjangan_tubel = $file_name;
             $dosen->update();
             $sk_perpanjangan_tubel->move('../public/assets/sk_perpanjangan_tubel/', $file_name);
@@ -111,7 +111,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_jabfung')) {
             $sk_jabfung = $request->file('sk_jabfung');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Jabfung' . $dosen->nama . '.' . $sk_jabfung->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Jabfung_' . $dosen->nama . '.' . $sk_jabfung->getClientOriginalExtension();
             $dosen->sk_jabfung = $file_name;
             $dosen->update();
             $sk_jabfung->move('../public/assets/sk_jabfung/', $file_name);
@@ -119,7 +119,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_pengaktifan')) {
             $sk_pengaktifan = $request->file('sk_pengaktifan');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Pengaktifan' . $dosen->nama . '.' . $sk_pengaktifan->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Pengaktifan_' . $dosen->nama . '.' . $sk_pengaktifan->getClientOriginalExtension();
             $dosen->sk_pengaktifan = $file_name;
             $dosen->update();
             $sk_pengaktifan->move('../public/assets/sk_pengaktifan/', $file_name);
@@ -127,7 +127,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_pengaktifan_kembali')) {
             $sk_pengaktifan_kembali = $request->file('sk_pengaktifan_kembali');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Pengaktifan_Kembali' . $dosen->nama . '.' . $sk_pengaktifan_kembali->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Pengaktifan_Kembali_' . $dosen->nama . '.' . $sk_pengaktifan_kembali->getClientOriginalExtension();
             $dosen->sk_pengaktifan_kembali = $file_name;
             $dosen->update();
             $sk_pengaktifan_kembali->move('../public/assets/sk_pengaktifan_kembali/', $file_name);
@@ -172,13 +172,13 @@ class DosenController extends Controller
             'pekerti' => 'nullable',
             'serdos' => 'nullable',
             'status_dosen' => 'nullable',
-            'sk_pns' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
-            'sk_cpns' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
-            'sk_tubel' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
-            'sk_perpanjangan_tubel' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
-            'sk_jabfung' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
-            'sk_pengaktifan' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
-            'sk_pengaktifan_kembali' => 'mimes:pdf,doc,docx,ppt,pptx|max:2048',
+            'sk_pns' => 'nullable|mimes:pdf,doc,docx,ppt,pptx|max:2048',
+            'sk_cpns' => 'nullable|mimes:pdf,doc,docx,ppt,pptx|max:2048',
+            'sk_tubel' => 'nullable|mimes:pdf,doc,docx,ppt,pptx|max:2048',
+            'sk_perpanjangan_tubel' => 'nullable|mimes:pdf,doc,docx,ppt,pptx|max:2048',
+            'sk_jabfung' => 'nullable|mimes:pdf,doc,docx,ppt,pptx|max:2048',
+            'sk_pengaktifan' => 'nullable|mimes:pdf,doc,docx,ppt,pptx|max:2048',
+            'sk_pengaktifan_kembali' => 'nullable|mimes:pdf,doc,docx,ppt,pptx|max:2048',
         ]);
 
         $dosen = Dosen::find($id);
@@ -215,7 +215,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_cpns')) {
             $sk_cpns = $request->file('sk_cpns');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_CPNS' . $dosen->nama . '.' . $sk_cpns->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_CPNS_' . $dosen->nama . '.' . $sk_cpns->getClientOriginalExtension();
             $dosen->sk_cpns = $file_name;
             $dosen->update();
             $sk_cpns->move('../public/assets/sk_cpns/', $file_name);
@@ -223,7 +223,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_tubel')) {
             $sk_tubel = $request->file('sk_tubel');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Tubel' . $dosen->nama . '.' . $sk_tubel->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Tubel_' . $dosen->nama . '.' . $sk_tubel->getClientOriginalExtension();
             $dosen->sk_tubel = $file_name;
             $dosen->update();
             $sk_tubel->move('../public/assets/sk_tubel/', $file_name);
@@ -231,7 +231,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_perpanjangan_tubel')) {
             $sk_perpanjangan_tubel = $request->file('sk_perpanjangan_tubel');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Perpanjangan_Tubel' . $dosen->nama . '.' . $sk_perpanjangan_tubel->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Perpanjangan_Tubel_' . $dosen->nama . '.' . $sk_perpanjangan_tubel->getClientOriginalExtension();
             $dosen->sk_perpanjangan_tubel = $file_name;
             $dosen->update();
             $sk_perpanjangan_tubel->move('../public/assets/sk_perpanjangan_tubel/', $file_name);
@@ -239,7 +239,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_jabfung')) {
             $sk_jabfung = $request->file('sk_jabfung');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Jabfung' . $dosen->nama . '.' . $sk_jabfung->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Jabfung_' . $dosen->nama . '.' . $sk_jabfung->getClientOriginalExtension();
             $dosen->sk_jabfung = $file_name;
             $dosen->update();
             $sk_jabfung->move('../public/assets/sk_jabfung/', $file_name);
@@ -247,7 +247,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_pengaktifan')) {
             $sk_pengaktifan = $request->file('sk_pengaktifan');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Pengaktifan' . $dosen->nama . '.' . $sk_pengaktifan->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Pengaktifan_' . $dosen->nama . '.' . $sk_pengaktifan->getClientOriginalExtension();
             $dosen->sk_pengaktifan = $file_name;
             $dosen->update();
             $sk_pengaktifan->move('../public/assets/sk_pengaktifan/', $file_name);
@@ -255,7 +255,7 @@ class DosenController extends Controller
 
         if ($request->hasFile('sk_pengaktifan_kembali')) {
             $sk_pengaktifan_kembali = $request->file('sk_pengaktifan_kembali');
-            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Pengaktifan_Kembali' . $dosen->nama . '.' . $sk_pengaktifan_kembali->getClientOriginalExtension();
+            $file_name = date('d-m-Y', strtotime('+7 hours')) . '_SK_Pengaktifan_Kembali_' . $dosen->nama . '.' . $sk_pengaktifan_kembali->getClientOriginalExtension();
             $dosen->sk_pengaktifan_kembali = $file_name;
             $dosen->update();
             $sk_pengaktifan_kembali->move('../public/assets/sk_pengaktifan_kembali/', $file_name);
@@ -288,7 +288,7 @@ class DosenController extends Controller
 
     public function downloadTemplate()
     {
-        $file = public_path('assets/template/template_dosen.xlsx');
+        $file = public_path('assets/templateImport/template_dosen.xlsx');
         return response()->download($file);
     }
 
@@ -302,7 +302,7 @@ class DosenController extends Controller
 
         Excel::import(new DosenImport, $file);
 
-        return back()->with('success_import_data', 'Data Dosen berhasil diimport');
+        return back()->with('success_import_data', 'Data Dosen berhasil diimport.');
     }
 
 }

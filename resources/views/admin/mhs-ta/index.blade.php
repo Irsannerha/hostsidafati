@@ -177,12 +177,12 @@
                         <div class="form-group">
                             <!-- Button download -->
                             <h5 class="modal-title font-weight-bold font-16 text-dark">Template Excel</h5>
-                            <a href="{{ asset('assets/templateImport/template_TugasAkhir.xlsx') }}" class="btn btn-primary" download>
+                            <a href="{{ asset('assets/templateImport/template_TahunAkademik.xlsx') }}" class="btn btn-primary" download>
                                 <i class="fa fa-download"></i> Download
                             </a>
                         </div>
                         <div class="form-group">
-                            <form action="{{ route('TugasAkhir.import') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('TahunAkademik.import') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <label>Import file disini</label>
                                 <input type="file" name="file" class="form-control-file form-control height-auto" accept=".xlsx, .xls" required>
@@ -204,7 +204,7 @@
   <script src="{{ asset('vendors/scripts/datatable-setting.js') }}"></script>
   <script>
     function exportToExcel() {
-        window.location.href = "{{ url('TugasAkhir/export') }}";
+        window.location.href = "{{ url('TahunAkademik/export') }}";
     }
 </script>
   <style>

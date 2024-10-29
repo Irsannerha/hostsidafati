@@ -131,8 +131,8 @@ class AsmikbelController extends Controller
 
     public function downloadTemplate()
     {
-        $template = public_path('template/template_asmikbel.xlsx');
-        return response()->download($template);
+        $file = public_path('assets/templateImport/template_asmikbel.xlsx');
+        return response()->download($file);
     }
 
     public function import(Request $request)
@@ -143,7 +143,7 @@ class AsmikbelController extends Controller
 
         Excel::import(new AsmikbelImport, $request->file('file'));
 
-        return redirect()->route('superadmin.asmikbel.index')->with('success_import_data', 'Data  Asmikbel berhasil diimport');
+        return redirect()->route('superadmin.asmikbel.index')->with('success_import_data', 'Data Asmikbel berhasil diimport.');
     }
     
     

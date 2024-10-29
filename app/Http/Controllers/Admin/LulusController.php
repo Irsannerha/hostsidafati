@@ -232,12 +232,12 @@ class LulusController extends Controller
 
     public function export()
     {
-        return Excel::download(new LulusExport, 'Lulus.xlsx');
+        return Excel::download(new LulusExport, 'MhsLulus.xlsx');
     }
 
     public function downloadTemplate()
     {
-        $file = public_path('assets/template/template_Lulus.xlsx');
+        $file = public_path('assets/templateImport/template_Lulus.xlsx');
         return response()->download($file);
     }
 
@@ -251,6 +251,6 @@ class LulusController extends Controller
 
         Excel::import(new LulusImport, $file);
 
-        return back()->with('success_import_data', 'Data Mhs Lulus berhasil diimport');
+        return back()->with('success_import_data', 'Data Mhs Lulus berhasil diimport.');
     }
 }

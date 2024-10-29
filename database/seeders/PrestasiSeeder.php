@@ -14,7 +14,7 @@ class PrestasiSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 95; $i++) {
+        for ($i = 1; $i <= 2; $i++) {
             // Generate random prodi_id between 1 and 21
             $prodi_id = rand(1, 21);
 

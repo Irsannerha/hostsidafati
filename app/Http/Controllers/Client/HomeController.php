@@ -159,7 +159,7 @@ class HomeController extends Controller
             $fotoPaths[] = $file_name;
             $foto->move(public_path('assets/foto/'), $file_name);
         }
-        $prestasi->foto = json_encode($fotoPaths); // menyimpan nama file sebagai string JSON
+        $prestasi->foto = json_encode($fotoPaths);
     }
 
     $prestasi->save();

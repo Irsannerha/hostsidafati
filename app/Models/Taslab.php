@@ -10,6 +10,7 @@ class Taslab extends Model
     use HasFactory;
 
     protected $table = 'taslab';
+    
     protected $fillable = [
         'nama',
         'unit_kerja',

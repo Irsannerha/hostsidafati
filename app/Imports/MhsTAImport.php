@@ -50,7 +50,7 @@ class MhsTAImport implements ToModel, WithHeadingRow, WithStartRow
             return null; // Skip this row
         }
 
-        Log::info('Row is valid. Creating MhsAktif entry.');
+        Log::info('Row is valid. Creating MhsTA entry.');
 
         return new MhsTA([
             'prodi_id' => $prodi->id,

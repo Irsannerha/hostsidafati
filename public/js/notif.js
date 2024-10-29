@@ -3,28 +3,24 @@ const notification = document.querySelector('.notification');
 let perhatianCount = 0;
 let selamatDatangShown = false;
 
-// Function called when the button to dismiss the message is clicked
+
 function dismissMessage() {
-  // Remove the .received class from the .notification widget
+
   notification.classList.remove('received');
 
-  // Call the generateMessage function to show another message after a brief delay
+
   if (perhatianCount < 3) {
-    setTimeout(generateMessage, 10000); // 10 seconds delay before showing the next 'PERHATIAN' message
+    setTimeout(generateMessage, 10000); 
   }
 }
 
-// Function showing the message
 function showMessage(duration) {
-  // Add a class of .received to the .notification container
+ 
   notification.classList.add('received');
 
-  // Attach an event listener on the button to dismiss the message
-  // Include the once flag to have the button register the click only one time
   const button = document.querySelector('.notification__message button');
   button.addEventListener('click', dismissMessage, { once: true });
 
-  // Automatically dismiss the message after the specified duration
   setTimeout(() => {
     dismissMessage();
   }, duration);
